@@ -577,3 +577,24 @@ Não é falta de documento. Ampliar corpus tem retorno baixo (5% dos erros). O r
 https://claude.ai/code/artifact/051e6b92-d269-4e9a-8b9e-d1e10dca6cbf
 Editar o arquivo NO PROJETO e republicar mantém a URL. Publicar de outro caminho sem passar
 a URL criaria um artefato separado.
+
+## Dossiê de erro e um achado sobre a instabilidade do conjunto de erros
+
+`bench/dossie.py` gera `eval/analises/dossie-erros.txt`: as 231 questões que o v2 e/ou o v3
+erraram, com o CONTEXTO que o RAG entregou trecho a trecho, a resposta dada, a ressalva, a
+rota e a fidelidade das citações. O runner só grava acerto/erro, então os itens são
+reexecutados para capturar o texto.
+
+**Achado não previsto: 59 das 395 reexecuções (14,9%) ACERTARAM o que o banco gravou como
+erro** — 3,8× o piso de ruído de 3,9% medido sobre todos os itens.
+
+Não é contradição, é seleção. O piso de 3,9% foi medido no conjunto INTEIRO; o conjunto de
+ERROS é enriquecido em itens que o modelo responde na dúvida, e é justamente esses que
+oscilam. Consequência dura para a leitura de qualquer análise de erro neste projeto:
+
+**cerca de um sexto do "conjunto de erros" não é estável.** Uma análise qualitativa de erros
+está olhando, em parte, ruído de amostragem — e conclusões tiradas de "o modelo errou X"
+precisam disso em conta. As linhas afetadas vêm marcadas com `[!]` no dossiê, nunca omitidas.
+
+Isso reforça a recomendação já registrada: baixar `temp` para 0 antes de qualquer análise
+fina de erro.
