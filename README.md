@@ -4,8 +4,14 @@ RAG de anestesiologia rodando **inteiramente local**: um Gemma 4 31B responde qu
 provas da Sociedade Brasileira de Anestesiologia consultando um livro-texto e um corpus de
 normas, citando capítulo, página e artigo. Nenhum dado sai da máquina.
 
-O objetivo nunca foi só ter o sistema no ar. Foi **medir qual desenho de RAG ganha**, com
-teste estatístico, e registrar o que foi refutado com a mesma seriedade do que funcionou.
+Aqui, o objetivo é **medir qual desenho de RAG + fluxo de trabalho ganha** comparado com
+modelos flagships grandes, com teste estatístico, e registrar o que foi refutado com a mesma 
+seriedade do que funcionou.
+
+Queremos um fluxo que possa ser consultado para fins médicos ou de estudo. O modelo deve
+retornar não apenas com uma resposta, mas também a fonte exata de onde a resposta foi tirada.
+As provas da Sociedade são usadas *para testar a capacidade do fluxo de trabalho*. Este projeto
+não é pra ser um "passador de provas". 
 
 📊 **[Relatório com os resultados](eval/analises/bancada.html)** · 📓 **[ESTADO.md](ESTADO.md)** —
 memória de trabalho, decisões e medições · 📦 **[CORPUS.md](CORPUS.md)** — o que você precisa
