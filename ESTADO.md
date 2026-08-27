@@ -634,3 +634,51 @@ Execução única não decide nada entre variantes próximas. Toda triagem passa
 **repetição por item**, com critério conservador: um item só conta como recuperado se o
 braço acerta em TODAS as repetições e o controle erra em TODAS. Isso troca sensibilidade
 por ausência de falso positivo, que é o que a bancada precisa.
+
+## Triagem de variantes nas 231 questões já erradas (2026-08-27)
+
+`bench/triagem.py`, 2 repetições por item, `temp=0`, critério conservador (item só conta
+se estável nos dois braços). Resultado em `eval/analises/triagem.txt`, bruto no `.json`.
+
+| braço | recuperou | quebrou | saldo | instável | razão rec/queb |
+|---|---:|---:|---:|---:|---:|
+| controle (v10) | — | — | — | 26 | — |
+| **falsif** (ancoragem `falsificacao`) | **40** | 15 | **+25** | 30 | 2,7 |
+| **k8** (k_contexto 8) | 27 | **7** | +20 | 37 | **3,9** |
+| pai (v12, seção-pai) | 29 | 11 | +18 | 42 | 2,6 |
+| quant (`confiante_quantificador`) | 11 | 13 | **−2** | 37 | 0,8 |
+
+**Instabilidade do controle: 26/231 = 11,3%.** Duas repetições bastaram; terceira
+desnecessária.
+
+### REFUTADO: instruir o modelo a conferir quantificador/negação/relação
+O braço `quant` saiu de −2. A ancoragem foi construída a partir do diagnóstico linguístico
+de um modelo externo sobre o dossiê — que identificou padrões REAIS (o modelo trata
+"frequente" como "pode", lê negação por cima, inverte "constante grande" e "tempo longo").
+O padrão existe; **mandar conferir não corrige**. Mantida a versão mínima justamente para
+não confundir com o custo de envelope longo, e ainda assim não funcionou.
+
+### O achado mais limpo: valor-numérico
+| classe | n | k8 | pai | falsif |
+|---|---:|---|---|---|
+| **valor-numerico** | 53 | +7/**−0** | +11/**−0** | +10/**−0** |
+| juridico-normativo | 20 | +4/−0 | +6/−2 | +3/−1 |
+| imagem | 13 | +1/−0 | +0/−0 | +5/−0 |
+
+Os três braços ganham em valor-numérico **sem quebrar uma única questão**: 28 recuperadas,
+zero perdidas. Confirma diretamente a medição anterior de que 41% dos erros numéricos tinham
+a resposta no top-50 e fora das 4 vagas. Era gargalo de CONTEXTO, e alargar contexto resolve.
+
+### Complementaridade entre falsif e k8
+- ambos recuperam: 13 · só `k8`: **14** · só `falsif`: 27
+- **união 54**, contra 40 do melhor sozinho
+- **zero antagonismo**: nenhum conserta o que o outro quebra, nas duas direções
+- eixos ortogonais: `k8` mexe na recuperação, `falsif` em como o modelo raciocina
+
+União é TETO, não previsão — por isso os braços combinados (`k8falsif`, `paifalsif`) estão
+sendo medidos antes de comprometer as ~6 h da corrida no banco inteiro.
+
+### O que a triagem NÃO decide
+É cega a regressão. Um braço que recupera 40 aqui pode quebrar mais que isso entre as 767
+questões que já estavam certas, e isso só aparece no banco inteiro. Nenhum braço é adotado
+sem essa corrida.

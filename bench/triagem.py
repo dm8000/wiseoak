@@ -43,6 +43,12 @@ PERFIS: dict[str, tuple[str, str | None, int | None]] = {
     "falsif":   ("v10", "falsificacao", None),
     "quant":    ("v10", "confiante_quantificador", None),
     "rerank":   ("v11", None, None),
+    # combinacoes: a triagem mediu 14 itens que SO o k8 recupera e 27 que SO o falsif
+    # recupera, sem antagonismo nos dois sentidos. Os eixos sao ortogonais — um mexe na
+    # recuperacao, o outro em como o modelo raciocina. A uniao (54) e TETO, nao previsao:
+    # so medindo o braco combinado se sabe se a interacao soma ou atrapalha.
+    "k8falsif":  ("v10", "falsificacao", 8),
+    "paifalsif": ("v12", "falsificacao", None),
 }
 
 
