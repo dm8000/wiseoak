@@ -1,0 +1,126 @@
+# medgemma-clinical · ancoragem confiante · 10 erros do v2
+
+==============================================================================
+[1] ME3-4o-Tri-191223gabarito-2 q2B   (CONTEXTO ATRAPALHOU)
+PERGUNTA : Complicações pulmonares pós-operatórias são uma importante causa de morbimortalidade hospitalar após
+ASSERTIVA: Falso sendo composto por cinco variáveis.
+GABARITO : F    v0 respondeu certo    v2 respondeu: V
+RAG TROUXE:
+   - cap27 p425-425 · HIPERTENSÃO PULMONAR > Gerenciamento Pós-operatório
+   - cap13 p175-177 · Classe lia
+   - cap27 p435-436 · POS-OPERATORIAS
+   - cap39 p619-619 · PÓS-ANESTÉSICOS
+   - cap47 p730-730 · CIRÚRGICO
+RESSALVA : O contexto menciona que complicações pulmonares pós-operatórias são comuns e elevam os custos, a taxa de morbidade e o risco de mortalidade (Miller, Cap 27, p. 435). O contexto também lista fatores de risco para essas complicações (Miller, Cap 13, p. 179 e Cap
+CITOU    : cap27 p435: "Complicações pulmonares pós-operatórias depois de cirurgias torácicas incluem atelectasia, hipoxemia e bipoventilação, algumas vezes exigindo a instituição de ventilação mecânica e levando ao desenvol"
+==============================================================================
+[2] ME1-4o-Tri-191223gabarito-2 q5C   (CONTEXTO ATRAPALHOU)
+PERGUNTA : Sobre a sala de recuperação pós-anestésica (SRPA):
+ASSERTIVA: tremores (shivering) é fator predisponente para hipertensão.
+GABARITO : V    v0 respondeu certo    v2 respondeu: F
+RAG TROUXE:
+   - cap34 p542-542 · MONITORAMENTO DA VIA AÉREA
+   - cap39 p625-625 · TEMPERATURA CORPORAL E TREMORES
+   - cap39 p625-625 · TEMPERATURA CORPORAL E TREMORES > Mecanismo
+   - cap34 p541-542 · EMERGÊNCIA
+   - cap39 p620-620 · INSTABILIDADE HEMODINÂMICA > Hipertensão Sistêmica
+RESSALVA : O contexto menciona tremores pós-operatórios (página 625) e hipertensão sistêmica (página 620), mas não estabelece uma relação direta de causalidade entre tremores e hipertensão na SRPA. No entanto, o texto indica que fatores como dor e excitação podem contrib
+==============================================================================
+[3] ME1-4o-Tri-Substitutiva-gabarito q2A   (CONTEXTO ATRAPALHOU)
+PERGUNTA : Neste corte transversal:
+ASSERTIVA: a estrutura 5 corresponde ao ligamento supraespinhoso.
+GABARITO : F    v0 respondeu certo    v2 respondeu: V
+RAG TROUXE:
+   - cap17 p253-254 · SACRO E HIATO SACRAL > Medula espinhal
+   - cap20 p319-319 · ECOCARDIOGRAFIA MODO B
+   - cap17 p255-255 · PONTOS DE REFERÊNCIA NA SUPERFÍCIE > Ugamentos
+   - cap17 p255-255 · PONTOS DE REFERÊNCIA NA SUPERFÍCIE > Ligamento longltucllnal anwlor
+   - cap17 p262-263 · POSIÇÃO DE PRONAÇÃO > Abordagem
+RESSALVA : O contexto fornece uma imagem (Figura 17-7) de uma secção transversa de uma vértebra lombar, mostrando vários ligamentos espinhais. A legenda da figura identifica os ligamentos. A pergunta pede para identificar a estrutura 5 na imagem, que corresponde ao ligam
+CITOU    : cap17 p255: "Figura 17-7 Secção transversa de uma vértebra lombar mostrando o acoplamento dos ligamentos espinhais. (De Covino BC, Scott DB, Lamber! OH. Handbook of Spinal Anesthesia and Analgesia. Philadelphia, W"
+==============================================================================
+[4] ME2-3o-Tri-gabarito_151024 q3C   (CONTEXTO ATRAPALHOU)
+PERGUNTA : Com relação à anestesia na paciente gestante:
+ASSERTIVA: a metabolização da succinilcolina está comprometida, devido à diminuição da atividade da colinesterase plasmática durante a gestação.
+GABARITO : F    v0 respondeu certo    v2 respondeu: V
+RAG TROUXE:
+   - cap33 p505-505 · IMPLICAÇÕES ANESTÉSICAS > Mudanças no Sistema NeiVoso
+   - cap33 p505-505 · IMPLICAÇÕES ANESTÉSICAS > Mudanças Hepáticas
+   - cap33 p523-523 · DURANTE A GESTAÇÃO > Evitação de Fánnacos Teratogênicos
+   - cap33 p504-504 · IMPLICAÇÕES ANESTÉSICAS
+   - cap12 p154-154 · COLINESTERASE PLASMÁTICA ATÍPICA
+RESSALVA : O contexto menciona que a atividade da colinesterase plasmática (pseudocolinesterase) está reduzida em aproximadamente 25% a partir da décima semana de gestação, continuando até seis semanas após o parto. No entanto, afirma que essa redução é insuficiente para
+CITOU    : cap33 p505: "A atividade da colinesterase plasmática [pseudocolinesterase) está reduzida em aproximadamente 25% a partir da décima semana de gesta.ção, continuando até seis semanas após o parto. Essa redução da at"
+==============================================================================
+[5] ME3-1o-Tri-gabarito-corrigido q1C   (CONTEXTO ATRAPALHOU)
+PERGUNTA : Paciente de 25 anos, feminino, IMC 28kg/m2, entrou para o centro cirúrgico para realização
+ASSERTIVA: Verdadeiro assim que possível. Deve ser realizada tromboprofilaxia medicamentosa pelo maior risco de
+GABARITO : F    v0 respondeu certo    v2 respondeu: V
+RAG TROUXE:
+   - cap28 p452-452 · E GASTROINTESTINAL > Obesidade Mórbida
+   - cap22 p351-351 · HEPARINIZAÇÃO PRÉ-OPERATÓRIA
+   - cap22 p351-351 · ANTICOAGULADOS
+   - cap37 p577-580 · AVALIAÇÃO E TESTES PRÉ-OPERATÓRIOS > Hipertermia Maligna
+   - cap22 p353-353 · TRATADOS COM FARMACOS ANTICOAGULANTES
+RESSALVA : O contexto fornece informações sobre obesidade mórbida, heparinização pré-operatória, anticoagulantes, anestesia ambulatorial, hipertermia maligna e opioides. No entanto, não detalha especificamente as diretrizes para tromboprofilaxia em pacientes com IMC de 2
+CITOU    : cap22 p351: "Pacientes com alto risco trombótico perioperatório, a heparinização pré-operatória terapêutica, tanto com heparina intravenosa não fracionada quanto com HBPM, é indicada como uma ponte entre a descont"
+==============================================================================
+[6] ME1-4o-Tri-substitutiva-gabarito q5A   (CONTEXTO ATRAPALHOU)
+PERGUNTA : No que se refere a hipoxemia na Sala de Recuperação Pós-anestésica:
+ASSERTIVA: em pacientes com DPOC, o tratamento com oxigênio a 100% pode conduzir a PaO2 a valores excessivamente elevados que pode tornar áreas de baixa relação V/Q em verdadeiros shunts.
+GABARITO : V    v0 respondeu certo    v2 respondeu: F
+RAG TROUXE:
+   - cap39 p617-618 · Doença pulmonar obstrutfva crônica coexistente
+   - cap6 p71-72 · MISTURA VENOSA > Desequilíbrio ventilação-perfusão
+   - cap34 p542-542 · MONITORAMENTO DA VIA AÉREA
+   - cap27 p433-435 · MONO PULMONAR > Bloqueador posicionado de modo
+   - cap6 p68-69 · ESPESSAMENTO ARTERIAL > Ox igênio
+RESSALVA : O contexto menciona que a administração de oxigênio a 100% pode atingir uma PaO2 no platô da curva de dissociação da oxi-hemoglobina mesmo em áreas de V/Q baixo (DPOC), mas não detalha se isso pode levar a PaO2 'excessivamente elevados' que transformam áreas d
+CITOU    : cap6 p71: "No desequilíbrio WQ, a disparidade entre a quantidade de ventilação e perfusão em vários alvéolos leva a áreas de V/Q alto (ou seja, alvéolos bem ventilados} e áreas de V/Q baixo (i. e., alvéolos prec"
+==============================================================================
+[7] ME3-1o-Tri-gabarito-SUBSTITUTIVA_-0802 q5B   (CONTEXTO ATRAPALHOU)
+PERGUNTA : Sobre anestesia em procedimentos torácicos:
+ASSERTIVA: em pacientes com doença restritiva, como fibrose pulmonar e escoliose, há uma diminuição da Capacidade Vital Forçada (CVF) com um Volume Expiratório Forçado no primeiro segundo (VEF1) aumentado.
+GABARITO : F    v0 respondeu certo    v2 respondeu: F
+RAG TROUXE:
+   - cap17 p271-271 · HIPOVENTILAÇÃO
+   - cap8 p105-105 · ALTERAÇÕES DA PAREDE TORÁCICA
+   - cap35 p554-555 · A IDADE > Possfvel diminuição na atividade intrfnseca
+   - cap19 p297-298 · PREOCUPAÇÕES PULMONARES
+   - cap47 p775-791 · INDICE > Pancurônio
+RESSALVA : O contexto fornecido não menciona especificamente a relação entre CVF e VEF1 em pacientes com doenças restritivas como fibrose pulmonar e escoliose. No entanto, o contexto discute alterações na parede torácica e função pulmonar em anestesia e em pacientes idos
+==============================================================================
+[8] ME3-4o-Tri-gabarito q4A   (CONTEXTO ATRAPALHOU)
+PERGUNTA : Quanto ao tema anestesia e infecção:
+ASSERTIVA: nos primeiros 30 dias de pós-operatório, a transmissão de bactérias presentes na área de trabalho do anestesiologista é causa insignificante de infecção, acometendo cerca de 0,1% dos pacientes cirúrgicos.
+GABARITO : F    v0 respondeu certo    v2 respondeu: F
+RAG TROUXE:
+   - cap40 p639-639 · INFECÇÃO
+   - cap17 p261-261 · INFECÇÃO
+   - cap2 p33-33 · NA SALA DE OPERAÇÕES
+   - cap36 p571-572 · AGRADECIMENTOS > Apneia Obstrutiva do Sono em Adultos
+RESSALVA : O contexto menciona que a transmissão de infecções na sala de operações exige normas cada vez mais rigorosas, incluindo lavagem das mãos, e que há precauções universais para evitar a transmissão de infecções transmissíveis pelo sangue. No entanto, não fornece 
+==============================================================================
+[9] ME3-3o-Tri-Substitutiva-gabarito q4E   (os dois erraram)
+PERGUNTA : Sobre a fisiopatologia e o controle da dor pós-operatória:
+ASSERTIVA: corticosteróides inibem a atividade de todos os produtos da ciclooxigenase e da lipoxigenase, incluindo os leucotrienos, prostaglandinas e tromboxano A2.
+GABARITO : V    v0 respondeu errado    v2 respondeu: F
+RAG TROUXE:
+   - cap39 p631-632 · PERGUNTAS DO DIA
+   - cap32 p497-498 · ARTROPLASTIAS > Artroplastia Total do Quadril
+   - cap39 p633-634 · PERGUNTAS DO DIA > Analgesia Preemptiva e Preventiva
+   - cap35 p560-560 · CUIDADOS PÓS-OPERATÓRIOS
+RESSALVA : O contexto discute a dor pós-operatória, seus efeitos fisiológicos adversos (Tabela 40-1), fatores que a influenciam e estratégias de controle (analgesia preemptiva, regional, ACP em idosos, etc.). Menciona mediadores inflamatórios como prostaglandinas, histam
+==============================================================================
+[10] ME2-1o-Tri-Substitutiva-gabarito q5A   (os dois erraram)
+PERGUNTA : Sobre anestesia venosa:
+ASSERTIVA: o sufentanil deve preferencialmente ser utilizado na modalidade TCI efeito, pois como se trata de um fármaco com ke0 lenta, o equilíbrio entre o plasma e o sítio efetor ocorrerá mais rapidamente.
+GABARITO : V    v0 respondeu errado    v2 respondeu: F
+RAG TROUXE:
+   - cap10 p134-134 · SUFENTANIL
+   - cap5 p56-58 · O EFEITO DE DESLOCAMENTO DOS FÁRMACOS
+   - cap25 p404-405 · GERENCIAMENTO DA ANESTESIA
+   - cap5 p58-58 · O EFEITO DE DESLOCAMENTO DOS FÁRMACOS > Duração da infusão
+   - cap5 p54-56 · MODELOS DE COMPARTIMENTOS
+RESSALVA : O texto menciona que o sufentanil é um opioide potente, mas não detalha seu mecanismo de ação ou farmacocinética em profundidade, especialmente em relação ao TCI efeito. No entanto, o texto compara o fentanil e o alfentanil, indicando que o alfentanil tem um e
+CITOU    : cap10 p134: "A característica diferencial do sufentanil ê que ele é o opioide mais potente comumente utilizado na prática anestêsica. Por ser mais intrinsicamente eficaz no receptor opioide, as doses absolutas uti"

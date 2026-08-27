@@ -1,0 +1,579 @@
+# ESTADO — retomada do WiseOak
+
+Documento de retomada. Se a sessão reiniciar, leia ISTO e o `README.md`; não é preciso
+reler o histórico da conversa.
+
+Última atualização: 2026-08-26 — corpus trocado para Miller's Anesthesia 10e; gemma4-plan é o default.
+
+## Pronto e verificado
+
+- **Fase 0** — `.venv` (py3.12, 266 MB), `wiseoak/clientes.py` com `embed`/`rerank`/`chat`.
+  Verificar com: `.venv/bin/python bench/smoke_clientes.py` → 8/8.
+- **Fase 1** — `dados/questoes_sba.jsonl` (2.331 itens de 87 provas) e
+  `dados/questoes_healthqa.jsonl` (5.632, controle). Split `.dev.jsonl`/`.teste.jsonl`
+  por hash. Verificar com: `cd bench && ../.venv/bin/python -m unittest -q test_parse_sba.py` → 7/7.
+
+- **Fase 2 (parcial)** — `wiseoak/ingest/normalizar.py` (correção de OCR) e
+  `wiseoak/ingest/estrutura.py` (reconstrução de colunas + capítulo/seção/títulos).
+  `dados/miller_paginas.jsonl`: 791 páginas, 3,5 M chars, 47 capítulos, 6 seções,
+  575 títulos. Verificar: `.venv/bin/python -m unittest -q bench.test_estrutura` → 10/10.
+- **Fase 2** — `chunk.py` (hierárquico pai/filho, 10/10 em `bench.test_chunk`),
+  `store.py` (SQLite + numpy + BM25 + RRF) e `ingest/indexar.py`.
+  `dados/chunks_h512.jsonl`: 2.062 pais / 3.403 filhos, mediana 1.241 chars.
+  `dados/chunks_plano512.jsonl` (controle `--sem-hierarquia`): 789 pais / 2.861 filhos.
+- **Fase 3** — `grafos/comum.py` (estado, nós, verificação programática de citação) e
+  `grafos/variantes.py` (v0–v4 em LangGraph). `bench/runner.py` grava no schema da
+  bancada. Fumaça: v0 responde em 0,8 s p50.
+
+## Decisões do usuário (não re-perguntar)
+
+| tema | decisão |
+|---|---|
+| **prioridade** | **acerto primeiro. Latência é só registro, não critério de decisão** |
+| ancoragem | dimensão medida: estrita / com_ressalva / confiante / analista |
+| formato de citação | bibliografia no fim: livro, capítulo, página e trecho exato entre aspas |
+
+| tema | decisão |
+|---|---|
+| corpus | **Miller** `~/Downloads/Bases Da Anestesia - 6ª Edição - Miller (1).pdf`. O Barash falhou o download; usuário tentará outro depois |
+| modelos | medir **`medgemma-clinical` E `gemma4-plan`** como dimensão do experimento |
+| telemetria | harness local, sem LangSmith em nuvem |
+| Studio | não é prioridade. Começar por `draw_mermaid()` (custo zero); Phoenix só se fizer falta |
+| benchmark | provas da SBA + HealthQA-BR como controle |
+
+## Fatos medidos que não devem ser re-descobertos
+
+- **MedGemma não tem canal de thinking** (controle positivo em qwen-code). Gemma 4 tem.
+  Vira contraste entre os braços, não uma escolha.
+- **OCR do Miller corrompe a ligadura `fl`→`tl`** em nomes de fármaco: 24% de isoflurano,
+  34% de desflurano, 38% de sevoflurano (medido em 120 páginas). Atinge o BM25, não tanto
+  o denso. "Com e sem normalização de OCR" é dimensão a medir.
+- **Outline do Miller é lixo** (nomes de arquivo do scanner). A estrutura vem do
+  **cabeçalho corrente** de cada página (`Capítulo N Título` / `Seção N TÍTULO`).
+- **O OCR tem QUATRO padrões, não um.** Além de `fl`→`tl`: `fl`→`ft`/`ff`
+  (`desfturano`, `metoxiffurano`), `fi`→`ft` (`insuftciência`) e **`I`→`l` no início da
+  palavra** (`lntubação` 32x, `lsquemia` 19x, `lsoflurano` 11x — 578 ocorrências).
+  Todas as regras se apoiam em sequências impossíveis em português (`tlu`, `ftu`, `ffu`,
+  `ftc`, e os onsets `ln`/`ls`/`lm`), por isso são seguras. Todas zeradas.
+- **Título de seção NÃO sai da altura de linha** — aquilo pega legenda de figura. Sai da
+  FORMA da linha: curta, só letras, seguida de prosa. Dois níveis: MAIÚSCULO e Title-case.
+- **Tabela vira falso título** (uma tabela de agentes gera `Sevoflurano`, `Desflurano`,
+  `Data de introdução` como seções). Daí `--min-pai=200`, que funde pai curto no anterior:
+  mediana do filho vai de 853 para 1.241 chars.
+- **`pdftohtml -xml` não lê a camada de OCR deste PDF** (200 elementos em 791 páginas).
+  O que funciona é **`pdftotext -bbox-layout`** (541.802 palavras com coordenadas).
+- **Duas colunas, corte em x=352** de 704,25 pt. Sem separar as colunas, rótulos de eixo
+  de figura (`0,01`) entram no meio das frases — foi o defeito que motivou o módulo.
+- **Numeral romano da seção vem OCRizado como dígito**: `11`=II, `111`=III.
+- Comparação de cabeçalho tem que ser **insensível a acento** (`Seção` vs `Secao`).
+- **FlowBot não tem código público.** Bilevel: laço externo muta a estrutura
+  (acrescentar/remover/fundir chamadas), interno otimiza prompt por gradiente textual.
+  Precisa de gabarito + conjunto de validação, que a Fase 1 já produziu.
+- Acaso a bater: **V/F 51,3%**, **MCQ 25%**.
+
+- **Ordem de leitura em duas colunas é POR BANDAS**, não por faixa de y. Ordenar tudo
+  por `y` intercala as colunas: na p96 a lista de rótulos de uma figura entrava no meio
+  das frases do corpo. Bloco de largura total separa bandas; dentro da banda, esquerda
+  inteira e depois direita.
+- **Meu primeiro teste de coluna era fraco.** Validava só a p100, onde os rótulos eram
+  numéricos e caíam no filtro de ruído — passou verde com o defeito ativo. O caso da p96
+  (rótulos que são texto) agora está travado em
+  `test_coluna_de_figura_nao_entra_no_meio_da_frase`.
+- **`pgrep -f`/`pkill -f` casam com o próprio comando** que contém a string. Já matei o
+  meu shell com isso. Para processo em segundo plano, use sentinela em disco
+  (`dados/indice/.pronto`), não PID. Ver [[pid-de-background-nao-e-do-processo]].
+
+- **O reranker custa ~1,2 s POR DOCUMENTO na CPU** (23,6 s para 20 docs; 11,7 s para
+  10; linear). Com `k_busca=20` o rerank sozinho gasta 24 s — inviável para "consulta
+  extremamente rápida". Vira dimensão medida, não default.
+- **`rerank-small` tem batch físico de 512 tokens** (`--ctx-size 4096` sem
+  `--ubatch-size`): documento acima disso devolve HTTP 500. `clientes.rerank` trunca de
+  forma ADAPTATIVA, encolhendo até o servidor aceitar — estimar chars/token não funciona
+  (3,2 é a razão da prosa; termo médico deu 2,6). A correção mais limpa seria
+  `--ubatch-size 2048` no perfil, mas isso é `config/`, decisão do dono da máquina.
+- **Células de tabela isoladas se perdem** no filtro de ruído: 58 linhas só-numéricas em
+  200 páginas, 90% descartadas (~240 no livro). Valores INLINE sobrevivem bem (1.013
+  decimais, 79 doses em mg/kg). Como a ordem por bandas já separa a coluna de figura, o
+  filtro talvez possa ser afrouxado — candidato a melhoria, custa reindexar (28 min).
+- **Sinal de que o desenho funciona:** na pergunta "menor coeficiente de partição
+  sangue-gás", o v0 respondeu "óxido nitroso" com confiança (errado) e o v2 recuperou a
+  seção certa (cap8 SOLUBILIDADE) e **recusou-se a responder** porque o valor está numa
+  tabela perdida. Abstenção honesta contra alucinação confiante.
+
+## BUGS ENCONTRADOS NO BANCO DE QUESTÕES (2026-08-25) — invalidam medições anteriores
+
+1. **O parser INVENTAVA gabarito.** `current_resp = 'F'` quando não conseguia ler a
+   coluna Resposta. Fabricou ~135 assertivas, todas F.
+2. **Gabarito vazava para o texto** em 46 itens: célula de tabela centralizada
+   verticalmente põe o marcador `B)` sozinho na linha, com a primeira linha do texto
+   ACIMA dele.
+3. **94 questões de correlação sem o par** (`'hipercalcemia'` solto).
+4. **12% da amostra medida estava comprometida** — contra diferenças de 5 a 12 pp.
+
+**O acaso NÃO era 51,3%.** Os F fabricados falseavam o equilíbrio. No banco limpo:
+**54,2%** no dev. Todo número anterior foi comparado contra a linha errada.
+
+Meu teste checava `(verdadeiro|falso)\s*$` — só o FIM da assertiva. Vazamento no começo
+passava verde. Segunda vez na sessão que meu verificador era fraco na direção do defeito.
+
+## LATÊNCIA (registro, não critério)
+
+93–95% do tempo de resposta é o RAG; o reranker em CPU é ~17 s de 20. Gerar custa ~1 s.
+`gemma4-plan` tem speculative decoding (MTP, 1,84–2,14x medido na bancada) e
+`medgemma-clinical` NÃO — não existe draft do MedGemma em disco. Não afeta acerto
+(spec decoding é exato), afeta toda comparação de tempo entre os dois.
+
+## PRIMEIRA MEDIÇÃO (INVALIDADA pelos bugs acima) (n=40, V/F, dev, medgemma-clinical)
+
+| variante | acerto | IC 95% | p50 | fidelidade da citação |
+|---|---:|---|---:|---:|
+| v0 sem RAG | **60,0%** | 44,6–73,7% | 0,8 s | — |
+| v1 denso puro | 57,5% | 42,2–71,5% | 4,7 s | 61,5% |
+| v2 híbrido+rerank+pai | 52,5% | 37,5–67,1% | 20,5 s | 48–55% |
+
+**O RAG não ajudou; a tendência é negativa.** Nada é significativo (Holm corrigido = 1,000
+em tudo) e os ICs se sobrepõem quase inteiros. **n=40 só detecta diferença acima de ~20 pp** —
+a própria `methodology.md` da pasta diz que 30×3 serve para >20 pp e que ~5 pp pede ~500.
+Então o correto é: *não há evidência de que o RAG ajude*, e não *está provado que atrapalha*.
+
+**A/A: ruído ZERO** (0 discordantes em 39). Responde a pergunta nº 2 em aberto da pasta.
+Qualquer efeito real acima do ruído é detectável; falta é AMOSTRA, não estabilidade.
+
+Fatos que sobrevivem à falta de significância:
+- **v2 custa 25× a latência do v0** (20,5 s contra 0,8 s) e não entrega acerto.
+- **Metade das citações não confere literalmente** (48–62%): o modelo parafraseia em vez
+  de copiar, mesmo com a instrução explícita e `json_schema`.
+- A recuperação está BOA (tópico/capítulo/seção certos, inspecionado à mão). O gargalo
+  não é achar o trecho.
+
+Hipóteses a testar, em ordem de custo:
+1. **Amostra.** Repetir com n=200 (há 986 V/F no dev). ~70 min para v0+v2.
+2. **O prompt restritivo pode estar enviesando para F.** "Responda SOMENTE com base no
+   contexto" num binário forçado empurra para negar quando o contexto não confirma.
+   Este projeto já mediu wrapper genérico derrubando RAG de 93,3% para 80%.
+3. **O livro é o introdutório** (*Bases da Anestesia*), e as assertivas são de prova de
+   título. Pode faltar granularidade — testável medindo answerability à mão numa amostra.
+
+## ROADMAP
+
+**Ferramentas em vez de contexto colado** (pedido 2026-08-26, para bloco pequeno).
+Hoje a busca acontece ANTES do modelo, uma vez, e ele recebe o que vier. Com
+`tool_calls` ele decidiria quando e o que buscar, poderia refinar depois de ler, e a
+CITAÇÃO viraria exata por construção — hoje ela é copiada à mão e a fidelidade fica em
+62–68%.
+
+Pré-requisito verificado em 2026-08-26: `gemma4-plan` **emite tool_calls** (e traduziu
+a consulta para inglês por conta própria); `medgemma-clinical` emite **zero**.
+
+Duas ferramentas, no máximo — a bancada deste projeto mediu que a precisão de tool
+calling cai conforme o número de ferramentas cresce:
+  `buscar(consulta, k)` e `citar(id_do_trecho)`.
+
+**Outros pendentes**
+- medir o prompt `falsificacao` no banco INTEIRO (foi de 2,3% para 14,0% nos 43 difíceis,
+  mas lá 66% era Verdadeiro; falta ver se virou "sim para tudo")
+- v3 e v4 nunca medidos com o corpus novo
+- SAESP: única fonte brasileira da bibliografia da banca, ainda ausente
+
+## Próximo passo
+
+A/A em curso (sentinela `eval/.aa-pronto`): v2, 40 assertivas V/F do dev, 2 repetições.
+Ler com `bench/relatorio.py --aa`. Só depois a grade v0–v4 × {medgemma-clinical,
+gemma4-plan} × raciocínio — e nenhum ganho menor que o ruído do A/A conta como efeito.
+
+**O sub-agente tem teto de complexidade.** Spec de 3,3 KB devolveu resposta vazia duas
+vezes (thinking estoura o orçamento). Tarefa acima de ~2 KB de spec: escreva você mesma
+ou parta em duas. Ver [[subagente-razao-spec-artefato]].
+
+## Contabilidade do sub-agente (sempre o LÍQUIDO)
+
+| marco | acumulado |
+|---|---|
+| antes do WiseOak | −1.978 |
+| fim da Fase 1 | −10.365 |
+| Fase 2 (estrutura) | −14.184 |
+
+## Fase normativa + formulário (2026-08-26)
+
+### Corpus de normas
+61 documentos, 653 trechos, 166 pais em `dados/indice/normas`. Divisão por `Art. N`/`§`/
+`ANEXO`, não por capítulo; a citação nomeia resolução e artigo (`CFM 2174/2017`, `Art. 3`).
+
+**Seis arquivos de prova foram removidos antes de indexar** — `SBA-gabarito{1,2,3}.pdf`,
+`SBA-ME1/me2/me3.pdf`. A varredura da SBA pegava todo PDF do site (496 arquivos, 586 MB).
+Gabarito indexado faria o RAG recuperar a resposta da questão sendo avaliada, e o
+benchmark deixaria de medir qualquer coisa. `bench/coletar_normas.py` agora filtra na
+origem, além do filtro na pasta.
+
+### Três defeitos encontrados nesta fase
+
+1. **`clientes.embed` truncava por 3,2 chars/token**; texto normativo denso é ~2,6, e o
+   lote estourava o batch físico de 2048. Agora encolhe até ser aceito, como o `rerank`
+   já fazia. Mesma miscalibração, segunda vez.
+
+2. **`store.indexar` vetorizava ids duplicados.** O id é hash do conteúdo e o
+   `INSERT OR REPLACE` colapsa no SQLite, mas a lista de vetores não colapsava junto: 11
+   dos 664 trechos ficavam com dois vetores para o mesmo id, e o mesmo trecho podia ocupar
+   duas das k vagas de contexto. Causa real do corpus, não hipotética: resoluções repetem
+   texto de praxe literalmente. `m10` e `dois` estavam limpos (0 duplicados) — o defeito
+   só aparece em corpus com repetição literal.
+
+3. **`bench/runner.py` tinha `h512` como índice padrão** — o *Bases da Anestesia*, o livro
+   REFUTADO. Uma corrida sem `--indice` media o corpus errado em silêncio; só o rótulo
+   `ix=` no setup denunciava, e depois do fato. Padrão agora é `m10`, o script passa
+   `--indice` explícito, e o runner **anuncia o corpus** (nome, nº de trechos, livros) na
+   partida. Nenhum resultado anterior foi invalidado: todos gravam `ix=m10` no rótulo.
+
+### Formulário — alcance declarado antes de medir
+`wiseoak/ferramentas/formulario.py`, 21 verbetes, UMA ferramenta `formula(consulta)`, sem
+calculadora. A busca casa nome + sinônimos + **situação clínica**, porque os 6 erros de
+fórmula medidos falharam em saber *qual* fórmula — e um índice por nome só serve a quem já
+sabe o nome. Verificado: 11/11 situações clínicas descritas sem o nome acham a fórmula
+certa; e no v9 ponta a ponta o `gemma4-plan` chamou a ferramenta com a situação
+("pressão de pico alta com platô normal"), não com um nome.
+
+**Não é mensurável nesta amostra.** Dos 161 itens de valor-numérico do dev, 16 trazem
+marca de cálculo e 9 são dose por peso (multiplicação que nunca falhou). Sobram ~5 itens
+em 1.003 = 0,5%, contra IC de ±2,5 pp. Medir o v9 custaria ~100 min para devolver ruído.
+Existe pelo produto, não pela medição.
+
+`v9` = rotear → recuperar → contexto → **formula** → responder. O nó é separado do
+responder porque `schema=` (gramática JSON) e `tools` se excluem: pedir os dois faz o
+modelo devolver JSON e nunca chamar a ferramenta.
+
+### Sub-agente
+Não usado nesta fase. O formulário é conteúdo de domínio: a spec teria de conter cada
+fórmula, ou seja, spec ≈ saída — a condição em que o ledger já mediu prejuízo. Ledger
+segue em −14.184 líquido.
+
+### O que a pergunta "esses arquivos não têm questionário?" descobriu (2026-08-26)
+
+A resposta é não — varredura do TEXTO indexado (não do nome do arquivo) por alternativas
+A–D, "assinale", "gabarito", numeração de questão e V/F: zero questões. Os dois positivos
+são falsos: o REGULAMENTO DO TEA rege *como* a prova é aplicada ("cada resposta correta
+marcará um ponto"), e "item 5.1" no Regulamento SAVA é numeração de artigo.
+
+Mas a checagem expôs três defeitos maiores que a contaminação que eu procurava:
+
+**1. `chunk.py` fundia documentos diferentes num mesmo chunk.** `montar_pais` só fechava o
+pai na troca de `capitulo_num`, e a ingestão de normas põe `capitulo_num=None` em todos os
+registros de todos os documentos — então a condição nunca disparava e o pai atravessava a
+fronteira. Resultado medido: texto do **Estatuto da SBA dentro de um chunk rotulado
+`CFM 2174/2017, ANEXO IX`**, e 17 dos 61 documentos sumindo absorvidos pelo vizinho. Num
+corpus cuja razão de existir é citar resolução e artigo, citar o documento errado é falha
+total. Corrigido: o pai fecha na troca de `livro`. `m10` nunca foi afetado (livro único,
+`capitulo_num` preenchido).
+
+**2. Guarda nova em `chunk.py`:** documento que entra tem de sair. Se algum não sair, o
+script imprime ALERTA e devolve exit 2. Testado com entrada que perde um documento de
+propósito — dispara.
+
+**3. Seis documentos eram de DUAS COLUNAS e `-layout` intercalava as colunas no meio da
+frase** ("Art. 4° - Os membros associados da SBA, que não Art. 15 - São membros Remidos").
+O Estatuto — primeiro item da bibliografia declarada pela banca — era um deles. Agora
+`normas.py` extrai com `-layout` E `-raw` e escolhe pela **monotonia da numeração de
+artigo**: embaralhar colunas destrói a ordem crescente, então a ordem é um verificador
+programático barato. Estatuto: layout 91% → raw 100%. Efeito: 829 → 1.120 trechos por
+artigo; o Estatuto passou de 35 trechos embaralhados para 73 artigos limpos.
+
+**Versões superadas removidas** (7 documentos): Regimentos de Assembleia Geral 2023, CNT
+2024, Conselho de Defesa Profissional 2024, Conselho Fiscal 2024, Conselho Superior 2024,
+Assembleia de Representantes 2020, e a cópia da CFM 2174 republicada pela SBA. Num RAG
+normativo a redação revogada seria citada como vigente. As resoluções do CFM foram
+CONFERIDAS e não são versões umas das outras — só uma revogação é declarada no corpus
+(CFM 1931/2009 pelo cem2019), e a revogada não está no índice.
+
+Corpus final: **54 documentos, 607 trechos, 0 vetores duplicados**. Sanidade: "periodicidade
+das reuniões da Diretoria" agora devolve `SBA · ESTATUTO 2026, CAPÍTULO II, Art. 3` — antes
+devolvia o chunk contaminado do CFM.
+
+Dois falsos positivos meus, registrados para não repetir: "membros Remidos" NÃO é exclusivo
+do Estatuto (é categoria estatutária citada em vários regulamentos), e `portalmedico.org.br`
+dentro de um documento "SBA" não é vazamento — é a resolução do CFM republicada pela SBA.
+
+### Corrida do v2 e ferramentas de leitura (2026-08-26)
+
+Decisão do usuário, e ele estava certo: **não reexecutar v0 e v1**. Já estão medidos nos
+mesmos itens, mesma config; a corrida é só do braço novo, e a comparação sai contra o que
+está gravado. Cortou de 3,3 h para ~2,1 h.
+
+Nomenclatura: o usuário chama de **WiseOak v2** o braço roteado; internamente o grafo é
+`v8` (oitava variante). O `placar.py` faz o mapeamento.
+
+**`bench/placar.py`** — placar único e reprodutível. Junta os braços do WiseOak
+(`resultados.sqlite`) e os modelos externos (`dados/prova/*.txt`) no MESMO universo, que é
+a interseção estrita de quem respondeu o quê: 998 itens, não os 1.002 da tabela anterior —
+aquela deixava passar quatro itens que algum sistema não respondeu. Wilson, McNemar exato
+sobre discordantes, Holm monótono. A tabela anterior era script avulso, perdido.
+
+**`bench/roteamento.py`** — cruza a rota GRAVADA com a classe real. Existe porque um braço
+roteado que não melhora tem duas causas opostas — corpus sem a resposta, ou roteador
+mandando ao índice errado — e o placar sozinho não as separa. Testado com bloco sintético
+descartável antes de precisar dele.
+
+Para isso o **runner passou a gravar a rota por item** (`metricas.rotas`). Custou reiniciar
+a corrida perdendo 117 questões (~14 min): a célula V/F já rodava com o módulo antigo
+carregado, e é onde estão a maioria das 65 questões jurídicas.
+
+**Desenho do roteamento, declarado:** dois índices EXCLUSIVOS, não fundidos. `m10` (14.628
+trechos, Miller) ou `normas` (607 trechos, 54 documentos) — um `if/else`, um por questão.
+Separados porque a bancada já mediu que corpus minoritário some no índice combinado (o
+Barash era 52% dos trechos e chegava a 7% do contexto). Custo: questão que dependa das duas
+fontes recebe só uma. Não medido.
+
+**O alvo, visível na tabela por classe:** em `juridico-normativo` (n=65) o v1 com RAG faz
+66,2%, PIOR que o v0 sem RAG (70,8%) — buscar no Miller o que só existe em resolução do CFM
+atrapalha ativamente. Opus 5 faz 81,5%. É essa inversão que o v2 tem de desfazer.
+
+**Aviso estatístico registrado antes de ver o resultado:** com o v2 o Holm passa de 10 para
+15 comparações. Se o v2 subir ~2 pp sobre o v1, é bem possível que `v2 > v1` NÃO passe —
+o efeito está concentrado em 96 de 998 itens. A leitura tem de ser a linha por classe e o
+`roteamento.py`, não só o total.
+
+### Lacuna conhecida no corpus normativo (2026-08-26, NÃO corrigida ainda)
+
+Dois documentos normativos ficaram de fora por erro do meu filtro:
+`SBA-1_CODIGO_DE_PROCESSO_ADMINISTRATIVO_DA_SBA_2026.pdf` e
+`SBA-2_CODIGO_PROFISSIONAL_DA_SBA_2026.pdf`, ambos em `dados/normas/descartados/`.
+A SBA numera a própria série normativa (0_ESTATUTO, 1_CODIGO..., 2_CODIGO...) e o filtro
+tinha `codigo de etica` mas não `codigo` — guardou o 0 e jogou fora o 1 e o 2. O Código
+Profissional é material direto de `juridico-normativo`.
+
+O filtro em `coletar_normas.py` foi corrigido (`c[óo]digo` inteiro, mais `diretriz`), mas
+o ÍNDICE ATUAL (`dados/indice/normas`, 54 documentos, 607 trechos) foi construído SEM eles
+e a corrida do v2 está usando esse índice. Não reindexei no meio para não invalidar a
+medição.
+
+Sequência deliberada: só faz sentido acrescentá-los DEPOIS de saber se o roteamento
+funciona. Se o v2 mostrar que o roteador manda as questões ao índice certo e ainda assim
+`juridico-normativo` não sobe, aí o corpus é o gargalo e os dois Códigos entram. Se o
+roteador estiver errando o destino, mexer no corpus antes seria corrigir a coisa errada.
+
+Os arquivos `SBA-C####_##.pdf` foram CONFERIDOS e estão corretamente fora: são "Nota de
+Repúdio" e "Nota de Posicionamento" — manifestações institucionais, não normas.
+
+## RESULTADO do WiseOak v2 (grafo v8, roteamento exclusivo) — 2026-08-27
+
+Placar completo em `eval/analises/placar.txt`, reprodutível com `bench/placar.py`.
+
+| sistema | total | V/F | ME |
+|---|---:|---:|---:|
+| Opus 5 (effort low, sem busca) | 85,4% | 85,7% | 83,8% |
+| WiseOak v1 (RAG Miller 10e) | 80,2% | 81,5% | 73,7% |
+| **WiseOak v2 (RAG normas, roteado)** | **79,9%** | 81,2% | 73,1% |
+| DeepSeek-V3 (thinking+search) | 77,1% | 78,5% | 70,1% |
+| DeepSeek-V3 (thinking) | 76,4% | 76,8% | 74,3% |
+| WiseOak v0 (sem RAG) | 73,0% | 74,5% | 65,9% |
+
+`v1 > v2`: +0,3 pp, Holm = 1,0. **Empate no total.** Por classe, duas coisas grandes em
+direções opostas:
+
+| classe | destino | n | v1 | v2 | dif | só v2 / só v1 | p |
+|---|---|---:|---:|---:|---:|:--:|---:|
+| juridico-normativo | normas | 65 | 66,2% | **80,0%** | **+13,8 pp** | 14 / 5 | 0,064 |
+| gestao | normas | 31 | 90,3% | **77,4%** | **−12,9 pp** | 0 / 4 | 0,125 |
+| tecnica | livro | 149 | 80,5% | 75,2% | −5,4 pp | 1 / 9 | 0,022 |
+
+**O que ficou provado**
+- O roteamento CONSERTOU o defeito que motivou a fase: em `juridico-normativo` o v1
+  (66,2%) era pior que o v0 SEM RAG (70,8%); o v2 faz 80,0%, encosta no Opus 5 (81,5%) e
+  passa os dois DeepSeek.
+- O mecanismo do roteador é bom: precisão 100%, cobertura 97,6%, zero questões clínicas
+  mandadas às normas.
+
+**PISO DE RUÍDO DA BANCADA, medido pela primeira vez.** Nas 747 questões roteadas ao
+livro, o v2 executa pipeline IDÊNTICO ao v1 — mesmo grafo, índice, k e ancoragem. A
+diferença deveria ser zero e foi −0,9 pp: **29 de 747 itens (3,9%) trocam de resposta
+entre execuções**, por causa de `temp=0.3` em `no_responder`. Consequências:
+- diferença abaixo de ~1 pp no total é indistinguível de ruído;
+- a linha de `tecnica` com p=0,022 é FALSO POSITIVO — é pipeline idêntico. Serve de régua
+  para ler qualquer análise de subgrupo neste projeto.
+
+**Por que o total não se move, e não é fracasso:** `juridico-normativo` é 6,5% do banco.
++13,8 pp lá valem +0,9 pp no agregado — o próprio piso de ruído. Projeção com gestão
+corrigida: 80,3% vs 80,2%, p=1,0. **Esta fase conserta uma classe; ela não pode mover o
+agregado.** Registrado antes de rodar, não depois.
+
+### Diagnóstico dos 13 erros restantes em juridico-normativo
+- 3 são risco ocupacional (abuso de substâncias ×2, radiação) — tema do Miller cap. 84,
+  rotulados como jurídicos. Mesma doença da gestão: o RÓTULO não corresponde a onde a
+  resposta está.
+- 2 são lacuna de corpus: ética em pesquisa (CNS/CONEP) e Lei 10.205 (hemoterapia).
+- os demais recuperam documento normativo e ainda erram.
+
+**Concentração da recuperação, medida nas 65 jurídicas (260 vagas):** CFM 2174/2017 ocupa
+37,7% das vagas com 4,1% dos trechos (9× demais); CFM 1802/2006, 12,3% com 0,8% (15×);
+`cem2019` — o Código de Ética, fonte natural das questões de ética — só 5,4% com 16% dos
+trechos (3× de menos). **25 dos 54 documentos nunca aparecem.** Duas resoluções sobre "a
+prática do ato anestésico" viraram atratores semânticos. BM25 híbrido foi TESTADO e ajuda
+pouco (2174 cai para 26,9%, cem2019 sobe para 8,5%) — não resolve.
+
+## WiseOak v3 (grafo v10, COTA por corpus) — rodando
+
+Diagnóstico de fundo: **o roteamento exclusivo é destrutivo.** Mandar a pergunta às normas
+TIRA o livro; quando o rótulo não corresponde à fonte da resposta, a pergunta perde a única
+fonte que a continha. É a causa comum da queda em gestão e dos 3 erros de risco ocupacional.
+
+`v10` = rotear → `no_recuperar_cota` → `no_contexto_cota` → responder. Pergunta roteada às
+normas recebe metade das vagas de cada corpus (2+2 em k=4); pergunta clínica segue com o
+livro inteiro — dar-lhe resolução do CFM seria trocar contexto útil por ruído.
+
+NÃO é o mesmo que fundir os índices: em índice único as vagas saem de competição global e
+607 trechos de norma perdem para 14.628 do Miller por volume (medido com o Barash: 52% dos
+trechos, 7% do contexto). Com cota as normas competem só com normas.
+
+Contexto INTERCALADO entre fontes, não concatenado: se as normas viessem todas antes, o
+corte em `k_contexto` decapitaria uma fonte e a cota deixaria de existir na prática.
+
+**Rotulagem de natureza da fonte** (ideia do usuário): cada trecho vai como `[NORMA]` ou
+`[LIVRO]`, e duas frases entram no prompt SÓ quando o contexto é misto de fato — que norma
+define obrigatoriedade e livro descreve prática. Norma passa a ser citada por artigo, não
+por "capítulo e página" (antes saía `capitulo None`). Mantido curto: a bancada mediu
+envelope genérico de prompt derrubando o RAG de 93,3% para 80%.
+
+**`gestao` VOLTOU ao roteamento**, de propósito. Saíra como remendo do esquema exclusivo;
+com cota o remendo atrapalha, porque deixaria a classe recebendo 4 vagas do livro e a cota
+nunca seria testada onde o v2 quebrou.
+
+**CONFUNDIMENTO DECLARADO:** o v3 empacota duas mudanças (cota + rotulagem). Se melhorar,
+não dá para atribuir a uma delas sem uma terceira corrida. Juntadas porque entregar
+contexto misto sem dizer ao modelo que é misto é meio-desenho, não variante.
+
+**Critério de leitura, fixado ANTES do resultado:** o total não decide — 96 de 998 itens
+não movem o agregado acima do ruído. Decide a linha por classe: `gestao` tem de subir dos
+77,4% e `juridico-normativo` tem de segurar os 80%.
+
+## RESULTADO do WiseOak v3 (grafo v10, cota) — 2026-08-27
+
+| sistema | total | V/F | ME |
+|---|---:|---:|---:|
+| Opus 5 (effort low, sem busca) | 85,4% | 85,7% | 83,8% |
+| **WiseOak v3 (cota: normas + livro)** | **80,6%** | 82,1% | 73,1% |
+| WiseOak v1 (RAG Miller) | 80,2% | 81,5% | 73,7% |
+| WiseOak v2 (RAG normas, roteado) | 79,9% | 81,2% | 73,1% |
+| DeepSeek-V3 (thinking+search) | 77,1% | 78,5% | 70,1% |
+| DeepSeek-V3 (thinking) | 76,4% | 76,8% | 74,3% |
+| WiseOak v0 (sem RAG) | 73,0% | 74,5% | 65,9% |
+
+**A cota fez o que foi desenhada para fazer.** Contra o v2:
+
+| classe | n | v2 | v3 | dif | só v3 / só v2 |
+|---|---:|---:|---:|---:|:--:|
+| gestao | 31 | 77,4% | **90,3%** | **+12,9 pp** | 4 / 0 |
+| juridico-normativo | 65 | 80,0% | 75,4% | −4,6 pp | 4 / 7 |
+
+`gestao` voltou EXATAMENTE ao nível do v1 (90,3%), com 4 discordantes a favor e zero
+contra. `juridico-normativo` mantém +9,2 pp sobre o v1 (66,2% → 75,4%) mas cede 4,6 pp
+para o v2 — mecanicamente esperado: a classe passa a receber 2 vagas de norma em vez de 4,
+e ali a norma é mesmo a fonte certa. A cota **troca parte do ganho jurídico por robustez a
+rótulo errado**, e essa troca é o desenho, não um defeito.
+
+### O que NÃO ficou provado, e é o principal
+`v3 > v1` = +0,4 pp, Holm = **1,000**. `v3 > v2` = +0,7 pp, Holm = 1,000. As três variantes
+de RAG são **estatisticamente indistinguíveis entre si** (80,2 / 79,9 / 80,6). O que os
+dados sustentam é só: as três batem o v0 (Holm < 0,001) e o Opus 5 bate as três
+(+4,8 pp sobre o v3, Holm = 0,010).
+
+### O piso de ruído voltou a produzir falso positivo, DUAS vezes
+`fisiopatologia` (n=384, roteada ao livro, pipeline IDÊNTICO nos dois braços) deu p=0,0127
+contra o v2 e p=0,0391 contra o v1. Efeito impossível; é `temp=0.3`. Somados ao p=0,022 de
+`tecnica` no v2, são três falsos positivos em três corridas. **Neste banco, análise de
+subgrupo a temp=0,3 produz "significância" espúria como regra, não exceção.**
+`bench/porclasse.py` marca isso sozinho.
+
+### Conclusão da fase e próximo passo
+O gargalo de MEDIÇÃO passou a ser o ruído, não o corpus nem o roteamento. Com 3,9% dos
+itens oscilando, nenhuma diferença de ~1 pp entre variantes pode ser estabelecida, e é
+nessa faixa que as três variantes vivem. O passo com maior retorno agora é **baixar
+`temp` para 0 em `no_responder`** e remedir — não como melhoria de acerto, mas para tornar
+as comparações decidíveis. O conjunto de teste segue INTOCADO.
+
+## Onde estão os 19,4% de erro do v3, e por que os documentos "não têm a resposta"
+
+| classe | erros | % dos erros | acerto |
+|---|---:|---:|---:|
+| fisiopatologia | 50 | 25,8% | 87,0% |
+| valor-numerico | 48 | 24,7% | 70,2% |
+| tecnica | 34 | 17,5% | 77,2% |
+| farmacologia | 31 | 16,0% | 82,0% |
+| juridico-normativo | 16 | 8,2% | 75,4% |
+| imagem | 12 | 6,2% | 67,6% |
+| gestao | 3 | 1,5% | 90,3% |
+
+**84% dos erros são clínicos.** O corpus normativo nunca é consultado neles — vão ao Miller
+por desenho, e corretamente: resolução do CFM não tem fisiopatologia.
+
+Três causas distintas, e só uma é dos documentos:
+
+**1. Falha minha de coleta.** O plano prometia o *Projeto Diretrizes* da AMB e as *Diretrizes*
+da SBC — programas com dezenas de documentos. O coletor trouxe UM PDF de cada: 62 trechos,
+10,2% do corpus normativo. A metade que deveria cobrir conteúdo clínico é inexistente.
+
+**2. O rótulo da classe não corresponde a onde a resposta mora.** Terceira vez que isto
+aparece (gestao, risco ocupacional, agora aqui): "unidade ambulatorial do tipo I ... dose
+inferior a 5,5 mg" é rotulada `valor-numerico` porque tem número, vai ao Miller, e a resposta
+está em resolução do CFM. A taxonomia classifica pelo que a pergunta PARECE, não pela fonte.
+
+**3. Nos clínicos, o livro TEM a resposta — a busca traz o parágrafo vizinho.** Verificado em
+6 erros: a recuperação acerta capítulo e tópico e erra a frase. ARISCAT devolveu "vários
+índices de risco foram desenvolvidos" em vez da composição do escore; hipotermia devolveu
+"metabolismo cerebral na hipotermia" em vez do valor de 20 °C. **Granularidade, não cobertura.**
+
+### CAVEAT GRANDE: os experimentos de arquitetura foram medidos no livro ERRADO
+Auditoria de `eval/resultados.sqlite` por índice: **todo bloco anterior a `COMPLETO-m10` usou
+`ix=h512`** — o *Bases da Anestesia*, 3.406 trechos, o livro refutado. Inclui `B-arquitetura`,
+que é a origem das conclusões "rerank não ajuda", "expansão para o pai não ajuda", "híbrido
+não ajuda", "portão é ruído":
+
+    v0 70,3% · v1 72,3% · v2 70,0% · v5 71,7% · v6 72,0%   (n=300, ix=h512)
+
+Amplitude de 2,3 pp em n=300, contra um piso de ruído de 3,9%. Não era conclusivo nem naquele
+corpus, e nunca foi refeito no Miller (14.628 trechos, 4× maior, livro certo). **A refutação
+do BM25 JÁ falhou em transferir** — no corpus normativo ele ajudou (2174 de 37,7% para 26,9%).
+Não há razão para confiar que as outras transferem.
+
+Os mecanismos descartados — expansão para o pai, rerank, k maior — são exatamente os que
+atacam "tópico certo, frase errada". **Retestá-los no m10 é o experimento de maior valor
+esperado agora**, acima de ampliar corpus.
+
+## As respostas ESTÃO nos documentos: onde exatamente a falha ocorre
+
+Teste programático, cruzando idioma por ÂNCORA NÚMERO+UNIDADE (número atravessa tradução;
+o Miller está em inglês e as questões em português). 39 dos 163 erros clínicos são
+testáveis assim.
+
+| onde está a resposta | n | % | natureza |
+|---|---:|---:|---|
+| já no contexto entregue (top-4) | 12 | 30,8% | **raciocínio** |
+| no top-50, fora do contexto | 16 | 41,0% | **ranking** |
+| no livro, fora do top-50 | 9 | 23,1% | **busca** |
+| não está no livro | 2 | 5,1% | cobertura |
+
+**95% das respostas estão no corpus.** A falha reparte-se em ~64% recuperação, ~31%
+raciocínio, ~5% cobertura.
+
+Exemplos verificados, ambos com a frase NO CONTEXTO e resposta errada mesmo assim:
+- "a 20 °C induz supressão do EEG" (V) — contexto trazia *"complete suppression of the EEG
+  (at approximately 18 °C to 20 °C)"*.
+- "CPDA-1, hematócrito entre 65% e 75%" (V) — contexto trazia *"When CPDA is the
+  anticoagulant used, the Hct is greater than 65%"*.
+
+### ARMADILHA DE VERIFICADOR, terceira nesta bancada
+A primeira versão do teste casava NÚMERO SOLTO e dava 72,5% de "já no contexto". Era falso:
+o Miller traz as citações bibliográficas como dígitos colados ao texto, então a âncora "20"
+casava com a referência "207" e "14" com "140". **Exigir a unidade junto derrubou de 72,5%
+para 30,8%.** Regra que fica: âncora numérica em corpus científico SEM unidade não vale
+nada — as referências poluem tudo.
+
+### Consequência para o roadmap
+Não é falta de documento. Ampliar corpus tem retorno baixo (5% dos erros). O retorno está em:
+1. **Recuperação (64%)** — os mecanismos descartados no `h512` (expansão para o pai, rerank,
+   k maior) atacam exatamente "está no top-50 e não chega ao contexto". Nunca testados no m10.
+2. **Raciocínio (31%)** — a resposta chega e o modelo erra. Isso é ancoragem/prompt, ou
+   limite do Gemma 4 31B. O Opus 5 acerta várias dessas sem RAG nenhum.
+
+### Relatório publicado
+`eval/analises/bancada.html` — mesma fonte que a página em
+https://claude.ai/code/artifact/051e6b92-d269-4e9a-8b9e-d1e10dca6cbf
+Editar o arquivo NO PROJETO e republicar mantém a URL. Publicar de outro caminho sem passar
+a URL criaria um artefato separado.

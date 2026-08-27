@@ -1,0 +1,410 @@
+RESULTADO · ancoragem confiante · questões que todos os fluxos erravam
+corpus: dois livros · 11375 trechos · busca densa · k=8/4
+
+  n = 43
+  SEM RAG : 1/43 = 2.3%
+  COM RAG : 6/43 = 14.0%   (+5 itens, +11.6%)
+
+  só sem RAG acertou : 1
+  só com RAG acertou : 6
+  os dois acertaram  : 0
+  os dois erraram    : 36
+
+por classe:
+  fisiopatologia         n= 18  sem  0.0%  com 16.7%
+  tecnica                n=  9  sem  0.0%  com  0.0%
+  valor-numerico         n=  7  sem  0.0%  com 14.3%
+  farmacologia           n=  7  sem  0.0%  com 14.3%
+  imagem                 n=  1  sem 100.0%  com  0.0%
+  gestao                 n=  1  sem  0.0%  com 100.0%
+
+de onde veio o contexto: {'miller-bases-6ed': 172}
+tempo: 5 min
+
+------------------------------------------------------------------------------
+[1] ME3-1o-Tri-gabarito-SUBSTITUTIVA_- · fisiopatologia
+  ASSERTIVA: o eletrocardiograma é o melhor teste de triagem no diagnóstico de contusão miocárdica.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap42 p665-666 · CIRURGIA DE EMERGÊNCIA PARA TRAUMA > Preparação Pré-operatória
+     cap42 p663-664 · Circul ação e Choq ue
+     cap42 p663-664 · Circul ação e Choq ue
+  citações: 2/2 literais
+------------------------------------------------------------------------------
+[2] ME2-2o-Tri-gabarito-2a-REVISAO-1_2 · imagem
+  ASSERTIVA: O músculo destacado com a legenda "B" é o vasto medial.
+  GABARITO F | sem RAG: F OK | com RAG: V erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap18 p290-291 · REALIZAÇÃO DO BLOQUEIO > Bloqueio do Nervo Safeno
+     cap18 p290-291 · REALIZAÇÃO DO BLOQUEIO > Bloqueio do Nervo Safeno
+     cap18 p289-290 · REALIZAÇÃO DO BLOQUEIO
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[3] ME2-4o-Tri_1224 · fisiopatologia
+  ASSERTIVA: em pacientes obesos mórbidos, o pneumoperitônio pode ter um efeito hemodinâmico menos pronunciado em comparação com pacientes não obesos.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap29 p453-453 · CONSIDERAÇÕES PERIOPERATÓRIAS
+     cap37 p577-580 · AVALIAÇÃO E TESTES PRÉ-OPERATÓRIOS > Hipertermia Maligna
+     cap13 p178-180 · NÃOO > SimO
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[4] ME1-4o-Tri-substitutiva-gabarito · fisiopatologia
+  ASSERTIVA: em adultos que apresentam falência respiratória aguda hipoxêmica (tipo 1), altos fluxos de oxigênio através de cateter nasal não oferecem nenhum benefício quando comparados à ventilação mecânica.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap39 p617-618 · Doença pulmonar obstrutfva crônica coexistente
+     cap39 p619-620 · SUPLEMENTAÇÃO DE OXIGÊNIO > Admi nistração de Oxigênio
+     cap39 p619-619 · SUPLEMENTAÇÃO DE OXIGÊNIO
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[5] ME3-3o-Tri-substitutiva-gabarito · fisiopatologia
+  ASSERTIVA: correção do sódio menor que 130 ou maior que 170 mmol/L, pois há aumento da mortalidade do receptor.
+  GABARITO V | sem RAG: F erro | com RAG: V OK
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap35 p564-564 · TRANSPLANTE DE RIM > Histórico de diálise
+     cap23 p358-359 · SOLUÇÕES SALI NAS HIPERTÔN ICAS
+     cap39 p624-624 · DEPLEÇÃO DO VOLUME INTRAVASCULAR
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[6] ME3-2o-Tri-gabarito-SUBSTITUTIVA_- · valor-numerico
+  ASSERTIVA: Para o cálculo da TEO2 precisa-se somente dos valores de saturação arterial de oxigênio e da saturação venosa central de oxigênio. PROVA TRIMESTRAL SUBSTITUTIVA 02/04 – ME3/2023 CCA
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap23 p360-361 · DÉFICITS HÍDRICOS
+     cap4 p45-46 · FONTES SECUNDÁRIAS > Categorias de Informação
+     cap24 p365-366 · DECISÃO DE TRANSFUNDIR > Monitoramento para a Perda de Sangue
+  citações: 0/2 literais
+------------------------------------------------------------------------------
+[7] ME1-3o-Tri-Substitutiva-gabarito · farmacologia
+  ASSERTIVA: uso da cocaína induz alterações na dinâmica do receptor nicotinico da acetilcolina.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap39 p617-617 · Pós-operatória
+     cap11 p148-149 · PERGUNTAS DO DIA > Clinical injury and srrategies that may
+     cap12 p157-157 · NÃO DESPOLARIZANTES > Respostas Farmacodinâmicas
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[8] ME3-4o-Tri-substitutiva-gabarito · tecnica
+  ASSERTIVA: A ventilação de alta frequência (high-frequency ventilation) utiliza um volume menor que o espaço morto funcional, frequências respiratórias de 10 a 50 vezes maiores e altas taxas de fluxo instantâneo.
+  GABARITO F | sem RAG: V erro | com RAG: V erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap40 p646-646 · VENTILAÇÃO COM PRESSÃO DE SUPORTE
+     cap29 p1746-1747 · ANESTHESIA FOR SPECIAL SITUATIONS > High-Frequency Ventilation
+     cap29 p1746-1747 · ANESTHESIA FOR SPECIAL SITUATIONS > High-Frequency Ventilation
+  citações: 4/4 literais
+------------------------------------------------------------------------------
+[9] ME1-4o-Tri-substitutiva-gabarito · farmacologia
+  ASSERTIVA: mulheres são mais sensíveis a bloqueadores neuromusculares adespolarizantes que homens nos testes de puntura.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap33 p509-510 · TÉCNICAS NEUROAXIAIS > Avaliação Pré -operatória
+     cap11 p148-149 · PERGUNTAS DO DIA > Clinical injury and srrategies that may
+     cap33 p505-505 · IMPLICAÇÕES ANESTÉSICAS > Mudanças no Sistema NeiVoso
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[10] ME3-2o-Tri-substitutiva-gabarito · fisiopatologia
+  ASSERTIVA: o débito urinário é um parâmetro importante e está diretamente relacionado com a perfusão dos órgãos.
+  GABARITO F | sem RAG: V erro | com RAG: V erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap41 p655-655 · SEPSE E CHOQUE SÉPTICO
+     cap25 p398-398 · ANEURISMA DA AORTA > Drogas
+     cap39 p624-624 · DEPLEÇÃO DO VOLUME INTRAVASCULAR
+  citações: 0/2 literais
+------------------------------------------------------------------------------
+[11] ME1-2o-Tri-gabarito-060824 · fisiopatologia
+  ASSERTIVA: o gradiente transtorácico é a diferença entre o espaço pleural e a superfície corpórea, correspondendo à pressão de abertura das vias aéreas.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap6 p74-74 · MECÂNICA PULMONAR
+     cap6 p74-75 · MECÂNICA PULMONAR > Propriedades Estáticas
+     cap6 p74-75 · MECÂNICA PULMONAR > Propriedades Estáticas
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[12] ME3-4o-Tri-gabarito-SUBSTITUTIVA_0 · gestao
+  ASSERTIVA: A alocação de tempo de sala operatória por ordem de chegada é comumente utilizada em hospitais como o principal método de agendamento de cirurgias, mas muitos hospitais utilizam uma combinação de alocação em blocos e ordem de cheg
+  GABARITO V | sem RAG: F erro | com RAG: V OK
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap2 p113-115 · OPERATING ROOM MANAGEMENT > Types of Schedules
+     cap45 p711-712 · EFICIÊNCIA DO CENTRO CIRÚRGICO > Utilização do Centro Cirúrgico
+     cap45 p711-712 · EFICIÊNCIA DO CENTRO CIRÚRGICO > Utilização do Centro Cirúrgico
+  citações: 1/1 literais
+------------------------------------------------------------------------------
+[13] ME2-2o-Tri-gabarito-SUBSTITUTIVA_0 · valor-numerico
+  ASSERTIVA: A fórmula do delta anion GAP é (Anion GAP - 12) / (24 – [HCO3-]).
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap21 p333-333 · ÂNION GAP
+     cap21 p334-335 · RESPOSTAS COMPENSATÓRIAS E TRATAMENTO > Diagnóstico
+     cap21 p334-335 · RESPOSTAS COMPENSATÓRIAS E TRATAMENTO > Diagnóstico
+  citações: 0/1 literais
+------------------------------------------------------------------------------
+[14] ME3-4o-Tri-Substitutiva-gabarito · fisiopatologia
+  ASSERTIVA: a morbidade relacionada ao procedimento anestésico é considerada baixa, em consonância com os avanços na segurança do paciente.
+  GABARITO F | sem RAG: V erro | com RAG: V erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap2 p32-33 · RISCOS DA ANESTESIA
+     cap46 p722-723 · RESUMO
+     cap46 p717-717 · PARA CONSCIÊNCIA INTRAOPERATÓRIA
+  citações: 2/2 literais
+------------------------------------------------------------------------------
+[15] ME2-4o-Tri-191223gabarito-2 · tecnica
+  ASSERTIVA: Recuperação fast track é quando no pós-operatório paciente passa da fase 1 de recuperação direto para fase 2 sem passar pela sala de recuperação pós-anestésica. Bebês a termo cuja idade pós-conceptual é inferior a 46 semanas, ou p
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap37 p575-577 · AVALIAÇÃO E TESTES PRÉ-OPERATÓRIOS > Cinco Princípios da Anestesia Ambulatorial
+     cap34 p549-549 · MANEJO DA ANESTESIA
+     cap34 p549-549 · MANEJO DA ANESTESIA
+  citações: 2/2 literais
+------------------------------------------------------------------------------
+[16] ME1-3o-Tri-Substitutiva-gabarito · farmacologia
+  ASSERTIVA: a cetamina se dissolve na camada lipídica ao redor do receptor da junção neuromuscular podendo levar a dessensibilização do receptor e bloqueio dos canais iônicos.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap9 p120-120 · SISTEMA RESPIRATÓRIO
+     cap9 p121-121 · ANALGESIA
+     cap9 p120-120 · CETAMINA > Farmacodinâmica
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[17] ME3-2o-Tri-Substitutiva-gabarito · fisiopatologia
+  ASSERTIVA: quando ocorre insulto isquêmico cerebral, o edema forma-se primariamente na substância branca subcortical e não no córtex cerebral.
+  GABARITO F | sem RAG: V erro | com RAG: V erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap30 p472-472 · PERGUNTAS DO DIA
+     cap30 p471-471 · NEUROPROTEÇÃO > Pré-operatório
+     cap30 p469-470 · NEUROPROTEÇÃO > Manutenção da Anestesia
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[18] ME3-2o-Tri-gabarito-corrigido-1 · valor-numerico
+  ASSERTIVA: Pressão de Perfusão Encefálica > 50mmHg.
+  GABARITO F | sem RAG: V erro | com RAG: F OK
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap30 p469-469 · NEUROPROTEÇÃO > Pós-operatório
+     cap42 p663-664 · Circul ação e Choq ue
+     cap42 p663-664 · Circul ação e Choq ue
+  citações: 0/1 literais
+------------------------------------------------------------------------------
+[19] ME3-3o-Tri-gabarito-SUBSTITUTIVA_- · valor-numerico
+  ASSERTIVA: A dose necessária para administração intravenosa de succinilcolina em lactentes (2,0 mg/kg) é aproximadamente o dobro das crianças mais velhas (1,0 mg/kg).
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap43 p2460-2461 · KEY POINTS > Succinylcholine
+     cap16 p898-899 · NEUROMUSCULAR BLOCKING AGENTS > Clinical Uses
+     cap16 p244-244 · EXAME FÍSICO > Medicação Pré-anestésica
+  citações: 1/2 literais
+------------------------------------------------------------------------------
+[20] ME3-3o-Tri-Substitutiva-gabarito · fisiopatologia
+  ASSERTIVA: em relação a anestesia de neuroeixo em crianças até 8 anos, as alterações hemodinâmicas são raras devido à imaturidade do sistema nervoso simpático (SNS) e à menor capacitância do sistema venoso.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap34 p539-540 · CONSIDERAÇÕES SOBRE A ANESTESIA
+     cap33 p531-532 · PEDIATRIA > Avaliação da Via Aérea
+     cap1 p26-28 · COMO ESPECIAUDADE
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[21] ME3-1o-Tri-gabarito-SUBSTITUTIVA_- · farmacologia
+  ASSERTIVA: propiltiouracil e metimazol diminuem a síntese de T4 e reduzem os níveis de anticorpo do receptor de TSH.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap29 p457-458 · CONSIDERAÇÕES PERIOPERATÓRIAS
+     cap29 p457-458 · CONSIDERAÇÕES PERIOPERATÓRIAS
+     cap41 p2346-2348 · THYROID GLAND > Treatment and Anesthetic Considerations
+  citações: 1/1 literais
+------------------------------------------------------------------------------
+[22] ME2-3o-Tri-gabarito_171023 · fisiopatologia
+  ASSERTIVA: A concentração dos fatores de coagulação II e V está inalterada.
+  GABARITO V | sem RAG: F erro | com RAG: V OK
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap32 p502-502 · GRÁVIDA > LfQU IDO INTRAVASCULAR E HEMATOLOGIA
+     cap33 p503-503
+     cap32 p502-502 · GRÁVIDA
+  citações: 1/1 literais
+------------------------------------------------------------------------------
+[23] ME3-3o-Tri-gabarito_151024 · fisiopatologia
+  ASSERTIVA: nos cirróticos em pré-operatório de transplante hepático, a cintilografia de perfusão miocárdica com dipiridamol é de valor duvidoso devido ao estado hiperdinâmico, o que leva a rápida remoção do fármaco radioativo.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap36 p566-566 · Atrofia muscular
+     cap36 p567-568 · TRANSPLANTE DECORAÇÃO
+     cap35 p564-564 · TRANSPLANTE DE RIM > Histórico de diálise
+  citações: 1/1 literais
+------------------------------------------------------------------------------
+[24] ME2-3o-Tri-gabarito_151024 · fisiopatologia
+  ASSERTIVA: durante ressecção transuretral de próstata, deve-se suspeitar de perfuração de cápsula prostática quando há distensão abdominal e dor referida em ombro.
+  GABARITO F | sem RAG: V erro | com RAG: V erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap39 p624-624 · RETENÇÃO URINÁRIA PÓS-OPERATÓRIA
+     cap17 p271-271 · RETENÇÃO URINÁRIA
+     cap39 p634-634 · PERGUNTAS DO DIA > Perioperatória
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[25] ME2-2o-Tri-gabarito-CORRIGIDO-1-1 · tecnica
+  ASSERTIVA: Uma das desvantagens do bloqueio infraclavicular é que ele resulta em anestesia incompleta do plexo braquial.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap18 p287-287 · BLOQUEIO INFRACLAVICULAR
+     cap18 p288-288 · BLOQUEIO AXILAR
+     cap18 p287-288 · BLOQUEIO INFRACLAVICULAR > Desvantagens
+  citações: 1/1 literais
+------------------------------------------------------------------------------
+[26] ME3-1o-Tri-gabarito · fisiopatologia
+  ASSERTIVA: O tratamento com reposição de hormônios tireoidianos deve ser iniciado assim que possível.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap29 p458-458 · CONSIDERAÇÕES PERIOPERATÓRIAS
+     cap29 p457-458 · CONSIDERAÇÕES PERIOPERATÓRIAS
+     cap29 p457-458 · CONSIDERAÇÕES PERIOPERATÓRIAS
+  citações: 2/2 literais
+------------------------------------------------------------------------------
+[27] ME2-3o-Tri-gabarito-SUBSTITUTIVA_0 · fisiopatologia
+  ASSERTIVA: Existe redução da capacidade residual funcional composta por redução tanto no volume de reserva expiratório quanto no volume residual. No entanto, a capacidade de fechamento permanece inalterada.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap33 p504-504 · VOLUMES PULMONARES
+     cap33 p504-504 · COMPRESSÃO AORTOCAVAL > Mudanças no Sistema Pulmonar
+     cap42 p2390-2390 · PHYSIOLOGIC CHANGES OF PREGNANCY > Ventilatory Changes
+  citações: 0/1 literais
+------------------------------------------------------------------------------
+[28] ME3-3o-Tri-gabarito_171023 · farmacologia
+  ASSERTIVA: Gabapentina e pregabalina atenuam o fenômeno de tolerância decorrente do uso crônico de opioides.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap40 p636-637 · Administração Oral
+     cap37 p577-580 · AVALIAÇÃO E TESTES PRÉ-OPERATÓRIOS > Hipertermia Maligna
+     cap37 p577-580 · AVALIAÇÃO E TESTES PRÉ-OPERATÓRIOS > Hipertermia Maligna
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[29] ME2-1o-Tri-0523 · tecnica
+  ASSERTIVA: a derivação DII é a mais sensível para diagnosticar arritmias cardíacas.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap13 p181-182 · TESTES > Data
+     cap39 p621-621 · INSTABILIDADE HEMODINÂMICA > Insuficiência adrenal
+     cap25 p381-382 · PERIOPERATÓRIO > Conteúdo de oxigênio do sangue arterial
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[30] ME1-3o-Tri-gabarito · farmacologia
+  ASSERTIVA: quando a anestesia é induzida pelo etomidato em pacientes sem pré- anestésico, 50% a 80% dos pacientes apresentam mioclonias que são geradas por focos epilépticos.
+  GABARITO F | sem RAG: V erro | com RAG: V erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap9 p121-121 · ANALGESIA > Farmacodinâmica
+     cap38 p606-606 · ETOMIDATO
+     cap8 p107-107 · POTENCIAIS EVOCADOS
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[31] ME2-2o-Tri-Substitutiva-gabarito · tecnica
+  ASSERTIVA: para um bloqueio completo do couro cabeludo, é necessário o bloqueio de cinco nervos provenientes do nervo trigêmeo e dos ramos cervicais.
+  GABARITO F | sem RAG: V erro | com RAG: V erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap18 p284-284 · BLOQUEIO DO PLEXO CERVICAL
+     cap26 p1510-1511 · SPECIFIC TECHNIQUES > Occipital Nerve Blockade
+     cap18 p294-294 · PERGUNTAS DO DIA
+  citações: 1/1 literais
+------------------------------------------------------------------------------
+[32] ME1-2o-Tri-Substitutiva-gabarito · tecnica
+  ASSERTIVA: realizar pausa respiratória de 0,5 a 1 segundo.
+  GABARITO F | sem RAG: V erro | com RAG: V erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap6 p75-75 · MECÂNICA PULMONAR > Equipamento anestesia
+     cap6 p74-75 · MECÂNICA PULMONAR > Propriedades Estáticas
+     cap44 p704-704 · CUIDADOS APÓS RESSUSCITAÇÃO > Bebês
+  citações: 1/1 literais
+------------------------------------------------------------------------------
+[33] ME2-3o-Tri-gabarito-SUBSTITUTIVA_0 · fisiopatologia
+  ASSERTIVA: Complicações pulmonares são a principal causa de morte nesses pacientes.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap27 p435-436 · POS-OPERATORIAS
+     cap26 p410-410 · CUIDADOS NO PERIOPERATÓRIO > Acidose
+     cap27 p426-426 · O PULMONAR > Avaliação Pré -operatória e Preparação
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[34] ME3-2o-Tri-gabarito-SUBSTITUTIVA_- · fisiopatologia
+  ASSERTIVA: a enolase específica do neurônio é marcador bioquímico preditor de disfunção cognitiva do pós-operatório (DCPO).
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap35 p557-557 · CUIDADOS PERIOPERATÓRIOS EM IDOSOS > Administrar finanças pessoais
+     cap35 p560-561 · CUIDADOS PÓS-OPERATÓRIOS > Eventos Neurológicos Pós-operatórios
+     cap39 p623-623 · DELÍRIO > Fatores de Risco
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[35] ME3-1o-Tri-gabarito-corrigido · valor-numerico
+  ASSERTIVA: Frequência cardíaca > Pressão arterial sistólica.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap42 p663-664 · Circul ação e Choq ue
+     cap42 p663-664 · Circul ação e Choq ue
+     cap48 p2618-2623 · TISSUE INJURY
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[36] ME3-1o-Tri-gabarito-SUBSTITUTIVA_- · tecnica
+  ASSERTIVA: laceração da parede anterior faringe e falso trajeto nasofaríngeo são complicações de intubação nasal durante cirurgia ortognática. PROVA TRIMESTRAL SUBSTITUTIVA 01/04 – ME3/2023 CCA
+  GABARITO F | sem RAG: V erro | com RAG: V erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap31 p480-480 · OTORRINOLARINGOLOGIA
+     cap16 p234-236 · LARINCOSCOPIA COM FIBRA ÓTICA FLEXÍVEL
+     cap3 p37-37
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[37] ME3-4o-Tri-191223gabarito-2 · valor-numerico
+  ASSERTIVA: o escore ARISCAT pode ser usado na predição de complicações pulmonares pós-operatórias, sendo composto por cinco variáveis.
+  GABARITO F | sem RAG: V erro | com RAG: V erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap27 p426-426 · O PULMONAR > Avaliação Pré -operatória e Preparação
+     cap27 p435-436 · POS-OPERATORIAS
+     cap36 p569-569 · TRANSPLANTE DE PULMÃO > Gerenciamento Intraoperatório
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[38] ME2-3o-Tri-substitutiva-gabarito · fisiopatologia
+  ASSERTIVA: Inervação simpática renal origina-se de fibras pré-ganglionares T2-L1 com modulação da liberação de renina justaglomerular
+  GABARITO F | sem RAG: V erro | com RAG: F OK
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap35 p2100-2102 · RENAL ANATOMY AND PHYSIOLOGY
+     cap7 p79-80
+     cap27 p438-438 · I DOENÇA RENAL > Fluxo Sanguíneo Renal
+  citações: 2/2 literais
+------------------------------------------------------------------------------
+[39] ME2-2o-Tri-substitutiva-gabarito · tecnica
+  ASSERTIVA: A presença de uma resposta motora evocada em uma corrente de <0,5mA (duração do pulso de 1 ms) indica relação íntima agulha-nervo, contato agulha-nervo ou uma colocação intraneural da agulha
+  GABARITO F | sem RAG: V erro | com RAG: V erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap18 p283-284 · IELAEP > Estimulação de Nervos
+     cap18 p283-284 · IELAEP > Estimulação de Nervos
+     cap12 p159-160 · NÃO DESPOLARIZANTES
+  citações: 2/2 literais
+------------------------------------------------------------------------------
+[40] ME3-3o-Tri-gabarito-corrigido · valor-numerico
+  ASSERTIVA: Pressão parcial de oxigênio PaO2 ≥ 300 mmHg.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap36 p567-568 · TRANSPLANTE DECORAÇÃO
+     cap3 p38-38 · Ajuste Básico da Sala
+     cap20 p326-326 · REFERÊNCIAS > Métodos
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[41] ME3-2o-Tri-gabarito-060824 · fisiopatologia
+  ASSERTIVA: A intoxicação por monóxido de carbono é uma das principais etiologias de choque vasoplégico.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap41 p654-654 · CHOQUE VASODILATATÓRIO
+     cap41 p653-653 · CHOQUE > Categorias de Choque
+     cap44 p706-707 · CONSIDERAÇÕES PERIOPERATÓRIAS ESPECIA IS > Anafilaxia
+  citações: 0/0 literais
+------------------------------------------------------------------------------
+[42] ME1-3o-Tri-gabarito_151024 · farmacologia
+  ASSERTIVA: a potenciação dos efeitos dos agentes voláteis inalatórios sobre os relaxantes musculares é tanto maior quanto mais baixa a solubilidade gás/sangue e gás/tecidual.
+  GABARITO V | sem RAG: F erro | com RAG: V OK
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap8 p107-107 · POTENCIAIS EVOCADOS > Efeitos Neuromusculares
+     cap8 p105-105 · PACIENTES COM DOENÇA ARTERIAL CORONARIANA > Efeitos Ventilatórios
+     cap12 p157-157 · NÃO DESPOLARIZANTES > Respostas Farmacodinâmicas
+  citações: 1/1 literais
+------------------------------------------------------------------------------
+[43] ME3-1o-Tri-gabarito-SUBSTITUTIVA_- · tecnica
+  ASSERTIVA: a necessidade de ventilação monopulmonar é maior na cirurgia torácica videoassistida do que na toracotomia aberta.
+  GABARITO V | sem RAG: F erro | com RAG: F erro
+  livros no contexto: {'miller-bases-6ed': 4}
+     cap27 p425-426 · O PULMONAR
+     cap8 p105-105 · PACIENTES COM DOENÇA ARTERIAL CORONARIANA > Efeitos Ventilatórios
+     cap32 p491-491 · CIRURGIA DA COLUNA
+  citações: 0/1 literais

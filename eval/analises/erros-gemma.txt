@@ -1,0 +1,115 @@
+# gemma4-plan · ancoragem confiante · 9 erros do v2
+
+==============================================================================
+[1] ME3-4o-Tri-191223gabarito-2 q2B   (CONTEXTO ATRAPALHOU)
+PERGUNTA : Complicações pulmonares pós-operatórias são uma importante causa de morbimortalidade hospitalar após
+ASSERTIVA: Falso sendo composto por cinco variáveis.
+GABARITO : F    v0 respondeu certo    v2 respondeu: F
+RAG TROUXE:
+   - cap27 p425-425 · HIPERTENSÃO PULMONAR > Gerenciamento Pós-operatório
+   - cap13 p175-177 · Classe lia
+   - cap27 p435-436 · POS-OPERATORIAS
+   - cap39 p619-619 · PÓS-ANESTÉSICOS
+   - cap47 p730-730 · CIRÚRGICO
+RESSALVA : A assertiva é confusa ao afirmar que a falsidade é 'composta por cinco variáveis', porém, a afirmação central de que complicações pulmonares pós-operatórias são causa de morbimortalidade é explicitamente confirmada pelo texto.
+CITOU    : cap13 p175: "As complicações pulmonares pós-operatórias (CPP) são comuns e elevam os custos, a taxa de morbidade e o risco de mortalidade."
+==============================================================================
+[2] ME1-4o-Tri-Substitutiva-gabarito q2A   (CONTEXTO ATRAPALHOU)
+PERGUNTA : Neste corte transversal:
+ASSERTIVA: a estrutura 5 corresponde ao ligamento supraespinhoso.
+GABARITO : F    v0 respondeu certo    v2 respondeu: V
+RAG TROUXE:
+   - cap17 p253-254 · SACRO E HIATO SACRAL > Medula espinhal
+   - cap20 p319-319 · ECOCARDIOGRAFIA MODO B
+   - cap17 p255-255 · PONTOS DE REFERÊNCIA NA SUPERFÍCIE > Ugamentos
+   - cap17 p255-255 · PONTOS DE REFERÊNCIA NA SUPERFÍCIE > Ligamento longltucllnal anwlor
+   - cap17 p262-263 · POSIÇÃO DE PRONAÇÃO > Abordagem
+RESSALVA : O contexto textual descreve a sequência de estruturas atravessadas na abordagem de linha média, mas não fornece a imagem (corte transversal) mencionada na pergunta para a identificação numérica da 'estrutura 5'. No entanto, com base na anatomia descrita e no c
+CITOU    : cap17 p255: "O ligamento supraespinhoso corre superficialmente ao longo dos processos espinhosos, o que faz com que ele seja o primeiro ligamento atravessado peLa agulha quando feita uma abordagem de línha média p"
+==============================================================================
+[3] ME3-2o-Tri-substitutiva-gabarito q1B   (CONTEXTO ATRAPALHOU)
+PERGUNTA : Correlacione a alteração no eletrocardiograma com a alteração eletrolítica:
+ASSERTIVA: hipercalcemia
+GABARITO : F    v0 respondeu certo    v2 respondeu: F
+RAG TROUXE:
+   - cap25 p377-378 · MEDICAÇÃO ATUAL
+   - cap13 p183-183 · TESTES > Eletrocardiograma
+   - cap25 p388-389 · GERENCIAMENTO DA ANESTESIA
+   - cap25 p400-400 · ANEURISMA DA AORTA > Proteção Miocárdica
+   - cap39 p622-622 · ROTIN EIRO > Arritmias Cardíacas
+RESSALVA : O contexto menciona que o ECG pré-operatório deve ser avaliado para 'alteração dos eletrólitos' [1] e que 'anomaliadades eletroliticas' são causas de arritmias [5], porém não descreve as alterações morfológicas específicas do ECG para a hipercalcemia (como o e
+==============================================================================
+[4] ME3-4o-Tri_1224 q3D   (CONTEXTO ATRAPALHOU)
+PERGUNTA : Sobre gerenciamento do centro cirúrgico:
+ASSERTIVA: a utilização ajustada de uma sala de operação que planeja pessoal das 7h às 15h, mas cujo último caso termina às 13h, é de 75%.
+GABARITO : V    v0 respondeu certo    v2 respondeu: V
+RAG TROUXE:
+   - cap45 p711-712 · EFICIÊNCIA DO CENTRO CIRÚRGICO > Utilização do Centro Cirúrgico
+   - cap45 p710-711 · EFICIÊNCIA DO CENTRO CIRÚRGICO
+   - cap36 p572-572 · DA ANESTESIA AMBULATORIAL
+RESSALVA : O contexto fornece a definição de utilização (tempo de estadia do paciente / tempo disponível) e a definição de hora subutilizada, mas não apresenta o cálculo matemático específico para o cenário proposto na assertiva. O julgamento baseia-se na aplicação da fó
+CITOU    : cap45 p711: "A definição mais simples da utilização consiste no percentual do tempo do CC utilizado na prestação de assistência ao paciente, que é obtido dividindo-se o tempo de estadia do paciente no CC pelo temp"
+==============================================================================
+[5] ME2-1o-Tri-Substitutiva-gabarito q5A   (os dois erraram)
+PERGUNTA : Sobre anestesia venosa:
+ASSERTIVA: o sufentanil deve preferencialmente ser utilizado na modalidade TCI efeito, pois como se trata de um fármaco com ke0 lenta, o equilíbrio entre o plasma e o sítio efetor ocorrerá mais rapidamente.
+GABARITO : V    v0 respondeu errado    v2 respondeu: F
+RAG TROUXE:
+   - cap10 p134-134 · SUFENTANIL
+   - cap5 p56-58 · O EFEITO DE DESLOCAMENTO DOS FÁRMACOS
+   - cap25 p404-405 · GERENCIAMENTO DA ANESTESIA
+   - cap5 p58-58 · O EFEITO DE DESLOCAMENTO DOS FÁRMACOS > Duração da infusão
+   - cap5 p54-56 · MODELOS DE COMPARTIMENTOS
+RESSALVA : O contexto não menciona explicitamente o termo 'TCI efeito' nem fornece o valor numérico de ke0 para o sufentanil, mas discute a necessidade de modelos com 'local de ação' para prever o tempo de resposta e a relação entre a taxa de equilíbrio (ke0) e a velocid
+CITOU    : cap5 p56: "O local de ação do fármaco é conectado ao plasma por um processo de primeira ordem, com o termo k_e0 que representa a taxa constante de equilibrio entre o plasma e o local de ação do fármaco; k_e0 é m"
+==============================================================================
+[6] ME2-2o-Tri-gabarito-SUBSTITUTIVA_07022 q1A   (os dois erraram)
+PERGUNTA : Na técnica anestésica regional do membro superior:
+ASSERTIVA: a perda abrupta do tônus simpático e o aumento da produção parassimpática em pacientes acordados e sentados submetidos a cirurgia do ombro sob bloqueio interescalênico é explicada pela estimulação dos mecanorreceptores intracardía
+GABARITO : V    v0 respondeu errado    v2 respondeu: F
+RAG TROUXE:
+   - cap40 p640-640 · EXTREMIDADE SUPERIOR
+   - cap18 p284-284 · BLOQUEIO INTERESCALÊN ICO
+   - cap43 p688-689 · BLOQUEIO DO GÂNGLIO ESTRELADO > Pulmão
+   - cap18 p286-287 · BLOQUEIO INTERESCALÊN ICO > Complicações
+   - cap18 p284-286 · BLOQUEIO INTERESCALÊN ICO > Nervo
+RESSALVA : O contexto fornecido descreve a técnica do bloqueio interescalênico, suas indicações para cirurgia de ombro, a anatomia do gânglio estrelado e as complicações associadas (como bloqueio do nervo frênico e laríngeo recorrente). No entanto, o texto não menciona a
+==============================================================================
+[7] ME1-1o-Tri-gabarito-210524 q5D   (os dois erraram)
+PERGUNTA : Sobre a pré-oxigenação do paciente durante a indução anestésica:
+ASSERTIVA: pacientes com doença pulmonar, obesidade ou condições que afetam o metabolismo, frequentemente, apresentam dessaturação mais precocemente, devido à diminuição da capacidade residual funcional, diminuição da extração de O2, e/ou sh
+GABARITO : F    v0 respondeu errado    v2 respondeu: V
+RAG TROUXE:
+   - cap13 p194-194 · INDUÇÃO INTRAVENOSA DE ANESTESIA
+   - cap33 p504-504 · IMPLICAÇÕES ANESTÉSICAS
+   - cap16 p228-228 · TÉCNICA
+   - cap6 p70-71 · ALVEOLAR
+   - cap27 p425-425 · APNEIA OBSTRUTIVA DO SONO
+RESSALVA : O contexto não menciona explicitamente a 'diminuição da extração de O2' como causa de dessaturação precoce; no entanto, confirma a redução da CRF em obesos e gestantes, o aumento do consumo/metabolismo em gestantes e a ocorrência de shunt intrapulmonar como fa
+CITOU    : cap33 p504: "Durante a indução da anestesia geral na paciente gestante, a PaO2 reduz mais rapidamente do que nas pacientes não gestantes, pois a reserva de oxigênio está reduzida [CRF reduzida] e a absorção de oxi"
+==============================================================================
+[8] ME3-1o-Tri-0523 q2D   (os dois erraram)
+PERGUNTA : Com relação ao atendimento anestésico do paciente vítima de trauma:
+ASSERTIVA: uma das metas do tratamento inicial do paciente vítima de traumatismo cranioencefálico (TCE) é manter a pressão intracraniana entre 20 e 25 mmHg.
+GABARITO : V    v0 respondeu errado    v2 respondeu: F
+RAG TROUXE:
+   - cap42 p669-670 · CUIDADOS PÓS-OPERATÓRIOS
+   - cap42 p663-663 · Minutos
+   - cap42 p663-664 · Circul ação e Choq ue
+   - cap30 p471-471 · NEUROPROTEÇÃO > Manutençio
+   - cap30 p469-469 · NEUROPROTEÇÃO > Pós-operatório
+RESSALVA : O contexto menciona a hipertensão intracraniana e a necessidade de evitar o aumento da PIC (como no caso de ondas em platô ou durante a intubação), mas não estabelece a faixa de 20-25 mmHg como meta. Pelo contrário, a literatura médica e a lógica clínica indic
+CITOU    : cap42 p663: "Figura 42-1 Diagrama de uma onda em platô causando severa hipertensão intracraniana.. Uma onda em platô é um aumento abrupto e sustentado (10 a 20 minutos) na pressão intracraniana seguido por uma ráp"
+==============================================================================
+[9] ME3-2o-Tri-gabarito-corrigido-1 q5E   (os dois erraram)
+PERGUNTA : Sobre anestesia e sistema cardiovascular.
+ASSERTIVA: Na insuficiência mitral crônica compensada, manter a pré-carga, reduzir criteriosamente a pós-carga e manter a frequência cardíaca na faixa normal-baixa é uma conduta adequada.
+GABARITO : F    v0 respondeu errado    v2 respondeu: V
+RAG TROUXE:
+   - cap25 p386-386 · GERENCIAMENTO DA AN ESTESIA
+   - cap25 p394-394 · INSUFICIÊNCIA CARDÍACA CONGESTIVA > Gerenciamento da Anestesia
+   - cap25 p388-388 · GERENCIAMENTO DA ANESTESIA
+   - cap25 p388-389 · GERENCIAMENTO DA ANESTESIA
+   - cap25 p385-386 · GERENCIAMENTO DA ANESTESIA
+RESSALVA : O texto não especifica a faixa 'normal-baixa' para a frequência cardíaca, mas afirma explicitamente que o débito cardíaco pode ser melhorado por 'aumentos suaves na frequência cardíaca'. No entanto, a manutenção da pré-carga e a redução da pós-carga (resistênc
+CITOU    : cap25 p386: "O gerenciamento da anestesia em pacientes com insuficiência mitral deve evitar a diminuição no volume de ejeção ventricular esquerdo. Já o debito cardiaco pode ser melhorado por aumentos suaves na fre"

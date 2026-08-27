@@ -1,0 +1,52 @@
+{
+  "base": 0.8,
+  "melhor": {
+    "pontos": 0.8,
+    "sketch": [
+      "recuperar_hibrido",
+      "rerankear",
+      "expandir_pai",
+      "responder"
+    ],
+    "prompts": {}
+  },
+  "historico": [
+    {
+      "lote": 0,
+      "validacao": 0.8,
+      "sketch": [
+        "recuperar_hibrido",
+        "rerankear",
+        "expandir_pai",
+        "responder"
+      ]
+    },
+    {
+      "lote": 1,
+      "validacao": 0.6,
+      "sketch": [
+        "recuperar_hibrido",
+        "rerankear",
+        "expandir_pai",
+        "responder"
+      ]
+    }
+  ],
+  "log": [
+    "# FlowBot · executor gemma4-plan · meta gemma4-plan",
+    "# treino 5 · validacao 5 · lote 5",
+    "# sketch inicial: ['recuperar_hibrido', 'rerankear', 'expandir_pai', 'responder']",
+    "\nvalidacao inicial: 80.0%  (377s)",
+    "\n=== lote 1 de 1 ===",
+    "      ok  5d71a169",
+    "      ok  49d5b62f",
+    "      ok  861af4ea",
+    "      ERR 619b58b3",
+    "      ok  fa2d249a",
+    "      prompt de 'responder' atualizado (647 -> 685 chars)",
+    "    validacao: 60.0%",
+    "\n# MELHOR NA VALIDACAO: 80.0% (inicial 80.0%)",
+    "# sketch: ['recuperar_hibrido', 'rerankear', 'expandir_pai', 'responder']"
+  ],
+  "minutos": 12.9
+}

@@ -1,0 +1,26 @@
+ACERTO POR CLASSE · BLOCO B · n=300 · gemma4 · ancoragem confiante
+
+classe                    n  acaso      v0      v1      v2      v5      v6   melhor
+fisiopatologia          121 51.2%   75.2%  75.2%  76.9%  75.2%  76.0%   v2
+tecnica                  56 53.6%   69.6%  69.6%  66.1%  66.1%  66.1%   v0
+farmacologia             55 58.2%   69.1%  80.0%  72.7%  78.2%  72.7%   v1
+valor-numerico           26 61.5%   50.0%  50.0%  42.3%  50.0%  57.7%   v6
+juridico-normativo       23 65.2%   73.9%  60.9%  65.2%  73.9%  78.3%   v6
+imagem                   10 50.0%   60.0%  80.0%  70.0%  60.0%  70.0%   v1
+gestao                    9 88.9%   77.8%  88.9%  77.8%  88.9%  77.8%   v1
+
+
+ACERTO COM INTERVALO DE CONFIANÇA (95%), fluxo v1 — o melhor no geral
+
+  fisiopatologia          91/121 = 75.2%  IC 66.8%–82.0%   acaso 51.2%  → acima do acaso
+  tecnica                 39/ 56 = 69.6%  IC 56.7%–80.1%   acaso 53.6%  → acima do acaso
+  farmacologia            44/ 55 = 80.0%  IC 67.6%–88.4%   acaso 58.2%  → acima do acaso
+  valor-numerico          13/ 26 = 50.0%  IC 32.1%–67.9%   acaso 61.5%  → indistinguível do acaso
+  juridico-normativo      14/ 23 = 60.9%  IC 40.8%–77.8%   acaso 65.2%  → indistinguível do acaso
+  imagem                   8/ 10 = 80.0%  IC 49.0%–94.3%   acaso 50.0%  → indistinguível do acaso
+  gestao                   8/  9 = 88.9%  IC 56.5%–98.0%   acaso 88.9%  → indistinguível do acaso
+
+
+GERAL
+                                        v0      v1      v2      v5      v6
+todas as classes        300 53.7%   70.3%  72.3%  70.0%  71.7%  72.0%

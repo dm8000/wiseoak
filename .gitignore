@@ -1,0 +1,38 @@
+# --- Ambiente
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.env
+.langgraph_api/
+
+# --- OBRA COMERCIAL: NAO VERSIONAR
+# O Miller's Anesthesia 10e e o Barash sao livros comprados. Os arquivos abaixo contem o
+# TEXTO INTEGRAL deles (o .sqlite do indice inclusive), e versiona-los equivale a
+# redistribuir as obras. Veja CORPUS.md: ha o pipeline completo e o sha256 do PDF, para
+# quem tem o exemplar reconstruir o indice em um comando.
+dados/miller10.pdf
+dados/bruto/
+dados/pdf/
+dados/chunks_miller*.jsonl
+dados/chunks_barash.jsonl
+dados/chunks_dois.jsonl
+dados/chunks_h512.jsonl
+dados/chunks_plano512.jsonl
+dados/miller*_paginas.jsonl
+dados/barash_paginas.jsonl
+dados/indice/m10.*
+dados/indice/dois.*
+dados/indice/h512.*
+dados/indice/plano512.*
+
+# --- Descartados da coleta (ruido, nao faz parte do corpus)
+dados/normas/descartados/
+dados/normas/superadas/
+
+# --- HealthQA-BR: dataset de terceiros, baixado por bench/coletar_healthqa.py
+dados/questoes_healthqa*.jsonl
+
+# --- Sentinelas de controle de corrida (estado local, nao projeto)
+eval/.*-pronto
+dados/indice/.pronto

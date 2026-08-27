@@ -1,0 +1,46 @@
+==========================================================================
+1. A RECUPERACAO DIFERE ENTRE MODELOS?
+==========================================================================
+  NAO. v0/v1/v2 recuperam a partir da pergunta crua — mesma consulta, mesmo
+  indice, mesmo k. A recuperacao e IDENTICA entre gemma4 e medgemma.
+  So o v3 difere: la a consulta e escrita pelo proprio modelo.
+
+==========================================================================
+2. OS DOIS MODELOS ERRAM NOS MESMOS ITENS?
+==========================================================================
+  v0: gemma errou 13, medgemma errou 18, AMBOS erraram 5
+      sobreposicao esperada por acaso: 2.9 → MUITO acima do acaso
+  v2: gemma errou 14, medgemma errou 24, AMBOS erraram 8
+      sobreposicao esperada por acaso: 4.2 → MUITO acima do acaso
+
+==========================================================================
+3. COM E SEM RAG ERRAM NOS MESMOS ITENS?
+==========================================================================
+  gemma4-plan  (n=80)
+     os dois acertaram :  60
+     so SEM rag acertou:   7   <- o RAG estragou
+     so COM rag acertou:   6   <- o RAG salvou
+     os dois erraram   :   7   <- nem um nem outro sabe
+  medgemma-clinical  (n=80)
+     os dois acertaram :  47
+     so SEM rag acertou:  15   <- o RAG estragou
+     so COM rag acertou:   9   <- o RAG salvou
+     os dois erraram   :   9   <- nem um nem outro sabe
+
+==========================================================================
+4. O ERRO E ITEM IMPOSSIVEL (imagem / valor numerico)?
+==========================================================================
+  gemma4-plan
+     exige valor numerico     4 itens,   0 erros (  0.0%)
+     prosa                   57 itens,  12 erros ( 21.1%)
+  medgemma-clinical
+     exige valor numerico     4 itens,   2 erros ( 50.0%)
+     prosa                   57 itens,  18 erros ( 31.6%)
+
+==========================================================================
+5. O ERRO SE CONCENTRA ONDE O CONTEXTO NAO COBRE O TERMO?
+==========================================================================
+  cobertura media do termo-chave no contexto recuperado:
+     quando ACERTOU: 60.0%  (n=49)
+     quando ERROU  : 60.5%  (n=12)
+     diferenca: -0.4% → sem diferenca clara

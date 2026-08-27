@@ -1,0 +1,29 @@
+NATUREZA DOS ERROS · v1 (busca densa + Miller 10e) · o melhor setup
+
+=== vf-dev · 154 erros em 832 (18.5%) ===
+  classe                    n  erros    taxa  % do erro
+  fisiopatologia          355     49   13.8%      31.8%
+  farmacologia            158     24   15.2%      15.6%
+  tecnica                 129     25   19.4%      16.2%
+  valor-numerico           80     22   27.5%      14.3%
+  juridico-normativo       59     21   35.6%      13.6%
+  gestao                   26      3   11.5%       1.9%
+  imagem                   25     10   40.0%       6.5%
+
+  gabarito dos ERROS : V=76 (49%)  F=78 (51%)
+  gabarito da AMOSTRA: V=471 (57%)  F=361 (43%)
+
+  o RAG ESTRAGOU 68 itens e SALVOU 126
+    classes que o RAG estragou: {'fisiopatologia': 21, 'tecnica': 11, 'juridico-normativo': 10, 'farmacologia': 10}
+    classes que o RAG salvou  : {'fisiopatologia': 51, 'farmacologia': 25, 'tecnica': 20, 'valor-numerico': 17}
+
+=== mcq-dev · 44 erros em 167 (26.3%) ===
+  classe                    n  erros    taxa  % do erro
+  valor-numerico           81     25   30.9%      56.8%
+  fisiopatologia           29      8   27.6%      18.2%
+  tecnica                  20      4   20.0%       9.1%
+  farmacologia             14      3   21.4%       6.8%
+  imagem                   12      3   25.0%       6.8%
+  juridico-normativo        6      1   16.7%       2.3%
+  gestao                    5      0    0.0%       0.0%
+

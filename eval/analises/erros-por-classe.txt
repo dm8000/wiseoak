@@ -1,0 +1,36 @@
+BLOCO B · n=300 · gemma4 · ancoragem confiante
+
+Composição da amostra (sorteio simples, distribuição natural do banco):
+  fisiopatologia          121   40.3%
+  tecnica                  56   18.7%
+  farmacologia             55   18.3%
+  valor-numerico           26    8.7%
+  juridico-normativo       23    7.7%
+  imagem                   10    3.3%
+  gestao                    9    3.0%
+
+
+TAXA DE ERRO DENTRO DA CLASSE
+
+classe                    n      v0      v1      v2      v5      v6
+fisiopatologia          121    24.8%   24.8%   23.1%   24.8%   24.0%
+tecnica                  56    30.4%   30.4%   33.9%   33.9%   33.9%
+farmacologia             55    30.9%   20.0%   27.3%   21.8%   27.3%
+valor-numerico           26    50.0%   50.0%   57.7%   50.0%   42.3%
+juridico-normativo       23    26.1%   39.1%   34.8%   26.1%   21.7%
+imagem                   10    40.0%   20.0%   30.0%   40.0%   30.0%
+gestao                    9    22.2%   11.1%   22.2%   11.1%   22.2%
+
+
+DE CADA 100 ERROS DO FLUXO, QUANTOS SÃO DE CADA CLASSE
+
+classe                      v0      v1      v2      v5      v6
+fisiopatologia            33.7%   36.1%   31.1%   35.3%   34.5%
+tecnica                   19.1%   20.5%   21.1%   22.4%   22.6%
+farmacologia              19.1%   13.3%   16.7%   14.1%   17.9%
+valor-numerico            14.6%   15.7%   16.7%   15.3%   13.1%
+juridico-normativo         6.7%   10.8%    8.9%    7.1%    6.0%
+imagem                     4.5%    2.4%    3.3%    4.7%    3.6%
+gestao                     2.2%    1.2%    2.2%    1.2%    2.4%
+
+total de erros             89      83      90      85      84 

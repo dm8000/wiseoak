@@ -1,0 +1,20 @@
+COMPARACAO · 1002 questoes do dev (835 V/F + 167 ME), mesmo universo
+
+sistema                                acerto  IC 95%
+WiseOak v1 (gemma4 + RAG Miller 10e)   80.2%   77.7%–82.6%
+DeepSeek-V3 thinking+search            76.9%   74.2%–79.4%
+DeepSeek-V3 thinking                   76.2%   73.5%–78.8%
+WiseOak v0 (gemma4 sem RAG)            73.1%   70.2%–75.7%
+
+TESTE PAREADO (McNemar exato) — mesmas questoes, correcao de Holm-Bonferroni
+
+comparacao                                                           dif    disc         p      Holm  sig
+WiseOak v1 (gemma4 + RAG Miller 10e) vs WiseOak v0 (gemma4 sem RAG)  +7.2%   246    0.00001  0.00003  SIM
+WiseOak v1 (gemma4 + RAG Miller 10e) vs DeepSeek-V3 thinking      +4.0%   244    0.01238  0.06188  nao
+DeepSeek-V3 thinking+search vs WiseOak v0 (gemma4 sem RAG)        +3.9%   273    0.02128  0.08514  nao
+WiseOak v1 (gemma4 + RAG Miller 10e) vs DeepSeek-V3 thinking+search  +3.3%   247    0.04152  0.12456  nao
+DeepSeek-V3 thinking vs WiseOak v0 (gemma4 sem RAG)               +3.2%   292    0.06947  0.13895  nao
+DeepSeek-V3 thinking+search vs DeepSeek-V3 thinking               +0.7%   129    0.59748  0.59748  nao
+
+'dif' = ganho do PRIMEIRO sobre o segundo. 'disc' = itens em que discordaram.
+Holm corrige as 6 comparacoes: sem isso, uma 'significativa' surge por acaso.

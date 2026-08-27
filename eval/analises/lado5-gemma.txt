@@ -1,0 +1,117 @@
+
+##############################################################################
+#  V2 ACERTOU  (5 itens) · gemma4-plan · ancoragem confiante
+##############################################################################
+
+------------------------------------------------------------------------------
+[1] ME3-3o-Tri-substitutiva-gabarito q3B
+ENUNC : Sobre anestesia em intervenções coronarianas percutâneas (PCI), avalie as alternativas:
+ASSERT: durante PCI, o acesso à cabeça do paciente pode ser limitado pelo posicionamento do equipamento de imagem.
+GABAR : V   |   sem RAG: V OK   |   com RAG: V OK   
+  sem RAG diz: V
+  RAG trouxe: cap32 p494-496 · CONCLUSÃO DO CASO, cap13 p190-190 · PERGUNTAS DO DIA, cap22 p350-350 · COMPLICAÇÕES > Fármacos Antiplaquetários
+  citações: 0/0 literais
+  com RAG diz: O contexto fornecido não menciona intervenções coronarianas percutâneas (PCI) no que tange ao posicionamento do equipamento de imagem ou acesso à cabeça, limitando-se a discutir a terapia an
+
+------------------------------------------------------------------------------
+[2] ME1-2o-Tri-gabarito-SUBSTITUTIVA_060 q2D
+ENUNC : Nos capnógrafos de fluxo principal (mainstream) e fluxo lateral (sidestream):
+ASSERT: os sensores de CO2 estão longe dos gases das vias aéreas no fluxo lateral.
+GABAR : V   |   sem RAG: V OK   |   com RAG: V OK   
+  sem RAG diz: V
+  RAG trouxe: cap16 p233-233 · CONFIRMAÇÃO DA INTUBAÇÃO ENDOTRAQUEAL, cap27 p428-429 · O PULMONAR > Tubo de Duplo Lúmen Esquerdo, cap15 p203-203 · Fluxômetros
+    "A presença de dióxido de carbono nos gases exalados do tubo endotraqueal detectados pela capnografia [corrente final Pco, > 30mm Hg por três a cinco respirações consecutivas) deve ser i"
+  citações: 1/1 literais
+  com RAG diz: O contexto [1] menciona a detecção de dióxido de carbono pela capnografia, mas não detalha a diferença técnica de posicionamento dos sensores entre os sistemas de fluxo principal (mainstream
+
+------------------------------------------------------------------------------
+[3] ME3-2o-Tri-substitutiva-gabarito q5D
+ENUNC : Sobre anestesia e sistema cardiovascular.
+ASSERT: A parada cardíaca induzida por cardioplegia com potássio, por si só, reduz o consumo de oxigênio miocárdico em 90%
+GABAR : V   |   sem RAG: V OK   |   com RAG: V OK   
+  sem RAG diz: A cardioplegia hipercalêmica induz a parada cardíaca em diástole, eliminando o trabalho mecânico e reduzindo drasticamente a demanda metabólica de oxigênio, porém a redução exata de 90% é um
+  RAG trouxe: cap25 p394-394 · INSUFICIÊNCIA CARDÍACA CONGESTIVA > Gerenciamento da Anestesia, cap25 p400-400 · ANEURISMA DA AORTA > Proteção Miocárdica, cap25 p385
+    "A 30' C, a conrratilidade normal do músculo cardiaco consome oxig~nio em uma taxa de 8 a lOm!../ IOOg/ min. [...] O repouso eletromecãnico do coração a n·c consome oxigênio em uma taxa "
+  citações: 0/1 literais
+  com RAG diz: O texto fornece os valores absolutos de consumo de oxigênio para diferentes estados (contratilidade normal: 8-10 mL/100g/min; repouso eletromecânico: 0,3 mL/100g/min). O cálculo da redução p
+
+------------------------------------------------------------------------------
+[4] ME2-4o-Tri-Substitutiva-gabarito q3D
+ENUNC : Sobre a cirurgia do ouvido médio, mastoide e ouvido interno:
+ASSERT: estiramento do plexo braquial ou da coluna cervical são complicações do posicionamento do paciente nas cirurgias do ouvido.
+GABAR : V   |   sem RAG: V OK   |   com RAG: V OK   
+  sem RAG diz: V
+  RAG trouxe: cap19 p308-308 · LESÃO DE NERVO PERIFÉRICO > Plexo Braquial, cap31 p481-481 · CIRURGIA DE OUVIDO > Náusea e Vômito Pós-operatórios, cap18 p295-296 · A
+    "Como a gravidade puxa os braços caudalmente, eles devem ser apoiados de modo a pennitir uma ligeira elevaçã.o dos ombros para evitar tração nos músculos dos ombros e possível estirament"
+    "A posição da cabeça e do pescoço foi associada a com - plicações durante a cirurgia da coluna posterior ou crânio na posição sentada. A flexão cervical excessiva possui diversas consequ"
+  citações: 2/2 literais
+  com RAG diz: O contexto não menciona explicitamente 'cirurgias do ouvido' na seção de lesões de plexo braquial, mas descreve a posição sentada (usada em neurocirurgias de fossa posterior, que engloba o o
+
+------------------------------------------------------------------------------
+[5] ME3-4o-Tri_1224 q3E
+ENUNC : Sobre gerenciamento do centro cirúrgico:
+ASSERT: o tempo de sala de operação superutilizado é calculado como a carga de trabalho da sala de operação menos o tempo de sala de operação alocado, ou zero se negativo. PROVA TRIMESTRAL 04/04 – ME3/2024 CCA
+GABAR : V   |   sem RAG: V OK   |   com RAG: V OK   
+  sem RAG diz: V
+  RAG trouxe: cap45 p710-711 · EFICIÊNCIA DO CENTRO CIRÚRGICO, cap36 p572-572 · DA ANESTESIA AMBULATORIAL, cap45 p711-712 · EFICIÊNCIA DO CENTRO CIRÚRGICO > Utiliza
+    "Por sua vez, se o último caso terminar às 18h, haverá I hora superutilizada."
+  citações: 1/1 literais
+  com RAG diz: O contexto define a hora superutilizada de forma qualitativa e exemplificada (quando o último caso termina após o turno programado), mas não fornece a fórmula matemática exata citada na asse
+
+##############################################################################
+#  V2 ERROU  (5 itens) · gemma4-plan · ancoragem confiante
+##############################################################################
+
+------------------------------------------------------------------------------
+[1] ME3-2o-Tri-Substitutiva-gabarito q3D
+ENUNC : Sobre a hipotermia intraoperatória:
+ASSERT: a anestesia geral aumenta a perda cutânea de calor de forma significativa.
+GABAR : F   |   sem RAG: F OK   |   com RAG: V ERRO 
+  sem RAG diz: F
+  RAG trouxe: cap20 p323-323 · MONITORAMENTO DA TEMPERATURA, cap35 p556-556 · A IDADE > Alterações na Taxa Metabólica Basal, cap34 p541-541 · TERMORREGULAÇÃO E PERD
+    "O estado exposto do paciente faz com que a pele esfrie e, ainda mais importante, os anestésicos gerais administrados provocam declínio no funcionamento de termorregulação. A maioria dos"
+  citações: 0/1 literais
+  com RAG diz: O texto menciona que a anestesia geral provoca declínio na termorregulação e possui propriedades vasodilatadoras que deslocam o calor do centro para a periferia, o que, somado ao estado expo
+
+------------------------------------------------------------------------------
+[2] ME1-1o-Tri-substitutiva-gabarito q1D
+ENUNC : Sobre ética na prática da anestesiologia, responda:
+ASSERT: a doação de órgãos ou tecidos por doadores vivos é permitida apenas para parentes até o quarto grau ou cônjuges. No caso de doadores não aparentados, a doação só pode ocorrer mediante autorização judicial.
+GABAR : V   |   sem RAG: V OK   |   com RAG: F ERRO 
+  sem RAG diz: A assertiva é verdadeira de acordo com a legislação brasileira (Lei 9.434/97) e as normas éticas que regem a transplantação.
+  RAG trouxe: cap36 p570-570 · REFERÊNCIAS, cap13 p180-181 · TESTES, cap13 p181-182 · TESTES > Data
+  citações: 0/0 literais
+  com RAG diz: O contexto fornecido menciona a existência de transplantes de doadores vivos (especialmente de rim) e a escassez de órgãos, mas não detalha as regras jurídicas, graus de parentesco ou a nece
+
+------------------------------------------------------------------------------
+[3] ME3-1o-Tri-0523 q4C
+ENUNC : A respeito da anestesia para procedimentos Bucomaxilofaciais:
+ASSERT: a intubação submentoniana está indicada em pacientes com disfunção da articulação temporomandibular.
+GABAR : F   |   sem RAG: V ERRO |   com RAG: V ERRO 
+  sem RAG diz: A intubação submentoniana é indicada especificamente quando há a necessidade de exposição total da cavidade oral e impossibilidade de intubação orotraqueal ou nasotraqueal, sendo a disfunção
+  RAG trouxe: cap31 p487-488 · DOENÇAS REUMATOLÓGICAS > Artrite Reumatoide, cap16 p225-225 · ESPAÇO OROFARÍNGEO > Artrite reumatoide inflamatória, cap16 p234-236 · 
+  citações: 0/0 literais
+  com RAG diz: O contexto menciona que a artrite reumatoide pode causar diminuição da abertura bucal por artrite temporomandibular, tornando a intubação difícil, mas não cita explicitamente a 'intubação su
+
+------------------------------------------------------------------------------
+[4] ME1-1o-Tri-gabarito-210524 q5D
+ENUNC : Sobre a pré-oxigenação do paciente durante a indução anestésica:
+ASSERT: pacientes com doença pulmonar, obesidade ou condições que afetam o metabolismo, frequentemente, apresentam dessaturação mais precocemente, devido à diminuição da capacidade residual funcional, diminuição da extração
+GABAR : F   |   sem RAG: V ERRO |   com RAG: V ERRO 
+  sem RAG diz: V
+  RAG trouxe: cap13 p194-194 · INDUÇÃO INTRAVENOSA DE ANESTESIA, cap33 p504-504 · IMPLICAÇÕES ANESTÉSICAS, cap16 p228-228 · TÉCNICA
+    "Durante a indução da anestesia geral na paciente gestante, a PaO2 reduz mais rapidamente do que nas pacientes não gestantes, pois a reserva de oxigênio está reduzida [CRF reduzida] e a "
+    "A obesidade pode diminuir severamente a DASD."
+  citações: 1/4 literais
+  com RAG diz: O contexto não menciona explicitamente a 'diminuição da extração de O2' como causa de dessaturação precoce; no entanto, confirma a redução da CRF em obesos e gestantes, o aumento do metaboli
+
+------------------------------------------------------------------------------
+[5] ME3-1o-Tri-gabarito-SUBSTITUTIVA_-08 q5A
+ENUNC : Sobre anestesia em procedimentos torácicos:
+ASSERT: a necessidade de ventilação monopulmonar é maior na cirurgia torácica videoassistida do que na toracotomia aberta.
+GABAR : V   |   sem RAG: F ERRO |   com RAG: F ERRO 
+  sem RAG diz: F
+  RAG trouxe: cap27 p425-426 · O PULMONAR, cap27 p426-426 · O PULMONAR > Gerenciamento da Anestesia, cap27 p426-427 · O PULMONAR > Isolamento dos Pulmões
+    "A cirurgia torácica pode envolver uma toracotomia aberta ou técnicas endoscópicas. [...] Procedimentos torácicos e toracoscópicos muitas vezes exigem a ventilação de um único pulmão par"
+  citações: 0/1 literais
+  com RAG diz: O contexto menciona que tanto a cirurgia torácica (toracotomia) quanto a toracoscópica (endoscópica) podem exigir ventilação monopulmonar para visualização adequada, mas não estabelece uma c

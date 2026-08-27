@@ -1,0 +1,390 @@
+QUESTOES QUE OS CINCO FLUXOS ERRARAM · o que a busca trouxe
+
+O gabarito e a resposta que o modelo deu sao complementares (V/F binario):
+se o gabarito e V, todos responderam F, e vice-versa.
+
+==============================================================================
+# VALOR-NUMERICO  (7 itens que todos erraram)
+==============================================================================
+
+[1] ME2-2o-Tri-gabarito-SUBSTITUTIVA_070 q3E
+  ENUNCIADO: Sobre equilíbrio hidroeletrolítico e acidobásico.
+  ASSERTIVA: A fórmula do delta anion GAP é (Anion GAP - 12) / (24 – [HCO3-]).
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap21 p334 · RESPOSTAS COMPENSATÓRIAS E TRATAMENTO > Diagnóstic
+       "ao nível de bicarbonato sérico. Se o número é menor que 22mEq/L, então uma acidose metabólica simultânea com ânion gap nonnal também está presente. Se o número é maior que 26 "
+     cap21 p333 · ÂNION GAP
+       "A melhor fon na de categorizar o diagnóstico diferencial para uma acidose metabólica é dividir essas causas entre aquelas que causam e aquelas que não causam ânion gap. O ânio"
+     cap21 p335 · ANÁLISES DE GASES SANGUÍNEOS E PH > Oxigenação
+       "A oxigenação ê avaliada pela medida de Pao,. A hipoxemia arterial pode ser causada por (1) uma baixa Pao, nos gases Um homem de 23 anos com diabetes dependente de insulina se "
+     cap21 p334 · RESPOSTAS COMPENSATÓRIAS E TRATAMENTO > Diagnóstic
+       "O diagnóstico de um d istúrbio ácido-base deve ocorrer de forma estruturada. A Figura 21 -8 mostra um algoritmo para a interpretação de gasometria arterial. O passo 1, que det"
+
+[2] ME3-1o-Tri-gabarito-corrigido q2D
+  ENUNCIADO: São critérios vermelhos de alto risco de gravidade em lesões traumáticas em adultos, segundo o National guideline for the field triage of trauma patients americano?
+  ASSERTIVA: Frequência cardíaca > Pressão arterial sistólica.
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap42 p663 · Circul ação e Choq ue
+       "inseridos o quanto antes em pacientes instáveis, e a utilização de dispositivos de infusão pressurizada pode ser benéfica. A ressuscitação superzelosa, entretanto, pode aument"
+     cap42 p663 · Circul ação e Choq ue
+       "trauma atualmente traçam como objetivo uma relação de unidade PFC para CHA na ordem de I: I até 1:3 com mínima administração de cristaloide e uso precoce de plaquetas e criopr"
+     cap33 p519 · DISTOCIA DE OMBRO > Pré-eclâmpsia
+       "ap6s 20 semanas de gestaçlo numa paciente previamente com pres~o sanguínea normal • Proteinúria definida como a excresão urinária de 0,3g de proterna ou superior numa amostra "
+     cap42 p676 · AGRADECIMENTOS
+       "Os editores e a editora gostariam de agradecer aos Drs. J. F. Tang, J. F. Pittet, Robert K. Stoclting e Ronald D. Miller por contribuírem com um capítulo neste tópico na ediça"
+
+[3] ME3-4o-Tri-191223gabarito-2 q2B
+  ENUNCIADO: Complicações pulmonares pós-operatórias são uma importante causa de morbimortalidade hospitalar após grandes cirurgias. Com relação às estratégias protetoras de ventilação mecânica intraoper
+  ASSERTIVA: o escore ARISCAT pode ser usado na predição de complicações pulmonares pós-operatórias, sendo composto por cinco variáveis.
+  GABARITO: F  ->  todos responderam V
+  O RAG TROUXE:
+     cap27 p435 · POS-OPERATORIAS
+       "Complicações pulmonares pós-operatórias depois de cirurg ias torácicas incluem atelectasia., hipoxemia e bipoventilação, algumas vezes exigindo a instituição de ventilação mec"
+     cap27 p426 · O PULMONAR > Avaliação Pré -operatória e Preparaçã
+       "Pacientes que são submetidos à cirurgia torácica têm maior risco de apresenta r complicações pulmonares em virtude da j á esperada presença de DPC, do impacto de uma incisão t"
+     cap26 p420 · REFERÊNCIAS > Tubo de Duplo Lúmen Esquerdo
+       "Visualização com Fibra Óptica de Tubo Esquerdo Tubo de Duplo Lúmen Direito Bloqueadores Brônquicos TROCA GASOSA DURANTE VENTILAÇÃO MONOPULMONAR Conduta para Ventilação Monopul"
+     cap36 p569 · TRANSPLANTE DE PULMÃO > Gerenciamento Intraoperató
+       "Além dos monitores padrões, cateteres arteriais, venosos centrais e da artéria pulmonar são normalmente colocados. Em algumas instituições, um cateter de artéria pulmonar com "
+
+[4] ME3-3o-Tri-gabarito-corrigido q2D
+  ENUNCIADO: Na anestesia para transplantes quais os objetivos para manutenção do potencial doador?
+  ASSERTIVA: Pressão parcial de oxigênio PaO2 ≥ 300 mmHg.
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap36 p567 · TRANSPLANTE DECORAÇÃO
+       "resistência vascular. no rirmo. na frequência cardiaca e na contratilidade podem levar a um colapso hemodinâmico. Os anestésicos com mínimo impacto hemodínãmico são frequentem"
+     cap6 p70 · ALVEOLAR
+       "A equação de gás alveolar descreve a transferência de oxigênio do ambiente para os alvéolos: Pco, PAo, = Fto 1 · [Ps - PH 1 o) - QR Na equação ant erior, P 0 é a pressão barom"
+     cap3 p38 · Ajuste Básico da Sala
+       "Verificar se a sucção está conectada, funcional e posicionada próximo da cabeceira da mesa. Sucção (5) Verificar as pressões do suprimento de oxigênio (tubulação de aproximada"
+     cap6 p68 · ESPESSAMENTO ARTERIAL > Ox igênio
+       "O oxigênio deve passar do ambiente para os tecidos, onde é consumido durante o metabolismo aeróbico. A hipoxemia arterial é mais frequentemente definida como Pao, (pressão par"
+
+[5] ME3-3o-Tri-gabarito-SUBSTITUTIVA_-08 q1E
+  ENUNCIADO: Sobre anestesia pediátrica.
+  ASSERTIVA: A dose necessária para administração intravenosa de succinilcolina em lactentes (2,0 mg/kg) é aproximadamente o dobro das crianças mais velhas (1,0 mg/kg).
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap34 p541 · VIAS DE INDUÇÃO ANESTÉSICA
+       "alguns centros, um cateter periférico intravenoso é colocado em todas as crianças que serão submetidas à cirurgia. Agentes de indução comuns em crianças incluem propofol, 2 a "
+     cap16 p244 · EXAME FÍSICO > Medicação Pré-anestésica
+       "Medicações pré-anestésicas podem facilitar a separação de bebês e crianças dos pa is antes da indução anestésica. A medicação pré-anestésica muitas vezes não é necessária em c"
+     cap34 p535 · AVALIAÇÃO CARDIOVASCULAR DO NEONATO > Farmacocinét
+       "A ligação proteica dos fánnacos é diferente entre lactentes e adultos. Parte desta diferença se deve à menor concentração de proteína/albumina sérica nas crianças mais jovens."
+     cap3 p37 · Indução
+       "Propofol, 2 mg/kg. IV (pode ser precedido de 1,5 mg de lidocafna /kg!IV). Fármaco bloqueador neuromuscular, para facilitar a intubação traqueal (12 mg de succinilcolina/kg/IV)"
+==============================================================================
+# JURIDICO-NORMATIVO  (4 itens que todos erraram)
+==============================================================================
+
+[1] ME1-1o-Tri-0523 q2A
+  ENUNCIADO: Sobre a organização da Sociedade Brasileira de Anestesiologia (SBA):
+  ASSERTIVA: são membros Aspirantes os(as) médicos(as) cursando Residência em Anestesiologia em centro credenciado pela Comissão Nacional de Residência Médica, não integrante do quadro oficial de Centros de Ensino e Treinamento credenciados pela SBA.
+  GABARITO: F  ->  todos responderam V
+  O RAG TROUXE:
+     capNone p7 · REVISÃO CIENTÍFICA
+       "Américo Salgueiro Autran Filho (Caps. 1 ao 17, 19, 29,33 ao 36, 38, 39 e 41 ao 47) Affiliate Member of American Society of Anaesthesiologists Ex-responsável pelo Centro de Ens"
+     cap1 p26 · COMO ESPECIAUDADE
+       "Uma definição mais formal da especialidade da anestesiologia pode ser encontrada no website do American Board of Anesthesiology (ABA) (http://www.theaba.o rg). O ABA defi ne a"
+     cap2 p29
+       "Além disso, o escopo da anestesiologia ultrapassa os limites da sala cinirgica e abrange o tratamento das dores aguda e crônica (Caps. 40 e 43), medicina de cuidados intensivo"
+     cap2 p29 · American Board of Anesthesiology
+       "A ABA foi incorporada como afiliada do American Board of Surgery em 1938. Após passarem pela primeira avaliação voluntária, 87 mêdicos foram certificados como diplomados pela "
+
+[2] ME2-4o-Tri-Substitutiva-gabarito q5B
+  ENUNCIADO: Sobre anestesia ambulatorial:
+  ASSERTIVA: a responsabilidade do acompanhamento do paciente, após a realização da cirurgia/procedimento até a alta definitiva, é do médico e/ou da equipe médica que realizou a cirurgia/procedimento
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap19 p310 · PERIOPERATORIAS
+       "de operação) com uma maior incidência de eventos respiratórios, sugerindo sedação exce~siva ou oxigenação/ventilação inadequada. Processos relacionados a locais remotos também"
+     cap37 p595 · PÓS-ALTA > D Sim
+       "D A criança recebeu diagnóstico de diabetes? D A criança teve dois ou mais episódios de laringotraqueobronquite ("croup'')? Paílmâe ou guardião no dia da cirurgia: Entendo, co"
+     cap2 p35 · ANESTÉSICOS
+       "Os profissionais que fornecem anestesia cui da m do paciente cirúrgico durante os períodos pré-operatóri o, intraopera tório e pós-operatório (Tabela 3-3). Decisões importante"
+     cap2 p36 · ANESTÉSICOS > Método do controle da dor pós-operat
+       "Monftorização especial ou tratamento baseado no curso da cirurgia ou da anestesia Encaminhamento (p. ex., para casa, sala de recuperação p6s-anestésica, enfermaria, enfermaria"
+
+[3] ME1-1o-Tri-gabarito-210524 q2E
+  ENUNCIADO: Com relação à estrutura e relações institucionais da Sociedade Brasileira de Anestesiologia (SBA), avalie:
+  ASSERTIVA: o Diretor do Departamento Administrativo da SBA é membro da Comissão Executiva dos Congressos Brasileiros de Anestesiologia.
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     capNone p7 · REVISÃO CIENTÍFICA
+       "Américo Salgueiro Autran Filho (Caps. 1 ao 17, 19, 29,33 ao 36, 38, 39 e 41 ao 47) Affiliate Member of American Society of Anaesthesiologists Ex-responsável pelo Centro de Ens"
+     cap1 p26 · COMO ESPECIAUDADE
+       "Uma definição mais formal da especialidade da anestesiologia pode ser encontrada no website do American Board of Anesthesiology (ABA) (http://www.theaba.o rg). O ABA defi ne a"
+     cap44 p708 · PERGUNTAS DO DIA > Autor desconhecido
+       "posição dos anestesiologistas é única entre os médicos. Os anestesiologistas representam a ponte entre as especialidades médicas e cirúrgicas. Na pre~tação de assistência, dev"
+     capNone p7 · TRADUÇÃO > Doutora em Farmacologia pela USP
+       "Pós-doutoranda pelo Departamento de Farmacologia da Universidade de 1/linois, EUA Cláudio Carneiro Filgueiras (Caps. 7 e 30) Professor Adjunto do Departamento de Ciências Fisi"
+
+[4] ME1-1o-Tri-substitutiva-gabarito q1A
+  ENUNCIADO: Sobre ética na prática da anestesiologia, responda:
+  ASSERTIVA: durante a avaliação pré-anestésica, identifica-se sorologia positiva para HIV em um paciente, que expressa o desejo de manter essa informação em sigilo. Nesse contexto, a autonomia do paciente deve ser respeitada, e o médico tem a obrigação ética e l
+  GABARITO: F  ->  todos responderam V
+  O RAG TROUXE:
+     cap2 p31 · RESPONSABILIDADE PROFISSIONAL
+       "de assistência). Além disso, um anestesiologista não é responsável por erros de julgamento, a menos que estes sfàam considerados inconsistentes com as expectativas em turnos d"
+     cap12 p169 · I VISÃO GERAL
+       "A American Society of Anesthesiologists (ASA) publicou uma consultoria prática sugerindo qu e a visita pré-anestésica deve incluir as seguintes ações: ' • Uma entrevista com o"
+     cap13 p194 · I TÉCNICA ANESTÉSICA > Tempo de recuperação previs
+       "uma experiência a ser evitada."-' Uma técnica anestésica ideal deveria incorporar segurança e satisfação do paciente ótimas, proporcionar condições cirúrgicas excelentes para "
+     cap2 p29 · American Board of Anesthesiology
+       "de certificação enfatiza o autoaprimoramento contínuo (a pedra fundamental da excelência profissional), a avaliação das habilidades clinicas e do desempenho da prática para ga"
+==============================================================================
+# FISIOPATOLOGIA  (18 itens que todos erraram)
+==============================================================================
+
+[1] ME3-2o-Tri-gabarito-SUBSTITUTIVA_-08 q5B
+  ENUNCIADO: Pacientes submetidos a procedimentos cirúrgicos estão expostos a risco variável de apresentar alterações cognitivas no período pós-operatório. Com base nisso, avalie:
+  ASSERTIVA: a enolase específica do neurônio é marcador bioquímico preditor de disfunção cognitiva do pós-operatório (DCPO).
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap35 p557 · CUIDADOS PERIOPERATÓRIOS EM IDOSOS > Administrar f
+       "*A capacidade do pacitnte em fazer as tarefas listadas de maneira independente, parcialmente independente ou com exigida assistência complera é registrada. predizer complicaçõ"
+     cap39 p631 · PERGUNTAS DO DIA
+       "para englobar estes fatores a fim de diminuir a intensidade da dor pós-operatória do paciente. Pacientes idosos e pacientes que estão sob regimes pré-operatórios de opioides p"
+     cap35 p560 · CUIDADOS PÓS-OPERATÓRIOS > Eventos Neurológicos Pó
+       "subjacente, como a hipoxemia ou dor; infelizmente com frequência não há um único fator que seja facilmente revertido. Pacientes agitados podem se beneficiar de pequenas doses "
+     cap35 p560 · CUIDADOS PÓS-OPERATÓRIOS > Eventos Neurológicos Pó
+       "O evento neurológico pós-operatório mais comum em idosos são o delirium pós-operatório e a disfunção cognitiva pósoperatória (DCPO)." O deUrium refere-se a um estado agudo de "
+
+[2] ME3-3o-Tri-Substitutiva-gabarito q5C
+  ENUNCIADO: Em relação a anestesia pediátrica, avalie:
+  ASSERTIVA: em relação a anestesia de neuroeixo em crianças até 8 anos, as alterações hemodinâmicas são raras devido à imaturidade do sistema nervoso simpático (SNS) e à menor capacitância do sistema venoso.
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap34 p539 · CONSIDERAÇÕES SOBRE A ANESTESIA
+       "Avaliação e Preparo Pré-ope ratório (Cap. 1 3) A avaliação pré-operatória do paciente pediátrico difere da do adulto em muitos asp~ctos. A idade e o peso da criança são extrem"
+     cap34 p536 · CONCENTRAÇÃO ALVEOLAR MÍNIMA
+       "A concentração alveolar mínima (CAM) varia com a idade. A CAM de agentes anestésicos inalatórios é mais alta em lactentes com I a 6 me.~es de idade. A CAM é 30'\b menor em neo"
+     cap33 p531 · PEDIATRIA > Avaliação da Via Aérea
+       "Técnicas de Manu.s eio da Via Aérea Via Aérea Difícil em Pediatria CONSIDERAÇÕES SOBRE A ANESTESIA Avaliação e Preparo Pré-operatório Considerações Perioperatórias A Sala de R"
+     cap18 p293 · ANESTESIA REGIONAL INTRAVENOSA > Seleção do Anesté
+       "As soluções anestésicas locais mais comumente utilizadas para anestesia neural regional intravenosa são a lidocaína ou a prilocaina a 0,5'\b (soluções puras e sem epinefrina)."
+
+[3] ME3-2o-Tri-Substitutiva-gabarito q2B
+  ENUNCIADO: Em relação ao edema cerebral, avalie as afirmativas abaixo:
+  ASSERTIVA: quando ocorre insulto isquêmico cerebral, o edema forma-se primariamente na substância branca subcortical e não no córtex cerebral.
+  GABARITO: F  ->  todos responderam V
+  O RAG TROUXE:
+     cap30 p469 · NEUROPROTEÇÃO > Manutenção da Anestesia
+       "possível, a colocação do paciente em posiçã.o de céfalo-aclive também auxilia. Outras medidas úteis incluem a hiperventilação e a interrupção da administração dos anestésicos "
+     cap30 p467 · Volume intracraniano
+       "Figura 30-3 A curva de complacência pressão-volume represe nta o impacto do aumento do volume intracraniano na pressão intracraniana (PIC). Conforme o volume aumenta do ponto "
+     cap30 p472 · PERGUNTAS DO DIA
+       "1. O que é a autorregulaçào cerebral? Em quais circunstâncias ela é alterada? Qua l é o impacto de anestésicos intravenosos (TV) ou ina latórios na autorregulação cerebral? 2."
+     cap36 p565 · TRANSPLANTE DE FfGADO
+       "fina l (DHEF). Na insuficiência hepática aguda (IHA), a encefalopatia e o edema cerebral resultante são a causa mais comum de mortes." O edema cerebral é conduzido de maneira "
+
+[4] ME3-3o-Tri-substitutiva-gabarito q2C
+  ENUNCIADO: O manuseio de doadores de órgão antes da captação deve seguir:
+  ASSERTIVA: correção do sódio menor que 130 ou maior que 170 mmol/L, pois há aumento da mortalidade do receptor.
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap35 p564 · TRANSPLANTE DE RIM > Histórico de diálise
+       "particulam1ente durante a reperfusão. No entanto, ligeiros aumentos de potássio podem retratar uma homeostase normal para a insuficiência renal, e os níveis de potássio de 5,0"
+     cap35 p563 · DE ÓRGÃOS
+       "Devido à escassez de órgãos disponíveis. n~m todos os potenciais destinatários na lista de esp~ra sobr~viv~m t~mpo suficiente para serem submetidos a um transplant~. Aqueles q"
+     cap23 p358 · SOLUÇÕES SALI NAS HIPERTÔN ICAS
+       "As soluções salinas hipertônicas em geral são menos utilizadas, e as concentrações de sódio variam de 250 a 1.200 mEq{l. Quanto maior a concentração de sódio, menor o volume t"
+     cap35 p564 · TRANSPLANTE DE RIM
+       "O transplant~ de rim confere uma vantagem na sobrevida superior à diálise no tratamento da insuficiência rwal.' A melhor sobrevida do órgão ocorre em transplantes com enxertos"
+
+[5] ME2-3o-Tri-gabarito_151024 q2D
+  ENUNCIADO: Sobre anestesia para cirurgias urológicas responda:
+  ASSERTIVA: durante ressecção transuretral de próstata, deve-se suspeitar de perfuração de cápsula prostática quando há distensão abdominal e dor referida em ombro.
+  GABARITO: F  ->  todos responderam V
+  O RAG TROUXE:
+     cap39 p624 · RETENÇÃO URINÁRIA PÓS-OPERATÓRIA
+       "A incidência de retenção urinaria na UCPA relatada situa-se entre 5% e 70%. Estudos clfnicos definem a retenção urinária pós-ope.ratória (RUPO) como a Incapacidade de eliminaç"
+     cap17 p268 · TÉCNICA > Fisio logia
+       "para o trato gastrointestinal, e a atividade sem oposição resultante do sistema nervoso parassirnpático provoca contração do intestino e relaxamento dos esfíncteres. Os ureter"
+     cap17 p271 · RETENÇÃO URINÁRIA
+       "Devido à interferência da raquianestesia na inervação da bexiga, a administração de grandes quantidades de fluidos endov~nosos pode causar distensão da bexiga. o que pode requ"
+     cap13 p183 · TESTES > Glicose
+       "implicar o adiamento da cirurgia para otimização dos bloqueadores fl-adrenergicos e da terapia com estatina. As estatinas reduzem o risco de AVC [acidente vascular cerebral), "
+==============================================================================
+# FARMACOLOGIA  (7 itens que todos erraram)
+==============================================================================
+
+[1] ME3-1o-Tri-gabarito-SUBSTITUTIVA_-08 q1D
+  ENUNCIADO: Sobre disfunção tireoideana perioperatória:
+  ASSERTIVA: propiltiouracil e metimazol diminuem a síntese de T4 e reduzem os níveis de anticorpo do receptor de TSH.
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap29 p457 · CONSIDERAÇÕES PERIOPERATÓRIAS
+       "O tratame11to médico inicia l para hipertireoldismo é reduzir a síntese do hormôn io da tireolde. Isto é rea lizado pela administração de uma tioamida como propiltiouracil (PT"
+     cap29 p457 · CONSIDERAÇÕES PERIOPERATÓRIAS
+       "hipotermia e coma. O diagnóstico laboratorial é confim1ado pela mensuração dos níveis de T, e T, no sangue. O hipotireoidismo primário é diagnosticado por baixos níveis de T, "
+     cap29 p457 · CONSIDERAÇÕES PERIOPERATÓRIAS
+       "relativa que resulta do metabolismo acelerado no contexto da crise tireotóxica. Os níveis de cortisol tendem a estar na taxa normal nestes pacientes, mas eles devem ser maiore"
+     cap29 p456 · CONSIDERAÇÕES PERIOPERATÓRIAS > Hipertireoidismo e
+       "O bipertíreoidismo, ou tlreotoxicose, é caracterizado pelo aumento nos níveis circulatórios dos hormônios livres da tíreoide - triiodotironin a (T,l e tetraiodotironína (tirox"
+
+[2] ME3-3o-Tri-gabarito_171023 q4D
+  ENUNCIADO: Em relação aos analgésicos e adjuvantes não opioides no controle da dor pós-operatória:
+  ASSERTIVA: Gabapentina e pregabalina atenuam o fenômeno de tolerância decorrente do uso crônico de opioides.
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap40 p636 · Administração Oral
+       "A administração oral de analgésicos não é ótima para o controle da dor perioperatória moderada a severa, sobretudo por causa do estado NPO dos pacientes no periodo pósoperatór"
+     cap37 p577 · AVALIAÇÃO E TESTES PRÉ-OPERATÓRIOS > Hipertermia M
+       "o manejo gentil da relação com o paciente, bem como a sedação com midazolam ou propofol, são meios muito melhores de lidar com a dor relacionada a injeções. No período intraop"
+     cap43 p683 · SÍNDROME DE DOR REGIONAL COMPLEXA > Anticonvulsiva
+       "Os fárrnacos antiepilêpticos (p. ex., gabapentina, pregabalina) também são eficazes para o tratamento de dor neuropática."' Esses fárn1acos são geralmente bem tolerados. Os ef"
+     cap39 p634 · PERGUNTAS DO DIA > Perioperatória
+       "A abordagem mulrimodal da analgesia é uma ampla definição que pode incluir uma combinação de técnicas analgésicas intervencionais (analgesia com cateter peridural ou cateter n"
+
+[3] ME1-3o-Tri-gabarito q2C
+  ENUNCIADO: Sobre os anestésicos venosos:
+  ASSERTIVA: quando a anestesia é induzida pelo etomidato em pacientes sem pré- anestésico, 50% a 80% dos pacientes apresentam mioclonias que são geradas por focos epilépticos.
+  GABARITO: F  ->  todos responderam V
+  O RAG TROUXE:
+     cap9 p121 · ANALGESIA > Farmacodinâmica
+       "O etomidato apresenta efeitos tipo GABA e parece agir principalmente por meio da potenciaç~o da corrente de cloro mediada por GABA A' como outros anestésicos intravenosos:' SI"
+     cap30 p467 · NEUROPROTEÇÃO
+       "evocados somatossensoriais e motores é crítico na neuroanestesia. Em geral, o óxido nitroso e os anestésicos voláteis rem efeito maior nos potenciais evocados motores e sensor"
+     cap38 p606 · ETOMIDATO
+       "O etomidato pode ser privilegiado em relação ao propofol por causa de sua associação convulsões induzidas eletricamente mais duradouras e com depressã.o cardiovascular e respi"
+     cap35 p558 · DROGAS AN ESTÉSICAS
+       "anestésico para situação de emergência. O volume de distribuição para o etomidato é reduzido com o envelhecimento, e uma redução de 50'\b na dose é recomendada em pacientes co"
+
+[4] ME1-3o-Tri-gabarito_151024 q5D
+  ENUNCIADO: Sobre a fisiologia da transmissão neuromuscular e o uso dos bloqueadores neuromusculares:
+  ASSERTIVA: a potenciação dos efeitos dos agentes voláteis inalatórios sobre os relaxantes musculares é tanto maior quanto mais baixa a solubilidade gás/sangue e gás/tecidual.
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap8 p107 · POTENCIAIS EVOCADOS > Efeitos Neuromusculares
+       "Os anestésicos voláteis produzem relaxamento muscul oesquelético relacionado à dose e au mentam a atividade de fármacos bloqueadores neuromusculares. O aumento do efeito de re"
+     cap34 p536 · AVALIAÇÃO CARDIOVASCULAR DO NEONATO > Farmacologia
+       "FJF,. Nos neonatos, também a solubilidade tecido/sangue e sangue/gás estão reduzidas. As solubilidades sang'Uíneas dos agentes de maior solubilidade (isoflurano) são 18% menor"
+     cap8 p105 · PACIENTES COM DOENÇA ARTERIAL CORONARIANA > Efeito
+       "8 -15). ' Em comparação a voluntários, o embotamento da ventilação com anestésicos inalatórios pode ser menos pronunciado em pacientes submetidos à cirurgia, refletindo o efei"
+     cap8 p97 · SOLUBILIDADE
+       "A solubilidade dos anestésicos inalatórios no sangue e nos tecidos é denotada pelos coeficientes de partição (Tabela 8-1). Um coeficiente de partição é uma proporção de distri"
+
+[5] ME1-4o-Tri-substitutiva-gabarito q4B
+  ENUNCIADO: Sobre complicações na anestesia:
+  ASSERTIVA: mulheres são mais sensíveis a bloqueadores neuromusculares adespolarizantes que homens nos testes de puntura.
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap33 p509 · TÉCNICAS NEUROAXIAIS > Avaliação Pré -operatória
+       "Antes do início de qualquer bloqueio neuroaxíal, os anestesistas devem avaliar a gestação da mulher e seu histórico médico; realizar um exame fisico focalizado; discutir os ri"
+     cap28 p449 · DOENÇAS DO TRATO BILIAR
+       "São relatados cálculos biliares em 10% dos homens e 20% das mulheres entre 55 e 65 anos de idade. Este~ pacientes geralmente têm resultados dos testes de função hepática nonna"
+     cap11 p148 · PERGUNTAS DO DIA > Clinical injury and srrategies 
+       "AW, Ciriales R, et ai: Local anesthetic neurotoxicity does nor result from blockade ofvoltage-gated sodium channels, Ane.<t/1 Analg 81 :338346, 1995. BLOQUEADORES NEUROMUSCULA"
+     cap12 p164 · INADEQUADO DO BLOQUEIO NEUROMUSCULAR > Avaliação d
+       "de bloqueio neuromuscular residual deve ser reduzida ou eliminada. O sugammadex foi aprovado para uso na Europa e usado com sucesso em milhares de pacientes. Ele será aprovado"
+==============================================================================
+# TECNICA  (9 itens que todos erraram)
+==============================================================================
+
+[1] ME2-2o-Tri-gabarito-CORRIGIDO-1-1 q1C
+  ENUNCIADO: Com relação aos bloqueios de nervos periféricos:
+  ASSERTIVA: Uma das desvantagens do bloqueio infraclavicular é que ele resulta em anestesia incompleta do plexo braquial.
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap18 p287 · BLOQUEIO INFRACLAVICULAR > Desvantagens
+       "As desvantagens do bloqueio in!Taclavicular incluem o risco de punção vascular e desconforto do paciente associado à punção com agulha de bloqueios dos músculos peitoral dt ma"
+     cap18 p284 · BLOQUEIO INTERESCALÊN ICO > Nervo
+       "auricular maior _ __,:-- - - - -+ - Músculo esternocleidomastoidao - --7'::...:...-fi Nervo cervical t.ansverso ----t-"'-"71'- .. ~~=;?=~JJ[ '~ Nervo supraclavicular RAMOS C 7"
+     cap18 p287 · BLOQUEIO INFRACLAVICULAR
+       "O bloqueio infraclavlcular é um procedimento versátil que pode fornecer anestesia e analgesia excelentes para procedimentos na mão, antebraço e cotovelo. A abordagem infraclav"
+     cap18 p288 · BLOQUEIO AXILAR
+       "ra ço e cutâneo media.) do antebraço (Fig. 18-9). Vantagens e Complicações O bloqueio perivascu.la.r a.xila.r tem a vantagem de ser longe do pulmão e do neuroeixo e pode ser r"
+
+[2] ME2-1o-Tri-0523 q2A
+  ENUNCIADO: Na monitorização perioperatória:
+  ASSERTIVA: a derivação DII é a mais sensível para diagnosticar arritmias cardíacas.
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap25 p388 · GERENCIAMENTO DA ANESTESIA
+       "adição de narcóticos á anestesia pode minimizar a ativação do sistema nervoso s impático devido a estimulo intraoperatório álgico. Os anestesicos voláteis devem ser ajustados "
+     cap13 p181 · TESTES > Data
+       "os planos de assistência. É um erro crer que a descoberta de anorn1alidades no ECG, na radiografia torácica ou no exame de sangue comprometa a assistência ou os re.~u1tados de"
+     cap30 p470 · NEUROPROTEÇÃO > Embolia Aérea Venosa
+       "terceiro espaço intercostal a direita do e~terno para maximizar sinais audíveis do átrio direito) é o segundo indicador mais sensível (detecta quantidades de ar tão pequenas q"
+     cap39 p621 · INSTABILIDADE HEMODINÂMICA > Insuficiência adrenal
+       "cardiomiopatia e arritmias cardíacas. O diagnóstico diferencial depende de procedimento cirúrgico, curso intraoperatório e condição médica pré-operatória do paciente. Para det"
+
+[3] ME1-2o-Tri-Substitutiva-gabarito q5B
+  ENUNCIADO: Na prática clínica, para se realizar a medida da complacência estática, deve-se:
+  ASSERTIVA: realizar pausa respiratória de 0,5 a 1 segundo.
+  GABARITO: F  ->  todos responderam V
+  O RAG TROUXE:
+     cap6 p74 · MECÂNICA PULMONAR > Propriedades Estáticas
+       "pressão zero no interior é maior que a pressão negativa no exterior) que mantêm os capilares abertos. A pressão negativa é transmitida da pressão intrapleura l e essa diferenç"
+     cap6 p75 · MECÂNICA PULMONAR > Equipamento anestesia
+       "de pressão. Distinguir os efeitos de resistência sobre as vias aéreas dos componentes estáticos de complacência é um pri - meiro passo útil no diagnóstico diferencial de press"
+     cap37 p573 · AVALIAÇÃO E TESTES PRÉ-OPERATÓRIOS
+       "(ECG) de rotina feitas antes da avaliação clínica que justifique uma indicação para o ex ame aumentam os custos e a inconveniência ao paciente e geralmente não têm valor. Os ú"
+     cap44 p704 · CUIDADOS APÓS RESSUSCITAÇÃO > Bebês
+       "Sem pulso palpado dentro de 1 O segu ndos para todas as idades (apenas PCS) Sequência de RCP Taxa de compressão Pelo menos ~ do diâmetro AP Profund idade de compressão Pelo me"
+
+[4] ME2-4o-Tri-191223gabarito-2 q1B
+  ENUNCIADO: Sobre anestesia ambulatorial:
+  ASSERTIVA: Recuperação fast track é quando no pós-operatório paciente passa da fase 1 de recuperação direto para fase 2 sem passar pela sala de recuperação pós-anestésica. Bebês a termo cuja idade pós-conceptual é inferior a 46 semanas, ou prematuros bebês cuja
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap34 p549 · MANEJO DA ANESTESIA
+       "cirurgia de estrabismo. Embora muitos lacrenres tenham se r«uperado bem sem sequelas, muitos têm doenças crônicas como displasia broncopulrnonar (necessitam de oxigênio suplem"
+     cap37 p575 · AVALIAÇÃO E TESTES PRÉ-OPERATÓRIOS > Cinco Princíp
+       "pacientes do centro cirúrgico diretamente para um "segundo estágio" da URPA, evitando o "primeiro estágio". Os pacientes no seg'tlndo estágio não requerem suporte para vias aé"
+     cap34 p542 · DELÍRIO DE EMERGÊNCIA
+       "avaliação dos sinais vitais. No entanto, a dor pode ser confundida com ansiedade, delírio de emergência e raiva na criança. Os opioides podem ser tirulados para tratar efetiva"
+     cap34 p549 · MANEJO DA ANESTESIA
+       "é utilizado para analgesia pós-operatória. A cirurgia pros.~egue através de uma pequena incisão epigástrica aberta ou por via laparoscópica com insuflação de CO, no abdome. De"
+
+[5] ME2-2o-Tri-Substitutiva-gabarito q2B
+  ENUNCIADO: Sobre os bloqueios periféricos da face:
+  ASSERTIVA: para um bloqueio completo do couro cabeludo, é necessário o bloqueio de cinco nervos provenientes do nervo trigêmeo e dos ramos cervicais.
+  GABARITO: F  ->  todos responderam V
+  O RAG TROUXE:
+     cap18 p294 · PERGUNTAS DO DIA
+       "1. Durante o bloqueio de nervo periférico realizado com auxilio do estimulador de nervo, qual nível de corrente geralmente indica proximidade suficiente da agulha de bloqueio "
+     cap18 p284 · BLOQUEIO INTERESCALÊN ICO > Nervo
+       "auricular maior _ __,:-- - - - -+ - Músculo esternocleidomastoidao - --7'::...:...-fi Nervo cervical t.ansverso ----t-"'-"71'- .. ~~=;?=~JJ[ '~ Nervo supraclavicular RAMOS C 7"
+     cap18 p292 · REALIZAÇÃO DO BLOQUEIO > Bloqueio do Tornozelo
+       "Todos os cinco neJVos periféricos que suprem o pé podem ser bloqueados (bloqueio do tornozelo) na a.ltura do maléoJo (Fig. 18-16). O neJVo tibial é o neJVo principal da região"
+     cap18 p284 · BLOQUEIO DO PLEXO CERVICAL
+       "O plexo cervical é formado pelos primeiros quatro nervos cervicais. " Com a cabeça do paciente virada para o lado oposto, o plexo cervical superficial pode ser bloqueado pela "
+==============================================================================
+# IMAGEM  (1 itens que todos erraram)
+==============================================================================
+
+[1] ME2-2o-Tri-gabarito-2a-REVISAO-1_230 q2B
+  ENUNCIADO: Para a realização do bloqueio do nervo safeno no canal dos adutores, é importante conhecer a anatomia da região. A respeito da anatomia mostrada na imagem:
+  ASSERTIVA: O músculo destacado com a legenda "B" é o vasto medial.
+  GABARITO: F  ->  todos responderam V
+  O RAG TROUXE:
+     cap18 p290 · REALIZAÇÃO DO BLOQUEIO > Bloqueio do Nervo Safeno
+       "pela estimulação do nervo é um desfecho satisfatório para localização da agulha antes da injeção de solução anestésica local (são utilizados cerca de 25 a 30mL, tipicamente). "
+     cap18 p290 · REALIZAÇÃO DO BLOQUEIO > Bloqueio do Nervo Safeno
+       "O nervo safeno é o único ramo do nervo femoral que contribui para a inervação abaixo do joelho. Ele pode ser bloqueado na porção média da coxa, onde corre anterior à artéria f"
+     cap18 p289 · REALIZAÇÃO DO BLOQUEIO
+       "O bloqueio do nervo femoral é realizado com o paciente na posição supina, com a coxa ligeira.mente abduzida e rodada POSTERIOR ANTERIOR l5 L4 Nervo tibial POSTERIOR ANTERIOR N"
+     cap17 p281 · PERIFERICOS
+       "Adam B. Collins e Andrew T. Gray PREPARO PARA BLOQUEIOS DE NERVOS TtCNICAS ESPEciFICAS DE BLOQUEIOS Ultrassonografia Parestesia Estimulação de Nervos CATETERES DE NERVOS PERIF"
+==============================================================================
+# GESTAO  (1 itens que todos erraram)
+==============================================================================
+
+[1] ME3-4o-Tri-gabarito-SUBSTITUTIVA_080 q3E
+  ENUNCIADO: Julgue:
+  ASSERTIVA: A alocação de tempo de sala operatória por ordem de chegada é comumente utilizada em hospitais como o principal método de agendamento de cirurgias, mas muitos hospitais utilizam uma combinação de alocação em blocos e ordem de chegada.
+  GABARITO: V  ->  todos responderam F
+  O RAG TROUXE:
+     cap45 p711 · EFICIÊNCIA DO CENTRO CIRÚRGICO > Utilização do Cen
+       "de que a meta deveria ser um percentual de utilização de 100'\b. Já para os enfemteiros e o grupo de anestesiologia, esse percentual poderia ser de 75<\b. Do mesmo modo, os ci"
+     cap42 p669 · CIRURGIA DE EMERGÊNCIA PARA TRAUMA > Cuidados Hosp
+       "Embora a descontaminação pré-hospitalar seja ideal, os hospitais devem ter instalações para descontaminaçã.o como parte do seu plano de prevenção de desastres. Quando possível"
+     cap45 p711 · EFICIÊNCIA DO CENTRO CIRÚRGICO > Utilização do Cen
+       "dia útil da semana. Todavia, na realidade, há enfem1eiros recrutados apenas para 40'\1> das SOs após as 1 5h, ou seja, a enfermagem não planeja nem recruta enfermeiros para 60"
+     cap26 p414 · CONTROLE DAS VIAS AÉREAS
+       "ferramenta de monitoramento inestimável na sala de cirurgia para melhor delinear a anatomia não claramente demonstrada pela ecocardiografia transesofageana (ETE) pré-operatóri"

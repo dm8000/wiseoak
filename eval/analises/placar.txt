@@ -1,0 +1,49 @@
+Comparação final, 998 questões, mesmo universo:
+
+| sistema | total | V/F | ME | IC 95% |
+|---|---:|---:|---:|---:|
+| Opus 5 (effort low, sem busca) | 85,4% | 85,7% | 83,8% | 83,0%–87,4% |
+| WiseOak v3 (cota: normas + livro) | 80,6% | 82,1% | 73,1% | 78,0%–82,9% |
+| WiseOak v1 (+ RAG Miller 10e) | 80,2% | 81,5% | 73,7% | 77,6%–82,5% |
+| WiseOak v2 (+ RAG normas, roteado) | 79,9% | 81,2% | 73,1% | 77,3%–82,2% |
+| DeepSeek-V3 (thinking+search) | 77,1% | 78,5% | 70,1% | 74,3%–79,6% |
+| DeepSeek-V3 (thinking) | 76,4% | 76,8% | 74,3% | 73,6%–78,9% |
+| WiseOak v0 (Gemma4 31B sem RAG) | 73,0% | 74,5% | 65,9% | 70,2%–75,7% |
+
+McNemar com Holm — nove das 21 comparações passam:
+
+| comparação | dif | Holm | signif. |
+|---|---:|---:|:--:|
+| Opus 5 (effort low, sem busca) > WiseOak v0 (Gemma4 31B sem RAG) | +12,3% | <0,000001 | sim |
+| Opus 5 (effort low, sem busca) > DeepSeek-V3 (thinking) | +9,0% | <0,000001 | sim |
+| Opus 5 (effort low, sem busca) > DeepSeek-V3 (thinking+search) | +8,3% | <0,000001 | sim |
+| WiseOak v3 (cota: normas + livro) > WiseOak v0 (Gemma4 31B sem RAG) | +7,5% | 0,000031 | sim |
+| WiseOak v1 (+ RAG Miller 10e) > WiseOak v0 (Gemma4 31B sem RAG) | +7,1% | 0,000114 | sim |
+| WiseOak v2 (+ RAG normas, roteado) > WiseOak v0 (Gemma4 31B sem RAG) | +6,8% | 0,000276 | sim |
+| Opus 5 (effort low, sem busca) > WiseOak v2 (+ RAG normas, roteado) | +5,5% | 0,002414 | sim |
+| Opus 5 (effort low, sem busca) > WiseOak v1 (+ RAG Miller 10e) | +5,2% | 0,00405 | sim |
+| Opus 5 (effort low, sem busca) > WiseOak v3 (cota: normas + livro) | +4,8% | 0,010328 | sim |
+| WiseOak v3 (cota: normas + livro) > DeepSeek-V3 (thinking) | +4,2% | 0,092844 | não |
+| DeepSeek-V3 (thinking+search) > WiseOak v0 (Gemma4 31B sem RAG) | +4,0% | 0,189257 | não |
+| WiseOak v1 (+ RAG Miller 10e) > DeepSeek-V3 (thinking) | +3,8% | 0,189257 | não |
+| WiseOak v2 (+ RAG normas, roteado) > DeepSeek-V3 (thinking) | +3,5% | 0,242969 | não |
+| WiseOak v3 (cota: normas + livro) > DeepSeek-V3 (thinking+search) | +3,5% | 0,242969 | não |
+| DeepSeek-V3 (thinking) > WiseOak v0 (Gemma4 31B sem RAG) | +3,3% | 0,38544 | não |
+| WiseOak v1 (+ RAG Miller 10e) > DeepSeek-V3 (thinking+search) | +3,1% | 0,38544 | não |
+| WiseOak v2 (+ RAG normas, roteado) > DeepSeek-V3 (thinking+search) | +2,8% | 0,393015 | não |
+| WiseOak v3 (cota: normas + livro) > WiseOak v2 (+ RAG normas, roteado) | +0,7% | 1,000 | não |
+| DeepSeek-V3 (thinking+search) > DeepSeek-V3 (thinking) | +0,7% | 1,000 | não |
+| WiseOak v3 (cota: normas + livro) > WiseOak v1 (+ RAG Miller 10e) | +0,4% | 1,000 | não |
+| WiseOak v1 (+ RAG Miller 10e) > WiseOak v2 (+ RAG normas, roteado) | +0,3% | 1,000 | não |
+
+Por classe:
+
+| classe | n | Opus 5 (effort low, sem busca) | WiseOak v3 (cota: normas + livro) | WiseOak v1 (+ RAG Miller 10e) | WiseOak v2 (+ RAG normas, roteado) | DeepSeek-V3 (thinking+search) | DeepSeek-V3 (thinking) | WiseOak v0 (Gemma4 31B sem RAG) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| fisiopatologia | 384 | 89,1% | 87,0% | 85,2% | 84,1% | 82,6% | 81,0% | 78,1% |
+| farmacologia | 172 | 89,0% | 82,0% | 84,3% | 84,9% | 75,0% | 78,5% | 73,8% |
+| valor-numerico | 161 | 80,1% | 70,2% | 70,8% | 71,4% | 70,8% | 70,2% | 62,7% |
+| tecnica | 148 | 80,4% | 77,0% | 80,4% | 75,0% | 77,0% | 75,7% | 72,3% |
+| juridico-normativo | 65 | 81,5% | 75,4% | 66,2% | 80,0% | 72,3% | 75,4% | 70,8% |
+| imagem | 37 | 67,6% | 67,6% | 64,9% | 70,3% | 64,9% | 45,9% | 56,8% |
+| gestao | 31 | 100,0% | 90,3% | 90,3% | 77,4% | 77,4% | 80,6% | 87,1% |

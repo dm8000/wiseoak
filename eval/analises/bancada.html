@@ -1,0 +1,310 @@
+<title>Bancada WiseOak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,600;1,6..72,400&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+
+<style>
+:root{
+  --ground:#F5F7F7; --panel:#FFFFFF; --ink:#16201F; --muted:#5A6968; --hair:#DBE2E1;
+  --accent:#0E6E6B; --accent-soft:#E2EEED;
+  --gain:#1B6B45; --loss:#9E3A2C; --noise:#8A6D2B; --noise-soft:#F4EEDD;
+  --shadow:0 1px 2px rgba(22,32,31,.05), 0 8px 24px -16px rgba(22,32,31,.25);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1413; --panel:#161E1D; --ink:#E6EDEB; --muted:#94A5A3; --hair:#2A3635;
+    --accent:#5FCFC7; --accent-soft:#17302E;
+    --gain:#5FC98D; --loss:#E08674; --noise:#D9B45F; --noise-soft:#2B2413;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1413; --panel:#161E1D; --ink:#E6EDEB; --muted:#94A5A3; --hair:#2A3635;
+  --accent:#5FCFC7; --accent-soft:#17302E;
+  --gain:#5FC98D; --loss:#E08674; --noise:#D9B45F; --noise-soft:#2B2413;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:"Source Sans 3",ui-sans-serif,system-ui,sans-serif;
+  font-size:17px; line-height:1.62; margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:60rem;margin:0 auto;padding:4rem 1.5rem 6rem;display:flex;flex-direction:column;gap:3.25rem}
+p,li{max-width:38em}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;font-weight:600;text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(2.1rem,5vw,3.1rem);letter-spacing:-.015em}
+h2{font-size:1.6rem;letter-spacing:-.01em}
+h3{font-size:1.12rem}
+a{color:var(--accent)}
+
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.72rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 .9rem;
+}
+header p.lede{font-size:1.2rem;color:var(--muted);margin:1.1rem 0 0}
+.rule{height:1px;background:var(--hair);border:0;margin:0}
+
+section{display:flex;flex-direction:column;gap:1.1rem}
+section > p{margin:0}
+
+/* ---- tabelas ---- */
+.tw{overflow-x:auto;background:var(--panel);border:1px solid var(--hair);border-radius:3px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:.94rem}
+caption{
+  text-align:left;padding:.95rem 1.1rem .2rem;color:var(--muted);font-size:.83rem;
+  font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;
+}
+th,td{padding:.55rem 1.1rem;text-align:right;border-bottom:1px solid var(--hair);white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal;min-width:15rem}
+thead th{
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  border-bottom:1px solid var(--ink);
+}
+tbody tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums}
+tr.mark td{background:var(--accent-soft)}
+tr.mark td:first-child{font-weight:600}
+.sys{font-weight:600}
+.tag{
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--muted);
+  display:block;font-weight:400;letter-spacing:.03em;
+}
+.gain{color:var(--gain);font-variant-numeric:tabular-nums}
+.loss{color:var(--loss);font-variant-numeric:tabular-nums}
+.flat{color:var(--muted);font-variant-numeric:tabular-nums}
+.sig{font-family:"IBM Plex Mono",monospace;font-size:.76rem;letter-spacing:.04em}
+.sig-y{color:var(--gain)} .sig-n{color:var(--muted)}
+
+/* ---- caixa de alerta metodológico ---- */
+.warn{
+  background:var(--noise-soft);border-left:3px solid var(--noise);
+  padding:1.15rem 1.35rem;border-radius:0 3px 3px 0;
+  display:flex;flex-direction:column;gap:.6rem;
+}
+.warn h3{color:var(--noise);font-family:"IBM Plex Mono",monospace;font-size:.75rem;
+  letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.warn p{margin:0;max-width:46em}
+
+/* ---- diagrama das vagas de contexto ---- */
+.slots{display:flex;flex-direction:column;gap:1.5rem;background:var(--panel);
+  border:1px solid var(--hair);border-radius:3px;padding:1.6rem;box-shadow:var(--shadow)}
+.slotrow{display:flex;flex-direction:column;gap:.5rem}
+.slotrow h3{font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);font-weight:600}
+.bar{display:flex;gap:.35rem}
+.cell{
+  flex:1;padding:.7rem .55rem;border-radius:2px;font-size:.78rem;
+  font-family:"IBM Plex Mono",monospace;text-align:center;letter-spacing:.02em;
+}
+.c-book{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent)}
+.c-norm{background:var(--panel);color:var(--ink);border:1px dashed var(--muted)}
+.slotnote{font-size:.88rem;color:var(--muted);margin:0;max-width:46em}
+
+ul{margin:0;padding-left:1.15rem;display:flex;flex-direction:column;gap:.45rem}
+code{font-family:"IBM Plex Mono",monospace;font-size:.88em;background:var(--accent-soft);
+  color:var(--accent);padding:.1em .35em;border-radius:2px}
+footer{color:var(--muted);font-size:.87rem;border-top:1px solid var(--hair);padding-top:1.5rem}
+@media (max-width:640px){ th:first-child,td:first-child{min-width:11rem} body{font-size:16px} }
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Bancada · 998 questões · prova da SBA</p>
+  <h1>Um corpus normativo conserta uma classe e não move o placar</h1>
+  <p class="lede">Gemma&nbsp;4 31B local com RAG, medido contra Opus&nbsp;5 e DeepSeek-V3 em questões
+  de provas da Sociedade Brasileira de Anestesiologia. Três desenhos de recuperação, todos
+  indistinguíveis entre si — e a razão disso acabou sendo o achado mais útil.</p>
+</header>
+
+<hr class="rule">
+
+<section>
+  <h2>O placar</h2>
+  <p>Mesmo universo para todos: a interseção estrita das questões que cada sistema respondeu.
+  Intervalo de Wilson; comparações pareadas por McNemar exato com correção de Holm.</p>
+  <div class="tw">
+    <table>
+      <caption>acerto por sistema · n = 998</caption>
+      <thead><tr><th>sistema</th><th>total</th><th>V/F</th><th>ME</th><th>IC 95%</th></tr></thead>
+      <tbody>
+        <tr><td class="sys">Opus 5<span class="tag">effort low, sem busca</span></td>
+            <td class="num">85,4%</td><td class="num">85,7%</td><td class="num">83,8%</td><td class="num">83,0–87,4%</td></tr>
+        <tr class="mark"><td class="sys">WiseOak v3<span class="tag">cota: normas + livro</span></td>
+            <td class="num">80,6%</td><td class="num">82,1%</td><td class="num">73,1%</td><td class="num">78,0–82,9%</td></tr>
+        <tr><td class="sys">WiseOak v1<span class="tag">RAG Miller 10e</span></td>
+            <td class="num">80,2%</td><td class="num">81,5%</td><td class="num">73,7%</td><td class="num">77,6–82,5%</td></tr>
+        <tr><td class="sys">WiseOak v2<span class="tag">RAG normas, roteamento exclusivo</span></td>
+            <td class="num">79,9%</td><td class="num">81,2%</td><td class="num">73,1%</td><td class="num">77,3–82,2%</td></tr>
+        <tr><td class="sys">DeepSeek-V3<span class="tag">thinking + search</span></td>
+            <td class="num">77,1%</td><td class="num">78,5%</td><td class="num">70,1%</td><td class="num">74,3–79,6%</td></tr>
+        <tr><td class="sys">DeepSeek-V3<span class="tag">thinking</span></td>
+            <td class="num">76,4%</td><td class="num">76,8%</td><td class="num">74,3%</td><td class="num">73,6–78,9%</td></tr>
+        <tr><td class="sys">WiseOak v0<span class="tag">sem RAG</span></td>
+            <td class="num">73,0%</td><td class="num">74,5%</td><td class="num">65,9%</td><td class="num">70,2–75,7%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Das 21 comparações, nove sobrevivem a Holm. Todas dizem uma de duas coisas: que as três
+  variantes de RAG batem o controle sem RAG, ou que o Opus 5 bate todas elas. <strong>Nenhuma
+  comparação entre v1, v2 e v3 é significativa</strong> — os três vivem dentro de 0,7 pp.</p>
+</section>
+
+<section>
+  <h2>O que estava sendo consertado</h2>
+  <p>A motivação não era o total. Era uma inversão: em questões jurídico-normativas, o RAG do
+  livro-texto deixava o sistema <em>pior</em> do que sem RAG nenhum — buscar no Miller uma
+  resposta que só existe em resolução do CFM ativamente atrapalhava.</p>
+  <div class="tw">
+    <table>
+      <caption>jurídico-normativo · n = 65</caption>
+      <thead><tr><th>sistema</th><th>acerto</th><th>vs. v0</th></tr></thead>
+      <tbody>
+        <tr><td class="sys">Opus 5</td><td class="num">81,5%</td><td class="gain">+10,7 pp</td></tr>
+        <tr><td class="sys">WiseOak v2 · roteamento exclusivo</td><td class="num">80,0%</td><td class="gain">+9,2 pp</td></tr>
+        <tr class="mark"><td class="sys">WiseOak v3 · cota</td><td class="num">75,4%</td><td class="gain">+4,6 pp</td></tr>
+        <tr><td class="sys">WiseOak v0 · sem RAG</td><td class="num">70,8%</td><td class="flat">—</td></tr>
+        <tr><td class="sys">WiseOak v1 · RAG do livro</td><td class="num">66,2%</td><td class="loss">−4,6 pp</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>O corpus normativo — 54 documentos do CFM, SBA, AMB e SBC, 607 trechos divididos por artigo —
+  desfez a inversão. O roteador que decide qual corpus consultar teve <strong>precisão de 100% e
+  cobertura de 97,6%</strong>: nenhuma questão clínica foi parar numa resolução.</p>
+</section>
+
+<section>
+  <h2>Por que a escolha exclusiva quebrou outra coisa</h2>
+  <p>Rotear é destrutivo: mandar a pergunta ao corpus normativo <em>tira</em> o livro. Quando o
+  rótulo da classe não corresponde a onde a resposta está, a questão perde a única fonte que a
+  continha. Foi o que aconteceu com gestão — três das quatro que pioraram eram teoria de centro
+  cirúrgico, tema de livro, não de norma.</p>
+
+  <div class="slots">
+    <div class="slotrow">
+      <h3>v1 — só o livro</h3>
+      <div class="bar">
+        <div class="cell c-book">Miller</div><div class="cell c-book">Miller</div>
+        <div class="cell c-book">Miller</div><div class="cell c-book">Miller</div>
+      </div>
+    </div>
+    <div class="slotrow">
+      <h3>v2 — escolha exclusiva</h3>
+      <div class="bar">
+        <div class="cell c-norm">norma</div><div class="cell c-norm">norma</div>
+        <div class="cell c-norm">norma</div><div class="cell c-norm">norma</div>
+      </div>
+      <p class="slotnote">O roteador escolhe um corpus e ele preenche as quatro vagas. Se escolheu errado,
+      a resposta certa não está em nenhuma delas.</p>
+    </div>
+    <div class="slotrow">
+      <h3>v3 — cota por corpus</h3>
+      <div class="bar">
+        <div class="cell c-norm">norma</div><div class="cell c-norm">norma</div>
+        <div class="cell c-book">Miller</div><div class="cell c-book">Miller</div>
+      </div>
+      <p class="slotnote">Vagas reservadas, não disputadas. Não é o mesmo que fundir os índices:
+      em índice único as vagas saem de competição global, e 607 trechos de norma perdem por volume
+      para 14.628 do Miller. Com cota, norma compete só com norma.</p>
+    </div>
+  </div>
+
+  <div class="tw">
+    <table>
+      <caption>efeito da cota, pareado por item · v2 → v3</caption>
+      <thead><tr><th>classe</th><th>destino</th><th>n</th><th>v2</th><th>v3</th><th>dif</th><th>p</th></tr></thead>
+      <tbody>
+        <tr class="mark"><td>gestão</td><td class="num">normas</td><td class="num">31</td>
+            <td class="num">77,4%</td><td class="num">90,3%</td><td class="gain">+12,9 pp</td><td class="num">0,125</td></tr>
+        <tr><td>jurídico-normativo</td><td class="num">normas</td><td class="num">65</td>
+            <td class="num">80,0%</td><td class="num">75,4%</td><td class="loss">−4,6 pp</td><td class="num">0,549</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Gestão voltou exatamente ao nível do v1 (90,3%), com quatro discordantes a favor e zero contra.
+  Jurídico-normativo cedeu 4,6 pp — mecanicamente esperado, já que a classe passou a receber duas
+  vagas de norma em vez de quatro. <strong>A cota troca parte do ganho jurídico por robustez a
+  rótulo errado</strong>, e essa troca é o desenho, não um defeito.</p>
+</section>
+
+<section>
+  <h2>O achado mais útil não foi o placar</h2>
+  <p>As questões roteadas ao livro executam pipeline <em>idêntico</em> nos três braços — mesmo grafo,
+  mesmo índice, mesmos parâmetros. A diferença entre eles ali deveria ser zero. Não é.</p>
+
+  <div class="warn">
+    <h3>Piso de ruído</h3>
+    <p><strong>29 de 747 itens (3,9%) trocam de resposta entre execuções idênticas</strong>, por causa
+    de <code>temperature = 0,3</code> na geração. Qualquer diferença abaixo de ~1 pp no total é
+    indistinguível de ruído — e é exatamente nessa faixa que as três variantes de RAG vivem.</p>
+    <p>Pior: em três corridas, a análise por classe produziu <strong>três falsos positivos com p&nbsp;&lt;&nbsp;0,05</strong>
+    em classes de pipeline idêntico — técnica (p=0,022), fisiopatologia (p=0,013 e p=0,039). Neste
+    banco, análise de subgrupo a temperatura 0,3 gera “significância” espúria como regra, não exceção.</p>
+  </div>
+
+  <p>O gargalo de medição deixou de ser o corpus ou o roteamento e passou a ser o ruído. O próximo
+  passo de maior retorno não é melhorar a recuperação: é zerar a temperatura e remedir, para que as
+  comparações voltem a ser decidíveis.</p>
+</section>
+
+<section>
+  <h2>As respostas estão nos documentos</h2>
+  <p>Restam 194 erros, e 84% deles são clínicos — questões que consultam o livro-texto, nunca o
+  corpus normativo. A pergunta natural é se o livro simplesmente não cobre o assunto. Cobre.</p>
+  <p>O teste cruza idioma por <strong>âncora numérica com unidade</strong>: o Miller está em inglês
+  e as questões em português, mas “18&nbsp;°C”, “65%” e “4 hours” sobrevivem à tradução. Trinta e
+  nove dos erros clínicos são testáveis assim.</p>
+  <div class="tw">
+    <table>
+      <caption>onde a resposta estava · 39 erros clínicos com âncora testável</caption>
+      <thead><tr><th>situação</th><th>n</th><th>%</th><th>natureza da falha</th></tr></thead>
+      <tbody>
+        <tr><td>Já no contexto entregue ao modelo</td><td class="num">12</td><td class="num">30,8%</td><td class="loss">raciocínio</td></tr>
+        <tr><td>Recuperável, mas fora das quatro vagas</td><td class="num">16</td><td class="num">41,0%</td><td class="loss">ranking</td></tr>
+        <tr><td>No livro, fora do top-50</td><td class="num">9</td><td class="num">23,1%</td><td class="loss">busca</td></tr>
+        <tr class="mark"><td>Ausente do livro</td><td class="num">2</td><td class="num">5,1%</td><td class="flat">cobertura</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>95% das respostas estão no corpus.</strong> A falha reparte-se em ~64% recuperação,
+  ~31% raciocínio e ~5% cobertura de fato. Dois casos verificados tinham a frase literalmente no
+  contexto e ainda assim erraram: numa, o modelo recebeu <em>“complete suppression of the EEG at
+  approximately 18&nbsp;°C to 20&nbsp;°C”</em> e negou que 20&nbsp;°C suprimisse o EEG.</p>
+
+  <div class="warn">
+    <h3>Armadilha de verificador</h3>
+    <p>A primeira versão deste teste casava o número sozinho e dava 72,5% de “já no contexto”. Era
+    falso: o Miller imprime as citações bibliográficas como dígitos colados ao texto, então a âncora
+    “20” casava com a referência “207” e “14” com “140”. <strong>Exigir a unidade junto derrubou o
+    número de 72,5% para 30,8%.</strong> Em corpus científico, âncora numérica sem unidade não mede
+    nada — as referências poluem tudo.</p>
+  </div>
+
+  <p>Isso reposiciona o trabalho. Ampliar o corpus tem retorno baixo, porque atinge 5% dos erros. O
+  retorno está na recuperação — e os mecanismos desenhados exatamente para “está no top-50 e não
+  chega ao contexto” (expansão para a seção-pai, reordenação, mais vagas) foram descartados no
+  livro refutado, em n=300, com amplitude menor que o ruído. Nunca foram testados no corpus atual.</p>
+</section>
+
+<section>
+  <h2>O que fica estabelecido</h2>
+  <ul>
+    <li><strong>RAG funciona:</strong> as três variantes batem o controle sem RAG com folga (Holm &lt; 0,001).</li>
+    <li><strong>O corpus normativo desfaz a inversão</strong> em jurídico-normativo, onde o RAG do livro era pior que RAG nenhum.</li>
+    <li><strong>A cota protege contra rótulo errado</strong> sem custar o ganho principal — e resgatou gestão por completo.</li>
+    <li><strong>Nenhuma variante de RAG é distinguível das outras</strong> neste n e nesta temperatura.</li>
+    <li><strong>O Opus 5 sem busca ainda lidera por 4,8 pp</strong> sobre a melhor configuração local (Holm = 0,010).</li>
+  </ul>
+</section>
+
+<footer>
+  Gemma 4 31B via llama-swap local · EmbeddingGemma 300M · busca densa exata sobre SQLite + NumPy ·
+  corpus Miller’s Anesthesia 10e (14.628 trechos) e 54 documentos normativos (607 trechos).
+  Conjunto de teste ainda intocado.
+</footer>
+
+</div>

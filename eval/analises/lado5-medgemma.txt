@@ -1,0 +1,115 @@
+
+##############################################################################
+#  V2 ACERTOU  (5 itens) · medgemma-clinical · ancoragem confiante
+##############################################################################
+
+------------------------------------------------------------------------------
+[1] ME3-3o-Tri-substitutiva-gabarito q3B
+ENUNC : Sobre anestesia em intervenções coronarianas percutâneas (PCI), avalie as alternativas:
+ASSERT: durante PCI, o acesso à cabeça do paciente pode ser limitado pelo posicionamento do equipamento de imagem.
+GABAR : V   |   sem RAG: V OK   |   com RAG: V OK   
+  sem RAG diz: Como um modelo de linguagem, não posso fornecer aconselhamento médico. As informações abaixo são baseadas em conhecimento geral e devem ser verificadas com fontes médicas confiáveis.
+  RAG trouxe: cap32 p494-496 · CONCLUSÃO DO CASO, cap13 p190-190 · PERGUNTAS DO DIA, cap22 p350-350 · COMPLICAÇÕES > Fármacos Antiplaquetários
+  citações: 0/0 literais
+  com RAG diz: O contexto fornecido não menciona especificamente as limitações de acesso à cabeça do paciente durante intervenções coronarianas percutâneas (PCI) devido ao posicionamento do equipamento de 
+
+------------------------------------------------------------------------------
+[2] ME1-2o-Tri-gabarito-SUBSTITUTIVA_060 q2D
+ENUNC : Nos capnógrafos de fluxo principal (mainstream) e fluxo lateral (sidestream):
+ASSERT: os sensores de CO2 estão longe dos gases das vias aéreas no fluxo lateral.
+GABAR : V   |   sem RAG: V OK   |   com RAG: V OK   
+  sem RAG diz: Como assistente de anestesiologia, posso fornecer informações sobre capnografia, mas a precisão depende da minha base de conhecimento e da clareza da pergunta. Sempre consulte fontes médicas
+  RAG trouxe: cap16 p233-233 · CONFIRMAÇÃO DA INTUBAÇÃO ENDOTRAQUEAL, cap27 p428-429 · O PULMONAR > Tubo de Duplo Lúmen Esquerdo, cap15 p203-203 · Fluxômetros
+    "A presença de dióxido de carbono nos gases exalados do tubo endotraqueal detectados pela capnografia [corrente final Pco, > 30mm Hg por três a cinco respirações consecutivas) deve ser i"
+  citações: 1/1 literais
+  com RAG diz: O texto menciona capnografia como método de confirmação da intubação endotraqueal, detectando CO2 no volume corrente exalado, mas não detalha os tipos de capnógrafos (mainstream vs. sidestre
+
+------------------------------------------------------------------------------
+[3] ME3-2o-Tri-substitutiva-gabarito q5D
+ENUNC : Sobre anestesia e sistema cardiovascular.
+ASSERT: A parada cardíaca induzida por cardioplegia com potássio, por si só, reduz o consumo de oxigênio miocárdico em 90%
+GABAR : V   |   sem RAG: V OK   |   com RAG: V OK   
+  sem RAG diz: Como assistente de anestesiologia, posso fornecer informações sobre anestesia e sistema cardiovascular, mas não posso dar aconselhamento médico específico. A avaliação de uma assertiva como 
+  RAG trouxe: cap25 p394-394 · INSUFICIÊNCIA CARDÍACA CONGESTIVA > Gerenciamento da Anestesia, cap25 p400-400 · ANEURISMA DA AORTA > Proteção Miocárdica, cap25 p385
+    "O repouso eletromecânico do coração a n·c consome oxigênio em uma taxa de 0,3 mL/IOOg/min. O consumo de oxig~nio na fibrilaçllo ventricular a 2rC é de 2 mL/lOOg/mín. A contratilidade no"
+  citações: 0/1 literais
+  com RAG diz: O texto menciona que a cardioplegia fria (potássio + hipotermia) reduz o consumo de oxigênio miocárdico para 0,3 mL/100g/min, enquanto a contratilidade normal consome 8-10 mL/100g/min e a fi
+
+------------------------------------------------------------------------------
+[4] ME3-1o-Tri-gabarito-SUBSTITUTIVA_-08 q1A
+ENUNC : Sobre disfunção tireoideana perioperatória:
+ASSERT: o aumento do hormônio estimulante da tireoide (TSH) é o indicador mais sensível do hipotireoidismo.
+GABAR : V   |   sem RAG: V OK   |   com RAG: V OK   
+  sem RAG diz: Como assistente de anestesiologia, posso fornecer informações sobre o manejo perioperatório de pacientes com disfunção tireoidiana. No entanto, a interpretação de exames laboratoriais e o di
+  RAG trouxe: cap29 p458-458 · CONSIDERAÇÕES PERIOPERATÓRIAS, cap31 p484-484 · CIRURGIA DE TIREOIDE E PARATIREOIDE, cap29 p456-457 · CONSIDERAÇÕES PERIOPERATÓRIAS >
+    "O hiporireoidismo é caracterizado por níveis circulatórios diminuidos de hormônios tireoidianos livres, triiodotironina (T3) e tetraiodotironina (tiroxina, ou T4). O hipotireoidismo pri"
+  citações: 0/1 literais
+  com RAG diz: O texto menciona que o hipotireoidismo primário é diagnosticado por baixos níveis de T4 e T3, mas um TSH elevado. O texto não afirma explicitamente que o TSH é o indicador *mais sensível* do
+
+------------------------------------------------------------------------------
+[5] ME3-1o-Tri-Substitutiva-gabarito q4E
+ENUNC : Sobre as complicações durante a anestesia para cirurgias bucomaxilofaciais:
+ASSERT: a laceração do balonete, durante a osteotomia/fratura da maxila, é uma intercorrência possível e tecnicamente complicada, obrigando o tamponamento ou a troca do tubo no intraoperatório.
+GABAR : V   |   sem RAG: V OK   |   com RAG: V OK   
+  sem RAG diz: Como assistente de anestesiologia, posso fornecer informações sobre complicações anestésicas e suas implicações. No entanto, a questão específica sobre a laceração do balonete durante a oste
+  RAG trouxe: cap31 p480-480 · OTORRINOLARINGOLOGIA, cap16 p231-231 · TÉCNICA, cap3 p37-37
+    "O tubo rron deve ser manualmente sustentado durante orotraqueal o reposicionamento do paciente, como durante a rotação da cabeça, pois a movimenta.ção pode resultar em entubação endobro"
+    "Outras complicações sérias atribuíveis às pressões do balonete endotraqueal incluem a e~tenose traqueal, a ruptura de traqueia, fistulas traqueoe~ofageanas, fístulas traqueocarotideas e"
+  citações: 2/2 literais
+  com RAG diz: O contexto menciona complicações relacionadas à intubação traqueal (laceração da mucosa, entubação endobronquial, oclusão do tubo, vazamentos do manguito, desconexão, deslocamento do TOT, ex
+
+##############################################################################
+#  V2 ERROU  (5 itens) · medgemma-clinical · ancoragem confiante
+##############################################################################
+
+------------------------------------------------------------------------------
+[1] ME3-2o-Tri-Substitutiva-gabarito q3D
+ENUNC : Sobre a hipotermia intraoperatória:
+ASSERT: a anestesia geral aumenta a perda cutânea de calor de forma significativa.
+GABAR : F   |   sem RAG: V ERRO |   com RAG: V ERRO 
+  sem RAG diz: Como assistente de anestesiologia, posso fornecer informações sobre hipotermia intraoperatória e seus fatores contribuintes. No entanto, a avaliação da assertiva depende de uma compreensão p
+  RAG trouxe: cap20 p323-323 · MONITORAMENTO DA TEMPERATURA, cap35 p556-556 · A IDADE > Alterações na Taxa Metabólica Basal, cap34 p541-541 · TERMORREGULAÇÃO E PERD
+    "Mudanças na temperatura corporal são eventos intraoperatórios frequentes durante procedimentos cirúrgicos. O estado exposto do paciente faz com que a pele esfrie e, ainda mais important"
+  citações: 0/1 literais
+  com RAG diz: O contexto menciona que anestésicos gerais causam declínio no funcionamento da termorregulação e propriedades vasodilatadoras, levando à perda de calor central para áreas periféricas. Também
+
+------------------------------------------------------------------------------
+[2] ME2-4o-Tri-Substitutiva-gabarito q3D
+ENUNC : Sobre a cirurgia do ouvido médio, mastoide e ouvido interno:
+ASSERT: estiramento do plexo braquial ou da coluna cervical são complicações do posicionamento do paciente nas cirurgias do ouvido.
+GABAR : V   |   sem RAG: V OK   |   com RAG: F ERRO 
+  sem RAG diz: Como assistente de anestesiologia, posso fornecer informações sobre complicações relacionadas ao posicionamento em cirurgias, mas a especificidade de complicações como estiramento do plexo b
+  RAG trouxe: cap19 p308-308 · LESÃO DE NERVO PERIFÉRICO > Plexo Braquial, cap31 p481-481 · CIRURGIA DE OUVIDO > Náusea e Vômito Pós-operatórios, cap18 p295-296 · A
+  citações: 0/0 literais
+  com RAG diz: O contexto menciona complicações do posicionamento do paciente em geral, incluindo lesões do plexo braquial (em vários contextos de posicionamento, como Trendelenburg, suporte de ombro) e le
+
+------------------------------------------------------------------------------
+[3] ME1-1o-Tri-substitutiva-gabarito q1D
+ENUNC : Sobre ética na prática da anestesiologia, responda:
+ASSERT: a doação de órgãos ou tecidos por doadores vivos é permitida apenas para parentes até o quarto grau ou cônjuges. No caso de doadores não aparentados, a doação só pode ocorrer mediante autorização judicial.
+GABAR : V   |   sem RAG: F ERRO |   com RAG: F ERRO 
+  sem RAG diz: Como assistente de anestesiologia, posso fornecer informações gerais sobre ética na prática, mas a legislação sobre doação de órgãos pode variar. Recomendo consultar as leis e regulamentos e
+  RAG trouxe: cap36 p570-570 · REFERÊNCIAS, cap13 p180-181 · TESTES, cap13 p181-182 · TESTES > Data
+  citações: 0/0 literais
+  com RAG diz: O contexto fornecido é sobre transplantes de órgãos em geral, com foco em anestesia para transplantes e avaliação pré-operatória. Ele menciona a escassez de órgãos, o aumento da doação pós-m
+
+------------------------------------------------------------------------------
+[4] ME3-4o-Tri_1224 q3E
+ENUNC : Sobre gerenciamento do centro cirúrgico:
+ASSERT: o tempo de sala de operação superutilizado é calculado como a carga de trabalho da sala de operação menos o tempo de sala de operação alocado, ou zero se negativo. PROVA TRIMESTRAL 04/04 – ME3/2024 CCA
+GABAR : V   |   sem RAG: V OK   |   com RAG: F ERRO 
+  sem RAG diz: Como um modelo de linguagem, não tenho acesso a documentos específicos como 'PROVA TRIMESTRAL 04/04 – ME3/2024 CCA'. Minha resposta é baseada no conhecimento geral sobre gerenciamento de cen
+  RAG trouxe: cap45 p710-711 · EFICIÊNCIA DO CENTRO CIRÚRGICO, cap45 p711-712 · EFICIÊNCIA DO CENTRO CIRÚRGICO > Utilização do Centro Cirúrgico, cap36 p572-572 · DA
+  citações: 0/0 literais
+  com RAG diz: O texto descreve a diferença entre horas subutilizadas e superutilizadas no contexto do turno de trabalho da equipe, mas não define explicitamente como o 'tempo de sala de operação superutil
+
+------------------------------------------------------------------------------
+[5] ME1-1o-Tri-Substitutiva-gabarito q5C
+ENUNC : Sobre os dispositivos supra-glóticos (DSG):
+ASSERT: diferente da intubação traqueal, o uso dos DSG não induz o surgimento de disfagia pós-operatória.
+GABAR : F   |   sem RAG: F OK   |   com RAG: V ERRO 
+  sem RAG diz: Como assistente de anestesiologia, posso fornecer informações sobre dispositivos supra-glóticos (DSG) e disfagia pós-operatória. No entanto, a decisão final sobre o uso de um DSG específico 
+  RAG trouxe: cap15 p220-220 · AGRADECIMENTOS > Paciente Acordado, cap16 p229-229 · ADJUNTOS DE VIAS AÉREAS > Necessidade de sucção frequente, cap16 p242-243 · TRAQ
+    "Faringites são as reclamações mais frequentes após extubação, particularmente em mulheres, presumivelmente em razão da cobertura da mucosa que recobre as cordas vocais posteriores ser m"
+  citações: 0/1 literais
+  com RAG diz: O contexto lista vários dispositivos supraglóticos (DSG) e descreve técnicas de intubação traqueal, incluindo complicações como laringoespasmo e faringite pós-extubação. No entanto, não há i

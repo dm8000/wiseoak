@@ -1,0 +1,18 @@
+universo 1003  ·  so o Opus acertou: 126  ·  so o WiseOak acertou: 76
+saldo do Opus: +50 itens (+5.0%)
+
+ONDE O OPUS GANHOU, POR CLASSE
+classe                   n na  so Opus  so nosso   saldo  % da classe
+fisiopatologia            384       38        23     +15        3.9%
+farmacologia              172       18        10      +8        4.7%
+valor-numerico            162       35        21     +14        8.6%
+tecnica                   152       13        14      -1       -0.7%
+juridico-normativo         65       15         5     +10       15.4%
+imagem                     37        4         3      +1        2.7%
+gestao                     31        3         0      +3        9.7%
+
+TOTAL                    1003      126        76     +50
+
+formato: {'vf': 94, 'mcq': 32}
+gabarito dos que so o Opus acertou (V/F): {'V': 60, 'F': 34}
+  -> nesses itens o nosso respondeu o oposto

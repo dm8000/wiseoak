@@ -1,0 +1,16 @@
+{
+  "dependencies": [
+    "."
+  ],
+  "graphs": {
+    "v0_sem_rag": "wiseoak.grafos.variantes:v0_sem_rag",
+    "v1_denso": "wiseoak.grafos.variantes:v1_denso",
+    "v2_hibrido": "wiseoak.grafos.variantes:v2_hibrido",
+    "v3_reformula": "wiseoak.grafos.variantes:v3_reformula",
+    "v4_autocritica": "wiseoak.grafos.variantes:v4_autocritica",
+    "flowbot_melhor": "wiseoak.grafos.variantes:grafo_flowbot",
+    "v5_portao": "wiseoak.grafos.variantes:v5_portao",
+    "v6_denso_portao": "wiseoak.grafos.variantes:v6_denso_portao"
+  },
+  "env": ".env"
+}
