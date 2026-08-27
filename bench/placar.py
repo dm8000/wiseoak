@@ -45,6 +45,7 @@ INTERNOS = {
     ("COMPLETO-m10", "v1"): "WiseOak v1 (+ RAG Miller 10e)",
     ("ROTEADO",      "v8"): "WiseOak v2 (+ RAG normas, roteado)",
     ("COTA",         "v10"): "WiseOak v3 (cota: normas + livro)",
+    ("V4",           "v10"): "WiseOak v4 (cota + falsificação + k=8)",
 }
 
 
@@ -109,7 +110,7 @@ def main() -> int:
                     help="blocos da bancada a incluir (repetivel)")
     ap.add_argument("--saida", type=Path, default=ANALISES / "placar.txt")
     a = ap.parse_args()
-    blocos = a.bloco or ["COMPLETO-m10", "ROTEADO", "COTA"]
+    blocos = a.bloco or ["COMPLETO-m10", "ROTEADO", "COTA", "V4"]
 
     gab = carregar_gabarito()
     sistemas = {**acertos_internos(blocos), **acertos_externos(gab)}

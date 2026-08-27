@@ -1,0 +1,28 @@
+TRIAGEM · 231 questões que já foram erradas · 2 repetições · temp=0.0
+
+CRITÉRIO CONSERVADOR: um item só conta se for ESTÁVEL nos dois braços — o braço
+acerta em todas as repetições e o controle erra em todas, ou o inverso. Item que
+oscila em qualquer um dos dois vai para INSTÁVEL e não entra em nenhum saldo.
+
+ESTA TABELA RANQUEIA, NÃO ESTABELECE. O conjunto é cego a regressão: um braço que
+recupera aqui pode quebrar questões que já estavam certas, e isso só aparece na
+corrida do banco inteiro.
+
+  braço       recuperou   quebrou   saldo  instável  acerto*
+  controle            —         —       —        26   13.9%
+  k8falsif           53        15     +38        27   34.6%
+
+* acerto = acertou em TODAS as repetições, sobre o conjunto inteiro.
+  Não é comparável ao placar: este conjunto é só de questões já erradas.
+
+POR CLASSE (recuperou / quebrou, só itens estáveis)
+  classe                    n    k8falsif
+  fisiopatologia           64      +14/-5 
+  valor-numerico           53      +12/-1 
+  tecnica                  40       +6/-3 
+  farmacologia             34       +7/-5 
+  juridico-normativo       20       +6/-0 
+  imagem                   13       +6/-0 
+  gestao                    7       +2/-1 
+
+tempo: 78 min

@@ -682,3 +682,67 @@ sendo medidos antes de comprometer as ~6 h da corrida no banco inteiro.
 É cega a regressão. Um braço que recupera 40 aqui pode quebrar mais que isso entre as 767
 questões que já estavam certas, e isso só aparece no banco inteiro. Nenhum braço é adotado
 sem essa corrida.
+
+## ROADMAP — fora de escopo agora
+
+### Testar `reasoning-medical-27B` (Qwen 3.6-27B com fine-tune médico)
+Pedido do usuário em 2026-08-27, explicitamente fora de escopo no momento.
+
+**Por que ele é interessante à luz do achado de hoje.** Mediu-se que o ganho de +10 pp da
+ancoragem "raciocine antes de responder" e o ruído de 12,5% são o MESMO mecanismo: a
+`ressalva` é gerada antes da `resposta` DENTRO do JSON, e a variação numérica da
+decodificação especulativa transborda do texto para o veredito.
+
+Um modelo com **canal de thinking nativo** poderia desacoplar as duas coisas: o raciocínio
+acontece fora do JSON, o campo `resposta` continua sendo o primeiro do schema, e a
+`estrita` (que mediu 0/40 de discordância) volta a ser viável sem perder o raciocínio.
+Se isso se confirmar, resolve um problema que hoje não tem solução na configuração atual.
+
+**A verificar ANTES de planejar medição** — a mesma checagem que reprovou o MedGemma 27B:
+1. emite `tool_calls`? (o `medgemma-clinical` emite ZERO; o `gemma4-plan` emite)
+2. tem canal de thinking de verdade, separado do conteúdo? (o MedGemma não tem)
+3. cabe no orçamento de VRAM? Só um modelo de ~18 GB por vez na GPU, e a troca custa 5,5 s
+4. responde em português com qualidade? (o `v7`, que traduzia a consulta para inglês,
+   despencou de 51,2% para 32,6% — idioma não é detalhe nesta bancada)
+
+Falhar em (1) ou (2) não desqualifica: o modelo ainda serviria como braço de comparação,
+como o MedGemma serviu. Mas muda o desenho do experimento.
+
+**Custo de disco:** verificar antes de baixar. O usuário já sinalizou disco apertado, e o
+projeto tem a regra de não duplicar modelos.
+
+## Combinação k8+falsif: efeitos aditivos, quebra não aumenta (2026-08-27)
+
+Critério FIXADO ANTES de ver o resultado: combinação vence se saldo ≥ +30 e quebra ≤ 20;
+qualquer coisa abaixo disso, `falsif` sozinho. Empate técnico contava como derrota da
+combinação, por ela custar contexto dobrado.
+
+| braço | recuperou | quebrou | saldo | acerto no conjunto |
+|---|---:|---:|---:|---:|
+| controle (v10) | — | — | — | 13,9% |
+| k8 sozinho | 27 | 7 | +20 | 25,5% |
+| falsif sozinho | 40 | 15 | +25 | 29,4% |
+| **k8+falsif** | **53** | **15** | **+38** | **34,6%** |
+
+**Os efeitos são aditivos.** A união dos dois medidos separadamente dava 54 recuperadas; a
+combinação entrega 53. Não há interferência — o receio de que o contexto dobrado diluísse
+a instrução do `falsificacao` (que pede para procurar o erro na afirmação) não se
+confirmou.
+
+**E a quebra NÃO aumentou:** 15 no `falsif` sozinho, 15 na combinação. O componente `k8`
+acrescentou 13 recuperações a custo zero de quebra. Por classe: juridico-normativo +6/−0,
+imagem +6/−0, valor-numerico +12/−1.
+
+### WiseOak v4 = v10 + `falsificacao` + k_contexto 8
+NÃO é grafo novo: são dois parâmetros sobre o v10. O rótulo no banco sai
+`v10|anc=falsificacao|rac=nenhum|ix=m10|k=8/8`, auto-documentado.
+
+Rodando no banco inteiro com a temperatura PADRÃO, não com `temp=0`. Contraintuitivo depois
+do achado do schema, mas é o certo: todas as outras linhas do placar foram medidas assim, e
+trocar a condição só na linha nova invalidaria a comparação. A instabilidade fica como
+ressalva à parte, nunca misturada dentro da tabela.
+
+**Expectativa registrada ANTES do resultado:** não esperar +38 no total. Aquele número é
+sobre 231 itens selecionados por terem falhado, e a triagem é cega ao que o v4 quebra entre
+as 767 que já estavam certas. Ganho de 2 a 4 pp sobre os 80,6% do v3 já seria bom; muito
+acima disso merece desconfiança antes de comemoração.
