@@ -136,6 +136,7 @@ def montar_pergunta(item: dict) -> tuple[str, str]:
 
 def rodar_celula(grafo_nome: str, itens: list[dict], *, modelo: str, raciocinio: str,
                  indice: Indice | None, k_busca: int, k_contexto: int,
+                 temp: float | None,
                  ancoragem: str = "estrita") -> dict:
     grafo = construir(grafo_nome)
     acertos: dict[str, bool] = {}
@@ -159,7 +160,7 @@ def rodar_celula(grafo_nome: str, itens: list[dict], *, modelo: str, raciocinio:
             r = grafo.invoke(estado_inicial(
                 pergunta, modo=modo, modelo=modelo, raciocinio=raciocinio,
                 indice=indice, k_busca=k_busca, k_contexto=k_contexto,
-                ancoragem=ancoragem))
+                ancoragem=ancoragem, temp=temp))
         except Exception as e:  # nunca derruba o bloco por falha de uma pergunta
             print(f"\n  ERRO em {it['id']}: {type(e).__name__}: {e}", file=sys.stderr)
             acertos[it["id"]] = False
@@ -228,6 +229,8 @@ def main() -> int:
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--grafos", default="v0,v2", help="lista separada por virgula")
     ap.add_argument("--modelos", default="medgemma-clinical")
+    ap.add_argument("--temp", type=float, default=None,
+                    help="temperatura da geracao; 0 remove o ruido entre execucoes")
     ap.add_argument("--ancoragem", default="estrita",
                     choices=("estrita", "com_ressalva", "confiante", "analista", "analista_leve", "bib_so", "falsificacao"),
                     help="estrita = so o contexto; com_ressalva = responde sempre, "
@@ -280,7 +283,8 @@ def main() -> int:
                       f"{livros}", file=sys.stderr)
             for rep in range(1, a.repeticao + 1):
                 setup = (f"{grafo}|anc={a.ancoragem}|rac={a.raciocinio}|ix={a.indice.name}"
-                         f"|k={a.k_busca}/{a.k_contexto}"
+                         + (f"|t={a.temp}" if a.temp is not None else "")
+                         + f"|k={a.k_busca}/{a.k_contexto}"
                          + (f"|rep={rep}" if a.repeticao > 1 else ""))
                 print(f"\n[{modelo}] {setup} · {a.bench}/{a.split} n={len(itens)}",
                       file=sys.stderr)
@@ -288,7 +292,7 @@ def main() -> int:
                 res = rodar_celula(grafo, itens, modelo=modelo,
                                    raciocinio=a.raciocinio, indice=ix,
                                    k_busca=a.k_busca, k_contexto=a.k_contexto,
-                                   ancoragem=a.ancoragem)
+                                   ancoragem=a.ancoragem, temp=a.temp)
                 db.execute(
                     "INSERT INTO resultado (modelo,setup,bench,quando,n,metricas,itens,"
                     "termica,segundos,bloco) VALUES (?,?,?,?,?,?,?,?,?,?)",

@@ -347,9 +347,85 @@ def v10_cota():
     contexto em vez de todo ele.
     """
     def montar(g: StateGraph):
+        def contexto(e):
+            # FIXO em False: e o comportamento medido como WiseOak v3. `estado_inicial`
+            # traz expandir_pai=True por padrao, e o no de cota passou a honrar a flag —
+            # sem fixar aqui, o v10 deixaria de reproduzir o proprio resultado.
+            return comum.no_contexto_cota({**e, "expandir_pai": False})
+
         g.add_node("rotear", comum.no_rotear)
         g.add_node("recuperar", comum.no_recuperar_cota)
-        g.add_node("contexto", comum.no_contexto_cota)
+        g.add_node("contexto", contexto)
+        g.add_node("responder", comum.no_responder)
+        g.add_edge(START, "rotear")
+        g.add_edge("rotear", "recuperar")
+        g.add_edge("recuperar", "contexto")
+        g.add_edge("contexto", "responder")
+        g.add_edge("responder", END)
+    return _compilar(montar)
+
+
+def v11_cota_rerank():
+    """
+    v3 (cota) mais REORDENACAO: recupera um pool maior e o rerankeador escolhe as vagas.
+
+    O v10 preenche as vagas por similaridade de cosseno, que ordena por PARECENCA de
+    topico. Medido no dossie: em 41% dos erros clinicos a resposta esta no top-50 e nao
+    entra nas 4 vagas — o trecho certo e recuperado e perde a vaga para um mais parecido.
+    O cross-encoder pontua pergunta-contra-trecho, que e o que separa "fala do assunto"
+    de "responde a pergunta".
+
+    Foi descartado antes medindo no `h512` (o livro refutado, n=300, amplitude menor que
+    o ruido). Nunca foi testado no Miller completo, e a refutacao do BM25 ja falhou em
+    transferir de um corpus para outro.
+
+    O rerank roda em CPU e custa ~1,2 s por trecho: o pool e o gargalo, nao o k final.
+    """
+    def montar(g: StateGraph):
+        def recuperar(e):
+            # pool maior SO aqui: e o rerankeador que corta para k_contexto
+            return comum.no_recuperar_cota({**e, "k_busca": max(20, comum.cfg(e, "k_busca"))})
+
+        def rerankear(e):
+            # os candidatos vem marcados "fonte|id"; o rerank precisa do id puro
+            marcados = e["candidatos"]
+            de = {m.split("|", 1)[1]: m.split("|", 1)[0] for m in marcados}
+            puros = [m.split("|", 1)[1] for m in marcados]
+            r = comum.no_rerankear({**e, "candidatos": puros})
+            r["candidatos"] = [f"{de[c]}|{c}" for c in r["candidatos"]]
+            return r
+
+        g.add_node("rotear", comum.no_rotear)
+        g.add_node("recuperar", recuperar)
+        g.add_node("rerankear", rerankear)
+        g.add_node("contexto",
+                   lambda e: comum.no_contexto_cota({**e, "expandir_pai": False}))
+        g.add_node("responder", comum.no_responder)
+        g.add_edge(START, "rotear")
+        g.add_edge("rotear", "recuperar")
+        g.add_edge("recuperar", "rerankear")
+        g.add_edge("rerankear", "contexto")
+        g.add_edge("contexto", "responder")
+        g.add_edge("responder", END)
+    return _compilar(montar)
+
+
+def v12_cota_pai():
+    """
+    v3 (cota) trocando o trecho curto pela SECAO-PAI que o contem.
+
+    Mesma medicao que motiva o rerank, atacada por outro lado: em 41% dos erros clinicos
+    a resposta esta no top-50 e nao entra nas vagas, e nos casos inspecionados a busca
+    acerta o topico e erra a frase — o fato especifico esta a um paragrafo do trecho
+    recuperado. Trazer a secao inteira traz o vizinho junto.
+
+    Barato: nenhuma chamada extra de modelo, so um SELECT do pai. O custo e prompt maior.
+    """
+    def montar(g: StateGraph):
+        g.add_node("rotear", comum.no_rotear)
+        g.add_node("recuperar", comum.no_recuperar_cota)
+        g.add_node("contexto",
+                   lambda e: comum.no_contexto_cota({**e, "expandir_pai": True}))
         g.add_node("responder", comum.no_responder)
         g.add_edge(START, "rotear")
         g.add_edge("rotear", "recuperar")
@@ -371,6 +447,8 @@ GRAFOS = {
     "v8": v8_roteado,
     "v9": v9_formulario,
     "v10": v10_cota,
+    "v11": v11_cota_rerank,
+    "v12": v12_cota_pai,
 }
 
 
@@ -402,10 +480,12 @@ def estado_inicial(pergunta: str, *, modo: comum.Modo = "livre",
                    modelo: str = "gemma4-plan",
                    raciocinio: comum.Raciocinio = "nenhum",
                    ancoragem: comum.Ancoragem = "estrita",
-                   indice=None, k_busca: int = 20, k_contexto: int = 5) -> Estado:
+                   indice=None, k_busca: int = 20, k_contexto: int = 5,
+                   temp: float | None = None) -> Estado:
     return {
         "pergunta": pergunta, "modo": modo, "modelo": modelo,
         "raciocinio": raciocinio, "ancoragem": ancoragem, "indice": indice,
         "k_busca": k_busca, "k_contexto": k_contexto,
         "hibrido": True, "expandir_pai": True, "trace": [],
+        **({"temp": temp} if temp is not None else {}),
     }

@@ -51,7 +51,7 @@ Raciocinio = Literal["nenhum", "prompt", "nativo"]
 # do tema sem decidir o ponto exato, REGISTRA a lacuna no campo `ressalva` e responde
 # assim mesmo. O campo existe para ser CONTADO — quantas vezes dispara, e qual o acerto
 # com e sem ela — nao para ser lido por um juiz.
-Ancoragem = Literal["estrita", "com_ressalva", "confiante", "analista",
+Ancoragem = Literal["estrita", "com_ressalva", "confiante", "confiante_quantificador", "analista",
                     "analista_leve", "bib_so", "falsificacao"]
 
 
@@ -76,6 +76,10 @@ PADRAO = {
     "k_contexto": 5,
     "hibrido": True,
     "expandir_pai": True,
+    # 0.3 e o historico da bancada. A triagem roda com 0: nas questoes que o modelo
+    # responde na duvida — que sao exatamente as do conjunto de erros — 14,9% trocam de
+    # resposta entre execucoes, e comparar bracos sob esse ruido nao decide nada.
+    "temp": 0.3,
 }
 
 
@@ -100,6 +104,7 @@ class Estado(TypedDict):
     k_busca: NotRequired[int]
     k_contexto: NotRequired[int]
     hibrido: NotRequired[bool]
+    temp: NotRequired[float]
     expandir_pai: NotRequired[bool]
     # --- preenchido pelos nos
     consulta: NotRequired[str]
@@ -309,6 +314,22 @@ SISTEMA: dict[str, str] = {
         "EXATO entre aspas, copiado literalmente.\n\n"
         "Decida sempre. Nao se abstenha."),
 }
+
+# `confiante` LETRA POR LETRA mais tres verificacoes. Os padroes vem do dossie de erro:
+# o modelo ignora quantificador (trata "frequente" como "pode"), le negacao por cima
+# ("non-polluting") e inverte relacao ("ke0 grande" significa meia-vida CURTA).
+#
+# Deliberadamente CURTO e sem roteiro de passos: esta bancada mediu envelope generico de
+# prompt derrubando o RAG de 93,3% para 80%. Diz o que CONFERIR, nao como pensar.
+SISTEMA["confiante_quantificador"] = SISTEMA["confiante"] + (
+    "\n\nAntes de decidir, confira tres pontos NA AFIRMACAO:\n"
+    "1. QUANTIFICADOR - 'sempre', 'todos', 'nunca', 'frequente' afirmam mais que 'pode' "
+    "ou 'ocorre'. Se a fonte so sustenta a forma fraca, a forma forte e FALSA.\n"
+    "2. NEGACAO - leia 'nao', 'sem', 'exceto', 'contraindicado' literalmente; uma "
+    "negacao trocada inverte a afirmacao inteira.\n"
+    "3. RELACAO - 'maior', 'mais rapido', 'aumenta' tem de apontar para o mesmo lado que "
+    "a fonte. Constante grande costuma significar tempo CURTO.")
+
 
 INSTRUCAO: dict[Modo, str] = {
     "livre": "Responda a pergunta. Em 'citacoes', liste os trechos do livro em que voce "
@@ -612,13 +633,22 @@ def no_contexto_cota(estado: Estado) -> dict:
         if c["id"] in vistos:
             continue
         vistos.add(c["id"])
+        alvo = c
+        if cfg(estado, "expandir_pai"):
+            # o filho ganha a busca, o pai da o entorno. Medido: em 41% dos erros
+            # clinicos a resposta esta no top-50 e nao entra nas vagas — o fato
+            # especifico costuma estar a um paragrafo do trecho recuperado.
+            pai = _fonte_de(estado, fonte).pai_de(cid)
+            if pai:
+                alvo = {**pai, "id_filho": cid}
         # natureza da fonte, nao so o nome: o modelo precisa saber que um artigo de
         # resolucao DEFINE obrigatoriedade, enquanto o livro DESCREVE pratica. Sem isso
         # ele pode responder "e obrigatorio" a partir do que o Miller recomenda.
-        contexto.append({**c, "natureza": "NORMA" if fonte == "normas" else "LIVRO"})
+        contexto.append({**alvo, "natureza": "NORMA" if fonte == "normas" else "LIVRO"})
     return {"contexto": contexto,
             **_marcar("contexto", t0, n=len(contexto),
                       chars=sum(len(c["texto"]) for c in contexto),
+                      expandiu_para_pai=cfg(estado, "expandir_pai"),
                       fontes={f: sum(1 for x, _ in intercalado[:k] if x == f)
                               for f in por_fonte},
                       trechos=[f"{c.get('livro','?')[:24]} p{c.get('pagina_inicial')}"
@@ -735,7 +765,8 @@ def no_responder(estado: Estado) -> dict:
          {"role": "user", "content": "\n\n".join(partes)}],
         modelo=cfg(estado, "modelo"),
         think=True if cfg(estado, "raciocinio") == "nativo" else False,
-        max_tokens=4096, temp=0.3, schema=schema_para(modo, ancoragem))
+        max_tokens=4096, temp=cfg(estado, "temp"),
+        schema=schema_para(modo, ancoragem))
 
     saida: dict = {"truncou": r["truncou"]}
     try:

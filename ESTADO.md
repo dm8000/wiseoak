@@ -598,3 +598,39 @@ precisam disso em conta. As linhas afetadas vêm marcadas com `[!]` no dossiê, 
 
 Isso reforça a recomendação já registrada: baixar `temp` para 0 antes de qualquer análise
 fina de erro.
+
+## A causa do ruído da bancada: texto antes do veredito (2026-08-27)
+
+O portão de verificação do plano ("A/A a temp=0 tem de dar zero discordantes") FALHOU, e
+foi para isso que ele existia. A `temp=0` a discordância foi de 12,5% em 40 itens V/F —
+não menor que a 0,3, e sim comparável.
+
+A causa não é a temperatura deixar de chegar ao modelo (verificado: chega, e a API isolada
+a `temp=0` devolve 1 saída distinta em 3). É a ORDEM DOS CAMPOS DO SCHEMA:
+
+| ancoragem | campos | discordantes a temp=0, n=40 |
+|---|---|---:|
+| `estrita` | `resposta` → `citacoes` | **0 (0,0%)** |
+| `confiante` | **`ressalva`** → `resposta` → `citacoes` | **5 (12,5%)** |
+
+**A pilha é determinística.** O `gemma4-plan` usa decodificação especulativa (MTP), que
+introduz variação numérica de GPU; em texto livre longo isso desempata tokens quase iguais.
+Como `ressalva` é gerada ANTES de `resposta`, a divergência do texto entra no contexto do
+veredito e transborda para ele. Em três pares inspecionados, resposta e contexto eram
+idênticos e só a ressalva divergia — mas em 12,5% dos casos chega ao veredito.
+
+**A consequência é desconfortável e precisa ficar registrada:** a ordem `ressalva` antes de
+`resposta` foi adotada por medição (campo depois da resposta vira racionalização pós-fato;
+mediu-se o modelo escrevendo a justificativa correta e ainda respondendo errado), e a
+ancoragem `confiante` vale +10 pp. **O ganho de acerto e o ruído de medição são o mesmo
+mecanismo.** Não existe configuração que tenha os dois.
+
+Isso reinterpreta os 3,9% e os 14,9% já medidos: não eram "ruído de temperatura", eram o
+custo de estabilidade do raciocínio-antes-da-resposta. Baixar `temp` NÃO resolve, e a
+recomendação anterior de "rodar tudo a temp=0 para decidir" estava errada.
+
+### Consequência para o desenho de qualquer comparação daqui em diante
+Execução única não decide nada entre variantes próximas. Toda triagem passa a usar
+**repetição por item**, com critério conservador: um item só conta como recuperado se o
+braço acerta em TODAS as repetições e o controle erra em TODAS. Isso troca sensibilidade
+por ausência de falso positivo, que é o que a bancada precisa.
