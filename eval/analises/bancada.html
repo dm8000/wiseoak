@@ -115,10 +115,11 @@ footer{color:var(--muted);font-size:.87rem;border-top:1px solid var(--hair);padd
 
 <header>
   <p class="eyebrow">Bancada · 998 questões · prova da SBA</p>
-  <h1>Um corpus normativo conserta uma classe e não move o placar</h1>
-  <p class="lede">Gemma&nbsp;4 31B local com RAG, medido contra Opus&nbsp;5 e DeepSeek-V3 em questões
-  de provas da Sociedade Brasileira de Anestesiologia. Três desenhos de recuperação, todos
-  indistinguíveis entre si — e a razão disso acabou sendo o achado mais útil.</p>
+  <h1>Cinco desenhos de RAG e um teto que não se move</h1>
+  <p class="lede">Gemma&nbsp;4 31B local respondendo provas da Sociedade Brasileira de
+  Anestesiologia. O primeiro RAG valeu +7,2&nbsp;pp; as quatro iterações seguintes de
+  recuperação e de prompt não moveram nada. A explicação de por que — e a evidência de que
+  o gargalo deixou de ser informação — acabou sendo o resultado do trabalho.</p>
 </header>
 
 <hr class="rule">
@@ -129,7 +130,7 @@ footer{color:var(--muted);font-size:.87rem;border-top:1px solid var(--hair);padd
   Intervalo de Wilson; comparações pareadas por McNemar exato com correção de Holm.</p>
   <div class="tw">
     <table>
-      <caption>acerto por sistema · n = 998</caption>
+      <caption>acerto por sistema · n = 998 · cinco iterações do WiseOak</caption>
       <thead><tr><th>sistema</th><th>total</th><th>V/F</th><th>ME</th><th>IC 95%</th></tr></thead>
       <tbody>
         <tr><td class="sys">Opus 5<span class="tag">effort low, sem busca</span></td>
@@ -140,6 +141,8 @@ footer{color:var(--muted);font-size:.87rem;border-top:1px solid var(--hair);padd
             <td class="num">80,2%</td><td class="num">81,5%</td><td class="num">73,7%</td><td class="num">77,6–82,5%</td></tr>
         <tr><td class="sys">WiseOak v2<span class="tag">RAG normas, roteamento exclusivo</span></td>
             <td class="num">79,9%</td><td class="num">81,2%</td><td class="num">73,1%</td><td class="num">77,3–82,2%</td></tr>
+        <tr><td class="sys">WiseOak v4<span class="tag">cota + falsificação + k=8 · REFUTADO</span></td>
+            <td class="num">77,3%</td><td class="num">78,1%</td><td class="num">73,1%</td><td class="num">74,6–79,7%</td></tr>
         <tr><td class="sys">DeepSeek-V3<span class="tag">thinking + search</span></td>
             <td class="num">77,1%</td><td class="num">78,5%</td><td class="num">70,1%</td><td class="num">74,3–79,6%</td></tr>
         <tr><td class="sys">DeepSeek-V3<span class="tag">thinking</span></td>
@@ -232,24 +235,35 @@ footer{color:var(--muted);font-size:.87rem;border-top:1px solid var(--hair);padd
 </section>
 
 <section>
-  <h2>O achado mais útil não foi o placar</h2>
-  <p>As questões roteadas ao livro executam pipeline <em>idêntico</em> nos três braços — mesmo grafo,
-  mesmo índice, mesmos parâmetros. A diferença entre eles ali deveria ser zero. Não é.</p>
+  <h2>O ruído não vinha da temperatura</h2>
+  <p>Questões roteadas ao livro executam pipeline idêntico entre variantes: a diferença entre
+  elas deveria ser zero, e não é. A suspeita natural era a temperatura de amostragem. Errada.</p>
+  <div class="tw">
+    <table>
+      <caption>A/A com temperatura zero · 40 questões V/F · duas execuções</caption>
+      <thead><tr><th>ancoragem</th><th>ordem dos campos</th><th>discordantes</th></tr></thead>
+      <tbody>
+        <tr><td>estrita</td><td class="num">resposta → citações</td><td class="gain">0 / 40</td></tr>
+        <tr class="mark"><td>confiante</td><td class="num"><strong>ressalva</strong> → resposta</td><td class="loss">5 / 40</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A pilha <em>é</em> determinística — a linha de cima prova. O modelo usa decodificação
+  especulativa, que introduz variação numérica de GPU; em texto livre longo isso desempata
+  tokens quase iguais. Como a <code>ressalva</code> é gerada <strong>antes</strong> da
+  resposta, dentro do mesmo JSON, a divergência do texto entra no contexto do veredito e
+  transborda para ele.</p>
 
   <div class="warn">
-    <h3>Piso de ruído</h3>
-    <p><strong>29 de 747 itens (3,9%) trocam de resposta entre execuções idênticas</strong>, por causa
-    de <code>temperature = 0,3</code> na geração. Qualquer diferença abaixo de ~1 pp no total é
-    indistinguível de ruído — e é exatamente nessa faixa que as três variantes de RAG vivem.</p>
-    <p>Pior: em três corridas, a análise por classe produziu <strong>três falsos positivos com p&nbsp;&lt;&nbsp;0,05</strong>
-    em classes de pipeline idêntico — técnica (p=0,022), fisiopatologia (p=0,013 e p=0,039). Neste
-    banco, análise de subgrupo a temperatura 0,3 gera “significância” espúria como regra, não exceção.</p>
+    <h3>O ganho e o ruído são o mesmo mecanismo</h3>
+    <p>A ordem “raciocínio primeiro, resposta depois” foi adotada por medição: com o campo
+    depois da resposta, o modelo escrevia a justificativa correta e ainda respondia errado.
+    Ela vale +10&nbsp;pp. <strong>E é ela que produz os 12,5% de instabilidade.</strong> Não
+    existe configuração com as duas coisas, e baixar a temperatura não resolve — foi preciso
+    abandonar essa recomendação depois de tê-la feito.</p>
   </div>
-
-  <p>O gargalo de medição deixou de ser o corpus ou o roteamento e passou a ser o ruído. O próximo
-  passo de maior retorno não é melhorar a recuperação: é zerar a temperatura e remedir, para que as
-  comparações voltem a ser decidíveis.</p>
 </section>
+
 
 <section>
   <h2>As respostas estão nos documentos</h2>
@@ -291,15 +305,91 @@ footer{color:var(--muted);font-size:.87rem;border-top:1px solid var(--hair);padd
 </section>
 
 <section>
-  <h2>O que fica estabelecido</h2>
-  <ul>
-    <li><strong>RAG funciona:</strong> as três variantes batem o controle sem RAG com folga (Holm &lt; 0,001).</li>
-    <li><strong>O corpus normativo desfaz a inversão</strong> em jurídico-normativo, onde o RAG do livro era pior que RAG nenhum.</li>
-    <li><strong>A cota protege contra rótulo errado</strong> sem custar o ganho principal — e resgatou gestão por completo.</li>
-    <li><strong>Nenhuma variante de RAG é distinguível das outras</strong> neste n e nesta temperatura.</li>
-    <li><strong>O Opus 5 sem busca ainda lidera por 4,8 pp</strong> sobre a melhor configuração local (Holm = 0,010).</li>
-  </ul>
+  <h2>A quinta tentativa piorou, e ensinou mais que as outras</h2>
+  <p>O v4 juntou as duas mudanças que melhor pontuaram numa triagem sobre as 231 questões já
+  erradas: dobrar o contexto e trocar a ancoragem por uma que manda o modelo <em>procurar o
+  erro</em> na afirmação. Na triagem, +38 líquido. No banco inteiro, <strong>−4,0&nbsp;pp</strong>.</p>
+  <div class="tw">
+    <table>
+      <caption>o que o v4 mudou · 832 questões V/F pareadas contra o v3</caption>
+      <thead><tr><th>questões</th><th>n</th><th>gabarito V</th><th>gabarito F</th></tr></thead>
+      <tbody>
+        <tr><td>que o v4 <strong>quebrou</strong></td><td class="num">87</td>
+            <td class="loss">82 &nbsp;(94%)</td><td class="num">5 (6%)</td></tr>
+        <tr><td>que o v4 <strong>ganhou</strong></td><td class="num">54</td>
+            <td class="num">5 (9%)</td><td class="gain">49 &nbsp;(91%)</td></tr>
+        <tr><td>taxa base do conjunto</td><td class="num">832</td>
+            <td class="num">57%</td><td class="num">43%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>O v4 deslocou o modelo para <strong>negar</strong>. Ganha nas assertivas falsas, perde
+  mais nas verdadeiras — e como V é a maioria do banco, o saldo é negativo. É o mesmo viés de
+  negação que a ancoragem anterior existia para corrigir.</p>
+
+  <div class="warn">
+    <h3>Por que a triagem mentiu</h3>
+    <p>O banco V/F é 43,4% gabarito F. O conjunto das questões já erradas é
+    <strong>50,8%</strong>. Um braço que empurra o modelo para “F” parece ótimo ali e péssimo
+    no banco todo — não por azar, mas por viés estrutural do método.</p>
+    <p><strong>Triar em conjunto de erros só serve para candidatos que não mexem na
+    distribuição de saída.</strong> Para mudanças de recuperação continua válido; para
+    ancoragem e prompt é ativamente enganoso.</p>
+  </div>
 </section>
+
+<section>
+  <h2>Por que o número não sobe</h2>
+  <p>Cinco iterações. A primeira — trocar o livro-texto errado pelo certo — valeu
+  +7,2&nbsp;pp. As quatro seguintes, todas de recuperação ou de prompt, ficaram dentro do
+  ruído ou pioraram. A explicação que a evidência sustenta é que <strong>o gargalo deixou de
+  ser informação</strong>.</p>
+
+  <div class="tw">
+    <table>
+      <caption>quatro medições que apontam para o mesmo lugar</caption>
+      <thead><tr><th>medição</th><th>valor</th><th>o que implica</th></tr></thead>
+      <tbody>
+        <tr><td>respostas presentes no corpus</td><td class="num">95%</td>
+            <td>cobertura está resolvida</td></tr>
+        <tr><td>erros com a resposta <strong>já no contexto entregue</strong></td><td class="num">31%</td>
+            <td>recuperar melhor não alcança um terço das falhas</td></tr>
+        <tr class="mark"><td>Opus 5 <strong>sem RAG</strong> vs. nosso melhor <strong>com RAG</strong></td>
+            <td class="num">+4,8 pp</td>
+            <td>modelo forte sem contexto bate modelo fraco com contexto</td></tr>
+        <tr><td>erros em assertivas V vs. F</td><td class="num">47% / 53%</td>
+            <td>já calibrado; não há viés sobrando para colher</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>A terceira linha é a decisiva. Um modelo mais capaz, sem recuperação nenhuma e sem
+  busca na internet, supera em 4,8&nbsp;pp o nosso sistema com um corpus de 14.628 trechos
+  do Miller e 607 artigos de norma. Se o que faltasse fosse informação, isso não aconteceria.</p>
+
+  <h3>Por que prova de título resiste especialmente a RAG</h3>
+  <p>Banca examina <em>fronteira</em>; livro-texto enuncia <em>centro</em>. O Miller diz que
+  “vários índices de risco pulmonar pré-operatório foram desenvolvidos”; a questão pergunta
+  se o escore ARISCAT tem cinco ou sete variáveis. A recuperação entrega o tópico com
+  confiabilidade e a fronteira sem ela — porque a fronteira muitas vezes não está escrita
+  como frase recuperável, está numa tabela ou é propriedade de quem conhece a área.</p>
+
+  <h3>Por que engenharia de prompt para de render</h3>
+  <p>O modelo já está próximo da calibração: erra 47% em assertivas verdadeiras contra uma
+  base de 57%. A correção de viés disponível já foi colhida, e valeu +10&nbsp;pp. Depois
+  disso, qualquer empurrão vira troca de soma zero — o v4 ganhou 49 questões falsas e perdeu
+  82 verdadeiras. <strong>Não sobrou calibração para explorar.</strong></p>
+
+  <h3>O que isso prevê, e como falsificar</h3>
+  <p>Se a teoria estiver certa, o erro restante é dominado por falhas de discriminação que
+  um modelo de 31B comete <em>com a informação correta em mãos</em> — e o próximo ganho vem
+  de trocar o modelo, não de melhorar a busca.</p>
+  <p>O teste que decide é barato: entregar as mesmas questões <strong>com o nosso contexto
+  recuperado</strong> a um modelo forte. Se ele subir acima dos 85,4% que faz sem contexto, o
+  contexto é bom e o modelo local é que não o aproveita — teoria confirmada. Se ficar igual,
+  o contexto não acrescenta nada e a teoria está errada.</p>
+</section>
+
 
 <footer>
   Gemma 4 31B via llama-swap local · EmbeddingGemma 300M · busca densa exata sobre SQLite + NumPy ·
