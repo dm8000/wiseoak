@@ -746,3 +746,52 @@ ressalva à parte, nunca misturada dentro da tabela.
 sobre 231 itens selecionados por terem falhado, e a triagem é cega ao que o v4 quebra entre
 as 767 que já estavam certas. Ganho de 2 a 4 pp sobre os 80,6% do v3 já seria bom; muito
 acima disso merece desconfiança antes de comemoração.
+
+## REFUTADO: o WiseOak v4. E por que a triagem mentiu (2026-08-27)
+
+O v4 (`v10` + ancoragem `falsificacao` + k_contexto 8) foi medido no banco inteiro e é
+**PIOR que o v3**: 78,1% contra 82,1% no V/F pareado, **−4,0 pp**. A triagem prometia +38.
+
+### O mecanismo: viés de negação reintroduzido
+Das 87 questões que o v4 quebrou, **82 (94%) tinham gabarito V** — o modelo disse F em
+assertivas verdadeiras. Das 54 que ganhou, 49 (91%) tinham gabarito F. Taxa base do
+conjunto: 57% V.
+
+**O v4 deslocou o modelo para negar.** Ganha nas falsas, perde mais nas verdadeiras, e
+como V é maioria, o saldo é negativo. É exatamente o viés que a ancoragem `confiante`
+existia para corrigir (valeu +10 pp) e que a `falsificacao`, ao instruir "procure o erro",
+reintroduz.
+
+É o MESMO mecanismo pelo qual o "Passo 0" da análise externa foi rejeitado — empurrar para
+F. A `falsificacao` faz isso de forma mais sutil, e o efeito é idêntico.
+
+### Por que a triagem no conjunto de erros não podia ver
+| conjunto | n | V | F |
+|---|---:|---:|---:|
+| banco V/F inteiro | 832 | 56,6% | 43,4% |
+| as 231 erradas (V/F) | 177 | 49,2% | **50,8%** |
+
+**O conjunto de erros é enriquecido em gabarito F.** Um braço que empurra para "F" parece
+ótimo ali e péssimo no banco todo. A triagem não errou por azar: ela tem um viés
+ESTRUTURAL que favorece qualquer mudança que desloque a distribuição de respostas.
+
+**Lição generalizável, e a mais importante desta fase:** triagem em conjunto de erros só
+serve para ordenar candidatos que NÃO mexem na distribuição de saída. Para qualquer
+mudança de ancoragem ou de prompt, ela é pior que inútil — é ativamente enganosa. Mudanças
+de recuperação (`k8`, `pai`) são mais seguras de triar assim, porque não tocam no viés de
+resposta.
+
+### O que se salva do v4
+Por classe, o v4 GANHA onde a recuperação era o gargalo e PERDE nas classes grandes:
+`juridico-normativo` +6,8 pp, `imagem` +8,0 pp; `fisiopatologia` −6,5 pp (n=355),
+`farmacologia` −5,1, `tecnica` −5,4.
+
+O componente `k8` sozinho tinha dado +20 na triagem sem tocar em ancoragem — ele continua
+candidato legítimo, e agora é o ÚNICO que sobra: `v10` + `--k-contexto 8`, mantendo
+`confiante`. Precisa da corrida no banco inteiro para valer.
+
+### Correção de ferramenta
+`bench/porclasse.py` marcava "RUÍDO (pipeline idêntico)" para qualquer classe roteada ao
+livro, assumindo que os dois braços tinham a mesma configuração. Na comparação v3→v4 isso
+marcou como ruído um efeito real de −6,5 pp. Corrigido: o aviso só dispara quando
+ancoragem, k e índice coincidem nos dois lados; caso contrário imprime o aviso oposto.

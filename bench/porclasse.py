@@ -34,16 +34,21 @@ def mcnemar(b: int, c: int) -> float:
     return min(1.0, 2 * sum(math.comb(n, i) for i in range(min(b, c) + 1)) / 2 ** n)
 
 
-def carregar(db, spec: str) -> tuple[dict, dict]:
+def carregar(db, spec: str) -> tuple[dict, dict, set]:
     bloco, _, grafo = spec.partition(":")
-    itens, rotas = {}, {}
+    itens, rotas, setups = {}, {}, set()
     for r in db.execute("SELECT setup, metricas, itens FROM resultado WHERE bloco=?",
                         (bloco,)):
         if grafo and r["setup"].split("|")[0] != grafo:
             continue
         itens.update(json.loads(r["itens"]))
         rotas.update(json.loads(r["metricas"]).get("rotas") or {})
-    return itens, rotas
+        # guardar a CONFIGURACAO, nao so o grafo: o aviso de "pipeline identico" so vale
+        # se ancoragem e k tambem coincidirem. Sem isto o aviso mentiu na comparacao
+        # v3 -> v4, marcando como ruido um efeito real de -6,5 pp em fisiopatologia.
+        setups.add("|".join(x for x in r["setup"].split("|")
+                            if x.startswith(("anc=", "k=", "ix="))))
+    return itens, rotas, setups
 
 
 def main() -> int:
@@ -57,8 +62,10 @@ def main() -> int:
            open(RAIZ / "dados" / "questoes_sba.dev.jsonl"))}
     db = sqlite3.connect(RAIZ / "eval" / "resultados.sqlite")
     db.row_factory = sqlite3.Row
-    A, _ = carregar(db, args.a)
-    B, rotas = carregar(db, args.b)
+    A, _, setup_a = carregar(db, args.a)
+    B, rotas, setup_b = carregar(db, args.b)
+    # so ha pipeline identico se a configuracao for a mesma dos dois lados
+    mesma_config = bool(setup_a) and setup_a == setup_b
     com = [i for i in B if i in A and i in dev]
     if not com:
         print("sem itens em comum — a corrida terminou?", file=sys.stderr)
@@ -80,7 +87,7 @@ def main() -> int:
         pa, pb = sum(A[i] for i in ids) / len(ids), sum(B[i] for i in ids) / len(ids)
         p = mcnemar(b, cc)
         marca = ""
-        if dest == "livro" and p < 0.05:
+        if dest == "livro" and p < 0.05 and mesma_config:
             marca = "  <- RUÍDO (pipeline idêntico)"
             aviso = True
         print(f"  {c:22s} {dest:8s} {len(ids):4d} {pa:6.1%} {pb:6.1%} "
@@ -88,6 +95,10 @@ def main() -> int:
     if aviso:
         print("\n  Uma classe roteada ao livro em ambos os braços executa o MESMO "
               "pipeline.\n  p pequeno ali é falso positivo de amostragem, não efeito.")
+    elif not mesma_config:
+        print(f"\n  Configurações DIFERENTES ({' / '.join(sorted(setup_a))} vs "
+              f"{' / '.join(sorted(setup_b))}).\n  Nenhuma classe roda pipeline idêntico "
+              "aqui — diferença em classe roteada ao livro pode ser efeito real.")
     return 0
 
 
