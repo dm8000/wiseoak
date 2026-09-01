@@ -1265,11 +1265,15 @@ mesmo lugar não é coincidência — é platô.
 
 ## O que resta, e que é diferente em espécie do que já foi testado
 
-1. **TESTE DE FALSIFICAÇÃO da teoria, e o mais barato:** mandar as mesmas questões **com o
-   nosso contexto recuperado** a um modelo forte, no mesmo fluxo de PDF que já foi usado. Se
-   subir acima dos 85,4% que o Opus faz sem contexto, o contexto presta e o modelo local é
-   que não o aproveita — teoria confirmada. Se ficar igual, o contexto não acrescenta e a
-   teoria está errada. **Nenhuma iteração de RAG nossa consegue responder isso.**
+1. ~~Mandar as questões COM o nosso contexto a um modelo forte~~ — **FORA DO ROADMAP**,
+   decisão do usuário em 2026-09-01. Custo real: ~5.000 chars de contexto x 1.003 questões =
+   **~1,2 milhão de tokens de entrada**, pagos da assinatura dele. Eu estimei o custo de
+   RODAR e não o de PAGAR ao propor.
+
+   O teste segue sendo o único que separa "o contexto presta e o modelo local não o
+   aproveita" de "o contexto não acrescenta nada" — nenhuma iteração de RAG nossa consegue
+   responder isso, porque em todas o gerador é o mesmo. Fica registrado como pergunta em
+   aberto, não como tarefa.
 2. **Conjunto de teste** — 972 questões, nunca tocado. É a validação, não um experimento.
 3. **Modelo maior**, não lateral. Restrição real: um modelo de ~18 GB por vez na GPU.
 4. **Questões de imagem** (37 no dev): `qwen-vision` existe com `mmproj`, mas as figuras
