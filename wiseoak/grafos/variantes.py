@@ -435,6 +435,124 @@ def v12_cota_pai():
     return _compilar(montar)
 
 
+def v13_focado():
+    """
+    WiseOak v5 — v3 (cota) mais consulta FOCADA e indice de trecho PEQUENO.
+
+    rotear -> focar -> recuperar(cota) -> contexto -> responder
+
+    As duas mudancas foram medidas a mao nas mesmas 12 questoes e SO FUNCIONAM JUNTAS:
+
+        consulta          indice     recall@4 conferido a mao
+        enunciado+asser   grande     3/12   (linha de base)
+        enunciado+asser   pequeno    3/12
+        so assertiva      grande     3/12
+        so assertiva      PEQUENO    ~6/12
+
+    Faz sentido mecanicamente: o trecho pequeno da granularidade para existir um vetor que
+    represente o FATO em vez do topico do paragrafo; a consulta focada da um vetor de busca
+    que discrimina entre questoes irmas. Granularidade fina com consulta generica continua
+    caindo no cluster generico; consulta discriminativa contra paragrafo de 1.536 chars
+    continua batendo no topico.
+
+    O indice pequeno entra por `--indice dados/indice/m10p` (38.736 trechos, mediana 551
+    chars, contra 14.628 e 1.536 do m10).
+    """
+    def montar(g: StateGraph):
+        g.add_node("rotear", comum.no_rotear)
+        g.add_node("focar", comum.no_focar)
+        g.add_node("recuperar", comum.no_recuperar_cota)
+        g.add_node("contexto",
+                   lambda e: comum.no_contexto_cota({**e, "expandir_pai": False}))
+        g.add_node("responder", comum.no_responder)
+        g.add_edge(START, "rotear")
+        g.add_edge("rotear", "focar")
+        g.add_edge("focar", "recuperar")
+        g.add_edge("recuperar", "contexto")
+        g.add_edge("contexto", "responder")
+        g.add_edge("responder", END)
+    return _compilar(montar)
+
+
+def v14_biblioteca():
+    """
+    WiseOak v6 — recuperacao NAVEGACIONAL: o modelo ve o catalogo e escolhe o que ler.
+
+    navegar -> responder
+
+    Nao ha no de busca: quem decide o que entra no contexto e o modelo, via ferramentas.
+    A busca vetorial continua disponivel como UMA das tres, se ele preferir.
+
+    Motivacao medida: a busca densa foi capturada pelo distrator numa questao de multipla
+    escolha (quatro paragrafos sobre manitol porque "manitol" era uma das alternativas).
+    Navegar por estrutura nao tem esse modo de falha.
+    """
+    def montar(g: StateGraph):
+        g.add_node("navegar", comum.no_navegar)
+        g.add_node("responder", comum.no_responder)
+        g.add_edge(START, "navegar")
+        g.add_edge("navegar", "responder")
+        g.add_edge("responder", END)
+    return _compilar(montar)
+
+
+def v15_consulta_propria():
+    """
+    WiseOak v7 — o modelo escreve a propria consulta de busca, sem navegar.
+
+    reformular(problema) -> recuperar(cota) -> contexto -> responder
+
+    REFUTADO encadear com `no_focar`: focar tira o cenario e o reformulador INVENTA um
+    errado. Em "a capacidade pulmonar total esta aumentada em 30%" (contexto: gravidez),
+    a partir da assertiva sozinha ele escreveu "hiperinsuflacao pulmonar" e foi buscar
+    hiperoxemia. A assertiva sozinha basta para casamento vetorial direto e NAO basta para
+    quem precisa interpreta-la.
+
+    Testa a hipotese barata que saiu do v6: no caso do cirrotico, o ganho da navegacao veio
+    de o modelo ter REESCRITO a consulta descrevendo o problema (sem os distratores), nao
+    de ele ter escolhido capitulo — ele nem chegou a usar `ler`. Se for isso mesmo, uma
+    chamada curta entrega o mesmo que quatro rodadas de ferramenta, a um terco do custo.
+
+    `idioma_busca="problema"` seleciona o prompt que PROIBE incluir as alternativas.
+    """
+    def montar(g: StateGraph):
+        g.add_node("reformular",
+                   lambda e: comum.no_reformular({**e, "idioma_busca": "problema"}))
+        g.add_node("recuperar", comum.no_recuperar_cota)
+        g.add_node("contexto",
+                   lambda e: comum.no_contexto_cota({**e, "expandir_pai": False}))
+        g.add_node("responder", comum.no_responder)
+        g.add_edge(START, "reformular")
+        g.add_edge("reformular", "recuperar")
+        g.add_edge("recuperar", "contexto")
+        g.add_edge("contexto", "responder")
+        g.add_edge("responder", END)
+    return _compilar(montar)
+
+
+def v16_navegacional():
+    """
+    WiseOak v8 — o modelo navega a biblioteca, com verificacao de suficiencia.
+
+    navegar (laco com teto) -> responder
+
+    Nao ha no de busca fixo: quem decide o que entra no contexto e o modelo. Duas
+    ferramentas — `ler` (parte especifica; se exceder o orcamento, busca dentro dela) e
+    `buscar` (a densa de sempre) — e um veredito automatico de suficiencia depois de cada
+    leitura, que o faz tentar outro item quando o material nao decide a questao.
+
+    O catalogo vai no `system`, IDENTICO entre perguntas: medido, isso leva o custo de
+    13,5 s para 1,3 s por chamada a partir da segunda, via cache de prefixo.
+    """
+    def montar(g: StateGraph):
+        g.add_node("navegar", comum.no_navegar)
+        g.add_node("responder", comum.no_responder)
+        g.add_edge(START, "navegar")
+        g.add_edge("navegar", "responder")
+        g.add_edge("responder", END)
+    return _compilar(montar)
+
+
 GRAFOS = {
     "v0": v0_sem_rag,
     "v1": v1_denso,
@@ -449,6 +567,10 @@ GRAFOS = {
     "v10": v10_cota,
     "v11": v11_cota_rerank,
     "v12": v12_cota_pai,
+    "v13": v13_focado,
+    "v14": v14_biblioteca,
+    "v15": v15_consulta_propria,
+    "v16": v16_navegacional,
 }
 
 

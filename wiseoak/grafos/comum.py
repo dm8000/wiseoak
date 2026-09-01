@@ -80,6 +80,7 @@ PADRAO = {
     # responde na duvida — que sao exatamente as do conjunto de erros — 14,9% trocam de
     # resposta entre execucoes, e comparar bracos sob esse ruido nao decide nada.
     "temp": 0.3,
+    "max_rodadas": 4,
 }
 
 
@@ -105,6 +106,7 @@ class Estado(TypedDict):
     k_contexto: NotRequired[int]
     hibrido: NotRequired[bool]
     temp: NotRequired[float]
+    max_rodadas: NotRequired[int]
     expandir_pai: NotRequired[bool]
     # --- preenchido pelos nos
     consulta: NotRequired[str]
@@ -383,11 +385,13 @@ INSTRUCAO_ANALISTA: dict[str, str] = {
 # LangGraph Studio explicar o no sem exigir que quem audita leia o codigo.
 FAZ = {
     "reformular": "reescreve a pergunta como consulta de busca, com termos tecnicos",
+    "focar": "usa so a assertiva como consulta de busca; o enunciado e comum entre irmas",
     "recuperar": "busca no indice do livro (hibrida BM25+vetor, ou so vetor)",
     "rerankear": "reordena os trechos por relevancia, no Qwen3-Reranker em CPU",
     "contexto": "monta o contexto final; opcionalmente troca o trecho pela secao-pai",
     "criticar": "julga se os trechos BASTAM (nao se a resposta esta certa)",
     "formula": "da ao modelo UMA ferramenta: consultar o formulario (sem calculadora)",
+    "navegar": "o modelo ve o catalogo e escolhe o que ler, com ferramentas",
     "responder": "produz resposta, citacoes e ressalva, com schema JSON",
 }
 
@@ -407,6 +411,16 @@ def _marcar(no: str, t0: float, **extra) -> dict:
 # ------------------------------------------------------------------------ nos
 
 _REFORMULAR = {
+    # Descreve o PROBLEMA e proibe os candidatos. Motivado por caso medido: numa questao
+    # cujas alternativas eram manitol/dobutamina/terlipressina/fenoldopam, a busca densa
+    # devolveu quatro paragrafos sobre MANITOL — o distrator — porque a palavra estava na
+    # consulta. O prompt "pt" pede explicitamente nome de farmaco, que na multipla escolha
+    # sao as alternativas: pedir sinonimo e farmaco e pedir para envenenar a busca.
+    "problema": ("Voce reescreve uma questao de anestesiologia como consulta de busca em "
+                 "livro-texto. Descreva o PROBLEMA CLINICO: quadro, achados, mecanismo e "
+                 "o que se pergunta. NUNCA inclua as alternativas de resposta nem os "
+                 "farmacos listados como opcao — buscar por eles traz material sobre a "
+                 "opcao errada. Devolva SO a consulta, sem explicacao."),
     "pt": ("Voce reescreve perguntas de anestesiologia como consulta para busca "
            "em um livro-texto. Devolva SO a consulta reescrita: termos tecnicos, "
            "sinonimos e nome de farmaco. Sem explicacao, sem preambulo."),
@@ -435,7 +449,10 @@ def no_reformular(estado: Estado) -> dict:
     idioma = cfg(estado, "idioma_busca")
     r = clientes.chat(
         [{"role": "system", "content": _REFORMULAR.get(idioma, _REFORMULAR["pt"])},
-         {"role": "user", "content": estado["pergunta"]}],
+         # se `no_focar` ja isolou a parte que descreve o problema, reescreve A PARTIR
+         # dela: reformular a pergunta inteira reintroduz o enunciado compartilhado que o
+         # foco tinha removido, e a recuperacao volta a cair no cluster generico
+         {"role": "user", "content": estado.get("consulta") or estado["pergunta"]}],
         modelo=cfg(estado, "modelo"),
         think=True if cfg(estado, "raciocinio") == "nativo" else False,
         max_tokens=256, temp=0.3)
@@ -538,6 +555,38 @@ def no_formula(estado: Estado) -> dict:
     return {"formulario": "\n\n".join(t for t in textos if t),
             **_marcar("formula", t0, chamou=True, consultas=consultas,
                       decisao=f"consultou o formulario: {consultas}")}
+
+
+def no_focar(estado: Estado) -> dict:
+    """
+    A consulta de BUSCA passa a ser so a assertiva; o gerador continua vendo tudo.
+
+    MEDIDO: 790 das 836 questoes V/F do dev (94%) compartilham o enunciado com outra
+    questao, em grupos de ate 12. O enunciado e o cenario ("Desde o momento da concepcao,
+    inumeras alteracoes fisiologicas ocorrem na gestante...") e por construcao e IDENTICO
+    entre questoes irmas — carrega zero informacao discriminativa e ocupava a maior parte
+    do vetor de consulta: 235 caracteres de texto comum contra 40 da assertiva.
+
+    O efeito era tres assertivas diferentes ("ventilacao minuto", "capacidade vital",
+    "capacidade pulmonar total") recuperarem o MESMO contexto. Focando na assertiva, as
+    tres divergem e cada uma acerta o alvo.
+
+    So altera `consulta`, que e o que `no_recuperar` usa; `pergunta` segue intacta para o
+    responder, que precisa do cenario para interpretar a assertiva.
+
+    Nao se aplica a multipla escolha: la o enunciado carrega o caso e as alternativas sao
+    o que varia, entao a consulta completa continua sendo a certa.
+    """
+    t0 = time.time()
+    p = estado["pergunta"]
+    marca = "\n\nAssertiva:"
+    if marca not in p:
+        return {**_marcar("focar", t0, focou=False,
+                          decisao="sem assertiva destacada; consulta inalterada")}
+    asr = p.split(marca, 1)[1].strip()
+    return {"consulta": asr,
+            **_marcar("focar", t0, focou=True, chars_antes=len(p), chars_depois=len(asr),
+                      decisao="busca so pela assertiva; enunciado segue no prompt")}
 
 
 def no_recuperar(estado: Estado) -> dict:
@@ -719,6 +768,137 @@ def formatar_contexto(contexto: list[dict]) -> str:
                + (f" | {caminho}" if caminho else ""))
         partes.append(cab + "\n" + c["texto"])
     return "\n\n".join(partes)
+
+
+_CATALOGO_CACHE: dict[str, str] = {}
+
+
+def _sistema_navegar(ix_livro, ix_normas) -> str:
+    """
+    O `system` da navegacao. IDENTICO entre perguntas, de proposito.
+
+    MEDIDO: o catalogo tem ~12.900 tokens e custa 13,5 s de prefill na primeira chamada.
+    Com `--cache-reuse` no llama-swap e o catalogo como PREFIXO FIXO, a segunda chamada
+    custa 1,3 s — dez vezes menos. Se qualquer parte do `system` variar por pergunta, o
+    prefixo diverge no primeiro token e nada e reaproveitado; foi o que aconteceu na
+    primeira medicao, quando o system mudava e o catalogo ia no `user`.
+
+    Por isso: nada especifico da pergunta aqui. Nem a pergunta, nem a classe, nem o modo.
+    """
+    from wiseoak.ferramentas import biblioteca as B
+    chave = f"{ix_livro.caminho}|{ix_normas.caminho}"
+    if chave not in _CATALOGO_CACHE:
+        _CATALOGO_CACHE[chave] = B.catalogo(ix_livro, ix_normas)
+    return (
+        "Voce responde questoes de anestesiologia consultando uma biblioteca.\n\n"
+        "Use `ler` quando o catalogo indicar onde o assunto mora — e o caminho preferido, "
+        "porque restringe a busca aquela parte e evita trazer material sobre assunto "
+        "vizinho. Use `buscar` so quando o catalogo nao indicar.\n\n"
+        "AO FORMULAR A BUSCA, descreva o PROBLEMA. Nunca inclua as alternativas de "
+        "resposta nem os farmacos listados como opcao: buscar por eles traz material "
+        "sobre a opcao errada.\n\n"
+        "Depois de cada leitura voce recebe um veredito automatico de suficiencia. Se for "
+        "INSUFICIENTE, tente OUTRO item do catalogo. Quando tiver material que decida a "
+        "questao, responda PRONTO sem chamar mais nada.\n\n"
+        "CATALOGO DA BIBLIOTECA:\n" + _CATALOGO_CACHE[chave]
+    )
+
+
+def no_navegar(estado: Estado) -> dict:
+    """
+    O modelo navega a biblioteca e junta o contexto que quiser, com verificacao de
+    suficiencia e volta atras.
+
+    Motivado por caso MEDIDO: na questao do cirrotico com sindrome hepatorrenal, cujas
+    alternativas eram manitol/dobutamina/terlipressina/fenoldopam, a busca densa devolveu
+    quatro paragrafos sobre MANITOL — porque a palavra estava na consulta. Quem navega por
+    estrutura nao tem esse modo de falha.
+
+    O laco roda SEM `schema`, porque schema e tools se excluem; o veredito estruturado sai
+    no `no_responder`, sobre o contexto que este no juntou.
+
+    TETO DE RODADAS obrigatorio: 5% das perguntas nao tem resposta no corpus (medido), e
+    sem teto sao exatamente elas que consomem a corrida procurando o que nao existe. O
+    `v4_autocritica` ja registrava a licao.
+
+    O juiz de suficiencia e o elo fraco e vai instrumentado: concordou com rotulagem
+    manual em 7 de 11 casos (64%), errando na direcao de aprovar trecho que so trata do
+    assunto. Cada veredito vai para o trace, para poder ser medido depois.
+    """
+    t0 = time.time()
+    from wiseoak.ferramentas import biblioteca as B
+
+    ix_livro = indice_de({**estado, "indice": cfg(estado, "indice")})
+    ix_normas = indice_de({**estado, "indice": cfg(estado, "indice_normas")})
+    k = cfg(estado, "k_contexto")
+    max_rodadas = int(cfg(estado, "max_rodadas"))
+
+    msgs = [{"role": "system", "content": _sistema_navegar(ix_livro, ix_normas)},
+            {"role": "user", "content": estado["pergunta"][:2500]}]
+    contexto: list[dict] = []
+    passos: list[str] = []
+    vereditos: list[str] = []
+
+    for _ in range(max_rodadas):
+        r = clientes.chat(msgs, modelo=cfg(estado, "modelo"), think=False,
+                          max_tokens=500, temp=cfg(estado, "temp"),
+                          tools=B.ESPECIFICACOES)
+        chamadas = r.get("tool_calls") or []
+        if not chamadas:
+            break
+        msgs.append({"role": "assistant", "content": r.get("content") or "",
+                     "tool_calls": chamadas})
+        novos: list[dict] = []
+        for c in chamadas[:2]:
+            f = c.get("function") or {}
+            nome = f.get("name")
+            try:
+                args = json.loads(f.get("arguments") or "{}")
+            except json.JSONDecodeError:
+                args = {}
+            if nome == "ler":
+                novos = B.ler(ix_livro, ix_normas, args.get("obra", ""),
+                              args.get("referencia", ""),
+                              args.get("assunto") or estado["pergunta"], k)
+                passos.append(f"ler({args.get('obra')},{args.get('referencia')})"
+                              f"->{len(novos)}")
+            elif nome == "buscar":
+                q = args.get("consulta") or estado["pergunta"]
+                novos = [{**ix_livro.obter(cid), "natureza": "LIVRO"}
+                         for cid, _ in ix_livro.buscar(q, k, hibrido=False)]
+                passos.append(f"buscar({q[:44]})->{len(novos)}")
+            else:
+                passos.append(f"?{nome}")
+                msgs.append({"role": "tool", "tool_call_id": c.get("id", ""),
+                             "content": f"ferramenta desconhecida: {nome}"})
+                continue
+            contexto.extend(novos)
+            texto = "\n\n".join(f"[{i}] {' '.join(x['texto'].split())[:900]}"
+                                 for i, x in enumerate(novos, 1)) or "nada encontrado"
+            # veredito de suficiencia sobre TUDO que ja se tem, nao so o ultimo lote
+            crit = no_criticar({**estado, "contexto": contexto})
+            basta = crit["contexto_basta"]
+            vereditos.append("suficiente" if basta else "insuficiente")
+            msgs.append({"role": "tool", "tool_call_id": c.get("id", ""),
+                         "content": texto[:6000] + "\n\n[veredito automatico: "
+                         + ("SUFICIENTE — pode responder]" if basta
+                            else "INSUFICIENTE — tente outro item do catalogo]")})
+        if vereditos and vereditos[-1] == "suficiente":
+            break
+
+    vistos, final = set(), []
+    for c in contexto:
+        if c["id"] in vistos:
+            continue
+        vistos.add(c["id"])
+        final.append(c)
+    return {"contexto": final[:max(k, 8)],
+            **_marcar("navegar", t0, rodadas=len(passos), passos=passos,
+                      vereditos=vereditos, n=len(final),
+                      parou_por=("suficiente" if vereditos[-1:] == ["suficiente"]
+                                 else "teto" if len(passos) >= max_rodadas
+                                 else "modelo parou"),
+                      decisao="o modelo escolheu o que ler")}
 
 
 def no_responder(estado: Estado) -> dict:

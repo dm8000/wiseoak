@@ -795,3 +795,483 @@ candidato legítimo, e agora é o ÚNICO que sobra: `v10` + `--k-contexto 8`, ma
 livro, assumindo que os dois braços tinham a mesma configuração. Na comparação v3→v4 isso
 marcou como ruído um efeito real de −6,5 pp. Corrigido: o aviso só dispara quando
 ancoragem, k e índice coincidem nos dois lados; caso contrário imprime o aviso oposto.
+
+## O problema da recuperação, nomeado e medido à mão (2026-08-30)
+
+### O nome técnico
+**Semantic dilution** (diluição semântica) em recuperação densa de **vetor único** com
+**mean pooling**. O chunk de 1.536 caracteres vira UM vetor que representa o tópico
+dominante do parágrafo; um fato específico dentro dele quase não contribui. A consulta tem
+mediana de 230 caracteres — **assimetria de 6,7×**. Em RI: alta relevância TÓPICA, baixa
+relevância de RESPOSTA.
+
+Dois agravantes deste projeto: recuperação **translíngue** (pergunta pt, Miller en), que
+torna o alinhamento fino ainda mais fraco; e chunks dimensionados quando o corpus era outro
+livro, nunca revisitados.
+
+### A demonstração mais limpa
+Três assertivas sobre gravidez que diferem SÓ no substantivo recebem quase o mesmo contexto:
+
+    "ventilação minuto +10%"        -> 1. minute ventilation elevated 45% to 50%   ACERTOU
+    "capacidade vital +40%"         -> 1. tidal volume increases 20%...            mesmo cluster
+    "capacidade pulmonar total +30%"-> 1. tidal volume increases 20%...            mesmo cluster
+
+A busca resolve o tópico ("alterações respiratórias na gravidez") e é cega ao substantivo,
+que é onde a resposta mora.
+
+### recall@4 = 25%, VERIFICADO À MÃO (n=12)
+Só 3 das 12 questões recebem, nas 4 vagas de contexto, um trecho que permita decidir a
+assertiva. As estimativas automáticas (40,5% e 37,8%) estavam INFLADAS.
+
+### DUAS tentativas de automatizar a verdade de referência FALHARAM
+Registrado para ninguém repetir:
+
+| critério | precisão contra rotulagem manual |
+|---|---:|
+| âncora numérica sozinha | ~21% |
+| âncora + cognato pt/en | 21% |
+| âncora + cognato + proximidade (janelas de 25 a 120 chars) | **teto de 33%** |
+| juiz LLM (`gemma4-plan`, schema fechado, temp 0) | **64%** (7/11) |
+
+O juiz erra na MESMA direção do critério lexical: diz "sim" para trecho que apenas trata do
+assunto. Nenhum dos dois serve de base para comparar braços — um critério que premia trecho
+tópico favorece sistematicamente o braço que recupera mais trecho tópico, que é justamente
+o que queremos deixar de fazer.
+
+**Consequência de método:** avaliação de recuperação neste projeto exige *qrels* construídos
+à mão (questão -> id do trecho certo), feitos UMA vez e reusados por todos os braços. É o
+padrão de RI e é o único caminho defensável aqui.
+
+### O que a literatura oferece (pesquisado)
+- **Contextual Retrieval** (Anthropic): prefixo de 50–100 tokens situando cada chunk, gerado
+  por LLM, antes de embutir. −35% de falha no top-20; −49% com BM25 contextual; −67% com
+  rerank. Custo aqui: 14.628 chamadas.
+- **Small-to-big / parent retrieval**: indexar filho pequeno, entregar pai grande. **A
+  hierarquia já existe neste projeto** — só falta encolher o filho (`--tamanho-filho 180`).
+- **Late chunking** (Jina): inviável, o EmbeddingGemma tem ctx 2048.
+- **Multi-vetor / ColBERT**: resolve na raiz, mas é outro modelo e outro índice.
+
+`bench/recuperacao.py` existe e mede recuperação isolada (0,06 s/consulta contra 1,7 h de
+uma corrida com o modelo), mas **os números dele só valem depois dos qrels manuais**.
+
+## Fluxo alternativo a modelar: recuperação navegacional (agentic retrieval)
+
+Ideia do usuário, 2026-08-30. Em vez de busca por embedding, o modelo recebe o CATÁLOGO do
+corpus (sumário, títulos, índices, anotações) e usa `tool_calls` para pedir os trechos que
+ele julga relevantes. Nome na área: **agentic retrieval** / busca navegacional — é como o
+Claude Code funciona (grep e leitura, sem índice vetorial).
+
+**Por que é atraente aqui:** contorna o modo de falha que nomeamos. A diluição semântica
+acontece na compressão do trecho num vetor e na comparação translíngue; navegar sumário não
+usa vetor nenhum, usa o conhecimento do modelo sobre onde as coisas ficam num livro. E as
+questões da banca nomeiam o assunto explicitamente, que é o insumo de que uma consulta a
+sumário precisa.
+
+### MEDIDO: são dois modos de falha, e cada abordagem conserta um
+
+| questão | capítulos entregues no top-4 | modo |
+|---|---|---|
+| capacidade vital na gravidez | 58, 58, 58, 58 | **intra-capítulo** |
+| creatinina / Child-Pugh | 38, 15, 55, 14 | **inter-capítulo** |
+| hipotermia / EEG | 35, 71, 10, 75 | misto (cap. certo veio, parágrafo não) |
+
+**Navegação conserta o inter-capítulo e NÃO conserta o intra.** Na capacidade vital, um
+modelo consultando o catálogo iria ao capítulo 58 — exatamente onde a busca já foi. Trecho
+menor conserta o intra e não conserta o inter. **São complementares, não alternativos.**
+
+### Desenho combinado, que é o que vale testar
+1. modelo escolhe 1–3 capítulos no catálogo de 87 (uma chamada, ~2 s)
+2. busca densa **restrita a esses capítulos**, sobre trechos pequenos
+
+Mede-se com a mesma verdade de referência do `bench/onde.py`, sem rodar geração.
+
+### O que existe hoje e o que falta
+- **existe**: 87 capítulos com títulos reais no `m10.sqlite` (cabem num prompt);
+  `gemma4-plan` já verificado emitindo `tool_calls`
+- **falta**: hierarquia abaixo de capítulo. O campo `caminho` veio sujo da ingestão
+  ("Instructions for online access", "FANZCA") — navegação fina exigiria reextrair estrutura
+- **anotar catálogo/PDF com metadados** é a mesma família do Contextual Retrieval da
+  Anthropic (−35% de falha), aplicada ao documento em vez do trecho: bem mais barato que
+  anotar 38 mil trechos
+
+### Ressalvas declaradas
+- vira o conhecimento do modelo em roteador; um 31B sabe menos que o Opus. Sinal a favor: o
+  Opus faz 85,4% SEM RAG, o que sugere que "onde o assunto mora" é conhecimento que esses
+  modelos têm
+- cada rodada de ferramenta é uma chamada: 2–3 rodadas levam a corrida de 1,7 h para ~4 h
+- a bancada mediu que a precisão de tool calling cai com o número de ferramentas — manter
+  poucas: `sumario()`, `ler(capitulo)`, e a busca densa atual como recurso
+
+## O gargalo era a CONSULTA, não o documento (2026-08-30)
+
+Investigando a diluição semântica, a hipótese natural era chunk grande demais. Reindexei o
+Miller com filho de 180 tokens (38.736 trechos, mediana 551 chars contra 1.536) e o caso
+diagnóstico **não mudou nada**. As três assertivas sobre gravidez continuaram recebendo o
+mesmo pacote.
+
+A causa estava do outro lado:
+
+    ENUNCIADO (235 chars, IDÊNTICO nas três): "Desde o momento da concepção, inúmeras
+                                               alterações fisiológicas ocorrem na gestante..."
+    ASSERTIVA (40 chars, o que distingue):    "A ventilação minuto está aumenta em 10%."
+
+A consulta enviada ao embedding era **83% texto comum entre questões irmãs**. O vetor era
+dominado pelo cenário, que por construção carrega ZERO informação discriminativa.
+
+**790 das 836 questões V/F do dev (94%) compartilham enunciado com outra**, em grupos de
+até 12. O defeito atingia quase todo o banco V/F desde o início do projeto.
+
+### As duas mudanças só funcionam JUNTAS
+recall@4 conferido à mão nas mesmas 12 questões, critério estrito:
+
+| consulta | índice | recall@4 |
+|---|---|---:|
+| enunciado + assertiva | grande (1.536) | 3/12 |
+| enunciado + assertiva | pequeno (551) | 3/12 |
+| só assertiva | grande | 3/12 |
+| **só assertiva** | **pequeno** | **~6/12** |
+
+Mecanismo: o trecho pequeno dá granularidade para existir um vetor que represente o FATO em
+vez do tópico do parágrafo; a consulta focada dá um vetor de busca que discrimina entre
+irmãs. Granularidade fina com consulta genérica continua caindo no cluster genérico;
+consulta discriminativa contra parágrafo de 1.536 chars continua batendo no tópico.
+
+Acertos que não existiam antes e não são discutíveis:
+- "meia-vida de eliminação 2 a 4 horas" -> *"short elimination half-life of about 2 to 4 hours"*
+- "6 mL/kg de peso predito, platô < 30 cmH2O" -> *"lung-protective ventilation with 6 mL/kg of PBW"*
+- "20 °C induz supressão do EEG" -> *"18°C to 20°C is probably adequate"* (o número entrou)
+
+**Declarado: minha régua de rotulagem afrouxou no meio.** Pelo critério frouxo dá 8/12.
+Reporto os dois números; o estrito é o que vale.
+
+### WiseOak v5 = grafo v13
+`rotear -> focar -> recuperar(cota) -> contexto -> responder`, índice `m10p`, k=20/8.
+
+`no_focar` altera só `consulta` (o que a busca usa); `pergunta` segue intacta para o
+responder, que precisa do cenário para interpretar a assertiva. Não se aplica a múltipla
+escolha — lá o enunciado carrega o caso.
+
+k_contexto=8 é deliberado: com trecho pequeno e k=4 o modelo receberia 1.839 chars contra
+~5.000 da linha de base, e uma queda seria indistinguível de "recebeu menos texto".
+
+## RESULTADO do v5 e a captura por distrator na múltipla escolha (2026-08-31)
+
+| braço | total | V/F | ME |
+|---|---:|---:|---:|
+| **WiseOak v5** (consulta focada + trecho pequeno) | **81,0%** | **83,8%** | **67,1%** |
+| WiseOak v3 (cota) | 80,6% | 82,1% | 73,1% |
+
+**V/F: o melhor de todos (83,8%)**, com `juridico-normativo` indo de 76,3% para **89,8%**,
+8 ganhas e ZERO perdidas, p=0,0078 — o único p significativo por classe da fase. Fidelidade
+de citação subiu junto: 91,5% -> 92,3%.
+
+**ME: caiu 6 pp**, e a causa foi identificada lendo o caso.
+
+### O mecanismo: a consulta contém os distratores
+Questão do cirrótico com síndrome hepatorrenal, alternativas manitol/dobutamina/
+terlipressina/fenoldopam. O índice PEQUENO devolveu **quatro parágrafos sobre manitol** —
+a alternativa A, errada — porque a palavra estava escrita na consulta. No índice grande as
+menções a manitol estavam diluídas em parágrafos maiores e não dominavam.
+
+**O trecho pequeno não é melhor nem pior: é mais LITERAL.** Acha com precisão o que se
+pediu. Se o que se pediu contém a resposta errada dentro, acha a resposta errada.
+
+Removendo as alternativas da consulta, a captura some e aparece o parágrafo certo:
+*"…increasing the risk for HEPATORENAL SYNDROME. A range of therapies…"*
+
+**A regra geral que sai disso:** buscar pela parte que DESCREVE O PROBLEMA, nunca pela que
+LISTA CANDIDATOS. Não é ajuste a formato de prova — vale para qualquer entrada com opções
+("dou manitol, dobutamina ou terlipressina?" envenena a busca do mesmo jeito).
+
+### REFUTADOS nesta rodada
+- **expansão para o pai como conserto da ME**: entregaria mais texto em volta do parágrafo
+  errado. Não ataca a captura.
+- **rotear por formato de prova (V/F vs ME)**: ajuste ao benchmark, não ao produto. Quem
+  consulta o sistema não chega rotulado.
+- **encadear `focar` -> `reformular`**: o foco tira o cenário e o reformulador INVENTA um
+  errado. Em "a capacidade pulmonar total está aumentada em 30%" (contexto: gravidez), a
+  partir da assertiva sozinha ele escreveu "hiperinsuflação pulmonar" e buscou hiperoxemia.
+  A assertiva sozinha basta para casamento vetorial direto e NÃO basta para quem interpreta.
+
+## Recuperação navegacional: construída e testada (v6, grafo v14)
+
+`wiseoak/ferramentas/biblioteca.py` — três ferramentas (`biblioteca`, `ler`, `buscar`),
+teto deliberado porque a bancada mediu precisão de tool calling caindo com o número.
+
+**`wiseoak/ingest/sumario.py`**: gera sumário de cada um dos 87 capítulos do Miller, uma
+chamada por capítulo (~5 min), amostrando o texto uniformemente. Sem isso não há navegação
+fina: capítulo tem mediana de 128 páginas e o campo de subtítulos veio sujo da ingestão.
+Resultado em `dados/sumario_m10.json`, 87/87 preenchidos. O capítulo 14 lista
+*"Insuficiência renal aguda (AKI) e Síndrome Hepatorrenal (HRS-AKI) na cirrose"* — exatamente
+o que a busca vetorial não achava.
+
+**Fumaça no caso do cirrótico: acertou (C).** Duas rodadas — `biblioteca()` e depois
+`buscar()` com uma consulta que ELE escreveu descrevendo o problema, sem os quatro fármacos.
+Chegou sozinho à regra deduzida. Custo: 17,6 s/questão contra 5,5 s do v5.
+
+**Mas ele não usou `ler`**, então a restrição por capítulo não foi exercitada — o ganho veio
+só da reformulação da consulta. Daí o v7.
+
+## WiseOak v7 (grafo v15): o modelo escreve a própria consulta
+`reformular(problema) -> recuperar(cota) -> contexto -> responder`, prompt novo
+`_REFORMULAR["problema"]` que PROÍBE citar as alternativas.
+
+Mesmo índice e k do v5: a única diferença é a estratégia de consulta. Custo 7,9 s/questão
+(+1,7 s da reformulação) contra 17,6 s da navegação — sete vezes menos pelo mesmo acerto no
+caso testado.
+
+**Reformular NÃO é o mesmo que o modelo escrever a própria busca no sentido do v6.**
+Reformular é cego e de um tiro; navegar é informado e iterativo (vê o que voltou e pode
+tentar de novo). No caso do cirrótico convergiram porque a primeira consulta já era boa —
+isso nada diz sobre as questões em que a primeira tentativa falha.
+
+## RESULTADO do v7 e a assimetria entre tipos de pergunta (2026-08-31)
+
+| braço | V/F | ME |
+|---|---:|---:|
+| v3 (cota) | 81,7% | 73,1% |
+| **v5** (focar + trecho pequeno) | **83,4%** | 67,1% |
+| **v7** (reformular + trecho pequeno) | 80,7% | **74,3%** |
+
+Cada estratégia de consulta ganha na população para a qual foi desenhada e perde na outra.
+`focar` resolve o enunciado compartilhado (94% das V/F) e leva a V/F ao melhor número do
+projeto; a reformulação resolve a captura por distrator e leva a ME ao melhor entre nossas
+versões. Aplicar uma nas duas estraga metade.
+
+**Aplicando cada uma onde ganha: 82,2%** — o melhor WiseOak até agora, +1,6 pp sobre o v3.
+Não foi rodado como versão única; é a combinação aritmética dos dois blocos medidos.
+
+A regra não é sobre formato de prova, é sobre estrutura da entrada: **se a pergunta lista
+candidatos, reformule descrevendo o problema e exclua os candidatos; se traz cenário
+genérico mais afirmação específica, busque pela afirmação.**
+
+## MEDIDO: cache de prefixo torna o catálogo quase grátis
+
+O custo de um fluxo navegacional parecia proibitivo — catálogo de 45.628 chars (~12.900
+tokens) em toda rodada. Medições:
+
+| condição | entrada | saída | tempo |
+|---|---:|---:|---:|
+| contexto mínimo | 35 | 204 | 3,1 s |
+| catálogo, saída curta | 12.959 | 2 | 12,1 s |
+| catálogo, saída longa | 12.965 | 261 | 18,1 s |
+
+O custo é **prefill**, não geração: ler o catálogo custa ~12 s, gerar a resposta ~6 s.
+
+Mas com o catálogo como **prefixo FIXO** (`--cache-reuse 256` já estava no llama-swap):
+
+    1ª chamada (fria)  12.975 tokens  13,5 s
+    2ª                 12.978 tokens   1,3 s
+    3ª                 12.973 tokens   1,3 s
+
+**Requisito de projeto:** o `system` tem de ser IDÊNTICO entre perguntas. Nada específico
+da pergunta nele — nem a pergunta, nem a classe, nem o modo. Se variar, o prefixo diverge
+no primeiro token e nada é reaproveitado. Foi o que aconteceu na primeira medição, quando o
+`system` mudava e o catálogo ia no `user`.
+
+Consequência: **dispensa LoRA, catálogo em dois níveis e leitura item a item por SED** —
+as três alternativas levantadas para contornar um custo que não existe.
+
+## WiseOak v8 (grafo v16): navegacional com verificação de suficiência
+
+`navegar (laço com teto) -> responder`. Duas ferramentas apenas: `ler` (parte específica;
+acima de 9.000 chars busca dentro dela) e `buscar` (a densa de sempre). A `biblioteca()`
+foi REMOVIDA — com o catálogo no `system`, ela custaria uma rodada para entregar o que já
+está no contexto.
+
+**Efeito colateral que vale registrar:** no v6, com o catálogo atrás de uma tool call, o
+modelo NUNCA usava `ler` — ia direto ao `buscar`. Com o catálogo no `system` ele passou a
+usar `ler` e a acertar o capítulo (cirrótico → cap 14 fígado; capacidade vital → cap 58
+obstétrica). **Ver o mapa antes de agir mudou a decisão**; precisar pedir o mapa não bastava.
+
+Fumaça: os três casos conhecidos acertaram, com ~8,5 s/questão após o aquecimento.
+
+**Alerta registrado antes de medir:** o juiz de suficiência aprovou as 6 leituras de fumaça,
+sem exceção. A volta atrás nunca disparou. Bate com os 64% de concordância medidos (ele erra
+aprovando trecho que só trata do assunto). Se isso se mantiver em 300 questões, o mecanismo
+de backtracking está construído e INERTE, e qualquer ganho vem de navegar melhor — não de
+tentar de novo. Os vereditos vão para o trace justamente para isso ser medido.
+
+## RESULTADO do v8 navegacional: NÃO passa no critério (2026-08-31)
+
+Amostra estratificada de 300 (250 V/F + 50 ME). Critério fixado ANTES de ver: mais
+recuperadas que quebradas no pareado, E a direção se sustentando nos dois formatos.
+
+| contra | v8 | outro | dif | ganhou/perdeu | p |
+|---|---:|---:|---:|:--:|---:|
+| v5 | 83,3% | 82,7% | +0,7 pp | 21 / 19 | 0,875 |
+| v3 | 83,3% | 82,3% | +1,0 pp | 22 / 19 | 0,755 |
+| v1 | 83,3% | 81,7% | +1,7 pp | 24 / 19 | 0,542 |
+| v7 | 83,3% | 79,3% | +4,0 pp | 25 / 13 | 0,073 |
+
+Por formato:
+- **V/F: empate** com o v5 (15 ganhas, 17 perdidas). A navegação não ajuda ali — o problema
+  da V/F era o enunciado compartilhado, que o `focar` resolve mecanicamente por um centésimo
+  do custo.
+- **ME: 82,0% contra 74,0% do v5** nos mesmos 50 (6 ganhas, 2 perdidas). Melhor número de ME
+  do projeto, mas n=50 e p=0,29.
+
+**O que o v8 conseguiu:** é a primeira versão que não troca ganho de um formato por perda no
+outro. Mas "não piorar" não era o critério, e não justifica 8,5 s/questão contra 5,5 s.
+
+### LACUNA DE INSTRUMENTAÇÃO, minha
+O plano dizia para medir o juiz de suficiência. Construí o registro no `no_navegar`
+(`vereditos` no trace) mas NÃO estendi a persistência no `runner.py`, que só grava
+`seg_por_no`. Os vereditos desta corrida se perderam. O que sobra são as 6 leituras de
+fumaça, todas aprovadas — consistente com os 64% de concordância medidos e com a hipótese
+de que o backtracking está inerte.
+
+Para a próxima: persistir `vereditos` do mesmo jeito que `rotas` foi persistido.
+
+## O quadro depois de oito versões
+
+    v0 sem RAG   73,0%
+    v1 RAG       80,2%   <- o unico ganho grande, e foi TROCAR O LIVRO
+    v2 79,9% · v3 80,6% · v4 77,3% · v5 81,0% · v7 80,0% · v8 ~83% (n=300)
+    Opus 5 SEM RAG NENHUM  85,4%
+
+**Sete iterações de arquitetura de recuperação, todas dentro de ~3 pp umas das outras.** O
+único salto real do projeto foi trocar o corpus (Bases da Anestesia -> Miller completo).
+Roteamento, cota, ancoragem, tamanho de trecho, consulta focada, reformulação e navegação
+agentica: nenhuma delas moveu o número de forma demonstrável.
+
+Isso reforça a teoria já registrada em `bancada.html`: **o gargalo não é informação.** Um
+modelo mais capaz, sem recuperação nenhuma e sem busca, faz 85,4%. As quatro medições que
+apontam para isso continuam de pé, e a alavanca não testada continua sendo o MODELO.
+
+## O thinking esteve DESLIGADO nas 60 células do projeto (2026-08-31)
+
+Auditoria de `eval/resultados.sqlite`: **todas as 60 células medidas usam `rac=nenhum`.**
+v0 a v8, Gemma e MedGemma, todos os blocos. A dimensão existe no código
+(`nenhum | prompt | nativo`) e nunca foi exercitada com o corpus atual — foi medida só nas
+fases iniciais, no `h512`, o livro refutado.
+
+Isso importa porque a outra bancada do usuário mediu exatamente esse fator:
+
+| setup | gemma4-plan | qwen-code |
+|---|---:|---:|
+| `prompt` (sem thinking) — **o que usamos** | 88,2% | 84,4% |
+| `think_prompt` (com thinking) | **90,2%** | **89,3%** |
+
+**~2 pontos no Gemma, ~5 no Qwen.** Maior que qualquer coisa que sete iterações de
+arquitetura de recuperação renderam aqui, e estava disponível o tempo todo por uma flag.
+
+Erro de priorização meu: mencionei "a dimensão realmente inexplorada é thinking ligado"
+horas antes e segui por recuperação, atrás do que eu tinha acabado de diagnosticar em vez
+do que tinha maior retorno esperado.
+
+### A interação com o achado do schema
+Os 12,5% de instabilidade vêm de gerar texto livre DENTRO do JSON antes da resposta
+(`ressalva` antes de `resposta`). **O thinking nativo sai FORA do JSON.** Em princípio, ele
+dá o ganho de raciocínio sem o custo de estabilidade — o que abriria caminho para voltar à
+ancoragem `estrita` (0/40 de discordância no teste de determinismo) e ter as duas coisas.
+
+Não testado ainda. Se o acerto subir com thinking, é o próximo experimento óbvio.
+
+### Fumaça do thinking (gemma4-plan, contexto pequeno)
+    think=False   reasoning=   0 chars · out= 106 tok · truncou=False
+    think=True    reasoning= 883 chars · out= 325 tok · truncou=False
+
+~3x mais tokens de saída. **Risco concreto: truncagem** com contexto grande mais raciocínio
+longo — o `max_tokens` do responder é 4.096, e truncagem conta como falha em coluna
+separada nesta bancada.
+
+### Qwen: pré-requisitos passaram, corrida abortada por prioridade
+`qwen-code` e `qwen-fast` emitem `tool_calls` com argumentos bem formados, respeitam
+`json_schema`, escrevem português correto. Contraste com o `medgemma-clinical`, reprovado
+por emitir ZERO tool_calls. A corrida foi interrompida em 4/250 para dar lugar ao teste de
+thinking; nenhuma célula gravada.
+
+## REFUTADO: thinking nativo (2026-09-01)
+
+Gemma no fluxo v8, amostra estratificada de 300, única variável `--raciocinio nativo`.
+
+| | sem thinking (v8) | com thinking |
+|---|---:|---:|
+| V/F | 83,6% | 82,0% |
+| ME | 82,0% | 80,0% |
+| **combinado (n=300)** | **83,3%** | **81,7%** |
+| pareado | — | **13 ganhas / 18 perdidas**, p=0,47 |
+| tempo do responder | 6,1 s | **15,8 s** (2,6×) |
+| truncagem V/F | 0% | 0,8% |
+| **truncagem ME** | 0% | **12,0%** |
+
+Perde contra todas as configurações anteriores (13/18 vs v8, 17/20 vs v5, 18/20 vs v3),
+sempre dentro do ruído, sempre para baixo.
+
+**Os 12% de truncagem na ME são mecânicos:** o raciocínio consome orçamento, a questão de
+múltipla escolha já traz contexto e quatro alternativas, e `max_tokens=4096` não comporta os
+dois. Corrigível subindo o teto — mas não muda o quadro, porque no V/F a truncagem foi de
+0,8% e o resultado também foi negativo.
+
+**A medição externa não transferiu.** Naquela bancada o `think_prompt` valia ~2 pontos, mas
+o preprompt dela é de AGENTE DE SOFTWARE (rege verbosidade, escopo, uso de ferramenta,
+`~/workspace`). A nossa ancoragem rege INFERÊNCIA — uma regra sobre pesar ausência de
+evidência. Julgar assertiva contra parágrafo não parece se beneficiar de deliberação longa;
+possivelmente o oposto, já que a ancoragem diz como decidir e o raciocínio livre pode se
+afastar dela.
+
+Nota de infraestrutura: o `llama-swap.yaml` sempre teve `--reasoning on` no perfil
+`gemma4-plan`. O thinking estava disponível desde sempre; quem o desligava era o nosso
+código, mandando `enable_thinking: false` por requisição.
+
+## O padrão de nove configurações
+
+    v0 73,0% · v1 80,2% · v2 79,9% · v3 80,6% · v4 77,3% · v5 81,0%
+    v7 80,0% · v8 ~83,3% (n=300) · v10 thinking ~81,7% (n=300)
+    Opus 5 SEM RAG: 85,4%
+
+Roteamento por classe, cota entre corpora, ancoragem por falsificação, tamanho de trecho,
+consulta focada, reformulação pelo modelo, navegação agêntica, verificação de suficiência e
+raciocínio nativo. **Nenhuma moveu o número de forma demonstrável.** O único salto do
+projeto segue sendo a troca do corpus (Bases da Anestesia → Miller completo, +7,2 pp).
+
+## Qwen3.6-27B no fluxo v8: EMPATE (2026-09-01)
+
+Mesma amostra estratificada de 300, mesmo grafo, mesmos parâmetros. Única variável: o modelo.
+
+| comparação | Qwen | Gemma | ganhou/perdeu | p |
+|---|---:|---:|:--:|---:|
+| vs Gemma v8 (mesmo fluxo) | 82,0% | 83,3% | 23 / 27 | 0,672 |
+| vs Gemma v5 | 82,0% | 82,7% | 22 / 24 | 0,883 |
+| vs Gemma v3 | 82,0% | 82,3% | 21 / 22 | **1,000** |
+| vs Gemma com thinking | 82,0% | 81,7% | 23 / 22 | **1,000** |
+
+**O formato do empate é o mais informativo:** ~22 questões cada lado resolve que o outro não
+resolve, saldo próximo de zero em todas as comparações. Não são modelos equivalentes —
+acertam conjuntos DIFERENTES, e nenhum é sistematicamente melhor.
+
+Detalhes: navegação mais rápida (9,0 s contra 15,4 s do Gemma no mesmo nó); zero truncagem
+no V/F; **1 chamada de ferramenta malformada em 250** (0,4%), quebrando numa string com
+acentos em português — modo de falha que o Gemma não teve, e que contraria os "zero
+malformadas" medidos na outra bancada (lá os argumentos eram caminhos de arquivo, não texto
+livre em português); **fidelidade de citação menor**, 89,8% contra ~92%, o que pesa dado que
+o objetivo declarado é resposta com fonte verificável.
+
+## BALANÇO: onde cada alavanca chegou
+
+    corpus       trocar o livro-texto      +7,2 pp   <- o UNICO ganho do projeto
+    recuperacao  7 arquiteturas            ~0
+    prompt       ancoragem, reformulacao   ~0   (e `falsificacao`: -4 pp)
+    raciocinio   thinking nativo           -1,6 pp
+    modelo       Gemma -> Qwen             ~0
+
+Nove configurações e dois modelos, todos entre 80% e 83,5%. Opus 5 **sem recuperação
+nenhuma**: 85,4%.
+
+**A conclusão que a evidência sustenta:** o teto de ~83% pertence à CLASSE DE MODELO (27–31B
+nesta tarefa), não ao arranjo dos componentes. Nove configurações e dois modelos chegando ao
+mesmo lugar não é coincidência — é platô.
+
+## O que resta, e que é diferente em espécie do que já foi testado
+
+1. **TESTE DE FALSIFICAÇÃO da teoria, e o mais barato:** mandar as mesmas questões **com o
+   nosso contexto recuperado** a um modelo forte, no mesmo fluxo de PDF que já foi usado. Se
+   subir acima dos 85,4% que o Opus faz sem contexto, o contexto presta e o modelo local é
+   que não o aproveita — teoria confirmada. Se ficar igual, o contexto não acrescenta e a
+   teoria está errada. **Nenhuma iteração de RAG nossa consegue responder isso.**
+2. **Conjunto de teste** — 972 questões, nunca tocado. É a validação, não um experimento.
+3. **Modelo maior**, não lateral. Restrição real: um modelo de ~18 GB por vez na GPU.
+4. **Questões de imagem** (37 no dev): `qwen-vision` existe com `mmproj`, mas as figuras
+   nunca foram extraídas dos PDFs das provas — é trabalho de ingestão, não troca de modelo.
+5. **Dois Códigos da SBA** ainda fora do corpus normativo (lacuna registrada em 2026-08-27).

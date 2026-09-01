@@ -1,0 +1,408 @@
+[
+ {
+  "id": "7831abe2",
+  "assertiva": "a medida da pressão arterial com manguito de largura inferior a 20 % do diâmetro do braço ocasiona valores falsamente diminuídos.",
+  "ancoras": [
+   [
+    "20",
+    "%"
+   ]
+  ],
+  "stems": [
+   "arter",
+   "diame",
+   "dimin",
+   "falsa",
+   "infer",
+   "largu",
+   "mangu",
+   "medid",
+   "ocasi",
+   "presa",
+   "valor"
+  ],
+  "pos_automatica": null,
+  "trecho_apontado": null
+ },
+ {
+  "id": "07cd3b7b",
+  "assertiva": "a queda da saturação venosa mista abaixo de 70% sinaliza um desequilibrio entre a oferta e a extração periférica de oxigênio e entre as causas mais comuns estão a anemia, hipoxemia e disfunção miocárdica.",
+  "ancoras": [
+   [
+    "70",
+    "%"
+   ]
+  ],
+  "stems": [
+   "abaix",
+   "anemi",
+   "causa",
+   "comun",
+   "desec",
+   "disfu",
+   "extra",
+   "hipox",
+   "mioca",
+   "ofert",
+   "oxige",
+   "perif",
+   "satur",
+   "sinal",
+   "venos"
+  ],
+  "pos_automatica": 1,
+  "trecho_apontado": "Mixed venous oxygen saturation drawn from the pulmonary artery is an indicator of the balance between global oxygen delivery and global oxygen consumption. Although CO can be calculated using Fick’s principle with assumptions about oxygen consumption, a low mixed venous oxygen saturation, less than 65% to 70%, suggests a possible deficit of oxygen delivery relative to oxygen consumption. Since it is a global measure, organ-specific ischemia may be present even with normal or elevated mixed venous saturations.195 Measurement of mixed venous oxygen saturations requires placement of a PAC. As a r"
+ },
+ {
+  "id": "96784add",
+  "assertiva": "a 20 graus celsius induz a supressão do eletroencefalograma. PROVA TRIMESTRAL 02/04 – ME3/2023 CCA",
+  "ancoras": [
+   [
+    "20",
+    "graus"
+   ]
+  ],
+  "stems": [
+   "celsi",
+   "eletr",
+   "supre"
+  ],
+  "pos_automatica": 8,
+  "trecho_apontado": "When suppression occurs during the administration of isoflurane and sevoflurane, the relative reductions in the CMR and CBF are more intense in the neocortex than in other portions of the cerebrum. Electrophysiologic responsiveness also varies. Cortical somatosensory-evoked responses to median nerve stimulation can be readily recorded at doses of thiopental far in excess of those required to cause complete suppression of the EEG but are difficult to elicit at concentrations of isoflurane associated with a burst-suppression pattern (∼1.5 MAC).30,31 In addition, the EEG characteristics of the bu"
+ },
+ {
+  "id": "06272b7f",
+  "assertiva": "Propofol em baixas doses (10mg IV) deprime atividade medular espinhal e por esse mecanismo é efetivo no tratamento de prurido associado a opioides intratecais.",
+  "ancoras": [
+   [
+    "10",
+    "mg"
+   ]
+  ],
+  "stems": [
+   "asoci",
+   "ativi",
+   "baixa",
+   "depri",
+   "efeti",
+   "espin",
+   "intra",
+   "mecan",
+   "medul",
+   "opioi",
+   "propo",
+   "pruri",
+   "trata"
+  ],
+  "pos_automatica": 1,
+  "trecho_apontado": "patients with multiple drug allergies.112–114 Propofol alone in intralipid does not trigger histamine release. Propofol also possesses significant antiemetic activity with small (subhypnotic) doses (i.e., 10 mg in adults). The median concentration of propofol with an antiemetic effect was 343 ng/mL, which also causes a mild sedative effect.115 This concentration can be achieved by an initial dose of propofol infusion of 10 to 20 mg followed by 10 mcg/kg/min. Propofol used as a maintenance anesthetic during breast surgery was more effective than 4 mg of ondansetron given as prophylaxis in preve"
+ },
+ {
+  "id": "365a600e",
+  "assertiva": "venosa ou dor à injeção, é de ação rápida e meia-vida de eliminação relativamente curta cerca de 2 a 4 horas.",
+  "ancoras": [
+   [
+    "4",
+    "horas"
+   ]
+  ],
+  "stems": [
+   "elimi",
+   "injec",
+   "rapid",
+   "relat",
+   "venos"
+  ],
+  "pos_automatica": 1,
+  "trecho_apontado": "The most rapid onset but the shortest duration of action occurs after intrathecal or subcutaneous administration of local anesthetics. The longest latencies and durations are observed after conventional non- ultrasound-guided large-volume brachial plexus blocks. For example, intrathecal bupivacaine will usually produce anesthesia within 5 minutes that will persist for 3 to 4 hours. However, when bupivacaine is administered for brachial plexus blockade, the onset time is approximately 20 to 30 minutes, and the duration of anesthesia (or at least analgesia) averages 10 hours.54 These differences"
+ },
+ {
+  "id": "da675da3",
+  "assertiva": "Recuperação fast track é quando no pós-operatório paciente passa da fase 1 de recuperação direto para fase 2 sem passar pela sala de recuperação pós-anestésica. Bebês a termo cuja idade pós-conceptual é inferior a 46 semanas, ou prematuros bebês cuja idade",
+  "ancoras": [
+   [
+    "46",
+    "semanas"
+   ]
+  ],
+  "stems": [
+   "anest",
+   "conce",
+   "diret",
+   "infer",
+   "opera",
+   "pasar",
+   "prema",
+   "recup",
+   "seman"
+  ],
+  "pos_automatica": null,
+  "trecho_apontado": null
+ },
+ {
+  "id": "58e082db",
+  "assertiva": "creatinina acima de 3 mg.dL-1 é um dos critérios para classificação tipo C.",
+  "ancoras": [
+   [
+    "3",
+    "mg"
+   ]
+  ],
+  "stems": [
+   "clasi",
+   "creat",
+   "crite"
+  ],
+  "pos_automatica": 9,
+  "trecho_apontado": "Up to 50% of patients admitted to the hospital with cirrhosis and ascites develop acute kidney injury (AKI). AKI is defined as an increase in serum creatinine greater than or equal to 0.3 mg/dL from baseline within 48 hours or a ≥50% increase in creatinine over the last seven days.149 Renal failure is a sign of advanced disease and has a poor prognosis in liver failure. Seventy to 80% of cases are precipitated by hypovolemia or bacterial infections. Hepatorenal syndrome AKI (HRS-AKI) is less common and associated with a worse prognosis. HRS-AKI, formerly referred to as HRS type 1, is character"
+ },
+ {
+  "id": "f25fc1fc",
+  "assertiva": "na ventilação protetora pulmonar utiliza-se 6 mL/kg de peso corporal predito com pressões de platô inferiores a 30 cmH2O.",
+  "ancoras": [
+   [
+    "6",
+    "mL"
+   ],
+   [
+    "30",
+    "cmH2O"
+   ]
+  ],
+  "stems": [
+   "corpo",
+   "infer",
+   "predi",
+   "preso",
+   "prote",
+   "pulmo",
+   "utili",
+   "venti"
+  ],
+  "pos_automatica": 4,
+  "trecho_apontado": "There will be an optimal combination of tidal volume, respiratory rate, I:E ratio, pressure- or volume-control ventilation for each individual patient during OLV. However, to try to assess each of these parameters while still providing anesthesia with the available anesthetic ventilators is not practical and the clinician must initially rely on a simplified strategy (Table 49.9). The results of alterations in tidal volume are unpredictable. This may be due in part to the interaction of tidal volume with auto-PEEP. The use of 5 to 6 mL/kg ideal body weight tidal volumes plus 5 cmH2O PEEP initia"
+ },
+ {
+  "id": "118bcbbd",
+  "assertiva": "a lise máxima do coágulo entre 5 e 14% indica hiperfibrinólise PROVA TRIMESTRAL SUBSTITUTIVA 01/04 – ME2/2023 CCA",
+  "ancoras": [
+   [
+    "14",
+    "%"
+   ]
+  ],
+  "stems": [
+   "coagu",
+   "hiper",
+   "indic",
+   "maxim",
+   "subst"
+  ],
+  "pos_automatica": null,
+  "trecho_apontado": null
+ },
+ {
+  "id": "600d335c",
+  "assertiva": "A ventilação minuto está aumenta em 10%.",
+  "ancoras": [
+   [
+    "10",
+    "%"
+   ]
+  ],
+  "stems": [
+   "aumen",
+   "minut",
+   "venti"
+  ],
+  "pos_automatica": 5,
+  "trecho_apontado": "▪ The normal physiologic changes of pregnancy begin in the first trimester, affect all organ systems, and alter pharmacokinetic and pharmacodynamic responses to many drugs commonly used in anesthesia. ▪ Maternal–fetal exchange of most drugs and other substances occurs primarily by diffusion. The rate of diffusion and peak levels in the fetus depend on maternal-to-fetal concentration gradients, maternal protein binding, molecular weight of the substance, lipid solubility, and the degree of ionization of that substance. ▪ All patients in labor are considered to have a full stomach and an increas"
+ },
+ {
+  "id": "2aec0146",
+  "assertiva": "A capacidade vital está aumentada em 40%.",
+  "ancoras": [
+   [
+    "40",
+    "%"
+   ]
+  ],
+  "stems": [
+   "aumen",
+   "capac"
+  ],
+  "pos_automatica": 14,
+  "trecho_apontado": "By the end of the first trimester, maternal cardiac output typically increases approximately 35% to 40% above prepregnancy values and continues to increase 40% to 50% by the end of the second trimester.3–5 Cardiac output remains stable throughout the third trimester. This increased cardiac output is secondary to increases in both stroke volume (25%–30%) and heart rate (15%–25%).6,7 Labor further increases cardiac output, which fluctuates with each uterine contraction. Increases above prelabor values of 10% to 25% occur during the first stage and 40% in the second stage. The largest increase in"
+ },
+ {
+  "id": "3fff77f9",
+  "assertiva": "A capacidade pulmonar total está aumentada em 30%.",
+  "ancoras": [
+   [
+    "30",
+    "%"
+   ]
+  ],
+  "stems": [
+   "aumen",
+   "capac",
+   "pulmo"
+  ],
+  "pos_automatica": 14,
+  "trecho_apontado": "By the end of the first trimester, maternal cardiac output typically increases approximately 35% to 40% above prepregnancy values and continues to increase 40% to 50% by the end of the second trimester.3–5 Cardiac output remains stable throughout the third trimester. This increased cardiac output is secondary to increases in both stroke volume (25%–30%) and heart rate (15%–25%).6,7 Labor further increases cardiac output, which fluctuates with each uterine contraction. Increases above prelabor values of 10% to 25% occur during the first stage and 40% in the second stage. The largest increase in"
+ },
+ {
+  "id": "3cf02a1a",
+  "assertiva": "O volume de reserva inspiratória está diminuído em 25%. PROVA TRIMESTRAL SUBSTITUTIVA 03/04 – ME2/2023 CCA",
+  "ancoras": [
+   [
+    "25",
+    "%"
+   ]
+  ],
+  "stems": [
+   "dimin",
+   "inspi",
+   "reser",
+   "subst",
+   "volum"
+  ],
+  "pos_automatica": 8,
+  "trecho_apontado": "Maternal intravascular fluid volume begins to increase in the first trimester secondary to changes in the renin–angiotensin– aldosterone system promoting sodium absorption and water retention. These changes are likely induced by rising progesterone from the gestational sac. Plasma protein concentrations accordingly decrease with a 25% decrease in albumin and 10% decrease in total protein at term compared with nonpregnant levels.1 Consequently, colloid osmotic pressure decreases from 27 to 22 mm Hg over the time of gestation.2 At term, the plasma volume is 50% to 55% above the nonpregnant level"
+ },
+ {
+  "id": "6691a87b",
+  "assertiva": "unidade ambulatorial do tipo I é o local destinado à realização de procedimentos clínicos ou diagnósticos, sob anestesia local, em dose inferior a 5,5 mg/kg de lidocaína (ou dose equipotente de outros anestésicos locais) sem necessidade de internação.",
+  "ancoras": [
+   [
+    "5,5",
+    "mg"
+   ]
+  ],
+  "stems": [
+   "ambul",
+   "anest",
+   "clini",
+   "desti",
+   "diagn",
+   "ecipo",
+   "infer",
+   "inter",
+   "lidoc",
+   "locai",
+   "neces",
+   "outro",
+   "proce",
+   "reali",
+   "unida"
+  ],
+  "pos_automatica": null,
+  "trecho_apontado": null
+ },
+ {
+  "id": "131b0f77",
+  "assertiva": "há maior risco de incêndio nas vias aéreas com uma fração inspirada de oxigênio superior a 60%.",
+  "ancoras": [
+   [
+    "60",
+    "%"
+   ]
+  ],
+  "stems": [
+   "aerea",
+   "fraca",
+   "incen",
+   "inspi",
+   "oxige",
+   "super"
+  ],
+  "pos_automatica": 93,
+  "trecho_apontado": "Although recruitment of anesthesia-induced atelectasis is completely possible with either PEEP or a VC maneuver, continuous application of some level of PEEP is required to prevent rapid recurrence of the atelectasis.164 However, nitrogen (N2)—an insoluble gas that is not absorbed into the blood—can “splint” the alveolus if the alveolus is already opened. As a result, in anesthetized patients, a VC maneuver followed by ventilation with a gas mixture containing 60% N2 (40% O2) reduced the propensity for re-accumulation of atelectasis, with only 20% reappearing 40 minutes after recruitment.165 T"
+ },
+ {
+  "id": "6372d205",
+  "assertiva": "uma das metas do tratamento inicial do paciente vítima de traumatismo cranioencefálico (TCE) é manter a pressão de perfusão cerebral acima de 70mmHg.",
+  "ancoras": [
+   [
+    "70",
+    "mmHg"
+   ]
+  ],
+  "stems": [
+   "cereb",
+   "crani",
+   "inici",
+   "mante",
+   "perfu",
+   "presa",
+   "trata",
+   "traum",
+   "vitim"
+  ],
+  "pos_automatica": 1,
+  "trecho_apontado": "Cerebral perfusion pressure is the difference between MAP (zero reference point at the external meatus acusticus) and the ICP. However, many interventions to decrease ICP, such as head elevation or barbiturate coma, suppress MAP and therefore may also lower CPP. Most guidelines recommend CPP should be kept between 60 and 70 mm Hg, as higher or lower values worsen outcome after head trauma.45,52 Recently, the concept of targeting an individualized optimal CPP was introduced, suggesting that an optimal CPP can be calculated for each patient, leading to a more favorable outcome compared with the "
+ },
+ {
+  "id": "82018635",
+  "assertiva": "pacientes que vão ser submetidos a ressecção pulmonar e apresentam consumo máximo de oxigênio (VO2 máx) maior que 15 a 20 mL/kg/min estão em risco reduzido de complicação pós- operatória.",
+  "ancoras": [
+   [
+    "20",
+    "mL"
+   ]
+  ],
+  "stems": [
+   "compl",
+   "consu",
+   "maxim",
+   "opera",
+   "oxige",
+   "pacie",
+   "pulmo",
+   "redus",
+   "resec",
+   "subme"
+  ],
+  "pos_automatica": 1,
+  "trecho_apontado": "as stair-climbing, are not as reliably validated as the 6MWT. Formal laboratory exercise testing is the “gold standard” for assessment of cardiopulmonary function12 and the maximal oxygen consumption (VO2max) is the most useful predictor of postthoracotomy outcome. The risk of morbidity and mortality is high if the preoperative VO2max is less than 15 mL/kg/min, and very high if less than 10 mL/kg/min (35% predicted).13 Few patients with a VO2max greater than 20 mL/kg/min (75% predicted) have respiratory complications (for comparison, a VO2max of 85 mL/kg/min was documented for the American cyc"
+ },
+ {
+  "id": "e810a399",
+  "assertiva": "A SvO2 está reduzida e expressa a diminuição da taxa de extração de oxigênio (TEO2) neste caso.",
+  "ancoras": [
+   [
+    "1,5",
+    "L"
+   ],
+   [
+    "72",
+    "mmHg"
+   ],
+   [
+    "3,5",
+    "L"
+   ],
+   [
+    "98",
+    "%"
+   ],
+   [
+    "55",
+    "%"
+   ],
+   [
+    "39",
+    "mg"
+   ]
+  ],
+  "stems": [
+   "dimin",
+   "expre",
+   "extra",
+   "oxige",
+   "redus"
+  ],
+  "pos_automatica": 41,
+  "trecho_apontado": "The Fick principle may be reversed to examine the venous oxygen saturation which, assuming a constant hematocrit and metabolism, can offer an assessment of the adequacy of CBF and associated oxygen delivery relative to cerebral oxygen consumption: Ignoring the contribution of dissolved oxygen, then: where AVDO2 is the arteriovenous oxygen content difference; CMRO2 is the cerebral oxygen metabolic rate; CaO2, CjvO2, SaO2, and SjvO2 are the arterial oxygen and jugular venous oxygen contents and saturations, respectively; Hgb is the hemoglobin concentration; and 1.34 is the oxygen affinity consta"
+ }
+]

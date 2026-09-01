@@ -22,6 +22,10 @@ dados/chunks_plano512.jsonl
 dados/miller*_paginas.jsonl
 dados/barash_paginas.jsonl
 dados/indice/m10.*
+# indice de trecho pequeno, criado depois: MESMO conteudo, outro nome. Escapou da regra
+# acima e o GitHub barrou o push com 113 MB — o .npy e o .sqlite carregam o livro inteiro.
+dados/indice/m10p.*
+dados/chunks_m10p.jsonl
 dados/indice/dois.*
 dados/indice/h512.*
 dados/indice/plano512.*

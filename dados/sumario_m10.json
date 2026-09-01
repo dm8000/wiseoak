@@ -1,0 +1,1534 @@
+{
+ "1": {
+  "titulo": "The Scope of Modern Anesthetic Practice",
+  "pagina_inicial": 122,
+  "pagina_final": 155,
+  "trechos": 43,
+  "topicos": [
+   "Custos de saúde e transição para modelos de pagamento baseados em valor",
+   "Impacto da pandemia de COVID-19 e das mudanças climáticas na anestesiologia",
+   "Aumento do volume global de cirurgias e procedimentos intervencionistas",
+   "Desafios anestésicos relacionados à epidemia global de obesidade",
+   "Uso de telemedicina e protocolos de recuperação acelerada após cirurgia (ERAS)",
+   "Cuidados hospitalares domiciliares (Hospital at Home)",
+   "Déficit de força de trabalho e burnout de profissionais de anestesia",
+   "Equidade de gênero e avanço de mulheres em cargos de liderança na especialidade",
+   "Métodos de pagamento agrupado (Bundled Payments) e o Affordable Care Act",
+   "Treinamento em gestão de crises via simulação e programas interdisciplinares"
+  ]
+ },
+ "2": {
+  "titulo": "Anesthesia and Global Health Equity",
+  "pagina_inicial": 156,
+  "pagina_final": 321,
+  "trechos": 176,
+  "topicos": [
+   "Escassez de profissionais de anestesia e impacto no acesso à saúde global",
+   "Carga Global de Doença (GBD) e o uso de DALYs (Anos de Vida Ajustados por Incapacidade)",
+   "Disparidades no acesso a analgésicos e opioides em países de baixa e média renda (LMICs)",
+   "Desafios de advocacia e financiamento para cirurgia, anestesia e dor",
+   "Deficiências de equipamentos básicos (capnografia, oximetria de pulso e material de via aérea) em hospitais de LMICs",
+   "Impacto de legislações restritivas de narcóticos (ex: Narcotic Drugs and Psychotropic Substances Act da Índia) no uso medicinal de morfina",
+   "Categorias de profissionais não médicos e não enfermeiros (assistentes, oficiais clínicos e oficiais de anestesia)",
+   "Diretrizes de ventilação (espontânea vs. assistida) baseadas no peso do paciente (<5kg, 5-10kg, >10kg)",
+   "Uso de máquinas de anestesia do tipo 'drawover'",
+   "Manejo da dor perioperatória com Tramadol, Paracetamol e Diclofenaco em cenários de recursos limitados"
+  ]
+ },
+ "3": {
+  "titulo": "Perioperative Medicine",
+  "pagina_inicial": 322,
+  "pagina_final": 375,
+  "trechos": 68,
+  "topicos": [
+   "Expansão do escopo de responsabilidades do anestesiologista no cuidado perioperatório",
+   "Uso de prontuários eletrônicos, Big Data e Inteligência Artificial (IA) na medicina perioperatória",
+   "Impacto de modelos de pagamento e custos de complicações e readmissões hospitalares",
+   "Coordenação de cuidados entre anestesiologistas, cirurgiões, hospitalistas e enfermagem",
+   "Redução de complicações no período pós-operatório",
+   "Uso de tecnologia da informação e informática médica na comunicação médico-paciente",
+   "Modelos de entrega de cuidados perioperatórios e eficiência de custos",
+   "O papel do anestesiologista como hospitalista cirúrgico",
+   "Implementação e refinamento de protocolos ERAS (Enhanced Recovery After Surgery)",
+   "Modelo de PSH (Perioperative Surgical Home) para pacientes complexos"
+  ]
+ },
+ "4": {
+  "titulo": "Informatics in Perioperative Medicine",
+  "pagina_inicial": 376,
+  "pagina_final": 448,
+  "trechos": 87,
+  "topicos": [
+   "Infraestrutura de cliente-servidor e virtualização de aplicações",
+   "Segurança da informação, controle de acesso e autenticação multifator",
+   "Regulamentações da HIPAA (Privacy, Security, Enforcement e Breach Notification Rules)",
+   "Integração do registro anestésico com sistemas clínicos hospitalares",
+   "Implementação e vantagens da documentação eletrônica em anestesia",
+   "Sistemas de gestão de centro cirúrgico e agendamento de casos",
+   "Suporte passivo à decisão (efeito de ancoragem, doses padrão e alertas)",
+   "Ferramentas de suporte à decisão no controle de glicemia perioperatória",
+   "Uso de bancos de dados de prontuários eletrônicos (EHR) para pesquisa retrospectiva",
+   "Identificação de fatores de risco para via aérea difícil, hematoma epidural, lesão renal aguda e hipotensão intraoperatória",
+   "Desenvolvimento e validação de modelos preditivos (overfitting e underfitting)"
+  ]
+ },
+ "5": {
+  "titulo": "Quality Improvement in Anesthesia Practice and Patient Safety",
+  "pagina_inicial": 449,
+  "pagina_final": 530,
+  "trechos": 104,
+  "topicos": [
+   "Definições de erro médico e a perspectiva Safety-I",
+   "Diferenças entre Garantia de Qualidade (QA) e Melhoria Contínua da Qualidade (CQI)",
+   "Ciclos de testes de mudança em pequena escala",
+   "Metodologias DMAIC e Lean Six Sigma",
+   "Medidas de processo versus medidas de resultado",
+   "Uso de Diagramas de Direcionadores Chave (KDD) no handoff OR-PACU",
+   "Protocolos de Time-out e TeamSTEPPS",
+   "Diretrizes da ASA para acesso venoso central, apneia obstrutiva do sono e jejum pré-operatório",
+   "Revisões institucionais internas e externas de processos",
+   "Programa CUSP para melhoria da cultura de segurança"
+  ]
+ },
+ "6": {
+  "titulo": "Human Behavior and Simulation in Anesthesia",
+  "pagina_inicial": 531,
+  "pagina_final": 597,
+  "trechos": 76,
+  "topicos": [
+   "Fatores contribuintes para danos ao paciente (provedor, equipe e sistema)",
+   "Fenômeno da segunda vítima e medidas de suporte institucional",
+   "Heurísticas de disponibilidade e afetiva na tomada de decisão",
+   "Técnicas de mitigação de viés: Prospective Hindsight e Rule Out Worst Case",
+   "Práticas de segurança: Preocupação com falhas e questionamento de suposições",
+   "Histórico de simuladores: Harvey e Comprehensive Anesthesia Simulation Environment (CASE)",
+   "Aplicação de teorias da educação e behaviorismo no ensino por simulação",
+   "Simulação como imperativo ético para a segurança do paciente",
+   "Uso de Pacientes Padronizados (Standardized Patients - SP)",
+   "Testes de processos e protocolos in situ para avaliação de falhas de sistema"
+  ]
+ },
+ "7": {
+  "titulo": "Ethical Aspects of Anesthesia Care",
+  "pagina_inicial": 598,
+  "pagina_final": 678,
+  "trechos": 106,
+  "topicos": [
+   "Racismo estrutural, viés aversivo e práticas JEDI na medicina",
+   "Abordagens cognitiva e baseada em valores para a tomada de decisão do paciente",
+   "Capacidade de tomada de decisão médica em crianças",
+   "Implicações éticas e consentimento informado em testes de gravidez pré-operatórios",
+   "Diretrizes de Ulisses e analgesia epidural no parto",
+   "Tratamentos que exigem revisão judicial, como esterilização e terapia eletroconvulsiva",
+   "Retirada de tratamentos de suporte à vida e cuidados paliativos",
+   "Suicídio assistido por médico (PAS) e autonomia no fim da vida",
+   "Doação de órgãos após a morte circulatória (DCD)"
+  ]
+ },
+ "8": {
+  "titulo": "Consciousness, Memory, and Anesthesia",
+  "pagina_inicial": 681,
+  "pagina_final": 777,
+  "trechos": 109,
+  "topicos": [
+   "Papel da transmissão GABAérgica e da Formação Reticular Pontina (PRF) na perda de consciência",
+   "Efeito do pentobarbital na área de anestesia do tegmento mesopontino",
+   "Interações talamocorticais e a sincronização alfa na indução com propofol",
+   "Conectividade cortical-subcortical e redes fronto-parietais laterais sob propofol",
+   "Função do Lóbulo Temporal Medial (MTL) na memória consciente",
+   "Redes de memória de trabalho e o papel do córtex pré-frontal dorsolateral (DLPFC)",
+   "Efeitos de midazolam, propofol, tiopental e dexmedetomidina na memória retrógrada",
+   "Uso de Potenciais Evocados (ERP) para estudar escopolamina, lorazepam e difenidramina",
+   "Impacto de dexmedetomidina, propofol, cetamina e midazolam no condicionamento e medo",
+   "Efeito do sevoflurane em doses baixas na memória"
+  ]
+ },
+ "9": {
+  "titulo": "Sleep Medicine",
+  "pagina_inicial": 778,
+  "pagina_final": 919,
+  "trechos": 155,
+  "topicos": [
+   "Estágios do sono fisiológico e hipnograma (REM, NREM 1, 2 e 3)",
+   "Polissonografia (PSG) e Actigrafia",
+   "Classificação de gravidade da apneia do sono por RDI e AHI",
+   "Fisiopatologia da Apneia Obstrutiva do Sono (OSA) e colapso da via aérea",
+   "Respiração de Cheyne-Stokes (CSR): características e terapias (Oxigênio, Teofilina, Acetazolamida e NIV)",
+   "Impacto da cirurgia e anestesia na qualidade e duração do sono",
+   "Manejo anestésico e intubação traqueal em pacientes com OSA",
+   "Regulação neuroquímica do sono (Norepinefrina, Serotonina e Melatonina)",
+   "Distúrbios do sono em pacientes na Unidade de Terapia Intensiva (UTI)",
+   "Efeitos de opioides e sedativos na arquitetura do sono e na OSA"
+  ]
+ },
+ "10": {
+  "titulo": "Cerebral Physiology and the Effects of Anesthetic Drugs",
+  "pagina_inicial": 920,
+  "pagina_final": 1143,
+  "trechos": 240,
+  "topicos": [
+   "Regulação do fluxo sanguíneo cerebral (CBF) e resistência cerebrovascular",
+   "Impacto do hematócrito e da viscosidade sanguínea no CBF",
+   "Efeitos da fenilefrina (agonista α1) na pressão de perfusão cerebral (CPP)",
+   "Efeitos do sufentanil e alfentanil no CBF, CMRO2 e pressão intracraniana (ICP)",
+   "Comparação entre halotano, isoflurano e sevoflurane no CBF e CMR",
+   "Integridade da barreira hematoencefálica (BBB) e efeitos do isoflurano",
+   "Processo de morte neuronal tardia após insulto isquêmico",
+   "Manejo da pressão de perfusão cerebral (CPP) e uso de nimodipina no AVC",
+   "Edema peritumoral, uso de manitol e dexametasona"
+  ]
+ },
+ "11": {
+  "titulo": "Neuromuscular Physiology and Pharmacology",
+  "pagina_inicial": 1144,
+  "pagina_final": 1230,
+  "trechos": 96,
+  "topicos": [
+   "Antagonistas dos receptores de ACh e fármacos de reversão (neostigmina e prostigmina)",
+   "Potenciais de placa terminal em miniatura (MEPPs) e quantas de neurotransmissor",
+   "Pools de vesículas de ACh (VP1 e VP2) e mecanismos de liberação",
+   "Modelos de estudo de receptores de ACh (peixe Torpedo, oócitos de rãs e células COS)",
+   "Dinâmica de abertura e fechamento dos canais dos receptores de ACh",
+   "Interferência de fármacos na função do receptor (ex: procaina)",
+   "Bloqueio de fase II e fenômeno de fade induzido por succinilcolina",
+   "Receptores α7 de ACh e a indução de hipercalemia pela succinilcolina e colina",
+   "Hipercalemia e parada cardíaca associadas a distrofias musculares congênitas",
+   "Desenvolvimento e maturação da junção neuromuscular do nascimento ao adulto"
+  ]
+ },
+ "12": {
+  "titulo": "Respiratory Physiology and Pathophysiology",
+  "pagina_inicial": 1231,
+  "pagina_final": 1360,
+  "trechos": 119,
+  "topicos": [
+   "Mecânica do fluxo gasoso e resistência nas vias aéreas",
+   "Vasoconstrição pulmonar hipóxica (HPV) e efeito de anestésicos voláteis (sevoflurane, desflurane)",
+   "Transporte de oxigênio e metabolismo mitocondrial (Ciclo de Krebs)",
+   "Uso de heliox na obstrução de vias aéreas superiores pediátricas",
+   "Controle neural da respiração e o complexo pre-Bötzinger",
+   "Shunt pulmonar, atelectasia e SDRA (ARDS)",
+   "Causas de redução da pressão muscular inspiratória (miastenia gravis, bloqueadores neuromusculares, Guillain-Barré)",
+   "Impacto da posição supina e da anestesia geral na Capacidade Residual Funcional (FRC)",
+   "Ventilação protetora: volume corrente baixo (6-8 mL/kg), manobras de recrutamento e PEEP",
+   "Fisiopatologia e prevenção da atelectasia perioperatória e DPOC"
+  ]
+ },
+ "13": {
+  "titulo": "Cardiac Physiology",
+  "pagina_inicial": 1361,
+  "pagina_final": 1442,
+  "trechos": 75,
+  "topicos": [
+   "Fases da sístole e diástole ventricular",
+   "Precarga, pós-carga e complacência aórtica",
+   "Trabalho interno e externo do coração",
+   "Estrutura e proteínas do cardiomiócito e do sarcômero",
+   "Fases do potencial de ação cardíaco e fluxos iônicos",
+   "Mecanismos de manejo do cálcio (Ca2+) e retículo sarcoplasmático",
+   "Processos de relaxamento miocárdico e função da titina",
+   "Sinalização via receptores beta-adrenérgicos (β1 e β2), cAMP e PKA",
+   "Ação dos receptores alfa-adrenérgicos (α1 e α2)",
+   "Influência de hormônios (tireoidianos, esteroides e neuropeptídeo Y) na função cardíaca"
+  ]
+ },
+ "14": {
+  "titulo": "Gastrointestinal and Hepatic Physiology, Pathophysiology, and Anesthetic Considerations",
+  "pagina_inicial": 1443,
+  "pagina_final": 1614,
+  "trechos": 202,
+  "topicos": [
+   "Histologia do intestino delgado e grosso",
+   "Fisiologia digestiva do estômago, duodeno, jejuno e íleo",
+   "Metabolismo hepático de glicose (glicogênese, lipogênese, glicogenólise e gliconeogênese)",
+   "Hiperbilirrubinemia, Síndrome de Gilbert e colestase",
+   "Diagnóstico e tratamento por endoscopia digestiva",
+   "Insuficiência renal aguda (AKI) e Síndrome Hepatorrenal (HRS-AKI) na cirrose",
+   "Estágios e causas da isquemia mesentérica",
+   "Anatomia hepática e ressecção hepática laparoscópica",
+   "Protocolos ERAS, analgesia epidural e multimodal em cirurgias gastrointestinais"
+  ]
+ },
+ "15": {
+  "titulo": "Renal Anatomy, Physiology, Pharmacology, and Evaluation of Function",
+  "pagina_inicial": 1615,
+  "pagina_final": 1692,
+  "trechos": 72,
+  "topicos": [
+   "Anatomia da barreira glomerular, glicocálix e podócitos",
+   "Estrutura do néfron, túbulos proximais e alça de Henle",
+   "Ação da Angiotensina II na reabsorção de sódio e vasoconstrição da arteríola eferente",
+   "Funções da Aldosterona na absorção de sódio e água",
+   "Mecanismo de contracorrente e função da mácula densa na alça de Henle",
+   "Resposta miogênica das arteríolas aferentes (PAM 70 a 130 mm Hg)",
+   "Osmose e reabsorção isosmótica nos túbulos proximais",
+   "Papel da Arginina Vasopressina (ADH) na concentração urinária",
+   "Avaliação do débito urinário e definição de oligúria (< 0,5 mL/kg/h)",
+   "Estimativa da Taxa de Filtração Glomerular (eGFR) via equação CKD-EPI",
+   "Uso de creatinina sérica e cistatina C na avaliação da função renal"
+  ]
+ },
+ "16": {
+  "titulo": "Basic Principles of Pharmacology",
+  "pagina_inicial": 1693,
+  "pagina_final": 1799,
+  "trechos": 90,
+  "topicos": [
+   "Volume de distribuição (Vd)",
+   "Clearance e estado de equilíbrio (steady-state)",
+   "Modelos farmacocinéticos fisiológicos e compartimentais",
+   "Clearance sistêmico e intercompartimental do fentanil",
+   "Histerese e tempo de efeito do propofol",
+   "Potência (C50) e eficácia de fármacos",
+   "Comparação de potência entre sufentanil e alfentanil",
+   "Interações medicamentosas e isobolas (opioides, hipnóticos e agentes inalatórios)",
+   "Titulação de anestésicos e concentrações no sítio de efeito",
+   "Escalonamento de dose por peso (TBW, CBW e LBM) no propofol"
+  ]
+ },
+ "17": {
+  "titulo": "Inhaled Anesthetics: Mechanisms of Action",
+  "pagina_inicial": 1800,
+  "pagina_final": 1916,
+  "trechos": 127,
+  "topicos": [
+   "Transição dos mecanismos de ação baseados em lipídios para proteínas",
+   "Correlação de Meyer-Overton",
+   "Definições de consciência, sedação, hipnose e amnésia",
+   "Conceito de Concentração Alveolar Mínima (MAC)",
+   "Sítios de ligação de anestésicos no receptor GABA",
+   "Efeitos do isoflurane nas oscilações de neurônios talâmicos",
+   "Inibição de canais de Ca2+ e efeitos inotrópicos negativos",
+   "Impacto do isoflurane, propofol e cetamina na fosforilação de receptores NMDA e AMPA",
+   "Papel da quinase ERK2 na sinalização intracelular",
+   "Metodologias de estudo: preparações in vitro, in vivo e in silico",
+   "Uso de compostos não-imobilizadores para diferenciar sedação de amnésia",
+   "Recrutamento de vias naturais do sono e inibição de vias de despertar"
+  ]
+ },
+ "18": {
+  "titulo": "Inhaled Anesthetic Uptake, Distribution, Metabolism, and Toxicity",
+  "pagina_inicial": 1917,
+  "pagina_final": 2058,
+  "trechos": 145,
+  "topicos": [
+   "Solubilidade sanguínea de anestésicos (halotano, metoxiflurano, N2O, sevoflurano e desflurano)",
+   "Efeito da ventilação minuto na captação e eliminação de agentes",
+   "Impacto do débito cardíaco e fluxo sanguíneo muscular na captação do SNC",
+   "Estratégias de fluxo de gás fresco (FGF) para indução com isoflurano, sevoflurano e desflurano",
+   "Perdas de anestésicos por difusão transcutânea e visceral",
+   "Hepatite por halotano e resposta imune a proteínas modificadas por trifluoroacetila",
+   "Nefrotoxicidade por Composto A e BCDFE",
+   "Decomposição de agentes halogenados em absorventes de CO2 (formação de CO e HF)",
+   "Riscos de exposição fetal a anestésicos inalatórios",
+   "Propriedades e limitações do Xenônio (densidade, resistência ao fluxo e embolia gasosa)"
+  ]
+ },
+ "19": {
+  "titulo": "Pulmonary Pharmacology of Inhaled Anesthetics",
+  "pagina_inicial": 2059,
+  "pagina_final": 2217,
+  "trechos": 162,
+  "topicos": [
+   "Efeito do isoflurano, sevoflurano e desflurane na resistência pulmonar em diferentes níveis de MAC",
+   "Inibição da entrada de cálcio induzida por fármacos voláteis no músculo liso das vias aéreas",
+   "Impacto do halotano e isoflurano na síntese de surfactante pulmonar e metabolismo celular",
+   "Efeito do N2O, isoflurano, sevoflurane e desflurane na vasoconstrição pulmonar hipóxica (HPV)",
+   "Atividade do músculo genioglosso e colapso das vias aéreas superiores durante o sono REM",
+   "Mecanismos da resposta ventilatória à hipóxia (HVR) em altitudes elevadas",
+   "Efeito do isoflurano na lesão de isquemia-reperfusão (IR) e na permeabilidade microvascular pulmonar",
+   "Neurotoxicidade do N2O via bloqueio de receptores NMDA e oxidação da metionina sintase",
+   "Aumento dos níveis de homocisteína plasmática induzido por N2O e prevenção com vitamina B12"
+  ]
+ },
+ "20": {
+  "titulo": "Inhaled Anesthetic Delivery Systems",
+  "pagina_inicial": 2218,
+  "pagina_final": 2450,
+  "trechos": 218,
+  "topicos": [
+   "Uso de cilindros auxiliares de oxigênio (E-cylinders) e falhas de pipeline",
+   "Sistemas de prevenção de misturas gasosas hipóxicas",
+   "Propriedades físicas dos anestésicos inalatórios: ponto de ebulição e volatilidade",
+   "Segurança de vaporizadores: dispositivos de preenchimento, intertravamentos e riscos de preenchimento incorreto",
+   "Administração de anestésicos voláteis em UTI para broncoespasmo refratário e status epilepticus",
+   "Métodos de detecção de vazamentos e desconexões no circuito respiratório",
+   "Remoção de CO2 via membrana oxigenadora e consumo de agentes anestésicos",
+   "Funcionamento de ventiladores a pistão e válvula de desacoplamento de gás fresco",
+   "Sistemas de eliminação de gases anestésicos residuais (scavenging) e poluição da sala",
+   "Testes de checkout da estação de anestesia: testes de pressão positiva e negativa (universal leak test)"
+  ]
+ },
+ "21": {
+  "titulo": "Intravenous Anesthetics",
+  "pagina_inicial": 2452,
+  "pagina_final": 2669,
+  "trechos": 247,
+  "topicos": [
+   "Mecanismo de ação do propofol nos receptores GABAA e rede de modo padrão (DMN)",
+   "Impacto do propofol na recorrência de câncer em comparação com anestesia volátil",
+   "Efeito dos barbitúricos no metabolismo cerebral e CMRO2",
+   "Farmacocinética dos benzodiazepínicos em pacientes obesos e idosos",
+   "Uso de benzodiazepínicos (midazolam) para sedação, amnésia e prevenção de náuseas e vômitos",
+   "Mecanismo de ação da cetamina nos receptores NMDAR e anestesia dissociativa",
+   "Uso da cetamina em traumas cranianos, pressão intracraniana (ICP) e fluxo sanguíneo cerebral (CBF)",
+   "Propriedades farmacológicas e diluição da dexmedetomidina (agonista α2)",
+   "Biotransformação hepática e farmacocinética do droperidol"
+  ]
+ },
+ "22": {
+  "titulo": "Opioids",
+  "pagina_inicial": 2670,
+  "pagina_final": 2994,
+  "trechos": 337,
+  "topicos": [
+   "Mecanismos periféricos de analgesia opioide",
+   "Rigidez muscular induzida por opioides",
+   "Depressão respiratória e ação no complexo preBötzinger",
+   "Efeitos nos ductos biliares e esfíncter de Oddi",
+   "Farmacocinética do sufentanil e metabolismo via CYP3A4/5",
+   "Técnicas de Anestesia Total Intravenosa (TIVA) com opioides",
+   "Farmacologia e potência da hidromorfona",
+   "Uso de naloxona para reversão e prevenção de tolerância",
+   "Polimorfismos genéticos do receptor mu (OPRM1 A118G)"
+  ]
+ },
+ "23": {
+  "titulo": "Intravenous Drug Delivery Systems",
+  "pagina_inicial": 2995,
+  "pagina_final": 3217,
+  "trechos": 227,
+  "topicos": [
+   "Modelos compartimentais de farmacocinética e volume de distribuição",
+   "Cinética de início de efeito (ke0) de fentanil, alfentanil e remifentanil",
+   "Interações farmacológicas entre sevoflurane, remifentanil, óxido nitroso e fentanil",
+   "Cálculo de bolus inicial baseado na concentração no sítio efeito (Cpe)",
+   "Visualização em tempo real de concentrações e efeitos anestésicos (Medvis)",
+   "Acurácia de modelos farmacocinéticos (MDPE e MDAPE) para hipnóticos e analgésicos",
+   "Modelos de infusão controlada por alvo (TCI) para propofol e remifentanil (Modelos Minto e Eleveld)",
+   "Segurança e erros de usuário em dispositivos de TCI",
+   "Sistemas de anestesia em malha fechada (closed-loop) e automação"
+  ]
+ },
+ "24": {
+  "titulo": "Pharmacology of Neuromuscular Blocking Drugs and Antagonists (Reversal Agents)",
+  "pagina_inicial": 3218,
+  "pagina_final": 3540,
+  "trechos": 340,
+  "topicos": [
+   "Dor muscular pós-operatória induzida por succinilcolina",
+   "Cinética de recuperação neuromuscular por grupos musculares (diafragma, laringe e adutor do polegar)",
+   "Interações dos bloqueadores neuromusculares com receptores nicotínicos e muscarínicos periféricos",
+   "Farmacocinética e sensibilidade aos bloqueadores neuromusculares em lactentes e crianças (ex: vecurônio)",
+   "Causas de fraqueza neuromuscular generalizada em Unidade de Terapia Intensiva (UTI)",
+   "Impacto do bloqueio neuromuscular residual na função respiratória e desmame ventilatório",
+   "Uso e dosagem de neostigmina e glicopirrolato para reversão do bloqueio",
+   "Farmacocinética e excreção renal do sugamadex",
+   "Interação farmacológica entre sugamadex e rocurônio",
+   "Efeitos colaterais do sugamadex (tosse, parosmia e alterações na coagulação)"
+  ]
+ },
+ "25": {
+  "titulo": "Local Anesthetics",
+  "pagina_inicial": 3541,
+  "pagina_final": 3650,
+  "trechos": 132,
+  "topicos": [
+   "Estrutura e composição das membranas biológicas",
+   "Mecanismo de inibição dos canais de Na+ e potenciais de ação",
+   "Uso de lidocaína sistêmica em dores neuropáticas e miotonias",
+   "Uso de epinefrina (5 µg/mL ou 1:200.000) como vasoconstritor",
+   "Anestesia regional intravenosa (Bloqueio de Bier) com lidocaína e prilocaína",
+   "Efeitos anti-inflamatórios de anestésicos locais sistêmicos",
+   "Sintomas e sinais de toxicidade do sistema nervoso central (SNC)",
+   "Comparação de cardiotoxicidade e metabolismo entre bupivacaína, ropivacaína e levobupivacaína",
+   "Bupivacaína lipossomal (Exparel®) para analgesia e bloqueios periféricos"
+  ]
+ },
+ "26": {
+  "titulo": "Immune Implications of Anesthesia Care and Practice",
+  "pagina_inicial": 3651,
+  "pagina_final": 3694,
+  "trechos": 48,
+  "topicos": [
+   "Impacto da anestesia e cirurgia nas respostas imunes e inflamatórias",
+   "Mielossupressão por uso crônico de óxido nitroso",
+   "Supressão adrenal causada pelo etomidate",
+   "Imunossupressão perioperatória decorrente do estresse cirúrgico",
+   "Comparação entre anestesia geral (GA) e anestesia geral com epidural na recorrência de câncer de próstata",
+   "Efeitos dos anestésicos voláteis no sistema imune",
+   "Relação entre escolhas anestésicas e desfechos de recuperação cirúrgica, infecções e rejeição de transplantes",
+   "Influência da dieta (L-arginina, ácidos graxos n-3 e nucleotídeos) em complicações infecciosas e cicatrização",
+   "Papel do microbioma, prebióticos, probióticos e transplante de microbiota fecal (FMT) nos desfechos imunes perioperatórios"
+  ]
+ },
+ "27": {
+  "titulo": "Risk of Anesthesia",
+  "pagina_inicial": 3697,
+  "pagina_final": 3819,
+  "trechos": 137,
+  "topicos": [
+   "Metodologias de pesquisa: estudos de coorte e ensaios clínicos randomizados",
+   "Taxas de mortalidade perioperatória e causas de morte atribuíveis à anestesia",
+   "Causas de parada cardíaca por erro humano, overdose de fármacos ou arritmias",
+   "Preditores de ventilação com máscara inadequada e intubação difícil",
+   "Incidência de insuficiência renal aguda pós-operatória",
+   "Impacto da hipertensão no risco perioperatório",
+   "Mortalidade materna relacionada à anestesia em cesáreas e problemas de via aérea",
+   "Efeitos da anestesia geral no desenvolvimento cognitivo e de linguagem infantil",
+   "Comparação de mortalidade entre anestesia regional (bloqueio neuraxial) e geral",
+   "Impacto da estratégia de ventilação protetora em cirurgias não cardíacas",
+   "Relação entre o tipo de provedor de anestesia e os desfechos dos pacientes"
+  ]
+ },
+ "28": {
+  "titulo": "Preoperative Evaluation",
+  "pagina_inicial": 3820,
+  "pagina_final": 4141,
+  "trechos": 374,
+  "topicos": [
+   "Avaliação de declínio funcional, ADLs e Instrumental ADLs em idosos",
+   "Algoritmo de avaliação cardíaca (ESC 2022) e biomarcadores BNP e NT pro-BNP",
+   "Análise de sopros cardíacos e manobras de hand grip",
+   "Anticoagulação em fibrilação atrial não valvular (Score CHA2DS2-VASc, Varfarina e DOACs)",
+   "Impacto da cessação do tabagismo e uso de cannabis no perioperatório",
+   "Complicações da cirrose hepática e síndrome hepatopulmonar",
+   "Manejo perioperatório de fármacos para perda de peso (Bupropiona e Phentermine-Topiramate)",
+   "Rastreio pré-operatório para anemia falciforme (Sickle Cell Disease)",
+   "Papel da consulta médica multidisciplinar em pacientes complexos"
+  ]
+ },
+ "29": {
+  "titulo": "Anesthetic Implications of Concurrent Diseases",
+  "pagina_inicial": 4142,
+  "pagina_final": 4399,
+  "trechos": 348,
+  "topicos": [
+   "Manejo perioperatório de dispositivos eletrônicos cardíacos implantáveis (CIED), marcapassos e CDI",
+   "Síndromes de condução: Brugada, QT Longo Congênito e Wolff-Parkinson-White (WPW)",
+   "Manejo intraoperatório de Doença Renal Crônica (DRC) e Insuficiência Renal Terminal (ESRD)",
+   "Cuidados anestésicos em pacientes com tremores, uso de MAOIs e risco de Síndrome Neuroléptica Maligna",
+   "Manejo de Traumatismo Cranioencefálico (TCE) grave, pressão intracraniana (PIC) e fraturas de base de crânio",
+   "Diagnóstico e preparação pré-operatória da Síndrome de Cushing",
+   "Manifestações sistêmicas e controle da hipotireoidismo",
+   "Hipocalemia: definições (K < 3,5 mEq/L), causas e alterações eletrocardiográficas",
+   "Implicações anestésicas da acondroplasia e apneia do sono",
+   "Manejo de pacientes em abstinência de estimulantes",
+   "Policitemia: tipos (vera e secundária), viscosidade sanguínea e hematócrito alvo (33%–36%)"
+  ]
+ },
+ "30": {
+  "titulo": "Patient Positioning and Associated Risks",
+  "pagina_inicial": 4400,
+  "pagina_final": 4519,
+  "trechos": 137,
+  "topicos": [
+   "Posições supina, lawn chair, frog-leg, Trendelenburg e reverse Trendelenburg",
+   "Posição lateral decúbito e suporte com kidney rest",
+   "Posição sentada e riscos de embolia gasosa, quadriplegia e infarto medular",
+   "Lesões de nervos periféricos e neuropatias perioperatórias",
+   "Prevenção de neuropatias via acolchoamento (armboards, chest rolls e proteção do nervo peroneal)",
+   "Complicações da posição de litotomia nos nervos obturador, femoral cutâneo lateral, ciático e peroneal",
+   "Oclusão da Artéria Central da Retina (CRAO) por compressão ocular",
+   "Neuropatia Óptica Isquêmica (ION) e a relação com a circulação extracorpórea (CPB)",
+   "Riscos de perda visual em cirurgias de coluna"
+  ]
+ },
+ "31": {
+  "titulo": "Neuromuscular Disorders and Other Genetic Disorders",
+  "pagina_inicial": 4520,
+  "pagina_final": 4703,
+  "trechos": 210,
+  "topicos": [
+   "Hipertermia Maligna (HM): mutações no gene RYR1 e canais de cálcio CaV1.1",
+   "Uso do dantroleno no tratamento e prevenção da Hipertermia Maligna",
+   "Síndrome de Noonan: riscos de coagulopatias e relação com a HM",
+   "Doença do Núcleo Central (CCD) como miopatia hereditária",
+   "Distrofia Muscular de Cinturas (LGMD): tipos 1 e 2",
+   "Amiloidose Sistêmica (AMD): manifestações cardíacas e musculares",
+   "Paralisia Periódica Hipercalêmica (HyperPP): diagnóstico genético (SCN4) e tratamento com acetazolamida e mexiletina",
+   "Síndrome de Guillain-Barré (GBS): riscos de aspiração e instabilidade hemodinâmica no perioperatório"
+  ]
+ },
+ "32": {
+  "titulo": "Cardiovascular Monitoring",
+  "pagina_inicial": 4704,
+  "pagina_final": 4949,
+  "trechos": 240,
+  "topicos": [
+   "Filtros de ECG (modo monitor vs. modo diagnóstico) e interferências",
+   "Limitações da pressão arterial não invasiva (NIBP) em obesos e posições laterais",
+   "Cálculo de frequência natural e coeficiente de amortecimento em transdutores de pressão arterial",
+   "Indicações e usos do cateter venoso central (CVP)",
+   "Análise das ondas da pressão venosa central (ondas a, c, v e descidas x, y)",
+   "Artefatos técnicos no monitoramento por cateter de artéria pulmonar (PAC)",
+   "Interpretação da pressão de oclusão da artéria pulmonar (PAWP) e complacência do ventrículo esquerdo",
+   "Técnica de termodiluição transpulmonar para medição do débito cardíaco (CO)",
+   "Medição do débito cardíaco contínuo via tempo de trânsito da onda de pulso (PWTT)"
+  ]
+ },
+ "33": {
+  "titulo": "Perioperative Echocardiography and Point-of-Care Ultrasound (POCUS)",
+  "pagina_inicial": 4951,
+  "pagina_final": 5144,
+  "trechos": 196,
+  "topicos": [
+   "Aplicações do ecocardiograma transesofágico (ETE) em cirurgias cardíacas e não cardíacas",
+   "Técnicas de imagem 3D e Doppler colorido (CFD)",
+   "Avaliação qualitativa e quantitativa da função sistólica do ventrículo esquerdo (VE)",
+   "Parâmetros de função do ventrículo direito (VD): TAPSE, s' e índice de performance miocárdica (MPI)",
+   "Uso do POCUS na identificação da etiologia do choque e instabilidade hemodinâmica",
+   "Monitorização de isquemia miocárdica via ETE em cirurgias não cardíacas",
+   "Manejo hemodinâmico no transplante ortotópico de fígado",
+   "Avaliação ecocardiográfica perioperatória para implante de LVAD",
+   "Aplicação de Inteligência Artificial e Machine Learning em ecocardiografia",
+   "Uso de POCUS e ultrassom pulmonar em pacientes com COVID-19"
+  ]
+ },
+ "34": {
+  "titulo": "Implantable Cardiac Pulse Generators: Pacemakers and Cardioverter-Defibrillators",
+  "pagina_inicial": 5145,
+  "pagina_final": 5196,
+  "trechos": 62,
+  "topicos": [
+   "Indicações de marcapassos para bradicarridmias, síndrome do seio doente e bloqueio cardíaco completo",
+   "Funcionamento e riscos de choques inapropriados em Cardioversores Desfibriladores Implantáveis (CDI)",
+   "Diretrizes de avaliação pré-operatória e prazos de interrogação para marcapassos, CDI e CRT",
+   "Métodos de estimulação cardíaca alternativa: transesofágica, transcutânea e transvenosa",
+   "Posicionamento da placa de aterramento do eletrocautério monopolar para evitar interferência eletromagnética (EMI)",
+   "Uso de eletrocautério bipolar e riscos de radiação ionizante em dispositivos cardíacos implantáveis (CIED)",
+   "Monitorização de captura do marcapasso via ECG e oximetria de pulso",
+   "Protocolos de emergência e uso de imãs para induzir modo assíncrono em CIED",
+   "Considerações e contraindicações para Litotripsia Extracorpórea por Ondas de Choque (LEOC)"
+  ]
+ },
+ "35": {
+  "titulo": "Neurophysiologic Monitoring",
+  "pagina_inicial": 5198,
+  "pagina_final": 5344,
+  "trechos": 155,
+  "topicos": [
+   "Saturação venosa de oxigênio do bulbo jugular (Sjvo2)",
+   "Eletroencefalograma (EEG): frequências beta e alfa",
+   "Potenciais evocados sensoriais somáticos (SSEPs)",
+   "Potenciais evocados motores transcranianos (tcMEPs)",
+   "Eletromiografia (EMG) intraoperatória",
+   "Potenciais evocados auditivos do tronco encefálico",
+   "Monitorização de condução nervosa em exploração de nervos",
+   "Isquemia da medula espinhal em cirurgias da aorta",
+   "Efeitos da hipocapnia e hipercapnia no EEG e fluxo sanguíneo cerebral",
+   "Fatores fisiológicos que alteram sinais de monitorização (PAM, Hct, NMB)"
+  ]
+ },
+ "36": {
+  "titulo": "Monitoring the Brain’s Response to Anesthesia and Surgery",
+  "pagina_inicial": 5345,
+  "pagina_final": 5436,
+  "trechos": 99,
+  "topicos": [
+   "Definições de consciência e estados cerebrais",
+   "Técnica do antebraço isolado (IFT) para detecção de despertar intraoperatório",
+   "Princípios de gravação e processamento do EEG",
+   "Padrão EEG alfa-delta e componentes aperiódicos na manutenção anestésica",
+   "Inércia neural e a diferença entre indução e emergência",
+   "Efeitos do dexmedetomidine e propofol nos padrões de sono e vigília",
+   "Artefatos no EEG: atividade EMG, piscadas e eletrocautério",
+   "Limitações dos índices de EEG na detecção de consciência conectada",
+   "Impacto dos valores de BIS na mortalidade (estudo Balanced Anaesthesia)"
+  ]
+ },
+ "37": {
+  "titulo": "Respiratory Monitoring",
+  "pagina_inicial": 5437,
+  "pagina_final": 5661,
+  "trechos": 224,
+  "topicos": [
+   "Princípio da oximetria de pulso (componentes AC e DC)",
+   "Relação entre saturação de oxigênio (SO2), entrega de oxigênio (DO2) e consumo de oxigênio (VO2)",
+   "Análise da fase III da capnografia em asma, DPOC e lesão pulmonar aguda",
+   "Efeito da PEEP e broncodilatadores na homogeneidade da ventilação",
+   "Relações PaO2/FIO2 e SpO2/FIO2 no diagnóstico e manejo da SDRA",
+   "Monitorização da mecânica respiratória (Rrs e Ers) em ventilação controlada por pressão",
+   "Medição de volume corrente (VT) e integração de sinais de fluxo",
+   "Ultrassonografia pulmonar para diagnóstico de pneumotórax (lung point), derrame pleural e síndrome intersticial",
+   "Registros anestésicos eletrônicos e suporte à decisão clínica",
+   "Variabilidade da pressão de pulso arterial e índice de variabilidade pletismográfica para resposta a fluidos"
+  ]
+ },
+ "38": {
+  "titulo": "Renal Pathophysiology and Treatment for Perioperative Ischemia and Nephrotoxic Injury",
+  "pagina_inicial": 5662,
+  "pagina_final": 5729,
+  "trechos": 79,
+  "topicos": [
+   "Critérios de diagnóstico de AKI baseados em débito urinário e creatinina",
+   "Fisiopatologia da azotemia pré-renal e Necrose Tubular Aguda (ATN)",
+   "Biomarcadores urinários de disfunção renal (GST e N-acetyl-β-D-glucosaminidase)",
+   "Polimorfismos genéticos (IL-6 e angiotensinogeno) e hipertensão sistólica isolada como fatores de risco",
+   "Efeitos renoprotetores do Propofol e Dexmedetomidina via BMP-7",
+   "Impacto da hemodiluição e hematócrito (20% a 30%) durante a Circulação Extracorpórea (CPB)",
+   "Relação entre pressão atrial esquerda, fluxo sanguíneo renal e ANP",
+   "Síndrome do Compartimento Abdominal (pressão intra-abdominal > 20 mmHg)",
+   "Anticoagulação em terapias substitutivas renais com Heparina e Citrato"
+  ]
+ },
+ "39": {
+  "titulo": "Neuromuscular Monitoring",
+  "pagina_inicial": 5730,
+  "pagina_final": 5822,
+  "trechos": 100,
+  "topicos": [
+   "Controle de impedância da pele e corrente elétrica (60 mA / 5 kΩ)",
+   "Sensibilidade diferencial de grupos musculares (diafragma vs. adutor do polegar)",
+   "Estimulação Train-of-Four (TOF): contagem e razão (TOF ratio)",
+   "Diferenças entre bloqueio neuromuscular despolarizante e não despolarizante",
+   "Estimulação tetânica e facilitação pós-tetânica",
+   "Métodos de monitorização objetiva (MMG, EMG, AMG, KMG, CPM e CMG)",
+   "Valores de referência de TOF ratio na acelerometria (AMG) vs. MMG/EMG",
+   "Período de ausência de resposta e bloqueio neuromuscular completo",
+   "Reversão de bloqueio com neostigmina e sugammadex (16 mg/kg)",
+   "Uso do estimulador nervoso durante a antagonização do bloqueio"
+  ]
+ },
+ "40": {
+  "titulo": "Airway Management in the Adult",
+  "pagina_inicial": 5823,
+  "pagina_final": 6011,
+  "trechos": 193,
+  "topicos": [
+   "Anatomia da faringe e riscos de laceração da fáscia bucofaríngea",
+   "Síndrome de Mendelson e prevenção de pneumonia por aspiração",
+   "Efeitos hemodinâmicos e rigidez muscular induzida por opioides",
+   "Preditores de ventilação com máscara difícil (IMC ≥ 30, Mallampati III/IV, idade > 55 anos)",
+   "Tubo esofágico-traqueal (ETC) e dispositivos supraglóticos (King LT)",
+   "Escalas de visualização laríngea: POGO e Cormack-Lehane",
+   "Técnica de laringoscopia com lâmina Macintosh",
+   "Laringoscopia indireta e vídeo (Airtraq SP)",
+   "Isolamento pulmonar com tubos de duplo lúmen (DLT) e bloqueadores bronquiais",
+   "Cricotireoidostomia: técnica e complicações (estenose traqueal, enfisema)"
+  ]
+ },
+ "41": {
+  "titulo": "Spinal, Epidural, and Caudal Anesthesia",
+  "pagina_inicial": 6012,
+  "pagina_final": 6202,
+  "trechos": 235,
+  "topicos": [
+   "Mecanismos de regressão e eliminação de fármacos no líquor",
+   "Classificação de anestésicos locais por duração de ação (curta, intermediária e longa)",
+   "Riscos de complicações neurológicas em pacientes com estenose espinhal",
+   "Uso intratecal de neostigmina e midazolam",
+   "Fatores que influenciam a altura do bloqueio no espaço epidural",
+   "Técnicas de identificação do espaço epidural (perda de resistência e gota pendente)",
+   "Cateteres multi-orifícios em pacientes gestantes",
+   "Complicações neurológicas e infecciosas em anestesia neuraxial",
+   "Recomendações da ASA e ASRA para complicações infecciosas",
+   "Impacto da anestesia epidural na recorrência de tumores"
+  ]
+ },
+ "42": {
+  "titulo": "Peripheral Nerve Blocks and Ultrasound Guidance for Regional Anesthesia",
+  "pagina_inicial": 6203,
+  "pagina_final": 6306,
+  "trechos": 107,
+  "topicos": [
+   "Artefatos de imagem em ultrassom (espessura de corte e reforço acústico)",
+   "Anatomia nervosa normal e variações anatômicas em bloqueios regionais",
+   "Uso de anestésicos locais (bupivacaína, ropivacaína) e epinefrina (1:200.000–1:400.000)",
+   "Anatomia e bloqueio do plexo braquial",
+   "Bloqueio do tronco superior e do nervo supraescapular anterior",
+   "Técnicas de bloqueio infraclavicular (abordagens paracoracoide e costoclavicular)",
+   "Bloqueio paravertebral torácico",
+   "Anatomia do nervo isquiático, nervo tibial e nervo fibular comum",
+   "Bloqueio do canal adutor (nervo safeno e nervo vasto medial)",
+   "Bloqueio dos nervos tibial e sural"
+  ]
+ },
+ "43": {
+  "titulo": "Perioperative Fluid and Electrolyte Therapy",
+  "pagina_inicial": 6307,
+  "pagina_final": 6452,
+  "trechos": 213,
+  "topicos": [
+   "Mecanismos de transporte celular: canais de solutos, difusão facilitada, endocitose e exocitose",
+   "Controle renal da pressão arterial e a curva de pressão-natriurese",
+   "Acidose metabólica hiperclorêmica induzida por infusão de solução salina 0,9%",
+   "Propriedades, reologia e toxicidades dos coloides plasmáticos",
+   "Fatores de redistribuição hídrica perioperatória: inflamação, ADH e ventilação por pressão positiva",
+   "Síndrome da ressecção transuretral da próstata (TURP)",
+   "Tratamento da hipercalcemia: bisfosfonatos (incluindo ácido zoledrônico), glicocorticoides e calcitonina",
+   "Hipomagnesemia e a relação entre concentração sérica e conteúdo corporal total",
+   "Terapia fluidoterápica guiada por metas (GDT) baseada em EDM",
+   "Ressuscitação volêmica e instabilidade cardiovascular em sepse",
+   "Terapia 'triple-H' (hipervolemia, hemodiluição e hipertensão) no vasospasmo cerebral pós-hemorragia subaracnoide"
+  ]
+ },
+ "44": {
+  "titulo": "Perioperative Acid–Base Balance",
+  "pagina_inicial": 6453,
+  "pagina_final": 6553,
+  "trechos": 102,
+  "topicos": [
+   "Definições de ácidos e bases de Arrhenius",
+   "Equações de equilíbrio e variáveis independentes (SID, ATOT e PaCO2)",
+   "Sinais e sintomas de alcalose metabólica",
+   "Causas de acidose metabólica hiperclorêmica (Síndrome de Bartter e perdas gastrointestinais)",
+   "Cálculo e aplicação do Anion Gap (AG) e Delta Gap",
+   "Cálculo do Excesso de Base (BE) e BE gap",
+   "Causas de acidose respiratória (patologias neuromusculares, CNS e Síndrome da Compartimentação Abdominal)",
+   "Acidose lática associada à metformina e acidose por D-lactato",
+   "Uso de bicarbonato de sódio no manejo perioperatório",
+   "Impacto da hipoalbuminemia no equilíbrio ácido-base de pacientes críticos"
+  ]
+ },
+ "45": {
+  "titulo": "Patient Blood Management: Transfusion Therapy",
+  "pagina_inicial": 6554,
+  "pagina_final": 6705,
+  "trechos": 166,
+  "topicos": [
+   "Testes sorológicos e moleculares para detecção de agentes infecciosos (HIV, HCV, HBV, HTLV e West Nile)",
+   "Impacto do tempo de armazenamento do sangue nos desfechos clínicos e sobrevivência",
+   "Monitoramento de hemoglobina não invasiva (SpHb) e sua precisão",
+   "Limiares de contagem de plaquetas para quimioterapia, biópsias de medula e neurocirurgia",
+   "Riscos e uso de substitutos de hemoglobina (HBOCs), como o Hemopure",
+   "Técnicas e contraindicações da recuperação intraoperatória de células (cell salvage)",
+   "Protocolos de prova cruzada (crossmatch) eletrônica e serológica",
+   "Degradação de fatores de coagulação (V e VIII) em sangue armazenado e uso de plasma fresco congelado (FFP)",
+   "Manejo e tratamento de reações transfusionais hemolíticas",
+   "Indicações para irradiação de componentes sanguíneos em pacientes transplantados"
+  ]
+ },
+ "46": {
+  "titulo": "Patient Blood Management: Coagulation",
+  "pagina_inicial": 6706,
+  "pagina_final": 6820,
+  "trechos": 139,
+  "topicos": [
+   "Modelo de cascata de coagulação e zymogens",
+   "Triagem e testes laboratoriais de coagulação pré-operatórios",
+   "Coagulação Intravascular Disseminada (DIC) e terapia antifibrinolítica",
+   "Monitoramento da coagulação perioperatória e terapia com heparina",
+   "Tromboelastografia (TEG): valores R, ângulo α, K e amplitude máxima",
+   "Antiagregantes plaquetários: Clopidogrel, Prasugrel e receptores P2Y12",
+   "Anticoagulantes orais diretos (DOACs), Dabigatran e LMWH",
+   "Concentrados de Complexo Protrombínico (PCC) de 3 e 4 fatores",
+   "Idarucizumab como antídoto para Dabigatran"
+  ]
+ },
+ "47": {
+  "titulo": "Management of the Patient with Chronic Pain",
+  "pagina_inicial": 6823,
+  "pagina_final": 6913,
+  "trechos": 107,
+  "topicos": [
+   "Fatores biológicos, psicológicos e sociais na dor crônica",
+   "Abordagem multidisciplinar no tratamento da dor",
+   "Classes farmacológicas: opioides, AINEs, compostos serotonérgicos, antiepilépticos e antidepressivos",
+   "Vias de administração de opioides (intratecal, sistêmica e tópica) e uso de naloxona",
+   "Uso de capsaicina e anestésicos locais tópicos em neuralgia pós-herpética e síndromes neuropáticas",
+   "Papel dos bloqueios nervosos e métodos intervencionistas",
+   "Técnicas de anestesia livre de opioides (OFA) e estratégias poupadoras de opioides (S-cetamina, lidocaína e ligantes alfa-2)",
+   "Dependência física e síndrome de abstinência de opioides, benzodiazepínicos e anticonvulsivantes",
+   "Manejo perioperatório de pacientes em terapia de substituição com buprenorfina",
+   "Protocolos de redução de dose (desmame) de opioides e monitoramento de carbamazepina"
+  ]
+ },
+ "48": {
+  "titulo": "Palliative Medicine",
+  "pagina_inicial": 6914,
+  "pagina_final": 7066,
+  "trechos": 162,
+  "topicos": [
+   "Papel da equipe multidisciplinar (assistente social, farmacêuticos e suporte espiritual)",
+   "Estatísticas e diagnósticos comuns em cuidados de hospice (câncer, doenças cardíacas, demência e DPOC)",
+   "Diretrizes para diretivas antecipadas de vontade (Patient Self-Determination Act)",
+   "Estratégias de comunicação e suporte para famílias de pacientes terminais",
+   "Ordens de não ressuscitação (DNR) no cenário perioperatório",
+   "Síndrome de fragilidade e sua associação com a mortalidade",
+   "Uso de sondas de alimentação percutâneas e hidratação artificial em demência avançada",
+   "Sinais fisiológicos e cognitivos do processo de morte (delirium terminal e 'golden glow')",
+   "Treinamento de cirurgiões e anestesiologistas para conversas de fim de vida"
+  ]
+ },
+ "49": {
+  "titulo": "Anesthesia for Thoracic Surgery",
+  "pagina_inicial": 7067,
+  "pagina_final": 7400,
+  "trechos": 355,
+  "topicos": [
+   "Resposta vasoconstritora de artérias radiais e pulmonares à vasopressina e norepinefrina",
+   "Intervalos de segurança para cateter epidural em pacientes usando heparina não fracionada e HBPM",
+   "Técnicas de intubação com tubos de duplo lúmen (DLT) e videolaringoscopia",
+   "Lesões do plexo braquial e do nervo supraescapular na posição lateral",
+   "Ventilação com controle de pressão versus controle de volume em cirurgia torácica",
+   "Manejo anestésico em broncoscopia robótica",
+   "Considerações para ressecções pulmonares limitadas (segmentectomias e ressecções em cunha)",
+   "Avaliação e manejo de fístulas broncopleurais",
+   "Anestesia para transplante pulmonar em pacientes com hipertensão pulmonar primária",
+   "Uso de dexmedetomidina como adjuvante na analgesia pós-toracotomia"
+  ]
+ },
+ "50": {
+  "titulo": "Anesthesia for Cardiac Surgical Procedures",
+  "pagina_inicial": 7401,
+  "pagina_final": 7870,
+  "trechos": 490,
+  "topicos": [
+   "Manejo da heparina e monitorização por ACT e HiTT durante a CPB",
+   "Riscos e cuidados em cirurgias cardíacas de reoperação (redo)",
+   "Fatores de risco e classificação RIFLE para disfunção renal aguda",
+   "Estratégias de conservação sanguínea perioperatória",
+   "Manejo ácido-base na CPB: estratégias α-stat e pH-stat",
+   "Técnicas anestésicas e monitorização em cirurgias MIDCAB",
+   "Uso e diferenças entre cateter de artéria pulmonar (PA) e cateter de ventilação PA",
+   "Suporte hemodinâmico com dispositivos Impella (LVAD e RVAD) e IABP",
+   "Classificação da Insuficiência Cardíaca por fração de ejeção (HFrEF, HFmrEF e HFpEF)",
+   "Manejo anestésico da Tetralogia de Fallot (TAT), incluindo uso de esmolol e nitroglicerina"
+  ]
+ },
+ "51": {
+  "titulo": "Anesthesia for Correction of Cardiac Arrhythmias",
+  "pagina_inicial": 7871,
+  "pagina_final": 7917,
+  "trechos": 52,
+  "topicos": [
+   "Mecanismos de geração e condução de impulsos nas arritmias cardíacas",
+   "Classificação de arritmias por frequência, ritmo, origem e condução",
+   "Terapia de ressincronização cardíaca e biventricular na insuficiência cardíaca",
+   "Uso de dobutamina em comparação à terapia de ressincronização",
+   "Indicações e técnicas de implante de marca-passo e CDI (Cardioversor Desfibrilador Implantável)",
+   "Manejo anestésico para implante de CDI: sedação com midazolam e fentanil",
+   "Ablação por cateter por radiofrequência para taquicardias nodais e vias acessórias",
+   "Implante e recuperação de marca-passos sem eletrodo (Micra e Aveir) via transfemoral",
+   "Tratamento de fibrilação atrial via isolamento das veias pulmonares",
+   "Ablação por campo pulsado (eletroporação irreversível)"
+  ]
+ },
+ "52": {
+  "titulo": "Anesthesia for Vascular Surgery",
+  "pagina_inicial": 7918,
+  "pagina_final": 8109,
+  "trechos": 220,
+  "topicos": [
+   "Manejo de pacientes com doenças pulmonares e uso de anestesia epidural",
+   "Alterações hemodinâmicas, metabólicas e intervenções terapêuticas durante o clampeamento aórtico",
+   "Cuidados anestésicos e estabilização volêmica no momento do desclampeamento",
+   "Classificação de Crawford para aneurismas de aorta",
+   "Prevenção de paraplegia e técnicas de perfusão distal em cirurgias de aorta torácica",
+   "Opções de anestesia (geral, regional e sedação) para EVAR",
+   "Endoleaks tipo 1 (IA e IB) em procedimentos de EVAR",
+   "Avaliação pré-operatória e manejo medicamentoso para endarterectomia carotídea",
+   "Controle do ETCO2 e fenômeno de 'steal' na anestesia para cirurgia carotídea"
+  ]
+ },
+ "53": {
+  "titulo": "Anesthesia for Neurologic Surgery and Neurointerventions",
+  "pagina_inicial": 8110,
+  "pagina_final": 8325,
+  "trechos": 246,
+  "topicos": [
+   "Limites de PaCO2 na hiperventilação para controle da complacência intracraniana",
+   "Posicionamento do paciente (prona, flexão cervical e reverse Trendelenburg)",
+   "Monitorização de ECG via cateter de pressão venosa central (CVP)",
+   "Uso de hipotermia em cirurgias de aneurisma e riscos associados",
+   "Farmacoterapia para prevenção de vasoespasmo (clazosentan, magnésio e estatinas)",
+   "Fenômeno de 'perfusion pressure breakthrough' em malformações arteriovenosas (AVM)",
+   "Manejo de hemoglobina e coagulopatia no traumatismo cranioencefálico (TCE)",
+   "Indicações para craniotomias com paciente acordado",
+   "Uso de adenosina e controle pressórico em neurointervenções de alto fluxo",
+   "Manejo de hiperventilação para desvio de fluxo sanguíneo cerebral"
+  ]
+ },
+ "54": {
+  "titulo": "Anesthesia for Bariatric Surgery",
+  "pagina_inicial": 8326,
+  "pagina_final": 8415,
+  "trechos": 107,
+  "topicos": [
+   "Fatores de risco e causas da síndrome metabólica",
+   "Rastreio e diagnóstico de Síndrome da Apneia Obstrutiva do Sono (SAOS) via questionário STOP-Bang e polissonografia",
+   "Manejo perioperatório de metformina e aspirina",
+   "Prevalência e classificação da obesidade pediátrica",
+   "Terapias endoscópicas bariátricas e metabólicas (EBMTs), incluindo o balão intragástrico",
+   "Impacto da doença hepática gordurosa não alcoólica e cirrose no risco perioperatório",
+   "Alterações da fisiologia pulmonar no paciente obeso (capacidades e volumes pulmonares)",
+   "Efeitos de opioides, propofol, benzodiazepínicos e agentes voláteis em pacientes com SAOS",
+   "Cuidados pós-operatórios: uso de CPAP, BiPAP e monitorização de capnometria e SpO2"
+  ]
+ },
+ "55": {
+  "titulo": "Anesthesia and the Renal and Genitourinary Systems",
+  "pagina_inicial": 8416,
+  "pagina_final": 8553,
+  "trechos": 167,
+  "topicos": [
+   "Fisiologia renal: autorregulação do fluxo sanguíneo renal (RBF) e taxa de filtração glomerular (GFR)",
+   "Marcadores de função renal: creatinina sérica e cistatina C",
+   "Farmacocinética de opioides (alfentanil, remifentanil e hidromorfona) na insuficiência renal",
+   "Fisiopatologia da Lesão Renal Aguda (AKI)",
+   "Técnicas anestésicas (spinal, epidural e geral) para Ressecção Transuretral da Próstata (TURP)",
+   "Sinais, sintomas e manejo da Síndrome TURP",
+   "Considerações anestésicas e riscos da Litotripsia Extracorpórea por Ondas de Choque (ESWL)",
+   "Manejo de perda sanguínea em Prostatectomia Radical aberta e robótica",
+   "Analgesia pós-operatória com cetorolaco em prostatectomia retropúbica e RARP",
+   "Cistectomia Radical Assistida por Robô (RARC) com diversão urinária"
+  ]
+ },
+ "56": {
+  "titulo": "Anesthesia for Abdominal Organ Transplantation",
+  "pagina_inicial": 8554,
+  "pagina_final": 8739,
+  "trechos": 219,
+  "topicos": [
+   "Sistemas de alocação de órgãos (HLA, Eurotransplant, EUA e Reino Unido)",
+   "Manejo pré-operatório e hemodiálise em transplante renal",
+   "Acompanhamento da função renal e GFR no pós-transplante renal",
+   "Critérios para emergência e extubação em transplantes abdominais e SPK",
+   "Síndrome Hepatopulmonar (HPS) e diagnóstico por ecocardiografia com contraste",
+   "Definição e etiologias da Insuficiência Hepática Aguda (ALF)",
+   "Manejo anestésico na fase pré-anhepática do transplante de fígado",
+   "Sistemas de perfusão hipotérmica e normotérmica de fígados",
+   "Anestesia para transplantes intestinais e multiviscerais"
+  ]
+ },
+ "57": {
+  "titulo": "Anesthesia for Organ Procurement",
+  "pagina_inicial": 8740,
+  "pagina_final": 8797,
+  "trechos": 67,
+  "topicos": [
+   "Coordenação e políticas de doação de órgãos",
+   "Alterações fisiopatológicas da morte encefálica (tempestade catecolaminérgica, diabetes insipidus e coagulopatia)",
+   "Protocolos para declaração de morte circulatória (DCD)",
+   "Índice de Risco do Doador (DRI) para enxertos hepáticos",
+   "Estratégias de ventilação protetora para doadores de pulmão (Volume corrente 6-8 ml/kg e PEEP 8-10 cm H2O)",
+   "Critérios laboratoriais e hemodinâmicos para seleção de doadores",
+   "Consentimento e critérios para doadores vivos (doação emparelhada ou em cadeia)",
+   "Manejo anestésico e hemodinâmico na nefrectomia de doador vivo (uso de efedrina)",
+   "Manejo da hipotensão e controle de sangramento na hepatectomia de doador vivo"
+  ]
+ },
+ "58": {
+  "titulo": "Anesthesia for Obstetrics",
+  "pagina_inicial": 8798,
+  "pagina_final": 8976,
+  "trechos": 218,
+  "topicos": [
+   "Pré-oxigenação e manejo de via aérea na gestante",
+   "Fatores que influenciam a progressão do trabalho de parto",
+   "Avaliação pré-procedural para analgesia neuraxial",
+   "Analgesia epidural: uso de bupivacaína, fentanil e sufentanil",
+   "Indução anestésica geral: propofol, succinilcolina, rocurônio e videolaringoscopia",
+   "Toxicidade Sistêmica por Anestésicos Locais (LAST) e bloqueio TAP",
+   "Complicações infecciosas: pneumonia, H1N1 e COVID-19",
+   "Manejo de hemorragia obstétrica maciça e protocolos de transfusão (FFP e PRBC)",
+   "Técnicas laparoscópicas vs. cirurgia aberta na gestante"
+  ]
+ },
+ "59": {
+  "titulo": "Anesthesia for Fetal Surgery and Other Fetal Therapies",
+  "pagina_inicial": 8977,
+  "pagina_final": 9135,
+  "trechos": 167,
+  "topicos": [
+   "Resposta ao estresse fetal e uso de Fentanil em procedimentos intrauterinos",
+   "Tratamento de LUTO via cistoscopia fetal ou derivação vesicoamniótica (VAS)",
+   "Complicações da cirurgia fetal por laparoscopia (SFLP), incluindo PROM e parto prematuro",
+   "Manejo e prognóstico de mielomeningocele (MMC) e malformação de Arnold-Chiari",
+   "Uso de analgésicos e relaxantes musculares intramusculares guiados por ultrassom no feto",
+   "Efeitos de opioides na resposta hormonal de neonatos prematuros",
+   "Manejo da estabilidade hemodinâmica materna com Fenilefrina, Efedrina e Glicopirrolato",
+   "Preparação de via aérea e equipamentos para o procedimento EXIT",
+   "Protocolos de acesso venoso fetal e reposição volêmica (sangue O-negativo e CMV-negativo)"
+  ]
+ },
+ "60": {
+  "titulo": "Anesthesia for Orthopedic Surgery",
+  "pagina_inicial": 9136,
+  "pagina_final": 9286,
+  "trechos": 172,
+  "topicos": [
+   "Lesão Miocárdica Perioperatória (PMI) e troponinas",
+   "Prevenção de delirium e cognição em idosos",
+   "Triagem de hemostasia primária e controle de hiperglicemia (Glicose <200 mg/mL e HbA1c <7%)",
+   "Uso de agentes antifibrinolíticos em cirurgias ortopédicas",
+   "Manejo perioperatório de fraturas de fêmur em idosos e jovens",
+   "Bloqueio Interescaleno (ISB) e Bloqueio do Nervo Supraescapular (SSN)",
+   "Técnica de Bloqueio do Tornozelo",
+   "Monitorização Intraoperatória Neurofisiológica (IONM) e teste de despertar (wake-up test)",
+   "Impacto da hipertensão pulmonar em substituições articulares maiores"
+  ]
+ },
+ "61": {
+  "titulo": "Geriatric Anesthesia",
+  "pagina_inicial": 9287,
+  "pagina_final": 9341,
+  "trechos": 88,
+  "topicos": [
+   "Alterações cardiovasculares: hipertrofia ventricular esquerda e disfunção diastólica",
+   "Declínio da função renal: redução da taxa de filtração glomerular (GFR) e do fluxo sanguíneo renal",
+   "Ferramentas de risco e certificação: ACS NSQIP Surgical Risk Calculator e programa GSV",
+   "Cuidados perioperatórios: triagem de fragilidade, nutrição, manejo da dor e oxigenação",
+   "Rastreio de alcoolismo e profilaxia para síndromes de abstinência",
+   "Farmacocinética e farmacodinâmica: sensibilidade ao midazolam e opioides",
+   "Manejo de bloqueadores neuromusculares: rocurônio, vecurônio, pancurônio, cis-atracúrio e succinilcolina",
+   "Fisiologia respiratória: redução da capacidade vital e risco de complicações pulmonares pós-operatórias",
+   "Prevenção e tratamento do delirium: Hospital Elder Life Program (HELP) e uso de antipsicóticos e benzodiazepínicos"
+  ]
+ },
+ "62": {
+  "titulo": "Anesthesia for Trauma",
+  "pagina_inicial": 9342,
+  "pagina_final": 9547,
+  "trechos": 231,
+  "topicos": [
+   "Priorização de procedimentos cirúrgicos no paciente com trauma",
+   "Uso de succinilcolina, rocurônio e vecurônio na intubação",
+   "Indução lenta com cetamina para manutenção da ventilação espontânea",
+   "Monitoramento da coagulopatia e hemostasia perioperatória",
+   "Estratégias de ressuscitação hipotensiva (alvos de MAP de 50 mmHg e 65 mmHg)",
+   "Marcadores de perfusão tecidual: lactato, déficit de base e pH",
+   "Manejo ventilatório, PEEP e pressão intracraniana (ICP) em pacientes com TBI e ARDS",
+   "Manejo anestésico de fraturas de anel pélvico e hemorragia retroperitoneal",
+   "Tratamento de fraturas de costela e uso de anestesia epidural",
+   "Desafios no manejo da dor em pacientes com trauma"
+  ]
+ },
+ "63": {
+  "titulo": "Prehospital Care for Medical Emergencies and Trauma",
+  "pagina_inicial": 9548,
+  "pagina_final": 9598,
+  "trechos": 62,
+  "topicos": [
+   "Fundamentos de BLS, ALS e ACLS",
+   "Serviços de transporte aeromédico (HEMS)",
+   "Controle de hemorragias: pressão direta, hemostáticos, torniquetes (CAT) e REBOA",
+   "Manejo de hemorragia maxillofacial: tamponamento nasal, Rapid Rhino e colares cervicais",
+   "Monitorização pré-hospitalar: oximetria, PNI, ECG, temperatura e capnografia",
+   "Tratamento de STEMI: intervenção coronária percutânea (PCI) e fibrinólise",
+   "Manejo de traumatismo cranioencefálico (TCE) e lesão medular (SCI)",
+   "Atendimento emergencial a crises convulsivas e status epilepticus",
+   "Princípios de ATLS aplicados ao atendimento pré-hospitalar (Primary Survey)",
+   "Transfusão pré-hospitalar de plasma e sangue total",
+   "Diagnósticos Point-of-Care (POC), ultrassonografia, telemetria e telemedicina"
+  ]
+ },
+ "64": {
+  "titulo": "Biologic, Natural, and Human-Induced Disasters: The Role of the Anesthesiologist",
+  "pagina_inicial": 9599,
+  "pagina_final": 9704,
+  "trechos": 105,
+  "topicos": [
+   "Papel do anestesiologista na gestão e recuperação de desastres naturais",
+   "Impactos psicológicos e trauma em profissionais de saúde em missões humanitárias",
+   "Técnicas anestésicas em cenários de desastre: anestesia geral com agentes inalatórios, opioides e bloqueadores neuromusculares",
+   "Impactos de infraestrutura em desastres naturais (danos a telhados, redes elétricas e hídricas)",
+   "Atuação do anestesiologista em eventos de tiroteios em massa e cuidados ressuscitatórios",
+   "Histórico e desenvolvimento de armas químicas, biológicas e agentes nervosos anticolinesterase",
+   "Abordagem a incidentes CBRN (Químico, Biológico, Radiológico e Nuclear): causas intencionais, acidentais e naturais",
+   "Histórico de erradicação da varíola e riscos de pandemias por transmissão zoonótica",
+   "Síndrome do Oriente Médio (MERS) e o papel dos camelos dromedários como reservatório",
+   "Pandemia de COVID-19: SARS-CoV-2, origens zoonóticas e dinâmica de transmissão"
+  ]
+ },
+ "65": {
+  "titulo": "Anesthesia for Ophthalmic Surgery",
+  "pagina_inicial": 9706,
+  "pagina_final": 9786,
+  "trechos": 99,
+  "topicos": [
+   "Anatomia ocular: corpo ciliar, retina, coroide e nervo óptico",
+   "Fatores que aumentam a Pressão Intraocular (PIO)",
+   "Avaliação pré-anestésica e contraindicação do óxido nitroso em bolhas intraoculares",
+   "Técnicas de bloqueio peribulbar e retrobulbar",
+   "Sedação consciente (MAC) e uso de propofol, cetamina e dexmedetomidina",
+   "Manejo anestésico na Dacriocistorrinostomia (DCR) e mistura 6-2-2",
+   "Particularidades da anestesia em oftalmologia pediátrica",
+   "Síncope vasovagal no pós-operatório de estrabismo e cirurgia vitreorretiniana",
+   "Neuropatia Óptica Isquêmica (NOI) anterior e posterior"
+  ]
+ },
+ "66": {
+  "titulo": "Anesthesia for Otolaryngologic and Head–Neck Surgery",
+  "pagina_inicial": 9787,
+  "pagina_final": 9843,
+  "trechos": 119,
+  "topicos": [
+   "Anatomia laríngea e monitorização neuromonitorização dos nervos laríngeos recorrentes",
+   "Técnicas de intubação endotraqueal e uso do guia de Eschmann (bougie)",
+   "Manejo anestésico da epiglotite",
+   "Posicionamento do paciente (posição de Jackson) e laringoscópios especializados",
+   "Cuidados pós-operatórios, prevenção de PONV e manejo de tamponamento nasal",
+   "Prevenção e manejo de incêndios em vias aéreas (triade de combustível, oxigênio e ignição)",
+   "Cirurgias de glândulas salivares (parótida e submandibular)",
+   "Técnicas de via aérea cirúrgica: cricoidostomia e traqueostomia",
+   "Anestesia para procedimentos de articulação temporomandibular (ATM)",
+   "Cirurgias a laser em Otorrinolaringologia e uso do laser de CO2"
+  ]
+ },
+ "67": {
+  "titulo": "Anesthesia for Robotic Surgery",
+  "pagina_inicial": 9844,
+  "pagina_final": 9937,
+  "trechos": 102,
+  "topicos": [
+   "Sistema de intubação robótica Kepler (KIS)",
+   "Manejo da pressão intra-abdominal (< 20 cmH2O) e resposta vagal",
+   "Desafios cardiovasculares e ventilatórios na posição Trendelenburg steep em obesos mórbidos",
+   "Cirurgias robóticas ginecológicas: sacrocolpopexia e miomectomia",
+   "Configuração da sala operatória e manejo de via aérea em cirurgias transorais",
+   "Analgesia multimodal e bloqueio paravertebral intercostal em RATS (cirurgia torácica robótica)",
+   "Contraindicações para ventilação unipulmonar",
+   "Anestesia para DBS assistida por ROSA (RADBS): MAC com propofol ou anestesia geral",
+   "Efeitos do pneumoperitônio com CO2 e posição Trendelenburg na pressão intracraniana"
+  ]
+ },
+ "68": {
+  "titulo": "Ambulatory (Outpatient) Anesthesia",
+  "pagina_inicial": 9938,
+  "pagina_final": 10145,
+  "trechos": 236,
+  "topicos": [
+   "Critérios de seleção de pacientes e riscos de admissão hospitalar",
+   "Avaliação de risco pré-operatório e exame físico",
+   "Uso de propofol, lidocaína (1 mg/kg) e anestésicos voláteis (isoflurano e sevoflurano)",
+   "Anestesia espinhal com mepivacaine (52,5-60 mg) versus bupivacaine",
+   "Uso de remimazolam e reversão com flumazenil",
+   "Analgesia multimodal e riscos do uso excessivo de opioides",
+   "Prevenção de PONV e PDNV com escopolamina transdérmica, ondansetron e droperidol",
+   "Cuidados pós-operatórios e educação para alta"
+  ]
+ },
+ "69": {
+  "titulo": "Non–Operating Room Anesthesia",
+  "pagina_inicial": 10146,
+  "pagina_final": 10257,
+  "trechos": 145,
+  "topicos": [
+   "Desafios de agendamento e alocação de pessoal em anestesia fora do centro cirúrgico (NORA)",
+   "Importância e monitorização do paciente em locais NORA",
+   "Anestesia para CPRE (Colangiopancreatografia Retrógrada Endoscópica)",
+   "Reações adversas a contrastes e protocolos de pré-tratamento com esteroides e difenidramina",
+   "Anestesia para procedimentos de embolização e ablação percutânea e a Síndrome de Pós-Embolização (PES)",
+   "Comunicação e interface entre anestesiologistas, neurorradiologistas e cardiologistas intervencionistas",
+   "Segurança radiológica e infraestrutura de equipamentos em salas de procedimento",
+   "Anestesia para implante de desfibriladores (ICD) e Terapia de Ressincronização Cardíaca (CRT)",
+   "Substituição Valvar Aórtica Transcateter (TAVR)"
+  ]
+ },
+ "70": {
+  "titulo": "Clinical Care in Extreme Environments:: Physiology at High Altitude and in Space",
+  "pagina_inicial": 10258,
+  "pagina_final": 10378,
+  "trechos": 134,
+  "topicos": [
+   "Resposta diurética hipóxica (HDR) e alterações no volume plasmático",
+   "Medidas não farmacológicas para aclimatação (estratégia 'climb high, sleep low')",
+   "Profilaxia farmacológica com acetazolamida e dexametasona",
+   "Manejo de doenças crônicas preexistentes em altitudes elevadas",
+   "Monitoramento de gases anestésicos e pressão parcial de oxigênio em altitude",
+   "Riscos da radiação solar e cósmica para astronautas",
+   "Alterações na produção de glóbulos vermelhos e níveis de ferritina no espaço",
+   "Hipovolemia e intolerância ortostática no retorno à Terra",
+   "Impactos psicológicos e estresse (eixo HPA/cortisol) em missões espaciais"
+  ]
+ },
+ "71": {
+  "titulo": "Clinical Care in Extreme Environments:: High Pressure, Immersion, Drowning, Hypo-, and Hyperthermia",
+  "pagina_inicial": 10379,
+  "pagina_final": 10538,
+  "trechos": 171,
+  "topicos": [
+   "Narcose por nitrogênio e a hipótese de Meyer–Overton",
+   "Embolia Gasosa Arterial (AGE) e Doença Descompressiva (DCS)",
+   "Terapia Oxigenada Hiperbárica (HBOT)",
+   "Toxicidade pulmonar por oxigênio (O2)",
+   "Alterações na condutância pulmonar e resistência respiratória em alta pressão",
+   "Farmacocinética de anestésicos intravenosos (meperidina, pentobarbital, cetamina, propofol) em alta pressão",
+   "Fisiopatologia do afogamento e progressão da hipóxia cardíaca",
+   "Impacto da hipotermia nas funções hepática e renal",
+   "Complicações do reaquecimento: parada de resgate e afterdrop"
+  ]
+ },
+ "72": {
+  "titulo": "Pediatric Anesthesia",
+  "pagina_inicial": 10540,
+  "pagina_final": 10702,
+  "trechos": 187,
+  "topicos": [
+   "Fisiologia gástrica e riscos de refluxo em recém-nascidos e prematuros",
+   "Farmacocinética e MAC do Desflurano, Isoflurano e Sevoflurano em pediatria",
+   "Riscos e dosagem do Tramadol em crianças (especialmente pós-amigdalectomia)",
+   "Impacto da anestesia precoce no desenvolvimento escolar e cognitivo",
+   "Critérios para indução anestésica e papel da presença parental",
+   "Monitorização de profundidade anestésica via EEG e BIS em crianças",
+   "Agitação de emergência e delirium no pós-operatório (PACU)",
+   "Manejo anestésico em cirurgias torácicas infantis e controle de hipertensão pulmonar",
+   "Considerações anestésicas em cirurgias de correção de escoliose"
+  ]
+ },
+ "73": {
+  "titulo": "Anesthesia for Pediatric Cardiac Surgery",
+  "pagina_inicial": 10703,
+  "pagina_final": 10953,
+  "trechos": 307,
+  "topicos": [
+   "Lesões de mistura (tronco arterioso, coração univentricular, atresia pulmonar com CIV e átrio único)",
+   "Interações medicamentosas perioperatórias (bloqueadores de canais, diuréticos, antiarrítmicos e agonistas α2)",
+   "Uso de anestésicos inalatórios potentes (Desflurane e Isoflurane) e proteção contra isquemia/reperfusão",
+   "Sistema de coagulação neonatal e sensibilidade à heparina",
+   "Protocolo de reaquecimento, desmame da circulação extracorpórea (CPB) e uso de ecocardiograma transesofágico (TEE)",
+   "Farmacologia para redução da resistência vascular pulmonar (PVR): amrinone, milrinone e isoproterenol",
+   "Manejo anestésico e complicações no implante de dispositivos de assistência ventricular (VAD)",
+   "Técnicas de cateterismo intervencionista para fechamento de CIA, CIV e PCA, e dilatação de válvulas e coarctação aórtica",
+   "Manejo de shunts cardíacos e estratégias de anticoagulação para evitar trombose"
+  ]
+ },
+ "74": {
+  "titulo": "Regional Anesthesia in Children",
+  "pagina_inicial": 10954,
+  "pagina_final": 11216,
+  "trechos": 268,
+  "topicos": [
+   "Miotoxicidade de anestésicos locais em pacientes pediátricos",
+   "Componentes da percepção da dor (sensorial, cognitivo e motivacional)",
+   "Farmacocinética e metabolismo de fármacos em crianças",
+   "Especificações de agulhas para bloqueios periféricos pediátricos",
+   "Bloqueio do plexo cervical",
+   "Técnicas de bloqueio digital e metacarpiano",
+   "Bloqueio do músculo quadratus lumborum (QL)",
+   "Bloqueio do nervo cutâneo lateral",
+   "Técnicas de bloqueio caudal"
+  ]
+ },
+ "75": {
+  "titulo": "Pediatric and Neonatal Critical Care",
+  "pagina_inicial": 11217,
+  "pagina_final": 11551,
+  "trechos": 431,
+  "topicos": [
+   "Uso da Dobutamina (5 a 20 mcg/kg/min) como agente inotrópico",
+   "Manejo da Síndrome do Desconforto Respiratório e aspiração de líquido amniótico meconial",
+   "Uso de soluções tamponantes (Bicarbonato de Sódio, THAM e Carbicarb) na parada cardíaca",
+   "Capnografia e monitorização do gradiente ETCO2 para PaCO2",
+   "Ventilação mecânica, PEEP e prevenção de lesão pulmonar induzida pelo ventilador (VALI)",
+   "Uso de Magnésio (25 a 45 mg/kg) no tratamento de asma grave",
+   "Uso de dispositivos supraglóticos (LMA) em ressuscitacao pediátrica",
+   "Manejo de insuficiência adrenal e pan-hipopituitarismo anterior",
+   "Exsanguineotransfusão e prevenção de AVC na anemia falciforme",
+   "Cuidados paliativos e decisões de fim de vida na UTIP"
+  ]
+ },
+ "76": {
+  "titulo": "The Postanesthesia Care Unit",
+  "pagina_inicial": 11553,
+  "pagina_final": 11681,
+  "trechos": 154,
+  "topicos": [
+   "Principais incidentes e complicações na PACU",
+   "Síndrome da Apneia Obstrutiva do Sono (OSA) e obstrução de vias aéreas",
+   "Edema pulmonar pós-obstrutivo e tratamento com ventilação por pressão positiva (PPV)",
+   "Uso profilático de Ventilação Pressão Positiva Não Invasiva (NIPPV)",
+   "Choque obstrutivo, tamponamento cardíaco e hipertensão pulmonar aguda",
+   "Causas de insuficiência renal pré-renal, renal e pós-renal",
+   "Náuseas e Vômitos Pós-Operatórios (NVPO/PONV)",
+   "Avaliação de despertar tardio e monitorização da transmissão neuromuscular",
+   "Agentes infecciosos e indicações de admissão na UTI",
+   "Critérios de descalonamento de cuidados da UTI para a PACU"
+  ]
+ },
+ "77": {
+  "titulo": "Acute Postoperative Pain",
+  "pagina_inicial": 11682,
+  "pagina_final": 11808,
+  "trechos": 150,
+  "topicos": [
+   "Resposta metabólica ao estresse cirúrgico",
+   "Analgésicos opioides: receptores μ e efeitos colaterais",
+   "Anti-inflamatórios não esteroides (AINEs): COX, Valdecoxib e Rofecoxib",
+   "Tramadol: indicações e contraindicações",
+   "Técnicas de analgesia regional e neuraxial",
+   "Analgesia epidural torácica em cirurgias abdominais e torácicas",
+   "Bloqueios nervosos periféricos contínuos e bombas ambulatoriais",
+   "Manejo de pacientes com tolerância a opioides e doses basais",
+   "Analgesia em pacientes com obesidade e apneia obstrutiva do sono (AOS)",
+   "Fatores de risco e prevenção de dor pós-cirúrgica persistente"
+  ]
+ },
+ "78": {
+  "titulo": "Perioperative Neurocognitive Disorders",
+  "pagina_inicial": 11809,
+  "pagina_final": 11868,
+  "trechos": 73,
+  "topicos": [
+   "Nomenclatura de Distúrbios Neurocognitivos Perioperatórios (PND), pre-CI e POCD",
+   "Critérios diagnósticos do DSM-5 para NCD leve e major pós-operatório",
+   "Domínios cognitivos avaliados: atenção complexa, função executiva, memória, linguagem, percepção-motora e cognição social",
+   "Metodologias de análise de mudança cognitiva individual versus análise de grupo",
+   "Estratégias de mitigação: controle de dor multimodal não opioide e triagem cognitiva basal",
+   "Fatores contribuintes para PND: inflamação, idade avançada e fragilidade cerebral",
+   "Papel da barreira hematoencefálica (BHE) e a influência de citocinas e monócitos",
+   "Diferenças entre modelos pré-clínicos (animais) e estudos clínicos em humanos",
+   "Moduladores Alostéricos Negativos (NAMs) de receptores α5-GABAA (L-655,708, α5IA, Ro15-4513, MRK-016, RO4938581 e RY-80)"
+  ]
+ },
+ "79": {
+  "titulo": "Critical Care Anesthesiology",
+  "pagina_inicial": 11870,
+  "pagina_final": 11963,
+  "trechos": 116,
+  "topicos": [
+   "Custos e taxas de ocupação de leitos de UTI",
+   "Padronização de cuidados e o Bundle ABCDEF",
+   "Ventilação protetora pulmonar e otimização de PEEP",
+   "Manejo da SDRA (ARDS), incluindo posição prona e volumes tideais (4-6 mL/kg)",
+   "Terapia dirigida por metas (Goal-directed therapy) e índices hemodinâmicos",
+   "Uso de cristaloides, coloides, vasopressores e inotrópicos na ressuscitação",
+   "Avaliação do débito cardíaco (CO) e resposta a fluidos",
+   "Prevenção de sobrecarga hídrica e perfusão de órgãos-alvo",
+   "Canulação arterial guiada por ultrassom"
+  ]
+ },
+ "80": {
+  "titulo": "Neurocritical Care",
+  "pagina_inicial": 11964,
+  "pagina_final": 12101,
+  "trechos": 154,
+  "topicos": [
+   "Dinâmica de troca de fluidos capilares e pressões osmóticas",
+   "Monitorização por Doppler Transcraniano (TCD)",
+   "Diagnóstico por imagem (CT, CTA e MRI) em lesões cerebrais",
+   "Manejo ventilatório e metas de PaO2 (80–120 mmHg) e PaCO2 (35–38 mmHg) no TBI",
+   "Hidrocefalia aguda pós-hemorragia subaracnoidea (SAH) e ventriculostomia",
+   "Controle de pressão arterial sistólica (120–140 mmHg) após trombectomia mecânica no AIS",
+   "Síndrome de Guillain-Barré (GBS)",
+   "Encefalite e manifestações clínicas associadas"
+  ]
+ },
+ "81": {
+  "titulo": "Extracorporeal Membrane Oxygenation and Cardiac Devices",
+  "pagina_inicial": 12102,
+  "pagina_final": 12180,
+  "trechos": 86,
+  "topicos": [
+   "Histórico e papel da organização ELSO",
+   "Uso de ECMO em transplantes pulmonares e disfunção pulmonar primária (PGD)",
+   "ECMO em situações de RCP e ECPR",
+   "SAVE-score para predição de sobrevivência em choque cardiogênico",
+   "Limitações da ECMO venovenosa (VV): shunt e recirculação",
+   "Cateter Avalon ELITE e posicionamento via ecocardiografia/TEE",
+   "Abordagens híbridas (V-AV) e ventilação do ventrículo esquerdo (Impella)",
+   "Anticoagulação com Heparina Não Fracionada (UFH) e monitoramento de Antitrombina III (AT3)",
+   "Trombocitopenia induzida por heparina com trombose (HITT)",
+   "Protocolos de desmame e ramp trials em ECMO venoarterial (VA)"
+  ]
+ },
+ "82": {
+  "titulo": "Cardiopulmonary Resuscitation and Advanced Cardiac Life Support",
+  "pagina_inicial": 12181,
+  "pagina_final": 12299,
+  "trechos": 133,
+  "topicos": [
+   "Reconhecimento imediato da parada cardíaca e verificação de pulso",
+   "Priorização de compressões torácicas e ventilação na RCP",
+   "Uso de amiodarona e lidocaína em FV/TV sem pulso",
+   "Sinais clínicos e impacto global do AVC",
+   "Tratamento de PSVT com adenosina, bloqueadores de canais de cálcio (verapamil, diltiazem) e beta-bloqueadores",
+   "Manejo pós-ROSC: gasometria arterial e risco de SDRA",
+   "Uso de TC e RM na avaliação pós-parada cardíaca",
+   "Particularidades da RCP pediátrica e causas por asfixia",
+   "Manejo de obstrução de vias aéreas por corpo estranho"
+  ]
+ },
+ "83": {
+  "titulo": "Burn Management",
+  "pagina_inicial": 12301,
+  "pagina_final": 12439,
+  "trechos": 167,
+  "topicos": [
+   "Permeabilidade vascular e vasodilatação em queimaduras",
+   "Toxicidade por monóxido de carbono (CO) e cianeto (CN)",
+   "Manejo de vias aéreas e escarotomia em queimaduras circunferenciais",
+   "Estratégias de ressuscitação volêmica, vasopressores e coloides",
+   "Tratamento de TENS (Toxic Epidermal Necrolysis Syndrome) e agentes antimicrobianos tópicos",
+   "Resposta hipermetabólica e uso de bloqueadores adrenoceptores",
+   "Ventilação protetora e manejo respiratório intraoperatório",
+   "Controle de dor com opioides, gabapentina e pregabalina",
+   "Manejo de hemorragia massiva e uso de plasma fresco congelado e plaquetas"
+  ]
+ },
+ "84": {
+  "titulo": "Occupational Safety, Infection Control, and Substance Use Disorders",
+  "pagina_inicial": 12440,
+  "pagina_final": 12552,
+  "trechos": 121,
+  "topicos": [
+   "Exposição a gases anestésicos e riscos de aborto espontâneo e anomalias congênitas",
+   "Proteção ocular contra radiação ionizante (raios-X) e não ionizante (lasers)",
+   "Incidência e fatores de risco para acidentes com agulhas e perfurocortantes",
+   "Precauções de controle de infecção para SARS, MRSA, Streptococcus, Tuberculose e Rubéola",
+   "Protocolos de testagem e monitoramento pós-exposição ao HCV e HBV",
+   "Riscos de transmissão de vírus via frascos multidose de propofol",
+   "Prevalência do uso de maconha entre estudantes de medicina e médicos",
+   "Sistemas de prevenção e detecção de desvio de substâncias controladas",
+   "Tratamento de transtornos por uso de opioides com naltrexone de liberação prolongada",
+   "Regulamentações do ACGME sobre carga horária de trabalho e descanso de residentes"
+  ]
+ },
+ "85": {
+  "titulo": "Emergency Preparedness in Health Care",
+  "pagina_inicial": 12553,
+  "pagina_final": 12570,
+  "trechos": 20,
+  "topicos": [
+   "Papel e liderança da equipe de anestesiologia na preparação para emergências",
+   "Transição da resposta a emergências para a prática preventiva",
+   "Impacto de eventos disruptivos: pandemia de COVID-19, clima e desastres ambientais",
+   "Riscos de instabilidade civil e violência em sistemas de saúde",
+   "Ameaças de cibersegurança e violação de registros de pacientes",
+   "Regulamentações dos EUA: CMS, CISA e Department of Homeland Security (DHS)",
+   "Interdependência do setor de Saúde e Saúde Pública (HPH) com funções críticas nacionais",
+   "Fragmentação da estrutura de prestação de cuidados de saúde",
+   "Desafios de capacidade hospitalar e absorção de pacientes de alta acuidade",
+   "Vulnerabilidades do sistema de suprimentos 'Just In Time' (JIT)"
+  ]
+ },
+ "86": {
+  "titulo": "Clinical Research",
+  "pagina_inicial": 12571,
+  "pagina_final": 12658,
+  "trechos": 103,
+  "topicos": [
+   "Tipos de viés em pesquisa clínica (seleção, perda de seguimento e publicação)",
+   "Diretrizes de relato STROBE, STARD e TRIPOD",
+   "Estudos de coorte prospectivos e retrospectivos",
+   "Desenhos de estudos quase-randomizados",
+   "Ensaios clínicos de Fase IV",
+   "Ciência da Implementação e Tradução do Conhecimento",
+   "Planos de análise estatística e revisão por pares",
+   "Financiamento, orçamentos e governança de pesquisa",
+   "Critérios de autoria segundo o International Committee of Medical Journal Editors"
+  ]
+ },
+ "87": {
+  "titulo": "Interpreting the Medical Literature",
+  "pagina_inicial": 12659,
+  "pagina_final": 13485,
+  "trechos": 484,
+  "topicos": [
+   "Interpretação de literatura médica e a validade do valor P <.05",
+   "Anestesia local e bloqueios nervosos em pediatria",
+   "Toxicidade sistêmica de anestésicos locais (LAST)",
+   "Manejo anestésico em cirurgia bariátrica e síndrome metabólica",
+   "Fisiologia cerebral, fluxo sanguíneo e barreira hematoencefálica",
+   "Síndrome de desperdício de sal cerebral e vasospasmo cerebral",
+   "Preparação e coordenação para emergências em saúde",
+   "Monitorização ecocardiográfica transesofágica em choque e falência hemodinâmica",
+   "Técnicas de laringoscopia e manejo de via aérea em obesos",
+   "Manejo anestésico em neurocirurgia (posicionamento, PaCO2 e pressão arterial)",
+   "Laringospasmo e edema pulmonar pós-obstrutivo",
+   "Cirurgias a laser e tubos endotraqueais específicos (Laser-Flex, Laser-Shield II)"
+  ]
+ }
+}

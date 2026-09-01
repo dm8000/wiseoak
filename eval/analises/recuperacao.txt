@@ -1,0 +1,11 @@
+RECUPERAÇÃO ISOLADA · 127 questões · split dev · tipo vf
+
+Verdade de referência: âncora número+unidade E cognato pt/en (prefixo 5).
+O critério erra para MENOS — termo sem cognato entre os idiomas não casa.
+O recall abaixo é PISO. A precisão do critério é medida em bench/ouro.py.
+
+  braço           n      @4      @8     @20     @50    @100    MRR  mediana  nunca
+  atual         127  37.8%   48.8%   59.1%   70.9%   81.1%  0.333        5     24
+
+recall@4 é a métrica que corresponde ao que o modelo recebe hoje.
+

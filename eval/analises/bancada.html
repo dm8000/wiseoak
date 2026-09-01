@@ -115,11 +115,11 @@ footer{color:var(--muted);font-size:.87rem;border-top:1px solid var(--hair);padd
 
 <header>
   <p class="eyebrow">Bancada · 998 questões · prova da SBA</p>
-  <h1>Cinco desenhos de RAG e um teto que não se move</h1>
+  <h1>Nove desenhos de RAG e um teto que não se move</h1>
   <p class="lede">Gemma&nbsp;4 31B local respondendo provas da Sociedade Brasileira de
-  Anestesiologia. O primeiro RAG valeu +7,2&nbsp;pp; as quatro iterações seguintes de
-  recuperação e de prompt não moveram nada. A explicação de por que — e a evidência de que
-  o gargalo deixou de ser informação — acabou sendo o resultado do trabalho.</p>
+  Anestesiologia. O primeiro RAG valeu +7,2&nbsp;pp; as oito iterações seguintes — de
+  recuperação, de prompt, de raciocínio e de modelo — não moveram nada. Descobrir por quê
+  acabou sendo o resultado do trabalho.</p>
 </header>
 
 <hr class="rule">
@@ -130,17 +130,21 @@ footer{color:var(--muted);font-size:.87rem;border-top:1px solid var(--hair);padd
   Intervalo de Wilson; comparações pareadas por McNemar exato com correção de Holm.</p>
   <div class="tw">
     <table>
-      <caption>acerto por sistema · n = 998 · cinco iterações do WiseOak</caption>
+      <caption>acerto por sistema · n = 998 · banco de desenvolvimento completo</caption>
       <thead><tr><th>sistema</th><th>total</th><th>V/F</th><th>ME</th><th>IC 95%</th></tr></thead>
       <tbody>
         <tr><td class="sys">Opus 5<span class="tag">effort low, sem busca</span></td>
             <td class="num">85,4%</td><td class="num">85,7%</td><td class="num">83,8%</td><td class="num">83,0–87,4%</td></tr>
-        <tr class="mark"><td class="sys">WiseOak v3<span class="tag">cota: normas + livro</span></td>
+        <tr class="mark"><td class="sys">WiseOak v5<span class="tag">consulta focada + trecho pequeno</span></td>
+            <td class="num">81,0%</td><td class="num">83,8%</td><td class="num">67,1%</td><td class="num">78,4–83,3%</td></tr>
+        <tr><td class="sys">WiseOak v3<span class="tag">cota: normas + livro</span></td>
             <td class="num">80,6%</td><td class="num">82,1%</td><td class="num">73,1%</td><td class="num">78,0–82,9%</td></tr>
         <tr><td class="sys">WiseOak v1<span class="tag">RAG Miller 10e</span></td>
             <td class="num">80,2%</td><td class="num">81,5%</td><td class="num">73,7%</td><td class="num">77,6–82,5%</td></tr>
         <tr><td class="sys">WiseOak v2<span class="tag">RAG normas, roteamento exclusivo</span></td>
             <td class="num">79,9%</td><td class="num">81,2%</td><td class="num">73,1%</td><td class="num">77,3–82,2%</td></tr>
+        <tr><td class="sys">WiseOak v7<span class="tag">modelo escreve a própria consulta</span></td>
+            <td class="num">80,0%</td><td class="num">81,1%</td><td class="num">74,3%</td><td class="num">77,4–82,3%</td></tr>
         <tr><td class="sys">WiseOak v4<span class="tag">cota + falsificação + k=8 · REFUTADO</span></td>
             <td class="num">77,3%</td><td class="num">78,1%</td><td class="num">73,1%</td><td class="num">74,6–79,7%</td></tr>
         <tr><td class="sys">DeepSeek-V3<span class="tag">thinking + search</span></td>
@@ -152,6 +156,9 @@ footer{color:var(--muted);font-size:.87rem;border-top:1px solid var(--hair);padd
       </tbody>
     </table>
   </div>
+  <p><em>As três últimas variantes — navegação agêntica, raciocínio nativo e a troca de
+  modelo — foram medidas numa amostra estratificada de 300, não neste universo; aparecem na
+  tabela de alavancas abaixo.</em></p>
   <p>Das 21 comparações, nove sobrevivem a Holm. Todas dizem uma de duas coisas: que as três
   variantes de RAG batem o controle sem RAG, ou que o Opus 5 bate todas elas. <strong>Nenhuma
   comparação entre v1, v2 e v3 é significativa</strong> — os três vivem dentro de 0,7 pp.</p>
@@ -339,12 +346,30 @@ footer{color:var(--muted);font-size:.87rem;border-top:1px solid var(--hair);padd
 </section>
 
 <section>
-  <h2>Por que o número não sobe</h2>
-  <p>Cinco iterações. A primeira — trocar o livro-texto errado pelo certo — valeu
-  +7,2&nbsp;pp. As quatro seguintes, todas de recuperação ou de prompt, ficaram dentro do
-  ruído ou pioraram. A explicação que a evidência sustenta é que <strong>o gargalo deixou de
-  ser informação</strong>.</p>
+  <h2>Nove configurações, dois modelos, um platô</h2>
+  <p>Depois do salto do corpus, cada alavanca disponível foi puxada e medida. Nenhuma moveu
+  o número.</p>
+  <div class="tw">
+    <table>
+      <caption>onde cada alavanca chegou · dev</caption>
+      <thead><tr><th>alavanca</th><th>o que foi testado</th><th>efeito</th></tr></thead>
+      <tbody>
+        <tr class="mark"><td><strong>corpus</strong></td><td>trocar o livro-texto</td><td class="gain">+7,2 pp</td></tr>
+        <tr><td>recuperação</td><td>7 arquiteturas (roteamento, cota, granularidade, consulta focada, reformulação, navegação, suficiência)</td><td class="flat">~0</td></tr>
+        <tr><td>prompt</td><td>ancoragens e reformulação</td><td class="flat">~0</td></tr>
+        <tr><td>prompt</td><td>ancoragem por falsificação</td><td class="loss">−4,0 pp</td></tr>
+        <tr><td>raciocínio</td><td>thinking nativo</td><td class="loss">−1,6 pp</td></tr>
+        <tr><td>modelo</td><td>Gemma 4 31B → Qwen 3.6 27B</td><td class="flat">~0</td></tr>
+      </tbody>
+    </table>
+  </div>
 
+  <p>A troca de modelo é a mais reveladora. Mesmo fluxo, mesma amostra, única variável — e o
+  resultado foi <strong>empate com p&nbsp;=&nbsp;1,000</strong>: cerca de 22 questões cada
+  lado resolve que o outro não resolve, com saldo próximo de zero. Não são modelos
+  equivalentes; acertam <em>conjuntos diferentes</em>, e nenhum é melhor.</p>
+
+  <h3>Por que o número não sobe</h3>
   <div class="tw">
     <table>
       <caption>quatro medições que apontam para o mesmo lugar</caption>
@@ -362,10 +387,9 @@ footer{color:var(--muted);font-size:.87rem;border-top:1px solid var(--hair);padd
       </tbody>
     </table>
   </div>
-
-  <p>A terceira linha é a decisiva. Um modelo mais capaz, sem recuperação nenhuma e sem
-  busca na internet, supera em 4,8&nbsp;pp o nosso sistema com um corpus de 14.628 trechos
-  do Miller e 607 artigos de norma. Se o que faltasse fosse informação, isso não aconteceria.</p>
+  <p>A terceira linha é a decisiva, e o empate entre Gemma e Qwen a reforça: dois modelos da
+  mesma classe, com arquiteturas de recuperação diferentes, param no mesmo lugar. <strong>O
+  teto de ~83% parece pertencer à classe de modelo, não ao arranjo dos componentes.</strong></p>
 
   <h3>Por que prova de título resiste especialmente a RAG</h3>
   <p>Banca examina <em>fronteira</em>; livro-texto enuncia <em>centro</em>. O Miller diz que
@@ -374,20 +398,13 @@ footer{color:var(--muted);font-size:.87rem;border-top:1px solid var(--hair);padd
   confiabilidade e a fronteira sem ela — porque a fronteira muitas vezes não está escrita
   como frase recuperável, está numa tabela ou é propriedade de quem conhece a área.</p>
 
-  <h3>Por que engenharia de prompt para de render</h3>
-  <p>O modelo já está próximo da calibração: erra 47% em assertivas verdadeiras contra uma
-  base de 57%. A correção de viés disponível já foi colhida, e valeu +10&nbsp;pp. Depois
-  disso, qualquer empurrão vira troca de soma zero — o v4 ganhou 49 questões falsas e perdeu
-  82 verdadeiras. <strong>Não sobrou calibração para explorar.</strong></p>
-
-  <h3>O que isso prevê, e como falsificar</h3>
-  <p>Se a teoria estiver certa, o erro restante é dominado por falhas de discriminação que
-  um modelo de 31B comete <em>com a informação correta em mãos</em> — e o próximo ganho vem
-  de trocar o modelo, não de melhorar a busca.</p>
-  <p>O teste que decide é barato: entregar as mesmas questões <strong>com o nosso contexto
+  <h3>O teste que falsifica isto</h3>
+  <p>Se a leitura estiver certa, o erro restante é dominado por falhas de discriminação que
+  um modelo de 27–31B comete <em>com a informação correta em mãos</em>. O teste decisivo é
+  barato e ainda não foi feito: entregar as mesmas questões <strong>com o nosso contexto
   recuperado</strong> a um modelo forte. Se ele subir acima dos 85,4% que faz sem contexto, o
-  contexto é bom e o modelo local é que não o aproveita — teoria confirmada. Se ficar igual,
-  o contexto não acrescenta nada e a teoria está errada.</p>
+  contexto presta e o modelo local é que não o aproveita. Se ficar igual, a leitura está
+  errada. Nenhuma iteração de RAG nossa consegue responder isso.</p>
 </section>
 
 
